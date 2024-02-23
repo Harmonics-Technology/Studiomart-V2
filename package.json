@@ -20,7 +20,7 @@
     "release": "cross-env HUSKY=0 standard-version",
     "push-release": "git push --follow-tags origin main",
     "prepare": "husky",
-    "openapi:codegen": "openapi -i https://ownland-api-dev.azurewebsites.net/swagger/v1/swagger.json -o ./src/services -c axios --useOptions"
+    "openapi:codegen": "openapi -i https://studiomait-staging.azurewebsites.net/swagger/v1/swagger.json -o ./src/services -c axios --useOptions"
   },
   "dependencies": {
     "@chakra-ui/next-js": "^2.2.0",
