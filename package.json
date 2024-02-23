@@ -6,17 +6,17 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "build:turbo": "pnpm dlx turbo@latest run build",
+    "build:turbo": "yarn dlx turbo@latest run build",
     "postbuild": "next-sitemap --config next-sitemap.config.js",
     "start": "next start",
     "lint": "next lint",
-    "lint:fix": "eslint src --fix && pnpm format",
+    "lint:fix": "eslint src --fix && yarn format",
     "type-check": "tsc --noEmit",
-    "check:turbo": "pnpm dlx turbo@latest lint type-check",
+    "check:turbo": "yarn dlx turbo@latest lint type-check",
     "test:e2e": "playwright test",
     "format": "prettier --write src",
-    "up-interactive": "pnpm up -i",
-    "up-latest": "pnpm up-interactive -L",
+    "up-interactive": "yarn up -i",
+    "up-latest": "yarn up-interactive -L",
     "release": "cross-env HUSKY=0 standard-version",
     "push-release": "git push --follow-tags origin main",
     "prepare": "husky",
@@ -68,7 +68,6 @@
     "typescript": "^5.3.3"
   },
   "engines": {
-    "node": ">=16.x.x",
-    "pnpm": ">=8"
+    "node": ">=16.x.x"
   }
 }
