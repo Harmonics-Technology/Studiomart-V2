@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from 'next';
+import { CookiesProvider } from 'next-client-cookies/server';
 
 import Providers from '~/app/providers';
 import Layout from '~/lib/layout';
@@ -7,10 +8,11 @@ type RootLayoutProps = {
   children: React.ReactNode;
 };
 
-const APP_NAME = 'nextarter-chakra';
+const APP_NAME = 'Studiomart V2';
 
 export const metadata: Metadata = {
-  title: { default: APP_NAME, template: '%s | nextarter-chakra' },
+  metadataBase: new URL('http://localhost:3000'),
+  title: { default: APP_NAME, template: '%s | Creativity meets inovation' },
   description: 'Next.js + chakra-ui + TypeScript template',
   applicationName: APP_NAME,
   appleWebApp: {
@@ -22,16 +24,16 @@ export const metadata: Metadata = {
     telephone: false,
   },
   openGraph: {
-    url: 'https://nextarter-chakra.sznm.dev',
-    title: 'nextarter-chakra',
+    url: 'https://studiomart.io',
+    title: 'studiomart',
     description: 'Next.js + chakra-ui + TypeScript template',
     images: {
-      url: 'https://og-image.sznm.dev/**nextarter-chakra**.sznm.dev.png?theme=dark&md=1&fontSize=125px&images=https%3A%2F%2Fsznm.dev%2Favataaars.svg&widths=250',
-      alt: 'nextarter-chakra.sznm.dev og-image',
+      url: '',
+      alt: 'studiomart.io og-image',
     },
   },
   twitter: {
-    creator: '@sozonome',
+    creator: '@studiomart',
     card: 'summary_large_image',
   },
 };
@@ -46,9 +48,11 @@ const RootLayout = ({ children }: RootLayoutProps) => {
   return (
     <html lang="en">
       <body>
-        <Providers>
-          <Layout>{children}</Layout>
-        </Providers>
+        <CookiesProvider>
+          <Providers>
+            <Layout>{children}</Layout>
+          </Providers>
+        </CookiesProvider>
       </body>
     </html>
   );
