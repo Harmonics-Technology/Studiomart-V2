@@ -11,6 +11,7 @@
     "lint": "next lint",
     "lint:fix": "eslint src --fix && yarn format",
     "type-check": "tsc --noEmit",
+    "lint:check": "lint type-check",
     "test:e2e": "playwright test",
     "format": "prettier --write src",
     "up-interactive": "yarn up -i",
