@@ -1,1 +1,20 @@
 /* Global Styling here */
+::-webkit-scrollbar {
+  width: 10px;
+  border-radius: 50px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 50px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #9c9b9b;
+  border-radius: 50px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+  border-radius: 50px;
+}

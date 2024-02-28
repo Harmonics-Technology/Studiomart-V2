@@ -1,7 +1,7 @@
 'use client';
 
 import { Box } from '@chakra-ui/react';
-import type { ReactNode } from 'react';
+import { type ReactNode } from 'react';
 
 import Footer from './Footer';
 import Header from './Header';
@@ -11,11 +11,20 @@ type LayoutProps = {
 };
 
 const Layout = ({ children }: LayoutProps) => {
+  // useEffect(() => {
+  //   (
+  //     async () => {
+  //       const LocomotiveScroll = (await import('locomotive-scroll')).default;
+  //       const locomotiveScroll = new LocomotiveScroll();
+  //     }
+  //   )()
+  // }, [])
+
   return (
-    <Box margin="0 auto" maxWidth={800} transition="0.5s ease-out">
-      <Box margin="8">
+    <Box margin="0 auto" transition="0.5s ease-out">
+      <Box>
         <Header />
-        <Box as="main" marginY={22}>
+        <Box as="main" mb={22}>
           {children}
         </Box>
         <Footer />

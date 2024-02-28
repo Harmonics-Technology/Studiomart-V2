@@ -1,14 +1,92 @@
-import { Box, Flex } from '@chakra-ui/react';
+import { Box, Flex, Text, Stack } from '@chakra-ui/react';
+import Image from 'next/image';
+import Link from 'next/link';
+import { useState } from 'react';
 
-import ThemeToggle from './ThemeToggle';
+import ButtonComponent from '../components/Button/Button';
+import Logo from '../components/Logo';
+
+// import { usePathname } from 'next/navigation';
 
 const Header = () => {
+  const [activeLink, setActiveLink] = useState(0);
+  // const pathname = usePathname();
+
+  const changeActiveLink = (index: number) => {
+    setActiveLink(index);
+  };
+  const links = [
+    {
+      name: 'Home',
+      url: '/',
+    },
+    {
+      name: 'About',
+      url: '/about',
+    },
+    {
+      name: 'Studios',
+      url: '/studios',
+    },
+  ];
+
   return (
-    <Flex as="header" width="full" align="center">
-      <Box marginLeft="auto">
-        <ThemeToggle />
-      </Box>
-    </Flex>
+    <Box as="header" width="full" p="6">
+      <Flex w="full" justifyContent="space-between" alignItems="center">
+        <Box>
+          <Logo />
+        </Box>
+        <Box>
+          <Flex alignItems="center">
+            <Box>
+              <Flex alignItems="center" gap="45px">
+                {links.map((item, index) => {
+                  return (
+                    <Box position="relative">
+                      {index === activeLink && (
+                        <Image
+                          src="/assets/active-star.svg"
+                          width={10}
+                          height={10}
+                          alt="active link image"
+                          style={{
+                            position: 'absolute',
+                            top: '-7px',
+                            right: '-12px',
+                          }}
+                        />
+                      )}
+                      <Link href={item.url}>
+                        <Text
+                          onClick={() => changeActiveLink(index)}
+                          color={index === activeLink ? '#1570FA' : '#0C090A'}
+                        >
+                          {item.name}
+                        </Text>
+                      </Link>
+                    </Box>
+                  );
+                })}
+                <Box>
+                  <Stack direction="row" alignItems="center" gap="15px">
+                    <Link href="/">
+                      <Text color="#267E79">Become a Vendor</Text>
+                    </Link>
+                    <Box bg="#6DD3CE" h="40px" w="2px" />
+                    <ButtonComponent
+                      width="125px"
+                      bg="#1570FA"
+                      color="#FFFFFF"
+                      text="Get Started"
+                    />
+                  </Stack>
+                </Box>
+              </Flex>
+            </Box>
+          </Flex>
+        </Box>
+      </Flex>
+    </Box>
   );
 };
 

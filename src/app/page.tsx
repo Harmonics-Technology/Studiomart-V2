@@ -1,5 +1,7 @@
+import { Home } from '../lib/pages/home';
+
 const page = () => {
-  return <div>page</div>;
+  return <Home />;
 };
 
 export default page;

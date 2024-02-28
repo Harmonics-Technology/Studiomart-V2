@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from 'next';
 import { CookiesProvider } from 'next-client-cookies/server';
+import '../lib/styles/globals.css';
 
 import Providers from '~/app/providers';
 import Layout from '~/lib/layout';

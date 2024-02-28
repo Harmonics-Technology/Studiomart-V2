@@ -11,6 +11,14 @@
       {
         "usePrettierrc": false
       }
-    ]
+    ],
+    "react/prop-types": "off",
+    "react/no-array-index-key": "off",
+    "react/no-unescaped-entities": "off",
+    "react/no-unused-prop-types": "off",
+    "@typescript-eslint/no-explicit-any": "off"
+  },
+  "parserOptions": {
+        "project": ["./tsconfig.json"]
   }
 }
