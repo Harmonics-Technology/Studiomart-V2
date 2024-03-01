@@ -8,6 +8,7 @@ import {
   Text,
   VStack,
   Icon,
+  Grid,
 } from '@chakra-ui/react';
 import Image from 'next/image';
 import { BiLogoPlayStore } from 'react-icons/bi';
@@ -23,6 +24,7 @@ import ButtonComponent, {
   IconButtonLinkComponent,
 } from '~/lib/components/Button/Button';
 import QuoteIcon from '~/lib/components/Icons/Quote';
+import { StudioCard } from '~/lib/components/StudioCard';
 
 interface FlipImageProps {
   image: string;
@@ -59,6 +61,9 @@ const FirstSection = () => {
       <Wrapper>
         <Flex alignItems="center" justifyContent="space-between" w="100%">
           <Box w="93%">
+            <Grid templateColumns={['1fr', 'repeat(3, 1fr)']} gap="3.25rem">
+              <StudioCard img="assets/face.png" rating="4.1" />
+            </Grid>
             <Stack direction="column" spacing={6} w="100%">
               {/* first section */}
               <Box>
