@@ -1,7 +1,7 @@
-import Studios from '../../lib/pages/studios';
+import AllStudios from '~/lib/pages/AllStudios';
 
 const page = () => {
-  return <Studios />;
+  return <AllStudios />;
 };
 
 export default page;
