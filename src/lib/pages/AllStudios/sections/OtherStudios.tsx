@@ -1,15 +1,28 @@
 import { Box, Stack, Heading, Flex } from '@chakra-ui/react';
 import Image from 'next/image';
 
-import ServiceCard from '~/lib/components/ServiceCard';
 import Wrapper from '~/lib/components/Wrapper';
 
-const FourthSection = () => {
-  const studios = [1, 2, 3, 4, 5];
+const OtherStudios = () => {
+  const imageUrl = '/assets/other-studios.png';
+  const studios = [
+    {
+      id: 1,
+      image: imageUrl,
+    },
+    {
+      id: 2,
+      image: imageUrl,
+    },
+    {
+      id: 3,
+      image: imageUrl,
+    },
+  ];
   return (
     <Box bg="#FCF8FB" py="8">
       <Wrapper>
-        <Stack spacing={16}>
+        <Stack spacing={10}>
           <Box position="relative" p="5">
             <Heading
               fontSize={24}
@@ -17,7 +30,7 @@ const FourthSection = () => {
               position="absolute"
               zIndex="2"
             >
-              More Services by Lensboy Photography
+              Popular Studios
             </Heading>
             <Image
               src="/assets/star-line.svg"
@@ -32,14 +45,15 @@ const FourthSection = () => {
               alignItems="center"
               justifyContent="space-between"
               flexWrap="wrap"
-              rowGap={12}
             >
-              {studios.map(() => (
-                <ServiceCard
-                  image="/assets/mask-2.png"
-                  title="Product Photography"
-                  rating={4.5}
-                  price={17000}
+              {studios.map((item) => (
+                <Image
+                  src={item.image}
+                  key={item.id}
+                  alt="other studios"
+                  width={390}
+                  height={340}
+                  style={{ borderRadius: '40px', border: '4px solid #1570FA' }}
                 />
               ))}
             </Flex>
@@ -50,4 +64,4 @@ const FourthSection = () => {
   );
 };
 
-export default FourthSection;
+export default OtherStudios;

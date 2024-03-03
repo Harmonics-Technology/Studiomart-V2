@@ -11,6 +11,7 @@ const HeroSection = () => {
       backgroundRepeat="no-repeat"
       backgroundPosition="bottom right"
       py="5"
+      my="14"
     >
       <Flex>
         <Box w="30%">

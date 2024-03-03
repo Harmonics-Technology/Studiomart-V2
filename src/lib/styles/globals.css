@@ -18,3 +18,7 @@
   background: #555;
   border-radius: 50px;
 }
+
+.mask img {
+  mask: url(#svgMask);
+}
