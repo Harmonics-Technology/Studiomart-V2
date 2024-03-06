@@ -1,20 +1,26 @@
 import { Box, Flex, Text, Stack } from '@chakra-ui/react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 
 import ButtonComponent from '../components/Button/Button';
 import Logo from '../components/Logo';
 
-// import { usePathname } from 'next/navigation';
-
 const Header = () => {
   const [activeLink, setActiveLink] = useState(0);
-  // const pathname = usePathname();
+  const pathname = usePathname();
+
+  const hideNavbarRoutes = ['/signin', '/signup'];
+
+  if (hideNavbarRoutes.includes(pathname)) {
+    return null;
+  }
 
   const changeActiveLink = (index: number) => {
     setActiveLink(index);
   };
+
   const links = [
     {
       name: 'Home',
@@ -78,6 +84,7 @@ const Header = () => {
                       bg="#1570FA"
                       color="#FFFFFF"
                       text="Get Started"
+                      onClick={() => {}}
                     />
                   </Stack>
                 </Box>

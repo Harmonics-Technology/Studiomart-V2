@@ -9,6 +9,7 @@ import {
   Heading,
 } from '@chakra-ui/react';
 import Image from 'next/image';
+import { usePathname } from 'next/navigation';
 
 import { WhiteLogo } from '../components/Logo';
 import SocialLinks from '../components/SocialLinks';
@@ -54,6 +55,13 @@ const FooterList: React.FC<FooterListProps> = ({ headingText, items }) => {
 };
 
 const Footer = () => {
+  const pathname = usePathname();
+
+  const hideNavbarRoutes = ['/signin', '/signup'];
+
+  if (hideNavbarRoutes.includes(pathname)) {
+    return null;
+  }
   return (
     <Box as="footer" bg="#2D2327" w="100%" py="10">
       <Stack direction="column" spacing={8} w="90%" mx="auto">
