@@ -59,6 +59,7 @@ const FirstSection = () => {
                     color="white"
                     bg="#1570FA"
                     width="174px"
+                    onClick={() => {}}
                   />
                 </Flex>
               </Box>
