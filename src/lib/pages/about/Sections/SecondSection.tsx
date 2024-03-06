@@ -88,6 +88,7 @@ const SecondSection = () => {
                 color="white"
                 width="150px"
                 bg="#1570FA"
+                onClick={() => {}}
               />
             </Stack>
           </Box>
