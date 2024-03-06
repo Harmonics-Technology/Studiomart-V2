@@ -56,6 +56,7 @@ const ThirdSection = () => {
                         bg="#1570FA"
                         color="white"
                         width="150px"
+                        onClick={() => {}}
                       />
                       <IconButtonComponent
                         flip={false}

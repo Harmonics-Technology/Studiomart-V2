@@ -119,6 +119,7 @@ const SecondSection = () => {
                 bg="#1570FA"
                 color="white"
                 width="227px"
+                onClick={() => {}}
               />
               <IconButtonComponent
                 bg="white"
