@@ -1,3 +1,5 @@
+'use client';
+
 import { Box, Stack } from '@chakra-ui/react';
 
 import FirstSection from './Sections/FirstSection';

@@ -1,3 +1,5 @@
+'use client';
+
 import { Box, Flex, Text, Stack } from '@chakra-ui/react';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -11,7 +13,7 @@ const Header = () => {
   const [activeLink, setActiveLink] = useState(0);
   const pathname = usePathname();
 
-  const hideNavbarRoutes = ['/signin', '/signup'];
+  const hideNavbarRoutes = ['/signin', '/signup', '/client'];
 
   if (hideNavbarRoutes.includes(pathname)) {
     return null;
@@ -81,7 +83,7 @@ const Header = () => {
                     <Box bg="#6DD3CE" h="40px" w="2px" />
                     <ButtonComponent
                       width="125px"
-                      bg="#1570FA"
+                      bg="brand.100"
                       color="#FFFFFF"
                       text="Get Started"
                       onClick={() => {}}

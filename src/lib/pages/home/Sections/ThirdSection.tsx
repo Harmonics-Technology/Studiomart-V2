@@ -53,7 +53,7 @@ const ThirdSection = () => {
                     <Flex alignItems="center" gap="20px">
                       <ButtonComponent
                         text="Get Started"
-                        bg="#1570FA"
+                        bg="brand.100"
                         color="white"
                         width="150px"
                         onClick={() => {}}

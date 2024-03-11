@@ -88,7 +88,7 @@ const FourthSection = () => {
                 <CustomText text="Each piece tells a unique story, capturing moments of inspiration, passion, and boundless imagination." />
 
                 <IconButtonComponent
-                  bg="#1570FA"
+                  bg="brand.100"
                   color="white"
                   text="Book a Service"
                   icon={IoChevronForwardCircleOutline}

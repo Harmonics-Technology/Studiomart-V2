@@ -9,3 +9,7 @@ export interface IStudioCardProps {
   services: string[];
   price: number;
 }
+
+export interface FilterButtonsProp {
+  filterList: string[];
+}

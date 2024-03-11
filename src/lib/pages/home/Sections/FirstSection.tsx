@@ -122,7 +122,7 @@ const FirstSection = () => {
                         flip={false}
                         width="268px"
                         text="Download on Google Play"
-                        bg="#1570FA"
+                        bg="brand.100"
                         color="white"
                         icon={BiLogoPlayStore}
                       />

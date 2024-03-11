@@ -87,7 +87,7 @@ const SecondSection = () => {
                 text="Get Started"
                 color="white"
                 width="150px"
-                bg="#1570FA"
+                bg="brand.100"
                 onClick={() => {}}
               />
             </Stack>

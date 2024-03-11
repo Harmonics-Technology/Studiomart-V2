@@ -57,7 +57,7 @@ const FirstSection = () => {
                   <ButtonComponent
                     text="Book a Service"
                     color="white"
-                    bg="#1570FA"
+                    bg="brand.100"
                     width="174px"
                     onClick={() => {}}
                   />

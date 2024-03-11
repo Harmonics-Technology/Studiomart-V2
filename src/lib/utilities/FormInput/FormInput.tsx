@@ -5,9 +5,16 @@ interface FormInputProps {
   width: string;
   value: string;
   setValue: (value: string) => void;
+  placeholder?: string;
 }
 
-const FormInput = ({ type, width, value, setValue }: FormInputProps) => {
+const FormInput = ({
+  type,
+  width,
+  value,
+  setValue,
+  placeholder,
+}: FormInputProps) => {
   return (
     <Box w={width}>
       <Input
@@ -17,6 +24,9 @@ const FormInput = ({ type, width, value, setValue }: FormInputProps) => {
         px="16px"
         value={value}
         onChange={(e) => setValue(e.target.value)}
+        placeholder={placeholder}
+        fontSize={15}
+        _placeholder={{ color: 'text.400', fontWeight: 400 }}
       />
     </Box>
   );

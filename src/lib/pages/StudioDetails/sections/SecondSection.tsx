@@ -116,7 +116,7 @@ const SecondSection = () => {
             <Flex alignItems="center" gap={2}>
               <ButtonComponent
                 text="Book Now"
-                bg="#1570FA"
+                bg="brand.100"
                 color="white"
                 width="227px"
                 onClick={() => {}}

@@ -83,7 +83,7 @@ const FourthSection = () => {
                   unforgettable experience!
                 </Text>
                 <IconButtonComponent
-                  bg="#1570FA"
+                  bg="brand.100"
                   text="View Services"
                   icon={IoChevronForwardCircleOutline}
                   color="white"

@@ -1,4 +1,6 @@
 import { Button, Icon, Flex, Text, Box } from '@chakra-ui/react';
+import Link from 'next/link';
+import { IoChevronBackCircleOutline } from 'react-icons/io5';
 
 interface ButtonProps {
   bg: string;
@@ -126,5 +128,22 @@ export const IconButtonLinkComponent: React.FC<IconButtonLinkProps> = ({
         <Icon as={icon} fontSize={20} />
       </Flex>
     </Box>
+  );
+};
+
+interface BackButtonProps {
+  linkTo: string;
+}
+
+export const BackButton = ({ linkTo }: BackButtonProps) => {
+  return (
+    <Link href={linkTo}>
+      <Flex alignItems="center" gap="15px">
+        <Icon as={IoChevronBackCircleOutline} fontSize={30} color="text.400" />
+        <Text fontSize={20} color="text.500">
+          Back
+        </Text>
+      </Flex>
+    </Link>
   );
 };

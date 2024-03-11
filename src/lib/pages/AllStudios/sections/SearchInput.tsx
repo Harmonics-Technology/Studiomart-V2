@@ -16,7 +16,7 @@ const SearchInput = () => {
           width="150px"
           color="white"
           text="Search"
-          bg="#1570FA"
+          bg="brand.100"
           icon={IoChevronForwardCircleOutline}
           flip
         />
