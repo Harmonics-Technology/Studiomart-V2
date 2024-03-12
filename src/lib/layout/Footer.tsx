@@ -7,8 +7,8 @@ import {
   UnorderedList,
   ListItem,
   Heading,
+  Image,
 } from '@chakra-ui/react';
-import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 
 import { WhiteLogo } from '../components/Logo';
@@ -87,7 +87,7 @@ const Footer = () => {
               <Box mb="10">
                 <Button bg="none" _hover={{ bg: 'none' }} m="0" p="0">
                   <Image
-                    src="/assets/playstore.svg"
+                    src="assets/playstore.svg"
                     width={161}
                     height={65}
                     alt="playsore image"

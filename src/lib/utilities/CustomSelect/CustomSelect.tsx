@@ -1,11 +1,6 @@
 import { Select, Box } from '@chakra-ui/react';
 
-interface CustomSelectProps {
-  options?: string[];
-  width: string;
-  value: string;
-  setValue: (value: string) => void;
-}
+import type { CustomSelectProps } from '../Context/schemas';
 
 const CustomSelect = ({
   width,

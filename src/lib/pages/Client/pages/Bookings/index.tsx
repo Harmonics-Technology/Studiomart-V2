@@ -63,7 +63,7 @@ const index = () => {
           <ServiceCardWithStatus
             key={item}
             status="pending"
-            image="/assets/studio-girl2.png"
+            image="assets/studio-girl2.png"
             title="Wedding & Event Shoot"
             bookingId="76AA823"
             dateAndTime="14/02/2024 -1 2:00 PM"

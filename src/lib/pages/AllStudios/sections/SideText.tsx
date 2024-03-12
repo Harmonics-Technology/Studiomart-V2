@@ -1,12 +1,11 @@
-import { Box, Heading, Flex } from '@chakra-ui/react';
-import Image from 'next/image';
+import { Box, Heading, Flex, Image } from '@chakra-ui/react';
 
 const SideText = () => {
   return (
     <Box
       w="100%"
       h="300px"
-      bgImage="url('/assets/side-text-illustration.png')"
+      bgImage="url('assets/side-text-illustration.png')"
       backgroundRepeat="no-repeat"
       backgroundPosition="bottom left"
       backgroundSize="contain"
@@ -16,10 +15,10 @@ const SideText = () => {
       <Box>
         <Flex alignItems="flex-start" justifyContent="space-between">
           <Image
-            src="/assets/side-text-star.png"
+            src="assets/side-text-star.png"
             alt="star image"
-            width={80}
-            height={80}
+            width="80px"
+            height="80px"
           />
           <Box>
             <Heading fontWeight={900} fontSize={58}>

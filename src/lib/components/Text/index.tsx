@@ -1,8 +1,6 @@
 import { Text } from '@chakra-ui/react';
 
-interface CustomTextProps {
-  text: string;
-}
+import type { CustomTextProps } from '~/lib/utilities/Context/schemas';
 
 const CustomText: React.FC<CustomTextProps> = ({ text }) => {
   return (

@@ -1,16 +1,14 @@
-import { Box, Flex, Heading, Text, Stack } from '@chakra-ui/react';
-import Image from 'next/image';
+import { Box, Flex, Heading, Text, Stack, Image } from '@chakra-ui/react';
 
 import CustomText from '../Text';
+import type { CustomerReviewCardProps } from '~/lib/utilities/Context/schemas';
 
-interface ReviewCardProps {
-  name: string;
-  company: string;
-  review: string;
-  date: string;
-}
-
-const index: React.FC<ReviewCardProps> = ({ name, company, review, date }) => {
+const index: React.FC<CustomerReviewCardProps> = ({
+  name,
+  company,
+  review,
+  date,
+}) => {
   return (
     <Box bg="#FCF8FB" w="540px" h="340px" borderRadius="40px" p="8">
       <Stack spacing={5}>
@@ -19,9 +17,9 @@ const index: React.FC<ReviewCardProps> = ({ name, company, review, date }) => {
             <Box>
               <Image
                 alt="Adelowo Ajibola, CEO HT"
-                src="/assets/ceo.png"
-                width={40}
-                height={40}
+                src="assets/ceo.png"
+                width="40px"
+                height="40px"
                 style={{ borderRadius: '50%' }}
                 objectFit="contain"
               />
@@ -44,7 +42,7 @@ const index: React.FC<ReviewCardProps> = ({ name, company, review, date }) => {
         <Box>
           <Flex alignItems="center" justifyContent="space-between">
             <Image
-              src="/assets/Stars.svg"
+              src="assets/Stars.svg"
               alt="rating stars"
               width={126}
               height={22}

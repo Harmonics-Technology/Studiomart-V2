@@ -1,5 +1,12 @@
-import { Box, Heading, Flex, Stack, Text, VStack } from '@chakra-ui/react';
-import Image from 'next/image';
+import {
+  Box,
+  Heading,
+  Flex,
+  Stack,
+  Text,
+  VStack,
+  Image,
+} from '@chakra-ui/react';
 import { IoChevronForwardCircleOutline } from 'react-icons/io5';
 
 import { IconButtonLinkComponent } from '~/lib/components/Button/Button';
@@ -13,9 +20,9 @@ const SecondSection = () => {
           <Box maxW="60%" color="#2D2327">
             <Stack spacing={5}>
               <Image
-                src="/assets/star.svg"
-                width={40}
-                height={40}
+                src="assets/star.svg"
+                width="40px"
+                height="40px"
                 alt="Star image"
               />
               <Heading fontSize={40}>Why StudioMart?</Heading>
@@ -42,24 +49,24 @@ const SecondSection = () => {
             <Flex justifyContent="space-between">
               <Box>
                 <Image
-                  width={200}
-                  height={280}
-                  src="/assets/section-image2.png"
+                  width="200px"
+                  height="280px"
+                  src="assets/section-image2.png"
                   alt="single image"
                 />
               </Box>
               <Box h="100%">
                 <VStack justifyContent="space-between" spacing={6}>
                   <Image
-                    src="/assets/people.png"
-                    height={40}
-                    width={160}
+                    src="assets/people.png"
+                    height="40px"
+                    width="160px"
                     alt="People's avatar image"
                   />
                   <Image
-                    src="/assets/section-image3.png"
-                    width={200}
-                    height={200}
+                    src="assets/section-image3.png"
+                    width="200px"
+                    height="200px"
                     alt="single image"
                   />
                 </VStack>

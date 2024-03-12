@@ -17,12 +17,10 @@ import LocationIcon from '~/lib/components/Icons/LocationIcon';
 import TicketIcon from '~/lib/components/Icons/TicketIcon';
 import CustomText from '~/lib/components/Text';
 import Wrapper from '~/lib/components/Wrapper';
-
-interface SingleDetailProps {
-  label: string;
-  icon: any;
-  description: string;
-}
+import type {
+  SingleDetailProps,
+  AdditionalServicesProps,
+} from '~/lib/utilities/Context/schemas';
 
 const SingleDetail: React.FC<SingleDetailProps> = ({
   label,
@@ -41,10 +39,6 @@ const SingleDetail: React.FC<SingleDetailProps> = ({
     </Box>
   );
 };
-
-interface AdditionalServicesProps {
-  text: string;
-}
 
 const AdditionalServices: React.FC<AdditionalServicesProps> = ({ text }) => {
   return (

@@ -1,10 +1,9 @@
 'use client';
 
-import { Box, Flex, Heading, Stack } from '@chakra-ui/react';
-import Image from 'next/image';
+import { Box, Flex, Heading, Stack, Image } from '@chakra-ui/react';
 
 const RecentlyViewed = () => {
-  const imageUrl = '/assets/other-studios.png';
+  const imageUrl = 'assets/other-studios.png';
   const studios = [
     {
       id: 1,
@@ -33,10 +32,10 @@ const RecentlyViewed = () => {
               Recently Viewed Studios
             </Heading>
             <Image
-              src="/assets/star-line.svg"
+              src="assets/star-line.svg"
               alt="star image"
-              width={60}
-              height={60}
+              width="60px"
+              height="60px"
               style={{ position: 'absolute', top: '-10px', left: '-10px' }}
             />
           </Box>

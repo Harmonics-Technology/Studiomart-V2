@@ -2,11 +2,10 @@ import { Box, Flex, Text, Icon } from '@chakra-ui/react';
 
 import FacebookIcon from '../Icons/FacebookIcon';
 import GoogleIcon from '../Icons/GoogleIcon';
-
-interface IconLinkProps {
-  icon: any;
-  linkText: string;
-}
+import type {
+  IconLinkProps,
+  SigninOptionProp,
+} from '~/lib/utilities/Context/schemas';
 
 const IconLink = ({ icon, linkText }: IconLinkProps) => {
   return (
@@ -18,10 +17,6 @@ const IconLink = ({ icon, linkText }: IconLinkProps) => {
     </Box>
   );
 };
-
-interface SigninOptionProp {
-  text: string;
-}
 
 const index = ({ text }: SigninOptionProp) => {
   return (

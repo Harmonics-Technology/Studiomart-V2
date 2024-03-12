@@ -1,5 +1,4 @@
-import { Box, Stack, Icon, Heading, Text, Flex } from '@chakra-ui/react';
-import Image from 'next/image';
+import { Box, Stack, Icon, Heading, Text, Flex, Image } from '@chakra-ui/react';
 import Link from 'next/link';
 import { IoChevronBackCircleOutline } from 'react-icons/io5';
 
@@ -28,7 +27,7 @@ const FirstSection = () => {
           <Flex justifyContent="space-between" alignItems="flex-start">
             <Box w="50%">
               <Image
-                src="/assets/studio-girl2.png"
+                src="assets/studio-girl2.png"
                 alt="main image of a studio"
                 width={600}
                 height={700}

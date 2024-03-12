@@ -16,14 +16,10 @@ import { useState } from 'react';
 import ButtonComponent from '~/lib/components/Button/Button';
 import HeadingWithStar from '~/lib/components/HeadingWithStar';
 import SigninOption from '~/lib/components/SigninOptions';
+import type { FormStepProps } from '~/lib/utilities/Context/schemas';
 import FormInput from '~/lib/utilities/FormInput/FormInput';
 
-interface SecondStepProps {
-  step: number;
-  setStep: (value: number) => void;
-}
-
-const SecondStep = ({ step, setStep }: SecondStepProps) => {
+const SecondStep = ({ step, setStep }: FormStepProps) => {
   const [email, setEmail] = useState<string>('');
 
   const nextStep = () => {

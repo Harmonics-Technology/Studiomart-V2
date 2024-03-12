@@ -1,12 +1,6 @@
 import { Input, Box } from '@chakra-ui/react';
 
-interface FormInputProps {
-  type: string;
-  width: string;
-  value: string;
-  setValue: (value: string) => void;
-  placeholder?: string;
-}
+import type { FormInputProps } from '../Context/schemas';
 
 const FormInput = ({
   type,

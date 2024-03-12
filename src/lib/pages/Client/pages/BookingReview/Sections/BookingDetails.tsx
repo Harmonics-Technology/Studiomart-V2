@@ -7,12 +7,7 @@ import ClockIcon from '~/lib/components/Icons/ClockIcon';
 import EyeIcon from '~/lib/components/Icons/EyeIcon';
 import ShieldIcon from '~/lib/components/Icons/ShieldIcon';
 import CustomText from '~/lib/components/Text';
-
-interface SingleDetailProps {
-  label: string;
-  icon: any;
-  description: string;
-}
+import type { SingleDetailProps } from '~/lib/utilities/Context/schemas';
 
 const SingleDetail: React.FC<SingleDetailProps> = ({
   label,

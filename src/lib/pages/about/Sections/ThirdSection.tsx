@@ -1,22 +1,17 @@
-import { Box, Stack, Heading, Text, Flex } from '@chakra-ui/react';
-import Image from 'next/image';
+import { Box, Stack, Heading, Text, Flex, Image } from '@chakra-ui/react';
 
 import Wrapper from '~/lib/components/Wrapper';
-
-interface SingleQuestionProp {
-  question: string;
-  answer: string;
-}
+import type { SingleQuestionProp } from '~/lib/utilities/Context/schemas';
 
 const SingleQuestion: React.FC<SingleQuestionProp> = ({ question, answer }) => {
   return (
     <Box mb="10" w="480px">
       <Flex alignItems="flex-start" justifyContent="space-between">
         <Image
-          src="/assets/green-star.png"
+          src="assets/green-star.png"
           alt="star image"
-          width={40}
-          height={40}
+          width="40px"
+          height="40px"
           objectFit="contain"
         />
         <Box w="420px">

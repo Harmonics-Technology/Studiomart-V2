@@ -1,5 +1,12 @@
-import { Box, Heading, Flex, Stack, Text, VStack } from '@chakra-ui/react';
-import Image from 'next/image';
+import {
+  Box,
+  Heading,
+  Flex,
+  Stack,
+  Text,
+  VStack,
+  Image,
+} from '@chakra-ui/react';
 import { BiLogoPlayStore } from 'react-icons/bi';
 
 import ButtonComponent, {
@@ -14,7 +21,7 @@ const ThirdSection = () => {
         <Flex justifyContent="space-between" alignItems="flex-end">
           <Box w="40%">
             <Image
-              src="/assets/fifth-image.png"
+              src="assets/fifth-image.png"
               width={466}
               height={504}
               alt="image"
@@ -24,7 +31,7 @@ const ThirdSection = () => {
           <Box w="57%">
             <VStack spacing={5}>
               <Image
-                src="/assets/sixth-image.png"
+                src="assets/sixth-image.png"
                 height={200}
                 width={732}
                 alt="image"

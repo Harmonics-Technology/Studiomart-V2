@@ -10,12 +10,7 @@ import {
   StarIcon,
   ResetIcon,
 } from '~/lib/components/Icons/TagIcons';
-
-interface FilterTagsItemProps {
-  label: string;
-  icon?: any;
-  color?: string;
-}
+import type { FilterTagsItemProps } from '~/lib/utilities/Context/schemas';
 
 const FilterTagsItem: React.FC<FilterTagsItemProps> = ({ label, icon }) => {
   return (

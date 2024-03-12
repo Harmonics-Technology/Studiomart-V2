@@ -14,7 +14,7 @@ import {
   IoChevronForwardCircleOutline,
 } from 'react-icons/io5';
 
-import StudioGirl from '../../../../../../../public/assets/studio-girl2.png';
+import StudioGirl from '../../../../../../../publicassets/studio-girl2.png';
 import ButtonComponent, {
   IconButtonComponent,
 } from '~/lib/components/Button/Button';
@@ -23,12 +23,10 @@ import LocationIcon from '~/lib/components/Icons/LocationIcon';
 import StarIcon from '~/lib/components/Icons/StarIcon';
 import TicketIcon from '~/lib/components/Icons/TicketIcon';
 import CustomText from '~/lib/components/Text';
-
-interface SingleDetailProps {
-  label: string;
-  icon: any;
-  description: string;
-}
+import type {
+  SingleDetailProps,
+  AdditionalServicesProps,
+} from '~/lib/utilities/Context/schemas';
 
 const SingleDetail: React.FC<SingleDetailProps> = ({
   label,
@@ -47,10 +45,6 @@ const SingleDetail: React.FC<SingleDetailProps> = ({
     </Box>
   );
 };
-
-interface AdditionalServicesProps {
-  text: string;
-}
 
 const AdditionalServices: React.FC<AdditionalServicesProps> = ({ text }) => {
   return (

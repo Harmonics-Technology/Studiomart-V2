@@ -18,7 +18,7 @@ const StudioList = () => {
           {studios.map(() => {
             return (
               <StudioCard
-                img="/assets/studio-girl2.png"
+                img="assets/studio-girl2.png"
                 companyName="Juggernaut Studio"
                 price={17000}
                 address="Lekki, Lagos"

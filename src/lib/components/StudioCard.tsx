@@ -1,7 +1,14 @@
 'use client';
 
-import { Box, Circle, Text, Stack, Flex, Heading } from '@chakra-ui/react';
-import Image from 'next/image';
+import {
+  Box,
+  Circle,
+  Text,
+  Stack,
+  Flex,
+  Heading,
+  Image,
+} from '@chakra-ui/react';
 import { useDummyImage } from 'react-simple-placeholder-image';
 
 import { StarIcon } from '../icons/StarIcon';

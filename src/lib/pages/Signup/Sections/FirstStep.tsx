@@ -3,6 +3,7 @@ import { Box, Flex, Heading, Stack, Text } from '@chakra-ui/react';
 import ButtonComponent from '~/lib/components/Button/Button';
 import CheckboxIcon from '~/lib/components/Icons/CheckboxIcon';
 import MusicIcon from '~/lib/components/Icons/MusicIcon';
+import type { FormStepProps } from '~/lib/utilities/Context/schemas';
 
 const OptionButton = () => {
   return (
@@ -22,12 +23,7 @@ const OptionButton = () => {
   );
 };
 
-interface FirstStepProps {
-  step: number;
-  setStep: (value: number) => void;
-}
-
-const FirstStep = ({ step, setStep }: FirstStepProps) => {
+const FirstStep = ({ step, setStep }: FormStepProps) => {
   const optionLists = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
   const nextStep = () => {

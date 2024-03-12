@@ -1,10 +1,6 @@
 import type React from 'react';
 
-interface QuoteIconProps {
-  color: string;
-  width?: string;
-  height?: string;
-}
+import type { QuoteIconProps } from '~/lib/utilities/Context/schemas';
 
 const QuoteIcon: React.FC<QuoteIconProps> = ({ color, width, height }) => {
   return (

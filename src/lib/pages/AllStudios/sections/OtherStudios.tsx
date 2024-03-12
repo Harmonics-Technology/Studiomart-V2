@@ -1,10 +1,9 @@
-import { Box, Stack, Heading, Flex } from '@chakra-ui/react';
-import Image from 'next/image';
+import { Box, Stack, Heading, Flex, Image } from '@chakra-ui/react';
 
 import Wrapper from '~/lib/components/Wrapper';
 
 const OtherStudios = () => {
-  const imageUrl = '/assets/other-studios.png';
+  const imageUrl = 'assets/other-studios.png';
   const studios = [
     {
       id: 1,
@@ -33,10 +32,10 @@ const OtherStudios = () => {
               Popular Studios
             </Heading>
             <Image
-              src="/assets/star-line.svg"
+              src="assets/star-line.svg"
               alt="star image"
-              width={60}
-              height={60}
+              width="60px"
+              height="60px"
               style={{ position: 'absolute', top: '-10px', left: '-10px' }}
             />
           </Box>

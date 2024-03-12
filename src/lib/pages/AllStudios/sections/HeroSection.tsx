@@ -7,7 +7,7 @@ import SideText from './SideText';
 const HeroSection = () => {
   return (
     <Box
-      bgImage="url('/assets/green-illustration.png')"
+      bgImage="url('assets/green-illustration.png')"
       backgroundRepeat="no-repeat"
       backgroundPosition="bottom right"
       py="5"

@@ -1,5 +1,4 @@
-import { Box, Heading, Flex, Stack, Text, Icon } from '@chakra-ui/react';
-import Image from 'next/image';
+import { Box, Heading, Flex, Stack, Text, Icon, Image } from '@chakra-ui/react';
 import {
   IoChevronBackCircleOutline,
   IoChevronForwardCircleOutline,
@@ -36,9 +35,9 @@ const FifthSection = () => {
                   <Flex gap={3} alignItems="center">
                     <Image
                       alt="Adelowo Ajibola, CEO HT"
-                      src="/assets/ceo.png"
-                      width={60}
-                      height={60}
+                      src="assets/ceo.png"
+                      width="60px"
+                      height="60px"
                       style={{ borderRadius: '50%' }}
                       objectFit="contain"
                     />

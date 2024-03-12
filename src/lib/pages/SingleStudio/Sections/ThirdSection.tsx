@@ -1,5 +1,4 @@
-import { Box, Flex, Heading, Stack, Icon } from '@chakra-ui/react';
-import Image from 'next/image';
+import { Box, Flex, Heading, Stack, Icon, Image } from '@chakra-ui/react';
 import {
   IoChevronBackCircleOutline,
   IoChevronForwardCircleOutline,
@@ -13,17 +12,17 @@ const ThirdSection = () => {
       {/* <Wrapper> */}
       <Box position="absolute" top="30px" left="0px">
         <Image
-          src="/assets/review-bg2.png"
+          src="assets/review-bg2.png"
           alt="illustration image"
-          width={38}
-          height={32}
+          width="38px"
+          height="32px"
           style={{ position: 'absolute', right: '-30px' }}
         />
         <Image
-          src="/assets/review-bg1.png"
+          src="assets/review-bg1.png"
           alt="illustration-image"
-          width={91}
-          height={100}
+          width="91px"
+          height="100px"
         />
       </Box>
       <Box w="85%" mx="auto" overflow="auto">

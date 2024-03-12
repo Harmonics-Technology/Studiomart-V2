@@ -1,13 +1,18 @@
-import { Box, Heading, Text, Stack, Flex, Circle } from '@chakra-ui/react';
-import Image from 'next/image';
+import {
+  Box,
+  Heading,
+  Text,
+  Stack,
+  Flex,
+  Circle,
+  Image,
+} from '@chakra-ui/react';
 import { IoArrowForward } from 'react-icons/io5';
 
-interface ServiceCardProps {
-  image: string;
-  title?: string;
-  rating?: number;
-  price?: number;
-}
+import type {
+  ServiceCardProps,
+  ServiceCardWithStatusProps,
+} from '~/lib/utilities/Context/schemas';
 
 const ServiceCard = ({ image, title, rating, price }: ServiceCardProps) => {
   const width = '400px';
@@ -107,15 +112,6 @@ const ServiceCard = ({ image, title, rating, price }: ServiceCardProps) => {
 };
 
 export default ServiceCard;
-
-interface ServiceCardWithStatusProps {
-  image: string;
-  title?: string;
-  bookingId: string;
-  dateAndTime: string;
-  status: string;
-  rating: number;
-}
 
 export const ServiceCardWithStatus = ({
   image,

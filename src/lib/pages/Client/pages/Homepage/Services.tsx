@@ -18,7 +18,7 @@ const Services = () => {
       >
         {services.map(() => (
           <ServiceCard
-            image="/assets/mask-1.png"
+            image="assets/mask-1.png"
             rating={4.8}
             price={34000}
             title="Product Photography"

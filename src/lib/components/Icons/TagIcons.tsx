@@ -1,6 +1,4 @@
-interface TagIconsProps {
-  color?: string;
-}
+import type { TagIconsProps } from '~/lib/utilities/Context/schemas';
 
 export const RainbowIcon: React.FC<TagIconsProps> = () => {
   return (

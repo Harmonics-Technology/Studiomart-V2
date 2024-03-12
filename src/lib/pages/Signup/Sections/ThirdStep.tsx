@@ -16,15 +16,11 @@ import { useState } from 'react';
 import ButtonComponent from '~/lib/components/Button/Button';
 import HeadingWithStar from '~/lib/components/HeadingWithStar';
 import SigninOption from '~/lib/components/SigninOptions';
+import type { FormStepProps } from '~/lib/utilities/Context/schemas';
 import CustomSelect from '~/lib/utilities/CustomSelect/CustomSelect';
 import FormInput from '~/lib/utilities/FormInput/FormInput';
 
-interface ThirdStepProps {
-  step: number;
-  setStep: (value: number) => void;
-}
-
-const ThirdStep = ({ step, setStep }: ThirdStepProps) => {
+const ThirdStep = ({ step, setStep }: FormStepProps) => {
   const [email, setEmail] = useState<string>('');
 
   const nextStep = () => {

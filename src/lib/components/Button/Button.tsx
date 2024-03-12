@@ -2,13 +2,13 @@ import { Button, Icon, Flex, Text, Box } from '@chakra-ui/react';
 import Link from 'next/link';
 import { IoChevronBackCircleOutline } from 'react-icons/io5';
 
-interface ButtonProps {
-  bg: string;
-  color: string;
-  text: string;
-  width: string;
-  onClick: () => void;
-}
+import type {
+  ButtonProps,
+  OutlineButtonProps,
+  IconButtonProps,
+  IconButtonLinkProps,
+  BackButtonProps,
+} from '~/lib/utilities/Context/schemas';
 
 const ButtonComponent: React.FC<ButtonProps> = ({
   bg,
@@ -35,11 +35,6 @@ const ButtonComponent: React.FC<ButtonProps> = ({
 
 export default ButtonComponent;
 
-interface OutlineButtonProps {
-  color: string;
-  text: string;
-}
-
 export const OutlineButtonComponent: React.FC<OutlineButtonProps> = ({
   color,
   text,
@@ -59,15 +54,6 @@ export const OutlineButtonComponent: React.FC<OutlineButtonProps> = ({
     </Button>
   );
 };
-
-interface IconButtonProps {
-  bg: string;
-  color: string;
-  text: string;
-  icon: any;
-  width: string;
-  flip: boolean;
-}
 
 export const IconButtonComponent: React.FC<IconButtonProps> = ({
   bg,
@@ -97,12 +83,6 @@ export const IconButtonComponent: React.FC<IconButtonProps> = ({
   );
 };
 
-interface IconButtonLinkProps {
-  text: string;
-  icon: any;
-  flip: boolean;
-}
-
 export const IconButtonLinkComponent: React.FC<IconButtonLinkProps> = ({
   text,
   icon,
@@ -130,10 +110,6 @@ export const IconButtonLinkComponent: React.FC<IconButtonLinkProps> = ({
     </Box>
   );
 };
-
-interface BackButtonProps {
-  linkTo: string;
-}
 
 export const BackButton = ({ linkTo }: BackButtonProps) => {
   return (

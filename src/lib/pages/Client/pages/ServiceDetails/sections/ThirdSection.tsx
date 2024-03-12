@@ -1,18 +1,21 @@
-import { Box, Stack, Heading, Text, Flex, VStack } from '@chakra-ui/react';
-import Image from 'next/image';
+import {
+  Box,
+  Stack,
+  Heading,
+  Text,
+  Flex,
+  VStack,
+  Image,
+} from '@chakra-ui/react';
 import { FaStar } from 'react-icons/fa';
 
 import FiveStar from '~/lib/components/Icons/FiveStar';
 import StarIcon from '~/lib/components/Icons/StarIcon';
 import CustomText from '~/lib/components/Text';
-
-interface ReviewCardProps {
-  logo: string;
-  name: string;
-  address: string;
-  date: string;
-  review: string;
-}
+import type {
+  ReviewCardProps,
+  ProgressBarProps,
+} from '~/lib/utilities/Context/schemas';
 
 const ReviewCard: React.FC<ReviewCardProps> = ({
   logo,
@@ -57,11 +60,6 @@ const ReviewCard: React.FC<ReviewCardProps> = ({
     </Box>
   );
 };
-
-interface ProgressBarProps {
-  progressBarBg: string;
-  rating: number;
-}
 
 const ProgressBar: React.FC<ProgressBarProps> = ({ progressBarBg, rating }) => {
   const progressPercentage = rating * 20;
@@ -138,42 +136,42 @@ const ThirdSection = () => {
             justifyContent="space-between"
           >
             <ReviewCard
-              logo="/assets/company-logo.png"
+              logo="assets/company-logo.png"
               name="Sola W"
               address="Lagos, Nigeria"
               date="April 7, 2023"
               review="The lighting, backdrop, and overall atmosphere were excellent and the photographer was incredibly skilled and attentive to detail. "
             />
             <ReviewCard
-              logo="/assets/company-logo.png"
+              logo="assets/company-logo.png"
               name="Sola W"
               address="Lagos, Nigeria"
               date="April 7, 2023"
               review="The lighting, backdrop, and overall atmosphere were excellent and the photographer was incredibly skilled and attentive to detail. "
             />
             <ReviewCard
-              logo="/assets/company-logo.png"
+              logo="assets/company-logo.png"
               name="Sola W"
               address="Lagos, Nigeria"
               date="April 7, 2023"
               review="The lighting, backdrop, and overall atmosphere were excellent and the photographer was incredibly skilled and attentive to detail. "
             />
             <ReviewCard
-              logo="/assets/company-logo.png"
+              logo="assets/company-logo.png"
               name="Sola W"
               address="Lagos, Nigeria"
               date="April 7, 2023"
               review="The lighting, backdrop, and overall atmosphere were excellent and the photographer was incredibly skilled and attentive to detail. "
             />
             <ReviewCard
-              logo="/assets/company-logo.png"
+              logo="assets/company-logo.png"
               name="Sola W"
               address="Lagos, Nigeria"
               date="April 7, 2023"
               review="The lighting, backdrop, and overall atmosphere were excellent and the photographer was incredibly skilled and attentive to detail. "
             />
             <ReviewCard
-              logo="/assets/company-logo.png"
+              logo="assets/company-logo.png"
               name="Sola W"
               address="Lagos, Nigeria"
               date="April 7, 2023"

@@ -1,5 +1,4 @@
-import { Box, Flex, Heading, Stack, Text } from '@chakra-ui/react';
-import Image from 'next/image';
+import { Box, Flex, Heading, Stack, Text, Image } from '@chakra-ui/react';
 import { IoChevronBackCircleOutline } from 'react-icons/io5';
 
 import { IconButtonLinkComponent } from '~/lib/components/Button/Button';
@@ -24,7 +23,7 @@ const FirstSection = () => {
                 icon={IoChevronBackCircleOutline}
               />
               <Image
-                src="/assets/studio-girl.png"
+                src="assets/studio-girl.png"
                 alt="studio girl"
                 width={466}
                 height={544}
@@ -35,7 +34,7 @@ const FirstSection = () => {
             <Stack spacing={3}>
               <Box>
                 <Image
-                  src="/assets/glasses-lady.png"
+                  src="assets/glasses-lady.png"
                   alt="lady on glasses"
                   width={732}
                   height={200}
@@ -44,10 +43,10 @@ const FirstSection = () => {
               <Box>
                 <Box position="relative" p="9">
                   <Image
-                    src="/assets/star-like.svg"
+                    src="assets/star-like.svg"
                     alt="star-like image"
-                    width={52}
-                    height={54}
+                    width="52px"
+                    height="54px"
                     style={{ position: 'absolute', top: 0, left: 0 }}
                   />
                   <Heading fontSize={40} color="#1570FA" fontWeight={900}>
@@ -69,10 +68,10 @@ const FirstSection = () => {
                           Over 100 clients
                         </Text>
                         <Image
-                          src="/assets/people.png"
+                          src="assets/people.png"
                           alt="People avatars"
-                          width={160}
-                          height={40}
+                          width="160px"
+                          height="40px"
                         />
                       </Stack>
                     </Box>

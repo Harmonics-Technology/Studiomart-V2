@@ -36,7 +36,7 @@ const BookingSummaryCard = () => {
               border="1px solid #D9D9D9"
             >
               <Image
-                src="/assets/summary-card-image.png"
+                src="assets/summary-card-image.png"
                 alt="studio image"
                 w="100%"
                 h="100%"

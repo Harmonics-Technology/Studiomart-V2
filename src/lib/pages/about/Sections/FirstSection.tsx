@@ -1,5 +1,4 @@
-import { Box, Stack, Heading, Text, Flex } from '@chakra-ui/react';
-import Image from 'next/image';
+import { Box, Stack, Heading, Text, Flex, Image } from '@chakra-ui/react';
 
 import ButtonComponent, {
   OutlineButtonComponent,
@@ -14,7 +13,7 @@ const FirstSection = () => {
         <Flex justifyContent="space-between" alignItems="center" w="100%">
           <Box w="40%">
             <Image
-              src="/assets/face.png"
+              src="assets/face.png"
               width={466}
               height={643}
               objectFit="cover"
