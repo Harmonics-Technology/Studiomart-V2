@@ -8,6 +8,7 @@ import type {
   IconButtonProps,
   IconButtonLinkProps,
   BackButtonProps,
+  StudioStatusButtonProps,
 } from '~/lib/utilities/Context/schemas';
 
 const ButtonComponent: React.FC<ButtonProps> = ({
@@ -38,6 +39,7 @@ export default ButtonComponent;
 export const OutlineButtonComponent: React.FC<OutlineButtonProps> = ({
   color,
   text,
+  width,
 }) => {
   return (
     <Button
@@ -47,7 +49,9 @@ export const OutlineButtonComponent: React.FC<OutlineButtonProps> = ({
       px="16px"
       borderRadius="8px"
       fontWeight="normal"
-      border={`1px solid ${color}`}
+      border="1px solid"
+      borderColor={color}
+      width={width}
       _hover={{ bg: color, color: 'white' }}
     >
       {text}
@@ -121,5 +125,32 @@ export const BackButton = ({ linkTo }: BackButtonProps) => {
         </Text>
       </Flex>
     </Link>
+  );
+};
+
+export const StudioStatusButton = ({
+  ButtonIcon,
+  text,
+  color,
+  onClick,
+  isActive,
+}: StudioStatusButtonProps) => {
+  return (
+    <Button
+      bg={isActive ? 'brand.400' : 'studioStatus.100'}
+      border="1px solid"
+      borderColor={isActive ? color : 'text.200'}
+      color={isActive ? color : 'text.200'}
+      py="28px"
+      px="20px"
+      borderRadius="8px"
+      _hover={{ bg: 'none' }}
+      onClick={onClick}
+    >
+      <Flex alignItems="center" gap="8px">
+        <ButtonIcon isActive={isActive} />
+        <Text fontWeight={500}>{text}</Text>
+      </Flex>
+    </Button>
   );
 };

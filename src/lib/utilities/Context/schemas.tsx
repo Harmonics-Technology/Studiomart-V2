@@ -133,6 +133,7 @@ export interface ButtonProps {
 export interface OutlineButtonProps {
   color: string;
   text: string;
+  width?: string;
 }
 
 export interface IconButtonProps {
@@ -168,4 +169,16 @@ export interface QuoteIconProps {
 
 export interface TagIconsProps {
   color?: string;
+}
+
+export interface StudioStatusButtonProps {
+  ButtonIcon: any;
+  text: string;
+  color: string;
+  onClick: () => void;
+  isActive: boolean;
+}
+
+export interface StudioButtonIconProps {
+  isActive: boolean;
 }
