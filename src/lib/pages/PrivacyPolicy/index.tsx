@@ -1,5 +1,4 @@
-import { Box, Heading, Stack, Text, VStack } from '@chakra-ui/react';
-import Image from 'next/image';
+import { Box, Heading, Stack, Text, VStack, Image } from '@chakra-ui/react';
 
 import CustomText from '../../components/Text';
 import Wrapper from '../../components/Wrapper';
@@ -13,7 +12,7 @@ const index = () => {
             <Box position="relative">
               <Heading fontSize={64}>Privacy Policy</Heading>
               <Image
-                src="/assets/green-star.png"
+                src="assets/green-star.png"
                 alt="star image"
                 width={30}
                 height={30}

@@ -1,16 +1,25 @@
 'use client';
 
 import { Box } from '@chakra-ui/react';
-import { type ReactNode } from 'react';
+import { usePathname } from 'next/navigation';
+import { useState, type ReactNode, useEffect } from 'react';
 
 import Footer from './Footer';
 import Header from './Header';
+import UserHeader from './UserHeader';
 
 type LayoutProps = {
   children: ReactNode;
 };
 
 const Layout = ({ children }: LayoutProps) => {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const pathname = usePathname();
+
+  useEffect(() => {
+    setIsLoggedIn(pathname.includes('/user'));
+  }, [pathname]);
+
   // useEffect(() => {
   //   (
   //     async () => {
@@ -23,10 +32,8 @@ const Layout = ({ children }: LayoutProps) => {
   return (
     <Box margin="0 auto" transition="0.5s ease-out">
       <Box>
-        <Header />
-        <Box as="main" mb={22}>
-          {children}
-        </Box>
+        {isLoggedIn ? <UserHeader /> : <Header />}
+        <Box as="main">{children}</Box>
         <Footer />
       </Box>
     </Box>

@@ -1,13 +1,23 @@
 import { Button, Icon, Flex, Text, Box } from '@chakra-ui/react';
+import Link from 'next/link';
+import { IoChevronBackCircleOutline } from 'react-icons/io5';
 
-interface ButtonProps {
-  bg: string;
-  color: string;
-  text: string;
-  width: string;
-}
+import type {
+  ButtonProps,
+  OutlineButtonProps,
+  IconButtonProps,
+  IconButtonLinkProps,
+  BackButtonProps,
+  StudioStatusButtonProps,
+} from '~/lib/utilities/Context/schemas';
 
-const ButtonComponent: React.FC<ButtonProps> = ({ bg, color, text, width }) => {
+const ButtonComponent: React.FC<ButtonProps> = ({
+  bg,
+  color,
+  text,
+  width,
+  onClick,
+}) => {
   return (
     <Button
       bg={bg}
@@ -17,6 +27,7 @@ const ButtonComponent: React.FC<ButtonProps> = ({ bg, color, text, width }) => {
       borderRadius="8px"
       fontWeight="normal"
       w={width}
+      onClick={onClick}
     >
       {text}
     </Button>
@@ -25,14 +36,10 @@ const ButtonComponent: React.FC<ButtonProps> = ({ bg, color, text, width }) => {
 
 export default ButtonComponent;
 
-interface OutlineButtonProps {
-  color: string;
-  text: string;
-}
-
 export const OutlineButtonComponent: React.FC<OutlineButtonProps> = ({
   color,
   text,
+  width,
 }) => {
   return (
     <Button
@@ -42,22 +49,15 @@ export const OutlineButtonComponent: React.FC<OutlineButtonProps> = ({
       px="16px"
       borderRadius="8px"
       fontWeight="normal"
-      border={`1px solid ${color}`}
+      border="1px solid"
+      borderColor={color}
+      width={width}
       _hover={{ bg: color, color: 'white' }}
     >
       {text}
     </Button>
   );
 };
-
-interface IconButtonProps {
-  bg: string;
-  color: string;
-  text: string;
-  icon: any;
-  width: string;
-  flip: boolean;
-}
 
 export const IconButtonComponent: React.FC<IconButtonProps> = ({
   bg,
@@ -87,12 +87,6 @@ export const IconButtonComponent: React.FC<IconButtonProps> = ({
   );
 };
 
-interface IconButtonLinkProps {
-  text: string;
-  icon: any;
-  flip: boolean;
-}
-
 export const IconButtonLinkComponent: React.FC<IconButtonLinkProps> = ({
   text,
   icon,
@@ -118,5 +112,45 @@ export const IconButtonLinkComponent: React.FC<IconButtonLinkProps> = ({
         <Icon as={icon} fontSize={20} />
       </Flex>
     </Box>
+  );
+};
+
+export const BackButton = ({ linkTo }: BackButtonProps) => {
+  return (
+    <Link href={linkTo}>
+      <Flex alignItems="center" gap="15px">
+        <Icon as={IoChevronBackCircleOutline} fontSize={30} color="text.400" />
+        <Text fontSize={20} color="text.500">
+          Back
+        </Text>
+      </Flex>
+    </Link>
+  );
+};
+
+export const StudioStatusButton = ({
+  ButtonIcon,
+  text,
+  color,
+  onClick,
+  isActive,
+}: StudioStatusButtonProps) => {
+  return (
+    <Button
+      bg={isActive ? 'brand.400' : 'studioStatus.100'}
+      border="1px solid"
+      borderColor={isActive ? color : 'text.200'}
+      color={isActive ? color : 'text.200'}
+      py="28px"
+      px="20px"
+      borderRadius="8px"
+      _hover={{ bg: 'none' }}
+      onClick={onClick}
+    >
+      <Flex alignItems="center" gap="8px">
+        <ButtonIcon isActive={isActive} />
+        <Text fontWeight={500}>{text}</Text>
+      </Flex>
+    </Button>
   );
 };

@@ -1,20 +1,27 @@
-import { Box, Flex, Text, Stack } from '@chakra-ui/react';
-import Image from 'next/image';
+'use client';
+
+import { Box, Flex, Text, Stack, Image } from '@chakra-ui/react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 
 import ButtonComponent from '../components/Button/Button';
 import Logo from '../components/Logo';
 
-// import { usePathname } from 'next/navigation';
-
 const Header = () => {
   const [activeLink, setActiveLink] = useState(0);
-  // const pathname = usePathname();
+  const pathname = usePathname();
+
+  const hideNavbarRoutes = ['/signin', '/signup', '/client'];
+
+  if (hideNavbarRoutes.includes(pathname)) {
+    return null;
+  }
 
   const changeActiveLink = (index: number) => {
     setActiveLink(index);
   };
+
   const links = [
     {
       name: 'Home',
@@ -33,9 +40,11 @@ const Header = () => {
   return (
     <Box as="header" width="full" p="6">
       <Flex w="full" justifyContent="space-between" alignItems="center">
-        <Box>
-          <Logo />
-        </Box>
+        <Link href="/">
+          <Box>
+            <Logo />
+          </Box>
+        </Link>
         <Box>
           <Flex alignItems="center">
             <Box>
@@ -45,9 +54,9 @@ const Header = () => {
                     <Box position="relative">
                       {index === activeLink && (
                         <Image
-                          src="/assets/active-star.svg"
-                          width={10}
-                          height={10}
+                          src="assets/active-star.svg"
+                          width="10px"
+                          height="10px"
                           alt="active link image"
                           style={{
                             position: 'absolute',
@@ -75,9 +84,10 @@ const Header = () => {
                     <Box bg="#6DD3CE" h="40px" w="2px" />
                     <ButtonComponent
                       width="125px"
-                      bg="#1570FA"
+                      bg="brand.100"
                       color="#FFFFFF"
                       text="Get Started"
+                      onClick={() => {}}
                     />
                   </Stack>
                 </Box>

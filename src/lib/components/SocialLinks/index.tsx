@@ -1,33 +1,24 @@
-import { Stack, Box } from '@chakra-ui/react';
-import Image from 'next/image';
+import { Stack, Box, Image } from '@chakra-ui/react';
 
-import facebookIcon from '../../../../public/assets/Facebook.svg';
-import instagramIcon from '../../../../public/assets/Instagram.svg';
-import linkedinIcon from '../../../../public/assets/Linkedin.svg';
-import twitterIcon from '../../../../public/assets/Twitter.svg';
-
-interface SocialLinksProps {
-  spacing: number;
-  direction: any;
-}
+import type { SocialLinksProps } from '~/lib/utilities/Context/schemas';
 
 const index: React.FC<SocialLinksProps> = ({ spacing, direction }) => {
   const iconsList = [
     {
       title: 'Linkedin Icon',
-      icon: linkedinIcon,
+      src: 'assets/Linkedin.svg',
     },
     {
       title: 'facebook Icon',
-      icon: facebookIcon,
+      src: 'assets/Facebook.svg',
     },
     {
       title: 'Twitter icon',
-      icon: twitterIcon,
+      src: 'assets/Twitter.svg',
     },
     {
       title: 'Instagram Icon',
-      icon: instagramIcon,
+      src: 'assets/instagram.svg',
     },
   ];
   return (
@@ -35,7 +26,7 @@ const index: React.FC<SocialLinksProps> = ({ spacing, direction }) => {
       <Stack direction={direction} spacing={spacing} alignItems="center">
         {iconsList.map((item) => (
           <Box as="a" href="#" target="_blank">
-            <Image src={item.icon} alt={item.title} />
+            <Image src={item?.src} alt={item.title} w="40px" h="40px" />
           </Box>
         ))}
       </Stack>
