@@ -1,8 +1,10 @@
+'use client';
 import { Box, Flex, Text, Stack } from '@chakra-ui/react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
+import { signIn, useSession, signOut } from 'next-auth/react';
 
 import ButtonComponent from '../components/Button/Button';
 import Logo from '../components/Logo';
@@ -10,6 +12,7 @@ import Logo from '../components/Logo';
 const Header = () => {
   const [activeLink, setActiveLink] = useState(0);
   const pathname = usePathname();
+  const { userData: session } = useSession();
 
   const hideNavbarRoutes = ['/signin', '/signup'];
 
@@ -84,7 +87,14 @@ const Header = () => {
                       bg="#1570FA"
                       color="#FFFFFF"
                       text="Get Started"
-                      onClick={() => {}}
+                      onClick={() => signIn()}
+                    />
+                    <ButtonComponent
+                      width="125px"
+                      bg="#1570FA"
+                      color="#FFFFFF"
+                      text="Get Out"
+                      onClick={() => signOut()}
                     />
                   </Stack>
                 </Box>

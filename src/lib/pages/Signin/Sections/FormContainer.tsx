@@ -15,10 +15,24 @@ import ButtonComponent from '~/lib/components/Button/Button';
 import HeadingWithStar from '~/lib/components/HeadingWithStar';
 import SigninOption from '~/lib/components/SigninOptions';
 import FormInput from '~/lib/utilities/FormInput/FormInput';
+import { signIn } from 'next-auth/react';
 
 const FormContainer = () => {
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
+  const [loading, setLoading] = useState(false);
+
+  const signInWithNextAuth = async () => {
+    setLoading(true);
+    console.log(email);
+    console.log(password)
+    await signIn("username-login", {
+      username: email,
+      password,
+      redirect: false,
+    });
+  };
+
   return (
     <Box>
       <Stack spacing="58px">
@@ -75,7 +89,7 @@ const FormContainer = () => {
               color="brand.400"
               bg="brand.100"
               width="100%"
-              onClick={() => {}}
+              onClick={() => signInWithNextAuth()}
             />
             <Flex alignItems="center" gap="4px">
               <Text>Don't have an account yet?</Text>
