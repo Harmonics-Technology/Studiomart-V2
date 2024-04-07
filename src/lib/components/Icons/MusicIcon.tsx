@@ -1,4 +1,4 @@
-const MusicIcon = () => {
+const MusicIcon = ({ color }: { color: string }) => {
   return (
     <svg
       width="28"
@@ -12,33 +12,33 @@ const MusicIcon = () => {
         cy="3.125"
         r="3.125"
         transform="matrix(-1 0 0 1 11.25 19.375)"
-        stroke="#AFAFAF"
+        stroke={color}
         strokeWidth="1.875"
       />
       <path
         d="M11.25 6.25L11.25 22.5"
-        stroke="#AFAFAF"
+        stroke={color}
         strokeWidth="1.875"
         strokeLinecap="round"
         strokeLinejoin="round"
       />
       <path
         d="M25 3.75V20"
-        stroke="#AFAFAF"
+        stroke={color}
         strokeWidth="1.875"
         strokeLinecap="round"
         strokeLinejoin="round"
       />
       <path
         d="M25 3.75L11.25 6.25"
-        stroke="#AFAFAF"
+        stroke={color}
         strokeWidth="1.875"
         strokeLinecap="round"
         strokeLinejoin="round"
       />
       <path
         d="M25 8.75L11.25 11.25"
-        stroke="#AFAFAF"
+        stroke={color}
         strokeWidth="1.875"
         strokeLinecap="round"
         strokeLinejoin="round"
@@ -48,7 +48,7 @@ const MusicIcon = () => {
         cy="3.125"
         r="3.125"
         transform="matrix(-1 0 0 1 25 17.5)"
-        stroke="#AFAFAF"
+        stroke={color}
         strokeWidth="1.875"
       />
     </svg>

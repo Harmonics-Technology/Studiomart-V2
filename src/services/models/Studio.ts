@@ -32,6 +32,8 @@ export type Studio = {
   twitter?: string | null;
   linkedIn?: string | null;
   youTube?: string | null;
+  university?: string | null;
+  studioTourVideo?: string | null;
   userId?: string;
   user?: User;
   services?: Array<Service> | null;

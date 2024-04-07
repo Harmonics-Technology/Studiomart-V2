@@ -1,3 +1,10 @@
+import type {
+  Control,
+  FieldError,
+  Path,
+  UseFormRegister,
+} from 'react-hook-form';
+
 export interface IStudioCardProps {
   width?: string | number | undefined;
   height?: string | number | undefined;
@@ -14,12 +21,48 @@ export interface FilterButtonsProp {
   filterList: string[];
 }
 
-export interface FormInputProps {
-  type: string;
-  width: string;
-  value: string;
-  setValue: (value: string) => void;
+export interface FormInputProps<TFormValues extends Record<string, unknown>> {
+  type?: string;
+  width?: string;
+  name: Path<TFormValues>;
+  validate?: any;
+  register: UseFormRegister<TFormValues>;
+  required?: boolean;
   placeholder?: string;
+  error: FieldError | undefined;
+  label?: string;
+  changeVisibility?: any;
+  icon?: boolean;
+  passwordVisible?: boolean;
+  h?: string;
+}
+export interface FormSelectProps<TFormValues extends Record<string, unknown>> {
+  width?: string;
+  name: Path<TFormValues>;
+  validate?: any;
+  register: UseFormRegister<TFormValues>;
+  required?: boolean;
+  placeholder?: string;
+  error: FieldError | undefined;
+  label?: string;
+  options: any;
+  h?: string;
+}
+
+export interface FormRadioProps<TFormValues extends Record<string, unknown>> {
+  name: Path<TFormValues>;
+  required?: boolean;
+  disableLabel?: boolean;
+  defaultValue?: any;
+  validate?: any;
+  label?: string;
+  error: FieldError | undefined;
+  control: Control<TFormValues>;
+  radios?: any;
+  value?: string;
+  flexDir?: any;
+  gap?: any;
+  bg?: any;
 }
 
 export interface CustomSelectProps {
@@ -128,6 +171,7 @@ export interface ButtonProps {
   text: string;
   width: string;
   onClick: () => void;
+  loading?: boolean;
 }
 
 export interface OutlineButtonProps {

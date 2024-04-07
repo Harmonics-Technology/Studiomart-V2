@@ -79,7 +79,7 @@ const FormContainer = () => {
             />
             <Flex alignItems="center" gap="4px">
               <Text>Don't have an account yet?</Text>
-              <Link href="/signup">
+              <Link href="/sign-up">
                 <Text fontWeight={700} color="brand.100">
                   Sign up
                 </Text>

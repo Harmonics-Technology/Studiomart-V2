@@ -17,6 +17,7 @@ const ButtonComponent: React.FC<ButtonProps> = ({
   text,
   width,
   onClick,
+  loading,
 }) => {
   return (
     <Button
@@ -28,6 +29,7 @@ const ButtonComponent: React.FC<ButtonProps> = ({
       fontWeight="normal"
       w={width}
       onClick={onClick}
+      isLoading={loading}
     >
       {text}
     </Button>

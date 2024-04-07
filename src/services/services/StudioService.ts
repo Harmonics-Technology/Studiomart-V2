@@ -710,6 +710,7 @@ export class StudioService {
     studioId,
     city,
     state,
+    university,
     device,
   }: {
     offset?: number;
@@ -721,6 +722,7 @@ export class StudioService {
     studioId?: string;
     city?: string;
     state?: string;
+    university?: string;
     device?: any;
   }): CancelablePromise<ServiceViewPagedCollectionStandardResponse> {
     return __request(OpenAPI, {
@@ -739,6 +741,7 @@ export class StudioService {
         StudioId: studioId,
         City: city,
         State: state,
+        University: university,
       },
       errors: {
         400: `Bad Request`,

@@ -25,7 +25,7 @@ const index: React.FC<SocialLinksProps> = ({ spacing, direction }) => {
     <Box>
       <Stack direction={direction} spacing={spacing} alignItems="center">
         {iconsList.map((item) => (
-          <Box as="a" href="#" target="_blank">
+          <Box as="a" href="#" target="_blank" key={item?.title}>
             <Image src={item?.src} alt={item.title} w="40px" h="40px" />
           </Box>
         ))}

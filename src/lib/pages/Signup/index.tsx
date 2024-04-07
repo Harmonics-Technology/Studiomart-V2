@@ -5,7 +5,6 @@ import { useState } from 'react';
 
 import FirstStep from './Sections/FirstStep';
 import FormFooter from './Sections/FormFooter';
-import Formheader from './Sections/Formheader';
 import SecondStep from './Sections/SecondStep';
 import ThirdStep from './Sections/ThirdStep';
 
@@ -33,14 +32,12 @@ const Index = () => {
         left="0"
       />
       <Stack spacing={12}>
-        <Formheader />
+        {/* <Formheader /> */}
         <Box maxW="640px" mx="auto">
           {formStep === 1 && (
             <FirstStep step={formStep} setStep={setFormStep} />
           )}
-          {formStep === 2 && (
-            <SecondStep step={formStep} setStep={setFormStep} />
-          )}
+          {formStep === 2 && <SecondStep />}
           {formStep === 3 && (
             <ThirdStep step={formStep} setStep={setFormStep} />
           )}

@@ -14,6 +14,7 @@ export type ServiceView = {
   description?: string | null;
   price?: number;
   bannerImageURL?: string | null;
+  university?: string | null;
   studio?: StudioView;
   media?: Array<MediaView> | null;
   additionalServices?: Array<AdditionalServiceView> | null;

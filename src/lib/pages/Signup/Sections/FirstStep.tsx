@@ -1,32 +1,82 @@
-import { Box, Flex, Heading, Stack, Text } from '@chakra-ui/react';
+import {
+  Box,
+  Checkbox,
+  Flex,
+  Grid,
+  Heading,
+  Stack,
+  Text,
+} from '@chakra-ui/react';
+import { useCookies } from 'next-client-cookies';
+import { useState } from 'react';
 
 import ButtonComponent from '~/lib/components/Button/Button';
-import CheckboxIcon from '~/lib/components/Icons/CheckboxIcon';
 import MusicIcon from '~/lib/components/Icons/MusicIcon';
 import type { FormStepProps } from '~/lib/utilities/Context/schemas';
 
-const OptionButton = () => {
+const OptionButton = ({
+  name,
+  studioPreference,
+  addToList,
+}: {
+  name: string;
+  studioPreference: string[];
+  addToList: any;
+}) => {
+  const isActive = studioPreference?.find((x) => x === name);
   return (
     <Box
       w="192px"
-      border="1px solid #1570FA"
+      border={isActive ? '2px solid #1570FA' : '1px solid #1570FA'}
+      bgColor={isActive ? 'brand.100' : 'transparent'}
       px="16px"
       py="12px"
       borderRadius="8px"
+      cursor="pointer"
+      onClick={() => addToList(name)}
+      color={isActive ? 'white' : 'brand.500'}
     >
-      <Flex alignItems="center" gap="10px" justifyContent="center">
-        <CheckboxIcon />
-        <MusicIcon />
-        <Text fontSize={14}>Music Studio</Text>
+      <Flex alignItems="center" gap="10px" justifyContent="flex-start">
+        <Checkbox
+          colorScheme="scheme"
+          isChecked={!!isActive}
+          onChange={() => addToList(name)}
+        />
+        <MusicIcon color={isActive ? 'white' : '#1570FA'} />
+        <Text fontSize={14}>{name}</Text>
       </Flex>
     </Box>
   );
 };
 
 const FirstStep = ({ step, setStep }: FormStepProps) => {
-  const optionLists = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+  const [studioPreference, setStudioPreference] = useState<string[]>([]);
+
+  const cookies = useCookies();
+
+  const addToList = (name: string) => {
+    const exists = studioPreference?.find((studio) => studio === name);
+    if (exists) {
+      const filteredItem = studioPreference?.filter(
+        (studio) => studio !== name
+      );
+      setStudioPreference(filteredItem);
+      return;
+    }
+    setStudioPreference([...studioPreference, name]);
+  };
+
+  const optionLists = [
+    'Music',
+    'Video',
+    'Make up',
+    'Photography',
+    'Lifestyle',
+    'Sound',
+  ];
 
   const nextStep = () => {
+    cookies.set('studioPrefernce', JSON.stringify(studioPreference));
     setStep(step + 1);
   };
 
@@ -49,16 +99,16 @@ const FirstStep = ({ step, setStep }: FormStepProps) => {
           </Text>
         </Box>
         <Box>
-          <Flex
-            alignItems="center"
-            flexWrap="wrap"
-            justifyContent="space-between"
-            rowGap="36px"
-          >
+          <Grid gap="36px" templateColumns={['1fr', 'repeat(3, 1fr)']}>
             {optionLists.map((item, index) => (
-              <OptionButton key={index} />
+              <OptionButton
+                key={index}
+                name={item}
+                addToList={addToList}
+                studioPreference={studioPreference}
+              />
             ))}
-          </Flex>
+          </Grid>
         </Box>
         <ButtonComponent
           text="Next"

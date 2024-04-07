@@ -41,6 +41,9 @@ const extendedColors: DeepPartial<
     100: '#E5E8F0',
     200: '#F6F6F4',
   },
+  scheme: {
+    500: '#6dd3ce',
+  },
 };
 
 /** override chakra colors here */

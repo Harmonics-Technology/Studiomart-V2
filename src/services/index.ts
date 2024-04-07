@@ -21,11 +21,15 @@ export type { BanksIEnumerableStandardResponse } from './models/BanksIEnumerable
 export type { Booking } from './models/Booking';
 export type { BookingModel } from './models/BookingModel';
 export { BookingStatus } from './models/BookingStatus';
+export type { BookingTransfer } from './models/BookingTransfer';
+export type { BookingTransferModel } from './models/BookingTransferModel';
 export type { BookingView } from './models/BookingView';
 export type { BookingViewPagedCollection } from './models/BookingViewPagedCollection';
 export type { BookingViewPagedCollectionStandardResponse } from './models/BookingViewPagedCollectionStandardResponse';
 export type { BookingViewStandardResponse } from './models/BookingViewStandardResponse';
 export type { BooleanStandardResponse } from './models/BooleanStandardResponse';
+export type { GiftRecipient } from './models/GiftRecipient';
+export type { GiftRecipientModel } from './models/GiftRecipientModel';
 export type { GlobalSearchResultView } from './models/GlobalSearchResultView';
 export type { GlobalSearchResultViewPagedCollection } from './models/GlobalSearchResultViewPagedCollection';
 export type { GlobalSearchResultViewPagedCollectionStandardResponse } from './models/GlobalSearchResultViewPagedCollectionStandardResponse';

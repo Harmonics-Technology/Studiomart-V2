@@ -16,6 +16,7 @@ export type Service = {
   description?: string | null;
   price?: number;
   bannerImageURL?: string | null;
+  university?: string | null;
   media?: Array<Media> | null;
   additionalServices?: Array<AdditionalService> | null;
   userId?: string;
