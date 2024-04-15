@@ -18,7 +18,7 @@ const ServiceCard = ({ image, title, rating, price }: ServiceCardProps) => {
   const width = '400px';
   const height = '342px';
   return (
-    <Box as="section" width={width} h="auto">
+    <Box as="section" width={width} h="auto" cursor="pointer">
       <Box
         as="section"
         w={width}
@@ -28,7 +28,7 @@ const ServiceCard = ({ image, title, rating, price }: ServiceCardProps) => {
         className="mask"
       >
         <Image
-          src={image}
+          src={image as string}
           alt="Image"
           width={400}
           height={342}

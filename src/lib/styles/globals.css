@@ -1,4 +1,4 @@
-/* Global Styling here */
+@import url('./../utilities/Toast/toast.css');
 ::-webkit-scrollbar {
   width: 8px;
   border-radius: 50px;

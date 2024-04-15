@@ -9,7 +9,7 @@ const index = ({ title, flipStar, width }: HeadingWithStarProps) => {
         {title}
       </Heading>
       <Image
-        src={flipStar ? 'assets/star-like.svg' : 'assets/heading-top-bg.png'}
+        src={flipStar ? '/assets/star-like.svg' : '/assets/heading-top-bg.png'}
         width="76px"
         height="76px"
         alt="star like image"

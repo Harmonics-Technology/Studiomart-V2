@@ -1,9 +1,14 @@
 import { Box, Flex } from '@chakra-ui/react';
+import Link from 'next/link';
 
 import ServiceCard from '~/lib/components/ServiceCard';
+import { ServiceView, ServiceViewPagedCollection } from '~/services';
 
-const Services = () => {
-  const services = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+const Services = ({
+  services,
+}: {
+  services: ServiceViewPagedCollection | undefined;
+}) => {
   return (
     <Box as="section" maxW="1304px" mx="auto" mb="150px">
       <Flex
@@ -16,13 +21,16 @@ const Services = () => {
           lg: 'space-between',
         }}
       >
-        {services.map(() => (
-          <ServiceCard
-            image="assets/mask-1.png"
-            rating={4.8}
-            price={34000}
-            title="Product Photography"
-          />
+        {services?.value?.map((item: ServiceView) => (
+          <Link passHref href={`/services/details/${item?.id}`}>
+            <ServiceCard
+              image={item?.bannerImageURL || item?.media?.at(0)?.url}
+              rating={item?.averageRating}
+              price={item?.price}
+              title={item?.name}
+              key={item?.id}
+            />
+          </Link>
         ))}
       </Flex>
     </Box>

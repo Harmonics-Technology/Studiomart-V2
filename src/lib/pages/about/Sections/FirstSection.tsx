@@ -13,7 +13,7 @@ const FirstSection = () => {
         <Flex justifyContent="space-between" alignItems="center" w="100%">
           <Box w="40%">
             <Image
-              src="assets/face.png"
+              src="/assets/face.png"
               width={466}
               height={643}
               objectFit="cover"

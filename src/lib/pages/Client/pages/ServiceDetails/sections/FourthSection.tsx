@@ -1,10 +1,17 @@
 import { Box, Stack, Heading, Flex, Image } from '@chakra-ui/react';
+import Link from 'next/link';
 
 import ServiceCard from '~/lib/components/ServiceCard';
 import Wrapper from '~/lib/components/Wrapper';
+import { ServiceView, ServiceViewPagedCollection } from '~/services';
 
-const FourthSection = () => {
-  const studios = [1, 2, 3, 4, 5];
+const FourthSection = ({
+  data,
+  studioName,
+}: {
+  data: ServiceViewPagedCollection | undefined;
+  studioName: string;
+}) => {
   return (
     <Box bg="#FCF8FB" py="8">
       <Wrapper>
@@ -16,10 +23,10 @@ const FourthSection = () => {
               position="absolute"
               zIndex="1"
             >
-              More Services by Lensboy Photography
+              More Services by {studioName}
             </Heading>
             <Image
-              src="assets/star-line.svg"
+              src="/assets/star-line.svg"
               alt="star image"
               width={60}
               height={60}
@@ -33,13 +40,16 @@ const FourthSection = () => {
               flexWrap="wrap"
               rowGap={12}
             >
-              {studios.map(() => (
-                <ServiceCard
-                  image="assets/mask-2.png"
-                  title="Product Photography"
-                  rating={4.5}
-                  price={17000}
-                />
+              {data?.value?.map((item: ServiceView) => (
+                <Link passHref href={`/services/details/${item?.id}`}>
+                  <ServiceCard
+                    image={item?.bannerImageURL || item?.media?.at(0)?.url}
+                    rating={item?.averageRating}
+                    price={item?.price}
+                    title={item?.name}
+                    key={item?.id}
+                  />
+                </Link>
               ))}
             </Flex>
           </Box>

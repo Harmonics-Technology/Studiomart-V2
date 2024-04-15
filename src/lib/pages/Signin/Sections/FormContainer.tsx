@@ -1,24 +1,65 @@
 'use client';
 
-import {
-  Box,
-  FormControl,
-  FormLabel,
-  Text,
-  Stack,
-  Flex,
-} from '@chakra-ui/react';
+import { Box, Text, Stack, Flex } from '@chakra-ui/react';
+import { yupResolver } from '@hookform/resolvers/yup';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import { useCookies } from 'next-client-cookies';
 import { useState } from 'react';
+import { useForm } from 'react-hook-form';
+import toast from 'react-hot-toast';
+import * as yup from 'yup';
 
 import ButtonComponent from '~/lib/components/Button/Button';
 import HeadingWithStar from '~/lib/components/HeadingWithStar';
 import SigninOption from '~/lib/components/SigninOptions';
 import FormInput from '~/lib/utilities/FormInput/FormInput';
+import { UserService, type LoginModel } from '~/services';
 
 const FormContainer = () => {
-  const [email, setEmail] = useState<string>('');
-  const [password, setPassword] = useState<string>('');
+  const [passwordVisible, setPasswordVisible] = useState<boolean>(false);
+  const router = useRouter();
+  const cookies = useCookies();
+
+  const validation = yup.object().shape({
+    email: yup.string().email().required(),
+    password: yup.string().required(),
+  });
+  const {
+    handleSubmit,
+    register,
+    formState: { errors, isSubmitting },
+  } = useForm<LoginModel>({
+    // @ts-expect-error new update
+    resolver: yupResolver(validation),
+    mode: 'all',
+  });
+
+  const signInWithNextAuth = async (value: LoginModel) => {
+    try {
+      // const response = await signIn('username-login', {
+      //   username: value.email,
+      //   password: value.password,
+      //   redirect: false,
+      // });
+      const response = await UserService.loginUser({ requestBody: value });
+      if (response.status) {
+        const { data } = response;
+        toast.success(`Welcome back ${data?.firstName}`);
+        cookies.set('token', data?.token as string);
+        cookies.set('studiomart-user', JSON.stringify(data));
+        router.push('/user');
+        return;
+      }
+      toast.error(response?.message as string, { className: 'loginToast' });
+    } catch (error: any) {
+      toast.error(
+        error?.message || error?.body?.message || 'An error occured',
+        { className: 'loginToast' }
+      );
+    }
+  };
+
   return (
     <Box>
       <Stack spacing="58px">
@@ -27,66 +68,55 @@ const FormContainer = () => {
           flipStar={false}
           width="100%"
         />
-        <Box>
-          <Stack spacing="21px">
-            <Box>
-              <FormControl>
-                <FormLabel fontSize="10px" fontWeight={700}>
-                  EMAIL ADDRESS/PHONE NUMBER
-                </FormLabel>
-                <FormInput
-                  type="text"
-                  width="100%"
-                  value={email}
-                  setValue={setEmail}
-                />
-              </FormControl>
+        <form onSubmit={handleSubmit(signInWithNextAuth)}>
+          <Box>
+            <Stack spacing="21px">
+              <FormInput<LoginModel>
+                type="email"
+                register={register}
+                name="email"
+                error={errors?.email}
+                label="Email Address"
+              />
+              <FormInput<LoginModel>
+                register={register}
+                name="password"
+                error={errors?.password}
+                label="Enter Password"
+                icon
+                passwordVisible={passwordVisible}
+                changeVisibility={() => setPasswordVisible((prev) => !prev)}
+              />
+              <Text fontSize={14} color="brand.200" fontStyle="italic">
+                Forgot Password?
+              </Text>
+            </Stack>
+          </Box>
+          <Box>
+            <Box my="2rem">
+              <SigninOption text="or sign in with" />
             </Box>
-            <Box>
-              <FormControl mb="2">
-                <FormLabel fontSize="10px" fontWeight={700}>
-                  PASSWORD
-                </FormLabel>
-                <FormInput
-                  type="text"
-                  width="100%"
-                  value={password}
-                  setValue={setPassword}
-                />
-              </FormControl>
-              <Flex justifyContent="space-between">
-                <Text fontSize={14} color="brand.100">
-                  Verifying...
-                </Text>
-                <Text fontSize={14} color="brand.200" fontStyle="italic">
-                  Forgot Password?
-                </Text>
+            <Stack spacing="13px" justifyContent="center" alignItems="center">
+              <ButtonComponent
+                text="Sign in"
+                color="brand.400"
+                bg="brand.100"
+                width="100%"
+                loading={isSubmitting}
+                type="submit"
+                // onClick={() => handleSubmit(signInWithNextAuth)()}
+              />
+              <Flex alignItems="center" gap="4px">
+                <Text>Don't have an account yet?</Text>
+                <Link href="/register">
+                  <Text fontWeight={700} color="brand.100">
+                    Sign up
+                  </Text>
+                </Link>
               </Flex>
-            </Box>
-          </Stack>
-        </Box>
-        <Box>
-          <SigninOption text="or sign in with" />
-        </Box>
-        <Box>
-          <Stack spacing="13px" justifyContent="center" alignItems="center">
-            <ButtonComponent
-              text="Sign in"
-              color="brand.400"
-              bg="brand.100"
-              width="100%"
-              onClick={() => {}}
-            />
-            <Flex alignItems="center" gap="4px">
-              <Text>Don't have an account yet?</Text>
-              <Link href="/sign-up">
-                <Text fontWeight={700} color="brand.100">
-                  Sign up
-                </Text>
-              </Link>
-            </Flex>
-          </Stack>
-        </Box>
+            </Stack>
+          </Box>
+        </form>
       </Stack>
     </Box>
   );

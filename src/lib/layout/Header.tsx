@@ -3,25 +3,20 @@
 import { Box, Flex, Text, Stack, Image } from '@chakra-ui/react';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
-import { useState } from 'react';
+// import { signIn, signOut } from 'next-auth/react';
 
 import ButtonComponent from '../components/Button/Button';
 import Logo from '../components/Logo';
 
 const Header = () => {
-  const [activeLink, setActiveLink] = useState(0);
   const pathname = usePathname();
   const router = useRouter();
 
-  const hideNavbarRoutes = ['/signin', '/signup', '/client'];
+  const hideNavbarRoutes = ['/sign-in', '/user'];
 
   if (hideNavbarRoutes.includes(pathname)) {
     return null;
   }
-
-  const changeActiveLink = (index: number) => {
-    setActiveLink(index);
-  };
 
   const links = [
     {
@@ -51,11 +46,12 @@ const Header = () => {
             <Box>
               <Flex alignItems="center" gap="45px">
                 {links.map((item, index) => {
+                  const isActive = pathname === item.url;
                   return (
                     <Box position="relative" key={index}>
-                      {index === activeLink && (
+                      {isActive && (
                         <Image
-                          src="assets/active-star.svg"
+                          src="/assets/active-star.svg"
                           width="10px"
                           height="10px"
                           alt="active link image"
@@ -66,11 +62,8 @@ const Header = () => {
                           }}
                         />
                       )}
-                      <Link href={item.url}>
-                        <Text
-                          onClick={() => changeActiveLink(index)}
-                          color={index === activeLink ? '#1570FA' : '#0C090A'}
-                        >
+                      <Link href={item.url} passHref>
+                        <Text color={isActive ? '#1570FA' : '#0C090A'}>
                           {item.name}
                         </Text>
                       </Link>
@@ -79,7 +72,7 @@ const Header = () => {
                 })}
                 <Box>
                   <Stack direction="row" alignItems="center" gap="15px">
-                    <Link href="/">
+                    <Link href="/" passHref>
                       <Text color="#267E79">Become a Vendor</Text>
                     </Link>
                     <Box bg="#6DD3CE" h="40px" w="2px" />
@@ -88,10 +81,15 @@ const Header = () => {
                       bg="brand.100"
                       color="#FFFFFF"
                       text="Get Started"
-                      onClick={() => {
-                        router.push('/sign-in');
-                      }}
+                      onClick={() => router.push('/sign-in')}
                     />
+                    {/* <ButtonComponent
+                      width="125px"
+                      bg="#1570FA"
+                      color="#FFFFFF"
+                      text="Get Out"
+                      onClick={() => signOut()}
+                    /> */}
                   </Stack>
                 </Box>
               </Flex>

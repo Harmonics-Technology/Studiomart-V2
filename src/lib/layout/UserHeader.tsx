@@ -11,12 +11,14 @@ import {
 } from '@chakra-ui/react';
 import { FaBars } from 'react-icons/fa';
 
+import { useLoggedUser } from '../utilities/Hooks/useLoggedUser';
 import BookmarkIcon from '~/lib/components/Icons/BookmarkIcon';
 import NotificationIcon from '~/lib/components/Icons/NotificationIcon';
 import SearchIcon from '~/lib/components/Icons/SearcIcon';
 import Logo from '~/lib/components/Logo';
 
 const UserHeader = () => {
+  const { user } = useLoggedUser();
   return (
     <Box
       as="header"
@@ -59,9 +61,9 @@ const UserHeader = () => {
                 <Avatar size="sm" />
                 <Box color="brand.700">
                   <Heading fontSize={16} fontWeight={500}>
-                    Munira Adamu-Ibrahim
+                    {user?.firstName}
                   </Heading>
-                  <Text fontSize={8}>@the_designer_ama</Text>
+                  <Text fontSize={8}>{user?.email}</Text>
                 </Box>
               </Stack>
             </Flex>

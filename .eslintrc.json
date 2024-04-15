@@ -17,6 +17,8 @@
     "react/no-unescaped-entities": "off",
     "react/no-unused-prop-types": "off",
     "@typescript-eslint/no-explicit-any": "off",
+    "@typescript-eslint/consistent-type-imports": "off",
+    "no-param-reassign": ["error", { "props": false }],
     "no-console": ["error", { "allow": ["warn", "error"] }]
   },
   "parserOptions": {

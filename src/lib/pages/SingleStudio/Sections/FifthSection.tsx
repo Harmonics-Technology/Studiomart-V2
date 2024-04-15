@@ -3,7 +3,7 @@ import { Box, Flex, Heading, Stack, Image } from '@chakra-ui/react';
 import Wrapper from '~/lib/components/Wrapper';
 
 const FifthSection = () => {
-  const imageUrl = 'assets/other-studios.png';
+  const imageUrl = '/assets/other-studios.png';
   const studios = [
     {
       id: 1,
@@ -32,7 +32,7 @@ const FifthSection = () => {
               Studios Offering Similar Services
             </Heading>
             <Image
-              src="assets/star-line.svg"
+              src="/assets/star-line.svg"
               alt="star image"
               width={60}
               height={60}

@@ -5,7 +5,7 @@ const SideText = () => {
     <Box
       w="100%"
       h="300px"
-      bgImage="url('assets/side-text-illustration.png')"
+      bgImage="url('/assets/side-text-illustration.png')"
       backgroundRepeat="no-repeat"
       backgroundPosition="bottom left"
       backgroundSize="contain"
@@ -15,7 +15,7 @@ const SideText = () => {
       <Box>
         <Flex alignItems="flex-start" justifyContent="space-between">
           <Image
-            src="assets/side-text-star.png"
+            src="/assets/side-text-star.png"
             alt="star image"
             width="80px"
             height="80px"

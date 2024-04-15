@@ -1,4 +1,3 @@
-import { Image } from '@chakra-ui/next-js';
 import {
   Box,
   Stack,
@@ -7,26 +6,32 @@ import {
   Text,
   Flex,
   Checkbox,
+  Image,
+  HStack,
 } from '@chakra-ui/react';
 import Link from 'next/link';
+import { usePathname, useRouter } from 'next/navigation';
+import { useCookies } from 'next-client-cookies';
+import { useState } from 'react';
+import toast from 'react-hot-toast';
 import {
   IoChevronBackCircleOutline,
   IoChevronForwardCircleOutline,
 } from 'react-icons/io5';
 
-import StudioGirl from '../../../../../../../publicassets/studio-girl2.png';
 import ButtonComponent, {
   IconButtonComponent,
 } from '~/lib/components/Button/Button';
 import ClockIcon from '~/lib/components/Icons/ClockIcon';
 import LocationIcon from '~/lib/components/Icons/LocationIcon';
-import StarIcon from '~/lib/components/Icons/StarIcon';
 import TicketIcon from '~/lib/components/Icons/TicketIcon';
+import Ratings from '~/lib/components/Ratings';
 import CustomText from '~/lib/components/Text';
 import type {
   SingleDetailProps,
   AdditionalServicesProps,
 } from '~/lib/utilities/Context/schemas';
+import { AdditionalServiceView, ServiceView, StudioService } from '~/services';
 
 const SingleDetail: React.FC<SingleDetailProps> = ({
   label,
@@ -46,27 +51,87 @@ const SingleDetail: React.FC<SingleDetailProps> = ({
   );
 };
 
-const AdditionalServices: React.FC<AdditionalServicesProps> = ({ text }) => {
+const AdditionalServices: React.FC<AdditionalServicesProps> = ({
+  service,
+  addToArray,
+}) => {
   return (
     <Box w="400px">
       <Flex alignItems="center" gap={3}>
-        <Checkbox size="lg" />
-        <Text>{text}</Text>
+        <Checkbox size="lg" onChange={() => addToArray(service)}>
+          <HStack justify="space-between">
+            <Text>{service?.name}</Text>
+            <Text>{service?.price}</Text>
+          </HStack>
+        </Checkbox>
       </Flex>
     </Box>
   );
 };
 
-const FirstSection = () => {
-  const additionalServices = [
-    'Professional Makeup Services - 5,000 NGN ',
-    'Wardrobe Styling and Rentals - 5, 000 NGN',
-    'Video Coverage - 5, 000 NGN',
-    'Photo Slideshow or Montage - 5, 000 NGN',
-    'Customized Themed Setups - 5, 000 NGN',
-    'Professional Hair Styling - 5, 000 NGN',
-  ];
+const FirstSection = ({ data }: { data: ServiceView | undefined }) => {
+  const studioName = data?.studio?.name;
+  const router = useRouter();
+  const pathname = usePathname();
+  const cookies = useCookies();
+  const [loading, setLoading] = useState(false);
+  const saveServiceForLater = async () => {
+    setLoading(true);
+    try {
+      const result = await StudioService.saveService({
+        studioId: data?.id,
+      });
+      if (result.status) {
+        setLoading(false);
+        // setSaveStats(true);
+        router.replace(pathname);
+        toast.success('Added to saved items');
+        return;
+      }
+      setLoading(false);
+      toast.error(result.message as string);
+    } catch (err: any) {
+      setLoading(false);
+      toast.error(err?.body?.message || err?.message, {
+        className: 'loginToast',
+      });
+    }
+  };
+  const removeSaved = async () => {
+    setLoading(true);
+    try {
+      const result = await StudioService.removeSavedService({
+        id: data?.id as string,
+      });
+      if (result.status) {
+        setLoading(false);
+        toast.success('Item Removed');
+        router.refresh();
+        return;
+      }
+      setLoading(false);
+      toast.error(result.message as string);
+    } catch (err: any) {
+      setLoading(false);
+      toast.error(err?.body?.message || err?.message, {
+        className: 'loginToast',
+      });
+    }
+  };
+  const [selectedAddon, setSelectedAddon] = useState<any>([]);
+  const addToArray = (value: AdditionalServiceView) => {
+    const exist = selectedAddon.find((x: any) => x.id === value.id);
+    if (exist) {
+      setSelectedAddon(selectedAddon.filter((x: any) => x.id !== value.id));
+      return;
+    }
+    setSelectedAddon([...selectedAddon, value]);
+  };
 
+  const bookService = () => {
+    cookies.set('addons', JSON.stringify(selectedAddon));
+    router.push(`/user/schedule-session/${data?.id}`);
+  };
   return (
     <Box mb="10" maxW="1288px" mx="auto" p={[3, 0]}>
       <Box color="#636363" mb="8">
@@ -77,7 +142,9 @@ const FirstSection = () => {
               fontSize={25}
               color="#AFAFAF"
             />
-            <Text>Photo Studio / Lensboy Photography</Text>
+            <Text>
+              {data?.serviceType?.name}/{studioName}
+            </Text>
           </Flex>
         </Link>
       </Box>
@@ -88,13 +155,18 @@ const FirstSection = () => {
           alignItems="flex-start"
           flexWrap="wrap"
         >
-          <Box maxW="647px">
+          <Box
+            w="647px"
+            border="4px solid #1570FA"
+            borderRadius="80px"
+            objectFit="cover"
+            overflow="hidden"
+          >
             <Image
-              src={StudioGirl}
-              alt="main image of a studio"
+              src={(data?.bannerImageURL || data?.media?.at(0)?.url) as string}
+              alt={`main image of ${data?.name}`}
               w="100%"
-              border="4px solid #1570FA"
-              borderRadius="80px"
+              h="100%"
             />
           </Box>
           <Box maxW="570px">
@@ -102,19 +174,19 @@ const FirstSection = () => {
               <Box>
                 <Stack spacing={4}>
                   <Heading fontSize={40} fontWeight={600} color="#171717">
-                    Birthday Shoot
+                    {data?.name}
                   </Heading>
                   <Text color="#1570FA">
                     <Box as="strong" color="#171717">
                       Studio:
                     </Box>{' '}
-                    Lensboy Photography | Similar services by Lensboy
+                    {studioName} | Similar services by {studioName}
                   </Text>
                   <Box>
                     <Flex alignItems="center" gap={2}>
-                      <Text>4.5 Star</Text>
-                      <StarIcon />
-                      <Text>(15 reviews)</Text>
+                      <Text>{data?.averageRating} Star</Text>
+                      <Ratings value={data?.averageRating} />
+                      <Text>({data?.totalReviewCount} reviews)</Text>
                     </Flex>
                   </Box>
                 </Stack>
@@ -126,7 +198,9 @@ const FirstSection = () => {
                     <Heading fontSize={24} fontWeight={700} mb="1">
                       Service Details
                     </Heading>
-                    <CustomText text="Here are the specifics of this service from Lensboy photography." />
+                    <CustomText
+                      text={`Here are the specifics of this service from ${studioName}.`}
+                    />
                   </Box>
 
                   <Box w="100%">
@@ -149,7 +223,7 @@ const FirstSection = () => {
                       <SingleDetail
                         icon={TicketIcon}
                         label="Pricing"
-                        description="10,000 NGN"
+                        description={`${data?.price} NGN`}
                       />
                     </Flex>
                   </Box>
@@ -167,8 +241,12 @@ const FirstSection = () => {
                       rowGap={4}
                       justifyContent="space-between"
                     >
-                      {additionalServices.map((service, index) => (
-                        <AdditionalServices key={index} text={service} />
+                      {data?.additionalServices?.map((service) => (
+                        <AdditionalServices
+                          key={service?.id}
+                          service={service}
+                          addToArray={addToArray}
+                        />
                       ))}
                     </Flex>
                   </Box>
@@ -180,7 +258,7 @@ const FirstSection = () => {
                         bg="brand.100"
                         color="white"
                         width="227px"
-                        onClick={() => {}}
+                        onClick={() => bookService()}
                       />
                       <IconButtonComponent
                         bg="white"
@@ -188,7 +266,13 @@ const FirstSection = () => {
                         width="195px"
                         icon={IoChevronForwardCircleOutline}
                         flip
-                        text="Save for later"
+                        loading={loading}
+                        text={
+                          data?.isSaved ? 'Remove from saved' : 'Save for later'
+                        }
+                        onClick={() =>
+                          data?.isSaved ? removeSaved() : saveServiceForLater()
+                        }
                       />
                     </Flex>
                   </Box>

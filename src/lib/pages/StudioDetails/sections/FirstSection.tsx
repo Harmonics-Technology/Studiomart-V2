@@ -27,7 +27,7 @@ const FirstSection = () => {
           <Flex justifyContent="space-between" alignItems="flex-start">
             <Box w="50%">
               <Image
-                src="assets/studio-girl2.png"
+                src="/assets/studio-girl2.png"
                 alt="main image of a studio"
                 width={600}
                 height={700}

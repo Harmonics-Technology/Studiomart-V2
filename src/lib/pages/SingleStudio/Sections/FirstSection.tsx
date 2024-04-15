@@ -23,7 +23,7 @@ const FirstSection = () => {
                 icon={IoChevronBackCircleOutline}
               />
               <Image
-                src="assets/studio-girl.png"
+                src="/assets/studio-girl.png"
                 alt="studio girl"
                 width={466}
                 height={544}
@@ -34,7 +34,7 @@ const FirstSection = () => {
             <Stack spacing={3}>
               <Box>
                 <Image
-                  src="assets/glasses-lady.png"
+                  src="/assets/glasses-lady.png"
                   alt="lady on glasses"
                   width={732}
                   height={200}
@@ -43,7 +43,7 @@ const FirstSection = () => {
               <Box>
                 <Box position="relative" p="9">
                   <Image
-                    src="assets/star-like.svg"
+                    src="/assets/star-like.svg"
                     alt="star-like image"
                     width="52px"
                     height="54px"
@@ -68,7 +68,7 @@ const FirstSection = () => {
                           Over 100 clients
                         </Text>
                         <Image
-                          src="assets/people.png"
+                          src="/assets/people.png"
                           alt="People avatars"
                           width="160px"
                           height="40px"

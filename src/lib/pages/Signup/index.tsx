@@ -14,7 +14,7 @@ const Index = () => {
     <Box as="section" w="100%" h="100%" position="relative" py="5">
       <Box
         position="absolute"
-        backgroundImage="url('assets/thick-star-illustration.png')"
+        backgroundImage="url('/assets/thick-star-illustration.png')"
         backgroundRepeat="no-repeat"
         width="120px"
         height="120px"
@@ -22,7 +22,7 @@ const Index = () => {
         right="0"
       />
       <Box
-        backgroundImage="url('assets/bg-illustration.png')"
+        backgroundImage="url('/assets/bg-illustration.png')"
         backgroundRepeat="no-repeat"
         position="absolute"
         w="386px"

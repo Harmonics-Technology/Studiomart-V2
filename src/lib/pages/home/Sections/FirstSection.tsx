@@ -45,7 +45,7 @@ const FirstSection = () => {
                   <Box w="80%">
                     <Box w="100%">
                       <FlipImage
-                        image="assets/first-image.png"
+                        image="/assets/first-image.png"
                         heading="Discover and Book"
                         flip={false}
                         align="flex-end"
@@ -53,7 +53,7 @@ const FirstSection = () => {
                     </Box>
                     <Box w="93%" mx="auto">
                       <FlipImage
-                        image="assets/face-image.png"
+                        image="/assets/face-image.png"
                         heading="Creative Studios"
                         flip
                         align="center"
@@ -62,7 +62,7 @@ const FirstSection = () => {
                   </Box>
                   <Box w="auto">
                     <Image
-                      src="assets/studio.png"
+                      src="/assets/studio.png"
                       alt="Studio Image"
                       width={200}
                       height={218}
@@ -80,14 +80,14 @@ const FirstSection = () => {
                 >
                   <Box position="relative" w="70%">
                     <Image
-                      src="assets/studio-image2.png"
+                      src="/assets/studio-image2.png"
                       objectFit="contain"
                       width={857}
                       height={275}
                       alt="Studio Image"
                     />
                     <Image
-                      src="assets/illustration.png"
+                      src="/assets/illustration.png"
                       width={161}
                       height={70}
                       alt="Illustration image"

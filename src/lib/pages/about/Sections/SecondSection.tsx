@@ -49,7 +49,7 @@ const SecondSection = () => {
         <Flex alignItems="center" justifyContent="space-between">
           <Box w="40%">
             <Image
-              src="assets/feature-section-image.png"
+              src="/assets/feature-section-image.png"
               width={481}
               height={530}
               alt="image illustrations"

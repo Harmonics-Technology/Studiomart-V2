@@ -1,23 +1,15 @@
 'use client';
 
 import { Box, Flex, Heading, Stack, Image } from '@chakra-ui/react';
+import Link from 'next/link';
 
-const RecentlyViewed = () => {
-  const imageUrl = 'assets/other-studios.png';
-  const studios = [
-    {
-      id: 1,
-      image: imageUrl,
-    },
-    {
-      id: 2,
-      image: imageUrl,
-    },
-    {
-      id: 3,
-      image: imageUrl,
-    },
-  ];
+import { RecentlyViewedView } from '~/services';
+
+const RecentlyViewed = ({
+  recents,
+}: {
+  recents: RecentlyViewedView[] | undefined;
+}) => {
   return (
     <Box bg="#FCF8FB" py="12">
       <Box mx="auto" maxW="1287px">
@@ -32,7 +24,7 @@ const RecentlyViewed = () => {
               Recently Viewed Studios
             </Heading>
             <Image
-              src="assets/star-line.svg"
+              src="/assets/star-line.svg"
               alt="star image"
               width="60px"
               height="60px"
@@ -45,15 +37,28 @@ const RecentlyViewed = () => {
               justifyContent="space-between"
               flexWrap="wrap"
             >
-              {studios.map((item) => (
-                <Image
-                  src={item.image}
-                  key={item.id}
-                  alt="other studios"
-                  width={390}
-                  height={340}
-                  style={{ borderRadius: '40px', border: '4px solid #1570FA' }}
-                />
+              {recents?.map((item: RecentlyViewedView) => (
+                <Link passHref href={`/services/details/${item?.serviceId}`}>
+                  <Box
+                    width="390px"
+                    h="340px"
+                    overflow="hidden"
+                    border="4px solid"
+                    borderColor="brand.100"
+                    borderRadius="40px"
+                  >
+                    <Image
+                      src={
+                        (item.service?.bannerImageURL ||
+                          item.service?.media?.at(0)?.url) as string
+                      }
+                      key={item.serviceId}
+                      alt={item.service?.name as string}
+                      w="full"
+                      h="full"
+                    />
+                  </Box>
+                </Link>
               ))}
             </Flex>
           </Box>

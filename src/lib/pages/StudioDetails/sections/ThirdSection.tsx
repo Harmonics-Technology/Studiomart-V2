@@ -137,42 +137,42 @@ const ThirdSection = () => {
               justifyContent="space-between"
             >
               <ReviewCard
-                logo="assets/company-logo.png"
+                logo="/assets/company-logo.png"
                 name="Sola W"
                 address="Lagos, Nigeria"
                 date="April 7, 2023"
                 review="The lighting, backdrop, and overall atmosphere were excellent and the photographer was incredibly skilled and attentive to detail. "
               />
               <ReviewCard
-                logo="assets/company-logo.png"
+                logo="/assets/company-logo.png"
                 name="Sola W"
                 address="Lagos, Nigeria"
                 date="April 7, 2023"
                 review="The lighting, backdrop, and overall atmosphere were excellent and the photographer was incredibly skilled and attentive to detail. "
               />
               <ReviewCard
-                logo="assets/company-logo.png"
+                logo="/assets/company-logo.png"
                 name="Sola W"
                 address="Lagos, Nigeria"
                 date="April 7, 2023"
                 review="The lighting, backdrop, and overall atmosphere were excellent and the photographer was incredibly skilled and attentive to detail. "
               />
               <ReviewCard
-                logo="assets/company-logo.png"
+                logo="/assets/company-logo.png"
                 name="Sola W"
                 address="Lagos, Nigeria"
                 date="April 7, 2023"
                 review="The lighting, backdrop, and overall atmosphere were excellent and the photographer was incredibly skilled and attentive to detail. "
               />
               <ReviewCard
-                logo="assets/company-logo.png"
+                logo="/assets/company-logo.png"
                 name="Sola W"
                 address="Lagos, Nigeria"
                 date="April 7, 2023"
                 review="The lighting, backdrop, and overall atmosphere were excellent and the photographer was incredibly skilled and attentive to detail. "
               />
               <ReviewCard
-                logo="assets/company-logo.png"
+                logo="/assets/company-logo.png"
                 name="Sola W"
                 address="Lagos, Nigeria"
                 date="April 7, 2023"

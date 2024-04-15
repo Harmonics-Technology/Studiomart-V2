@@ -35,7 +35,7 @@ const FifthSection = () => {
                   <Flex gap={3} alignItems="center">
                     <Image
                       alt="Adelowo Ajibola, CEO HT"
-                      src="assets/ceo.png"
+                      src="/assets/ceo.png"
                       width="60px"
                       height="60px"
                       style={{ borderRadius: '50%' }}

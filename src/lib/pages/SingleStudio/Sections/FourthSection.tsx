@@ -12,19 +12,19 @@ const StudioGroupImages = () => {
         <Box>
           <Stack spacing={5}>
             <Image
-              src="assets/studio-image-1.png"
+              src="/assets/studio-image-1.png"
               alt="studio image"
               width={154}
               height={144}
             />
             <Image
-              src="assets/studio-image-2.png"
+              src="/assets/studio-image-2.png"
               alt="studio image"
               width={155}
               height={217}
             />
             <Image
-              src="assets/studio-image-3.png"
+              src="/assets/studio-image-3.png"
               alt="studio image"
               width={155}
               height={168}
@@ -34,13 +34,13 @@ const StudioGroupImages = () => {
         <Box>
           <Stack spacing={8}>
             <Image
-              src="assets/studio-image-4.png"
+              src="/assets/studio-image-4.png"
               alt="studio image"
               width={226}
               height={346}
             />
             <Image
-              src="assets/studio-image-5.png"
+              src="/assets/studio-image-5.png"
               alt="studio image"
               width={288}
               height={216}
@@ -50,7 +50,7 @@ const StudioGroupImages = () => {
       </Flex>
       <Box position="absolute" left="140px" bottom="10%">
         <Image
-          src="assets/small-illustration.png"
+          src="/assets/small-illustration.png"
           alt="studio image"
           width={75}
           height={19}
@@ -58,7 +58,7 @@ const StudioGroupImages = () => {
       </Box>
       <Box position="absolute" right="0" bottom="40%">
         <Image
-          src="assets/studio-image-overlay.png"
+          src="/assets/studio-image-overlay.png"
           alt="studio image"
           width={124}
           height={80}

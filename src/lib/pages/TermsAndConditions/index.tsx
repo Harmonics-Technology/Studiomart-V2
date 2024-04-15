@@ -12,7 +12,7 @@ const index = () => {
             <Box position="relative">
               <Heading fontSize={64}>Terms & Conditions</Heading>
               <Image
-                src="assets/green-star.png"
+                src="/assets/green-star.png"
                 alt="star image"
                 width={30}
                 height={30}

@@ -21,37 +21,37 @@ const SecondSection = () => {
               rowGap={10}
             >
               <ServiceCard
-                image="assets/face.png"
+                image="/assets/face.png"
                 title="Catering service"
                 rating={3.5}
                 price={5000}
               />
               <ServiceCard
-                image="assets/mask-1.png"
+                image="/assets/mask-1.png"
                 title="catering service"
                 rating={4.8}
                 price={5000}
               />
               <ServiceCard
-                image="assets/face.png"
+                image="/assets/face.png"
                 title="catering service"
                 rating={3.5}
                 price={5000}
               />
               <ServiceCard
-                image="assets/mask-2.png"
+                image="/assets/mask-2.png"
                 title="catering service"
                 rating={3.5}
                 price={5000}
               />
               <ServiceCard
-                image="assets/face.png"
+                image="/assets/face.png"
                 title="catering service"
                 rating={3.5}
                 price={5000}
               />
               <ServiceCard
-                image="assets/ninth-image.png"
+                image="/assets/ninth-image.png"
                 title="catering service"
                 rating={3.5}
                 price={5000}

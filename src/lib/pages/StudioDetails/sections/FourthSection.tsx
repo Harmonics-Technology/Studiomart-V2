@@ -19,7 +19,7 @@ const FourthSection = () => {
               More Services by Lensboy Photography
             </Heading>
             <Image
-              src="assets/star-line.svg"
+              src="/assets/star-line.svg"
               alt="star image"
               width={60}
               height={60}
@@ -35,7 +35,7 @@ const FourthSection = () => {
             >
               {studios.map(() => (
                 <ServiceCard
-                  image="assets/mask-2.png"
+                  image="/assets/mask-2.png"
                   title="Product Photography"
                   rating={4.5}
                   price={17000}

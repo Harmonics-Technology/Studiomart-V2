@@ -1,31 +1,40 @@
-import { Box, Flex, Text, Icon } from '@chakra-ui/react';
+import { Box, Flex, Text, Icon, Button } from '@chakra-ui/react';
+import { signIn } from 'next-auth/react';
 
 import FacebookIcon from '../Icons/FacebookIcon';
 import GoogleIcon from '../Icons/GoogleIcon';
-import type {
-  IconLinkProps,
-  SigninOptionProp,
-} from '~/lib/utilities/Context/schemas';
 
-const IconLink = ({ icon, linkText }: IconLinkProps) => {
+interface IconLinkProps {
+  icon: any;
+  linkText: string;
+  onClick?: any;
+}
+
+const IconLink = ({ icon, linkText, onClick }: IconLinkProps) => {
   return (
     <Box>
       <Flex alignItems="center" gap="7px">
         <Icon as={icon} />
-        <Text color="brand.100">{linkText}</Text>
+        <Button color="brand.100" onClick={onClick}>
+          {linkText}
+        </Button>
       </Flex>
     </Box>
   );
 };
 
-const index = ({ text }: SigninOptionProp) => {
+const index = ({ text }: { text: string }) => {
   return (
     <Box>
       <Flex alignItems="center" gap="18px" justifyContent="center">
         <Text>{text}</Text>
         <IconLink icon={FacebookIcon} linkText="Facebook" />
         <Box w="1px" h="40px" bg="brand.300" />
-        <IconLink icon={GoogleIcon} linkText="Google" />
+        <IconLink
+          icon={GoogleIcon}
+          linkText="Google"
+          onClick={() => signIn('google')}
+        />
       </Flex>
     </Box>
   );

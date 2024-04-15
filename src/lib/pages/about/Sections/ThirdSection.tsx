@@ -8,7 +8,7 @@ const SingleQuestion: React.FC<SingleQuestionProp> = ({ question, answer }) => {
     <Box mb="10" w="480px">
       <Flex alignItems="flex-start" justifyContent="space-between">
         <Image
-          src="assets/green-star.png"
+          src="/assets/green-star.png"
           alt="star image"
           width="40px"
           height="40px"

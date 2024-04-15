@@ -5,6 +5,15 @@ import type {
   UseFormRegister,
 } from 'react-hook-form';
 
+import {
+  AdditionalServiceView,
+  RecentlyViewedView,
+  ReviewViewPagedCollection,
+  ServiceView,
+  ServiceViewPagedCollection,
+  StudioViewPagedCollection,
+} from '~/services';
+
 export interface IStudioCardProps {
   width?: string | number | undefined;
   height?: string | number | undefined;
@@ -73,16 +82,19 @@ export interface CustomSelectProps {
 }
 
 export interface ReviewCardProps {
-  logo: string;
-  name: string;
-  address: string;
-  date: string;
-  review: string;
+  logo: any;
+  name: any;
+  // address: any;
+  date: any;
+  review: any;
+  service: any;
 }
 
 export interface ProgressBarProps {
   progressBarBg: string;
   rating: number;
+  count: any;
+  total: any;
 }
 
 export interface SingleDetailProps {
@@ -92,7 +104,8 @@ export interface SingleDetailProps {
 }
 
 export interface AdditionalServicesProps {
-  text: string;
+  service: AdditionalServiceView;
+  addToArray: any;
 }
 
 export interface FormStepProps {
@@ -125,7 +138,7 @@ export interface ListItemProps {
 }
 
 export interface CustomTextProps {
-  text: string;
+  text: any;
 }
 
 export interface SocialLinksProps {
@@ -143,8 +156,8 @@ export interface SigninOptionProp {
 }
 
 export interface ServiceCardProps {
-  image: string;
-  title?: string;
+  image: string | null | undefined;
+  title?: string | null | undefined;
   rating?: number;
   price?: number;
 }
@@ -170,8 +183,9 @@ export interface ButtonProps {
   color: string;
   text: string;
   width: string;
-  onClick: () => void;
+  onClick?: () => void;
   loading?: boolean;
+  type?: 'button' | 'reset' | 'submit' | undefined;
 }
 
 export interface OutlineButtonProps {
@@ -187,6 +201,8 @@ export interface IconButtonProps {
   icon: any;
   width: string;
   flip: boolean;
+  onClick?: any;
+  loading?: boolean;
 }
 
 export interface IconButtonLinkProps {
@@ -225,4 +241,22 @@ export interface StudioStatusButtonProps {
 
 export interface StudioButtonIconProps {
   isActive: boolean;
+}
+export interface IHomePage {
+  data: {
+    services: ServiceViewPagedCollection | undefined;
+    recents: RecentlyViewedView[] | undefined;
+  };
+}
+export interface IPageProps {
+  searchParams?: any;
+  params?: any;
+}
+
+export interface IServiceDetailsProps {
+  data: {
+    service: ServiceView | undefined;
+    ratings: ReviewViewPagedCollection | any[];
+    studios: StudioViewPagedCollection;
+  };
 }

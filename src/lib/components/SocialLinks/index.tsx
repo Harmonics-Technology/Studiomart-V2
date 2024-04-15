@@ -6,19 +6,19 @@ const index: React.FC<SocialLinksProps> = ({ spacing, direction }) => {
   const iconsList = [
     {
       title: 'Linkedin Icon',
-      src: 'assets/Linkedin.svg',
+      src: '/assets/Linkedin.svg',
     },
     {
       title: 'facebook Icon',
-      src: 'assets/Facebook.svg',
+      src: '/assets/Facebook.svg',
     },
     {
       title: 'Twitter icon',
-      src: 'assets/Twitter.svg',
+      src: '/assets/Twitter.svg',
     },
     {
       title: 'Instagram Icon',
-      src: 'assets/instagram.svg',
+      src: '/assets/instagram.svg',
     },
   ];
   return (

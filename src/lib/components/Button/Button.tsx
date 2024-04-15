@@ -18,6 +18,7 @@ const ButtonComponent: React.FC<ButtonProps> = ({
   width,
   onClick,
   loading,
+  type,
 }) => {
   return (
     <Button
@@ -30,6 +31,7 @@ const ButtonComponent: React.FC<ButtonProps> = ({
       w={width}
       onClick={onClick}
       isLoading={loading}
+      type={type}
     >
       {text}
     </Button>
@@ -68,6 +70,8 @@ export const IconButtonComponent: React.FC<IconButtonProps> = ({
   icon,
   width,
   flip,
+  onClick,
+  loading,
 }) => {
   return (
     <Button
@@ -80,6 +84,8 @@ export const IconButtonComponent: React.FC<IconButtonProps> = ({
       border={`1px solid ${color}`}
       _hover={{ bg: 'none' }}
       width={width}
+      onClick={onClick}
+      isLoading={loading}
     >
       <Flex alignItems="center" gap={2} flexDir={flip ? 'row-reverse' : 'row'}>
         <Icon as={icon} fontSize={20} />

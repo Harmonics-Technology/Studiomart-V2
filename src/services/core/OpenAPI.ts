@@ -20,7 +20,7 @@ export type OpenAPIConfig = {
 };
 
 export const OpenAPI: OpenAPIConfig = {
-  BASE: '',
+  BASE: 'https://studiomait-staging.azurewebsites.net',
   VERSION: '1',
   WITH_CREDENTIALS: false,
   CREDENTIALS: 'include',

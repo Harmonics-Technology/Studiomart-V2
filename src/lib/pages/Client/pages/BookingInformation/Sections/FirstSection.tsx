@@ -15,7 +15,7 @@ const FirstSection = () => {
           <Flex alignItems="center" gap="72px" flexWrap="wrap">
             <Box maxW="521px" h="458px" borderRadius="71px">
               <Image
-                src="/assets/booking-info.png"
+                src="//assets/booking-info.png"
                 alt="studio-image"
                 w="100%"
                 h="100%"

@@ -17,7 +17,7 @@ const index: React.FC<CustomerReviewCardProps> = ({
             <Box>
               <Image
                 alt="Adelowo Ajibola, CEO HT"
-                src="assets/ceo.png"
+                src="/assets/ceo.png"
                 width="40px"
                 height="40px"
                 style={{ borderRadius: '50%' }}
@@ -42,7 +42,7 @@ const index: React.FC<CustomerReviewCardProps> = ({
         <Box>
           <Flex alignItems="center" justifyContent="space-between">
             <Image
-              src="assets/Stars.svg"
+              src="/assets/Stars.svg"
               alt="rating stars"
               width={126}
               height={22}

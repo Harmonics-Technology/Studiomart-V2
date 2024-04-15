@@ -31,7 +31,7 @@ const FourthSection = () => {
                 >
                   <Box>
                     <Image
-                      src="assets/seventh-image.png"
+                      src="/assets/seventh-image.png"
                       width={362}
                       height={400}
                       objectFit="cover"
@@ -46,14 +46,14 @@ const FourthSection = () => {
                       gap="20px"
                     >
                       <Image
-                        src="assets/eight-image.png"
+                        src="/assets/eight-image.png"
                         width={200}
                         height={219}
                         objectFit="cover"
                         alt="a lady and flower"
                       />
                       <Image
-                        src="assets/ninth-image.png"
+                        src="/assets/ninth-image.png"
                         width={200}
                         height={150}
                         objectFit="cover"

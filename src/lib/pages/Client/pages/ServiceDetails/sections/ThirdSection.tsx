@@ -7,22 +7,24 @@ import {
   VStack,
   Image,
 } from '@chakra-ui/react';
+import dayjs from 'dayjs';
 import { FaStar } from 'react-icons/fa';
 
-import FiveStar from '~/lib/components/Icons/FiveStar';
-import StarIcon from '~/lib/components/Icons/StarIcon';
+import Ratings from '~/lib/components/Ratings';
 import CustomText from '~/lib/components/Text';
 import type {
   ReviewCardProps,
   ProgressBarProps,
 } from '~/lib/utilities/Context/schemas';
+import CalculatePercent from '~/lib/utilities/Functions/CalculatePercent';
+import { ReviewView, ReviewViewPagedCollection, ServiceView } from '~/services';
 
 const ReviewCard: React.FC<ReviewCardProps> = ({
   logo,
   name,
-  address,
   date,
   review,
+  service,
 }) => {
   return (
     <Box w={['100%', '47%']} mb="14">
@@ -41,14 +43,14 @@ const ReviewCard: React.FC<ReviewCardProps> = ({
                 <Heading fontSize={18} fontWeight={700} color="#171717">
                   {name}
                 </Heading>
-                <Text fontSize={14}>{address}</Text>
+                {/* <Text fontSize={14}>{address}</Text> */}
               </Stack>
             </Box>
           </Flex>
         </Box>
         <Box>
           <Flex alignItems="center" gap={2.5}>
-            <FiveStar />
+            <Ratings value={service?.averageRating} />
             <CustomText text="." />
             <CustomText text={date} />
           </Flex>
@@ -61,8 +63,13 @@ const ReviewCard: React.FC<ReviewCardProps> = ({
   );
 };
 
-const ProgressBar: React.FC<ProgressBarProps> = ({ progressBarBg, rating }) => {
-  const progressPercentage = rating * 20;
+const ProgressBar: React.FC<ProgressBarProps> = ({
+  progressBarBg,
+  rating,
+  count,
+  total,
+}) => {
+  const progressPercentage = CalculatePercent(count, total);
   return (
     <Box>
       <Flex alignItems="center" gap={3}>
@@ -70,7 +77,7 @@ const ProgressBar: React.FC<ProgressBarProps> = ({ progressBarBg, rating }) => {
           <Flex alignItems="center" gap={1.5}>
             <Text>{rating}</Text>
             <FaStar fontSize={16} />
-            <Text color="#AFAFAF">(20)</Text>
+            <Text color="#AFAFAF">({count})</Text>
           </Flex>
         </Box>
         <Box w="260px">
@@ -88,7 +95,13 @@ const ProgressBar: React.FC<ProgressBarProps> = ({ progressBarBg, rating }) => {
   );
 };
 
-const ThirdSection = () => {
+const ThirdSection = ({
+  data,
+  service,
+}: {
+  data: ReviewViewPagedCollection | any;
+  service: ServiceView | undefined;
+}) => {
   return (
     <Box as="section" maxW="1282px" mx="auto">
       {/* <Wrapper> */}
@@ -110,20 +123,45 @@ const ThirdSection = () => {
             >
               <VStack spacing={3}>
                 <Heading fontSize={32} fontWeight={500}>
-                  4.5/5
+                  {service?.averageRating}/5
                 </Heading>
-                <StarIcon />
-                <CustomText text="100 ratings" />
+                <Ratings value={service?.averageRating} />
+                <CustomText text={`${service?.totalReviewCount} ratings`} />
               </VStack>
             </Box>
 
             <Box w="350px">
               <Stack spacing={2}>
-                <ProgressBar progressBarBg="#3D3D3D" rating={5} />
-                <ProgressBar progressBarBg="#3D3D3D" rating={4} />
-                <ProgressBar progressBarBg="#3D3D3D" rating={3} />
-                <ProgressBar progressBarBg="#3D3D3D" rating={2} />
-                <ProgressBar progressBarBg="#3D3D3D" rating={1} />
+                <ProgressBar
+                  progressBarBg="#3D3D3D"
+                  rating={5}
+                  count={service?.reviewCounts?.fiveStar}
+                  total={service?.totalReviewCount}
+                />
+                <ProgressBar
+                  progressBarBg="#3D3D3D"
+                  rating={4}
+                  count={service?.reviewCounts?.fourStar}
+                  total={service?.totalReviewCount}
+                />
+                <ProgressBar
+                  progressBarBg="#3D3D3D"
+                  rating={3}
+                  count={service?.reviewCounts?.threeStar}
+                  total={service?.totalReviewCount}
+                />
+                <ProgressBar
+                  progressBarBg="#3D3D3D"
+                  rating={2}
+                  count={service?.reviewCounts?.twoStar}
+                  total={service?.totalReviewCount}
+                />
+                <ProgressBar
+                  progressBarBg="#3D3D3D"
+                  rating={1}
+                  count={service?.reviewCounts?.zeroStar}
+                  total={service?.totalReviewCount}
+                />
               </Stack>
             </Box>
           </Flex>
@@ -135,48 +173,17 @@ const ThirdSection = () => {
             flexWrap="wrap"
             justifyContent="space-between"
           >
-            <ReviewCard
-              logo="assets/company-logo.png"
-              name="Sola W"
-              address="Lagos, Nigeria"
-              date="April 7, 2023"
-              review="The lighting, backdrop, and overall atmosphere were excellent and the photographer was incredibly skilled and attentive to detail. "
-            />
-            <ReviewCard
-              logo="assets/company-logo.png"
-              name="Sola W"
-              address="Lagos, Nigeria"
-              date="April 7, 2023"
-              review="The lighting, backdrop, and overall atmosphere were excellent and the photographer was incredibly skilled and attentive to detail. "
-            />
-            <ReviewCard
-              logo="assets/company-logo.png"
-              name="Sola W"
-              address="Lagos, Nigeria"
-              date="April 7, 2023"
-              review="The lighting, backdrop, and overall atmosphere were excellent and the photographer was incredibly skilled and attentive to detail. "
-            />
-            <ReviewCard
-              logo="assets/company-logo.png"
-              name="Sola W"
-              address="Lagos, Nigeria"
-              date="April 7, 2023"
-              review="The lighting, backdrop, and overall atmosphere were excellent and the photographer was incredibly skilled and attentive to detail. "
-            />
-            <ReviewCard
-              logo="assets/company-logo.png"
-              name="Sola W"
-              address="Lagos, Nigeria"
-              date="April 7, 2023"
-              review="The lighting, backdrop, and overall atmosphere were excellent and the photographer was incredibly skilled and attentive to detail. "
-            />
-            <ReviewCard
-              logo="assets/company-logo.png"
-              name="Sola W"
-              address="Lagos, Nigeria"
-              date="April 7, 2023"
-              review="The lighting, backdrop, and overall atmosphere were excellent and the photographer was incredibly skilled and attentive to detail. "
-            />
+            {data?.value?.map((x: ReviewView) => {
+              return (
+                <ReviewCard
+                  logo={x.user?.profilePicture}
+                  name={x?.user?.fullName}
+                  date={dayjs(x?.dateCreated).format('dddd do, YYYY')}
+                  review={x?.reviewNote}
+                  service={x}
+                />
+              );
+            })}
           </Flex>
         </Box>
       </Stack>
