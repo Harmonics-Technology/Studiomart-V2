@@ -6,7 +6,14 @@ import SideImages from './Sections/SideImages';
 const index = () => {
   return (
     <Box as="section">
-      <Flex alignItems="center" gap="97px" w="95%" mx="auto" h="100%">
+      <Flex
+        alignItems="center"
+        gap="97px"
+        w="95%"
+        mx="auto"
+        h="100vh"
+        overflow="hidden"
+      >
         <Box w="40%">
           <SideImages />
         </Box>

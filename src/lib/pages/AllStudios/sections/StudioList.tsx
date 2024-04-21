@@ -1,13 +1,14 @@
 import { Box, Flex } from '@chakra-ui/react';
+import Link from 'next/link';
 
 import { StudioCard } from '~/lib/components/StudioCard';
-import Wrapper from '~/lib/components/Wrapper';
+import { ContainerBox } from '~/lib/layout/ContainerBox';
+import { StudioView, StudioViewPagedCollection } from '~/services';
 
-const StudioList = () => {
-  const studios = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+const StudioList = ({ data }: { data: StudioViewPagedCollection }) => {
   return (
     <Box mb="14">
-      <Wrapper>
+      <ContainerBox>
         <Flex
           alignItems="center"
           rowGap={12}
@@ -15,20 +16,22 @@ const StudioList = () => {
           justifyContent="space-between"
           flexWrap="wrap"
         >
-          {studios.map(() => {
+          {data?.value?.map((studio: StudioView) => {
             return (
-              <StudioCard
-                img="/assets/studio-girl2.png"
-                companyName="Juggernaut Studio"
-                price={17000}
-                address="Lekki, Lagos"
-                tags={['Music', 'Photography']}
-                services={['amenity', 'amenity', 'amenity']}
-              />
+              <Link passHref href={`/studio/details/${studio.id}`}>
+                <StudioCard
+                  img={studio.coverPhoto as string}
+                  companyName={studio?.name as string}
+                  price={17000}
+                  address={studio?.address as string}
+                  tags={['Music', 'Photography']}
+                  services={['amenity', 'amenity', 'amenity']}
+                />
+              </Link>
             );
           })}
         </Flex>
-      </Wrapper>
+      </ContainerBox>
     </Box>
   );
 };

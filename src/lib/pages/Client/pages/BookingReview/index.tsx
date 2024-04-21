@@ -1,27 +1,27 @@
-import { Box, Stack, Flex } from '@chakra-ui/react';
+'use client';
+
+import { Box, Stack } from '@chakra-ui/react';
 
 import { BackButton } from '~/lib/components/Button/Button';
+import { ContainerBox } from '~/lib/layout/ContainerBox';
+import { ICustomerHome } from '~/lib/utilities/Context/schemas';
 
-import BookingDetails from './Sections/BookingDetails';
 import BookingSummaryCard from './Sections/BookingSummaryCard';
 
-const index = () => {
+const index = ({ singleService, id, addons }: ICustomerHome) => {
   return (
-    <Box maxW="1288px" mx="auto" mt="80px" px="4">
+    <ContainerBox mt="80px" px="4">
       <Stack spacing="68px" w="100%" mb="150px">
         <BackButton linkTo="/client" />
         <Box>
-          <Flex
-            alignItems="flex-start"
-            justifyContent="space-between"
-            flexWrap="wrap"
-          >
-            <BookingDetails />
-            <BookingSummaryCard />
-          </Flex>
+          <BookingSummaryCard
+            singleService={singleService}
+            id={id}
+            addons={addons}
+          />
         </Box>
       </Stack>
-    </Box>
+    </ContainerBox>
   );
 };
 

@@ -1,8 +1,8 @@
 'use client';
 
 import { Box } from '@chakra-ui/react';
-import { usePathname } from 'next/navigation';
-import { useState, type ReactNode, useEffect } from 'react';
+import { useCookies } from 'next-client-cookies';
+import { ReactNode } from 'react';
 
 import Footer from './Footer';
 import Header from './Header';
@@ -13,13 +13,8 @@ type LayoutProps = {
 };
 
 const Layout = ({ children }: LayoutProps) => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const pathname = usePathname();
-
-  useEffect(() => {
-    setIsLoggedIn(pathname.includes('/user'));
-  }, [pathname]);
-
+  const cookies = useCookies();
+  const isLoggedIn = cookies.get('studiomart-user');
   // useEffect(() => {
   //   (
   //     async () => {

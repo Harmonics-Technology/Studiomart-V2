@@ -15,30 +15,22 @@ import type {
 } from '~/lib/utilities/Context/schemas';
 
 const ServiceCard = ({ image, title, rating, price }: ServiceCardProps) => {
-  const width = '400px';
+  const width = '100%';
   const height = '342px';
   return (
     <Box as="section" width={width} h="auto" cursor="pointer">
       <Box
-        as="section"
         w={width}
         h={height}
         pos="relative"
         overflow="hidden"
         className="mask"
       >
-        <Image
-          src={image as string}
-          alt="Image"
-          width={400}
-          height={342}
-          objectFit="cover"
-        />
         <Box pos="absolute" top="0">
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            width="400"
-            height="342"
+            width={width}
+            height={height}
             viewBox="0 0 400 342"
             fill="none"
           >
@@ -48,29 +40,38 @@ const ServiceCard = ({ image, title, rating, price }: ServiceCardProps) => {
             />
           </svg>
         </Box>
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width={width}
-          height={height}
-          style={{ position: 'absolute' }}
-        >
-          <defs>
-            <mask
-              id="svgMask"
-              maskUnits="userSpaceOnUse"
-              x="0"
-              y="0"
-              // style={{ width: '100%', height: '342px' }}
-              // width={width}
-              // height={height}
-            >
-              <path
-                d="M63.4098 339.036C46.8223 339.018 30.9194 332.42 19.1903 320.691C7.46117 308.962 0.863802 293.059 0.845703 276.472V63.4118C0.863802 46.8243 7.46117 30.9214 19.1903 19.1922C30.9194 7.46312 46.8223 0.865755 63.4098 0.847656H207.547C224.029 0.900338 239.829 7.43398 251.535 19.0376C263.241 30.6411 269.913 46.3835 270.111 62.8647C270.172 80.1403 277.012 96.7014 289.161 108.984C301.309 121.267 317.794 128.289 335.068 128.54H335.752C352.111 128.931 367.673 135.686 379.132 147.368C390.591 159.05 397.044 174.74 397.119 191.104V276.574C397.101 293.162 390.504 309.065 378.775 320.794C367.045 332.523 351.143 339.12 334.555 339.138L63.4098 339.036Z"
-                fill="white"
-              />
-            </mask>
-          </defs>
-        </svg>
+        <Box pos="absolute" top="0">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width={width}
+            height={height}
+            // style={{ position: 'absolute' }}
+            viewBox="0 0 400 342"
+          >
+            {/* <path
+              d="M63.4098 339.036C46.8223 339.018 30.9194 332.42 19.1903 320.691C7.46117 308.962 0.863802 293.059 0.845703 276.472V63.4118C0.863802 46.8243 7.46117 30.9214 19.1903 19.1922C30.9194 7.46312 46.8223 0.865755 63.4098 0.847656H207.547C224.029 0.900338 239.829 7.43398 251.535 19.0376C263.241 30.6411 269.913 46.3835 270.111 62.8647C270.172 80.1403 277.012 96.7014 289.161 108.984C301.309 121.267 317.794 128.289 335.068 128.54H335.752C352.111 128.931 367.673 135.686 379.132 147.368C390.591 159.05 397.044 174.74 397.119 191.104V276.574C397.101 293.162 390.504 309.065 378.775 320.794C367.045 332.523 351.143 339.12 334.555 339.138L63.4098 339.036Z"
+              fill="black"
+            /> */}
+            <defs>
+              <mask id="svgMask" maskUnits="userSpaceOnUse" x="0" y="0">
+                <path
+                  d="M63.4098 339.036C46.8223 339.018 30.9194 332.42 19.1903 320.691C7.46117 308.962 0.863802 293.059 0.845703 276.472V63.4118C0.863802 46.8243 7.46117 30.9214 19.1903 19.1922C30.9194 7.46312 46.8223 0.865755 63.4098 0.847656H207.547C224.029 0.900338 239.829 7.43398 251.535 19.0376C263.241 30.6411 269.913 46.3835 270.111 62.8647C270.172 80.1403 277.012 96.7014 289.161 108.984C301.309 121.267 317.794 128.289 335.068 128.54H335.752C352.111 128.931 367.673 135.686 379.132 147.368C390.591 159.05 397.044 174.74 397.119 191.104V276.574C397.101 293.162 390.504 309.065 378.775 320.794C367.045 332.523 351.143 339.12 334.555 339.138L63.4098 339.036Z"
+                  fill="white"
+                  stroke="red"
+                  strokeWidth="3"
+                />
+              </mask>
+            </defs>
+            <image
+              xlinkHref={image as string}
+              width={width}
+              height={height}
+              preserveAspectRatio="xMidYMid slice"
+              mask="url(#svgMask)"
+              style={{ objectFit: 'cover' }}
+            />
+          </svg>
+        </Box>
 
         <Circle
           pos="absolute"

@@ -186,6 +186,7 @@ export interface ButtonProps {
   onClick?: () => void;
   loading?: boolean;
   type?: 'button' | 'reset' | 'submit' | undefined;
+  disabled?: boolean;
 }
 
 export interface OutlineButtonProps {
@@ -259,4 +260,19 @@ export interface IServiceDetailsProps {
     ratings: ReviewViewPagedCollection | any[];
     studios: StudioViewPagedCollection;
   };
+}
+
+export interface ICustomerHome {
+  singleService?: any;
+  id?: any;
+  addons?: any;
+}
+
+export interface ISingleBook {
+  addToArray: any;
+  selectedAddon: any;
+  viewers: any;
+  service: any;
+  date: any;
+  time: any;
 }

@@ -1,4 +1,5 @@
 @import url('./../utilities/Toast/toast.css');
+@import url('@smastrom/react-rating/style.css');
 ::-webkit-scrollbar {
   width: 8px;
   border-radius: 50px;
@@ -21,4 +22,19 @@
 
 .mask img {
   mask: url(#svgMask);
+}
+.date {
+  border: 1px solid #808080;
+  height: 60px;
+  padding: 0 1rem;
+  box-sizing: border-box;
+  width: 100%;
+  border-radius: 4px;
+  font-family: 'DM Sans';
+  font-size: 20px;
+  color: #636363;
+  font-weight: 700;
+}
+.dateWrapper {
+  width: 100%;
 }

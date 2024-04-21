@@ -2,7 +2,7 @@ import { Box, Stack, Heading, Flex, Image } from '@chakra-ui/react';
 import Link from 'next/link';
 
 import ServiceCard from '~/lib/components/ServiceCard';
-import Wrapper from '~/lib/components/Wrapper';
+import { ContainerBox } from '~/lib/layout/ContainerBox';
 import { ServiceView, ServiceViewPagedCollection } from '~/services';
 
 const FourthSection = ({
@@ -14,7 +14,7 @@ const FourthSection = ({
 }) => {
   return (
     <Box bg="#FCF8FB" py="8">
-      <Wrapper>
+      <ContainerBox>
         <Stack spacing={16}>
           <Box position="relative" p="5">
             <Heading
@@ -54,7 +54,7 @@ const FourthSection = ({
             </Flex>
           </Box>
         </Stack>
-      </Wrapper>
+      </ContainerBox>
     </Box>
   );
 };

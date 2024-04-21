@@ -19,6 +19,7 @@ const ButtonComponent: React.FC<ButtonProps> = ({
   onClick,
   loading,
   type,
+  disabled,
 }) => {
   return (
     <Button
@@ -32,6 +33,7 @@ const ButtonComponent: React.FC<ButtonProps> = ({
       onClick={onClick}
       isLoading={loading}
       type={type}
+      isDisabled={disabled}
     >
       {text}
     </Button>

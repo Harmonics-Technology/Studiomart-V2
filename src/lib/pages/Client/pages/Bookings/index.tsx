@@ -1,31 +1,41 @@
 'use client';
 
-import { Box, Flex, Stack, Heading, Text } from '@chakra-ui/react';
-import { useState } from 'react';
+import { Box, Flex, Stack, Heading, Text, Grid } from '@chakra-ui/react';
+import dayjs from 'dayjs';
 
 import { ServiceCardWithStatus } from '~/lib/components/ServiceCard';
-import type { FilterButtonsProp } from '~/lib/utilities/Context/schemas';
+import { ContainerBox } from '~/lib/layout/ContainerBox';
+import useQueryParams from '~/lib/utilities/Hooks/useQueryParams';
+import { BookingView } from '~/services';
 
-const Filters = ({ filterList }: FilterButtonsProp) => {
-  const [activeFilter, setActiveFilter] = useState<number>(0);
+const Filters = () => {
+  const filterTexts = [
+    { id: '', title: 'All' },
+    { id: 1, title: 'Pending' },
+    { id: 2, title: 'Completed' },
+  ];
+  const { queryParams, setQueryParams } = useQueryParams();
+  const setFilterItem = (searchTerm: any) => {
+    setQueryParams({ status: searchTerm });
+  };
+  const status = queryParams.get('status');
   return (
     <Box>
       <Flex gap="10px" alignItems="center" overflow="auto">
-        {filterList?.map((item, index) => {
+        {filterTexts?.map((item: any) => {
+          const activeFilter = (status ? Number(status) : status) === item?.id;
           return (
             <Box
               px="16px"
               py="6px"
-              color={index === activeFilter ? 'brand.400' : 'text.300'}
-              bg={index === activeFilter ? 'brand.100' : 'none'}
+              color={activeFilter ? 'brand.400' : 'text.300'}
+              bg={activeFilter ? 'brand.100' : 'none'}
               borderRadius="60px"
               cursor="pointer"
-              onClick={() => setActiveFilter(index)}
-              _hover={
-                index === activeFilter ? { bg: 'brand.100' } : { bg: '#ededed' }
-              }
+              onClick={() => setFilterItem(item?.id)}
+              _hover={activeFilter ? { bg: 'brand.100' } : { bg: '#ededed' }}
             >
-              <Text>{item}</Text>
+              <Text>{item.title}</Text>
             </Box>
           );
         })}
@@ -35,43 +45,43 @@ const Filters = ({ filterList }: FilterButtonsProp) => {
 };
 
 const Header = () => {
-  const filterTexts = ['All', 'Pending', 'Completed'];
   return (
     <Box maxW="1304px" mx="auto" mb="64px">
       <Stack spacing="32px">
         <Heading as="h2" fontSize={40} fontWeight={900} color="text.100">
           Bookings
         </Heading>
-        <Filters filterList={filterTexts} />
+        <Filters />
       </Stack>
     </Box>
   );
 };
 
-const index = () => {
-  const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+const index = ({ data }: { data: any }) => {
   return (
-    <Box as="section" mx="auto" maxW="1304px" my="80px">
+    <ContainerBox my="80px">
       <Header />
-      <Flex
-        alignItems="center"
-        rowGap="70px"
-        justifyContent="space-between"
-        flexWrap="wrap"
-      >
-        {cards.map((item) => (
+      <Grid templateColumns={['1fr', 'repeat(3,1fr)']} gap="2rem">
+        {data?.value?.map((item: BookingView) => (
           <ServiceCardWithStatus
-            key={item}
-            status="pending"
-            image="/assets/studio-girl2.png"
-            title="Wedding & Event Shoot"
-            bookingId="76AA823"
-            dateAndTime="14/02/2024 -1 2:00 PM"
-            rating={4.6}
+            key={item.id}
+            status={item.status?.toLowerCase() as string}
+            image={
+              (item?.service?.bannerImageURL ||
+                item?.service?.media?.at(0)?.url) as string
+            }
+            title={item?.service?.name as string}
+            bookingId={item?.bookingReference as string}
+            dateAndTime={`${dayjs(item.date).format('DD/MM/YYYY')} - ${dayjs(
+              `${dayjs().format('YYYY-MM-DD')}T${item.time}Z`
+            )
+              .subtract(1, 'hour')
+              .format('hh:mm A')}`}
+            rating={item?.service?.averageRating as number}
           />
         ))}
-      </Flex>
-    </Box>
+      </Grid>
+    </ContainerBox>
   );
 };
 

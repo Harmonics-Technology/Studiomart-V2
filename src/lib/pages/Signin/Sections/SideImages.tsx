@@ -1,4 +1,4 @@
-import { Box, Flex, Stack, Heading, Image } from '@chakra-ui/react';
+import { Box, Flex, Stack, Image } from '@chakra-ui/react';
 
 const SideImages = () => {
   return (
@@ -74,9 +74,7 @@ const SideImages = () => {
             justifyContent="center"
             alignItems="center"
           >
-            <Heading fontSize={60} fontWeight={400} color="white">
-              S.
-            </Heading>
+            <Image src="/assets/favicon.png" w="50%" />
           </Box>
           <Box>
             <Image

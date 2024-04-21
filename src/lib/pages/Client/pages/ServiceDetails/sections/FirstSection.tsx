@@ -8,6 +8,7 @@ import {
   Checkbox,
   Image,
   HStack,
+  Grid,
 } from '@chakra-ui/react';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
@@ -27,6 +28,7 @@ import LocationIcon from '~/lib/components/Icons/LocationIcon';
 import TicketIcon from '~/lib/components/Icons/TicketIcon';
 import Ratings from '~/lib/components/Ratings';
 import CustomText from '~/lib/components/Text';
+import { ContainerBox } from '~/lib/layout/ContainerBox';
 import type {
   SingleDetailProps,
   AdditionalServicesProps,
@@ -130,10 +132,10 @@ const FirstSection = ({ data }: { data: ServiceView | undefined }) => {
 
   const bookService = () => {
     cookies.set('addons', JSON.stringify(selectedAddon));
-    router.push(`/user/schedule-session/${data?.id}`);
+    router.push(`/services/schedule-session/${data?.id}`);
   };
   return (
-    <Box mb="10" maxW="1288px" mx="auto" p={[3, 0]}>
+    <ContainerBox mb="50px" p={[3, 0]}>
       <Box color="#636363" mb="8">
         <Link href="/studios">
           <Flex alignItems="center" gap={1.5}>
@@ -150,33 +152,35 @@ const FirstSection = ({ data }: { data: ServiceView | undefined }) => {
       </Box>
 
       <Box>
-        <Flex
-          justifyContent="space-between"
-          alignItems="flex-start"
-          flexWrap="wrap"
+        <Grid
+          templateColumns={['1fr', 'repeat(2, 1fr)']}
+          gap="4rem"
+          alignItems="center"
         >
           <Box
-            w="647px"
-            border="4px solid #1570FA"
+            w="100%"
+            border="4px solid"
+            borderColor="brand.100"
             borderRadius="80px"
-            objectFit="cover"
             overflow="hidden"
+            h="700px"
           >
             <Image
               src={(data?.bannerImageURL || data?.media?.at(0)?.url) as string}
               alt={`main image of ${data?.name}`}
               w="100%"
               h="100%"
+              objectFit="cover"
             />
           </Box>
-          <Box maxW="570px">
+          <Box w="100%">
             <Stack spacing={7}>
               <Box>
                 <Stack spacing={4}>
                   <Heading fontSize={40} fontWeight={600} color="#171717">
                     {data?.name}
                   </Heading>
-                  <Text color="#1570FA">
+                  <Text color="brand.100">
                     <Box as="strong" color="#171717">
                       Studio:
                     </Box>{' '}
@@ -185,7 +189,7 @@ const FirstSection = ({ data }: { data: ServiceView | undefined }) => {
                   <Box>
                     <Flex alignItems="center" gap={2}>
                       <Text>{data?.averageRating} Star</Text>
-                      <Ratings value={data?.averageRating} />
+                      <Ratings value={data?.averageRating || 0} />
                       <Text>({data?.totalReviewCount} reviews)</Text>
                     </Flex>
                   </Box>
@@ -280,9 +284,9 @@ const FirstSection = ({ data }: { data: ServiceView | undefined }) => {
               </Box>
             </Stack>
           </Box>
-        </Flex>
+        </Grid>
       </Box>
-    </Box>
+    </ContainerBox>
   );
 };
 

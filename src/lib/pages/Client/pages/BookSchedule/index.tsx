@@ -1,17 +1,20 @@
-import { Box, Stack } from '@chakra-ui/react';
+'use client';
+
+import { Stack } from '@chakra-ui/react';
 
 import { BackButton } from '~/lib/components/Button/Button';
+import { ContainerBox } from '~/lib/layout/ContainerBox';
 
 import ScheduleForm from './Sections/ScheduleForm';
 
-const index = () => {
+const index = ({ id }: { id: string }) => {
   return (
-    <Box maxW="1288px" mx="auto" mt="80px" px="4">
+    <ContainerBox mt="80px" px="4">
       <Stack spacing="68px" w="100%" mb="150px">
-        <BackButton linkTo="/client" />
-        <ScheduleForm />
+        <BackButton linkTo="/user" />
+        <ScheduleForm id={id} />
       </Stack>
-    </Box>
+    </ContainerBox>
   );
 };
 

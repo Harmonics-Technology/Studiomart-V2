@@ -12,6 +12,7 @@ import { FaStar } from 'react-icons/fa';
 
 import Ratings from '~/lib/components/Ratings';
 import CustomText from '~/lib/components/Text';
+import { ContainerBox } from '~/lib/layout/ContainerBox';
 import type {
   ReviewCardProps,
   ProgressBarProps,
@@ -103,7 +104,7 @@ const ThirdSection = ({
   service: ServiceView | undefined;
 }) => {
   return (
-    <Box as="section" maxW="1282px" mx="auto">
+    <ContainerBox as="section">
       {/* <Wrapper> */}
       <Stack spacing="48px">
         <Box>
@@ -188,7 +189,7 @@ const ThirdSection = ({
         </Box>
       </Stack>
       {/* </Wrapper> */}
-    </Box>
+    </ContainerBox>
   );
 };
 

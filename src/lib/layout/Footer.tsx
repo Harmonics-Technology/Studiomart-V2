@@ -57,7 +57,7 @@ const FooterList: React.FC<FooterListProps> = ({ headingText, items }) => {
 const Footer = () => {
   const pathname = usePathname();
 
-  const hideNavbarRoutes = ['/signin', '/signup'];
+  const hideNavbarRoutes = ['/sign-in', '/register'];
 
   if (hideNavbarRoutes.includes(pathname)) {
     return null;

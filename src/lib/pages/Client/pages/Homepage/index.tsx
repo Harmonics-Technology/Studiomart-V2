@@ -1,7 +1,6 @@
 'use client';
 
-import { Box } from '@chakra-ui/react';
-
+import { ContainerBox } from '~/lib/layout/ContainerBox';
 import { IHomePage } from '~/lib/utilities/Context/schemas';
 
 import Filter from './Filter';
@@ -12,12 +11,12 @@ import Services from './Services';
 const index = ({ data }: IHomePage) => {
   const { services, recents } = data;
   return (
-    <Box as="section">
+    <ContainerBox>
       <Filter />
       <Header />
       <Services services={services} />
       {(recents?.length as any) > 0 && <RecentlyViewed recents={recents} />}
-    </Box>
+    </ContainerBox>
   );
 };
 
