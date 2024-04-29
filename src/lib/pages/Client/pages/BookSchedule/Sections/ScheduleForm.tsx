@@ -36,7 +36,9 @@ const ScheduleForm = ({ id }: { id: string }) => {
 
       if (result.status) {
         toast.success(result.message as string);
-        router.push(`/user/bookings/${id}?date=${data.date}&time=${newTime}`);
+        router.push(
+          `/user/bookings/review/${id}?date=${data.date}&time=${newTime}`
+        );
         return;
       }
       toast.error(result.message as string);

@@ -7,6 +7,7 @@ import type {
 
 import {
   AdditionalServiceView,
+  BookingView,
   RecentlyViewedView,
   ReviewViewPagedCollection,
   ServiceView,
@@ -44,6 +45,14 @@ export interface FormInputProps<TFormValues extends Record<string, unknown>> {
   icon?: boolean;
   passwordVisible?: boolean;
   h?: string;
+}
+export interface InputBlankProps {
+  type?: string;
+  width?: any;
+  placeholder?: string;
+  label?: string;
+  readOnly?: boolean;
+  defaultValue?: any;
 }
 export interface FormSelectProps<TFormValues extends Record<string, unknown>> {
   width?: string;
@@ -160,6 +169,10 @@ export interface ServiceCardProps {
   title?: string | null | undefined;
   rating?: number;
   price?: number;
+  withStatus?: boolean;
+  bookingId?: string;
+  dateAndTime?: string;
+  status?: string;
 }
 
 export interface ServiceCardWithStatusProps {
@@ -275,4 +288,8 @@ export interface ISingleBook {
   service: any;
   date: any;
   time: any;
+}
+
+export interface IBookingDetails {
+  data: BookingView;
 }

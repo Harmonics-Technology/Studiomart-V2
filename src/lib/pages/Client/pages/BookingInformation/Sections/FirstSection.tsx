@@ -1,8 +1,10 @@
 import { Box, Image, Heading, Flex, Text, Stack } from '@chakra-ui/react';
+import dayjs from 'dayjs';
 
-import StarIcon from '~/lib/components/Icons/StarIcon';
+import Ratings from '~/lib/components/Ratings';
+import { IBookingDetails } from '~/lib/utilities/Context/schemas';
 
-const FirstSection = () => {
+const FirstSection = ({ data }: IBookingDetails) => {
   return (
     <Box w="100%" mb="45px">
       <Stack spacing="80px">
@@ -15,7 +17,10 @@ const FirstSection = () => {
           <Flex alignItems="center" gap="72px" flexWrap="wrap">
             <Box maxW="521px" h="458px" borderRadius="71px">
               <Image
-                src="//assets/booking-info.png"
+                src={
+                  (data?.service?.bannerImageURL ||
+                    data?.service?.media?.at(0)?.url) as string
+                }
                 alt="studio-image"
                 w="100%"
                 h="100%"
@@ -27,18 +32,18 @@ const FirstSection = () => {
               <Stack spacing="28px" mb="48px">
                 <Box>
                   <Heading fontSize={28} fontWeight={700} mb="16px">
-                    Birthday Photoshoot
+                    {data?.service?.name}
                   </Heading>
                   <Flex alignItems="center" gap="12px">
                     <Text fontWeight={500}>
-                      Lensby Photograpy{' '}
+                      {data?.service?.studio?.name}{' '}
                       <Box as="span" fontSize={12} color="text.800">
-                        4.5 Star
+                        {data?.service?.averageRating} Star
                       </Box>
                     </Text>
-                    <StarIcon />
+                    <Ratings value={data?.service?.averageRating || 0} />
                     <Text fontSize={12} color="brand.600">
-                      (15 reviews)
+                      ({data?.service?.totalReviewCount} reviews)
                     </Text>
                   </Flex>
                 </Box>
@@ -50,7 +55,7 @@ const FirstSection = () => {
                         Booking reference
                       </Heading>
                       <Text fontSize={20} color="brand.600">
-                        LTMAKSS
+                        {data?.bookingReference}
                       </Text>
                     </Box>
                     <Box>
@@ -58,7 +63,7 @@ const FirstSection = () => {
                         Date
                       </Heading>
                       <Text fontSize={20} color="brand.600">
-                        29/02/2024
+                        {dayjs(data?.date).format('DD/MM/YYYY')}
                       </Text>
                     </Box>
                     <Box>
@@ -66,7 +71,9 @@ const FirstSection = () => {
                         Time
                       </Heading>
                       <Text fontSize={20} color="brand.600">
-                        10:05 AM
+                        {dayjs(`${dayjs().format('YYYY-MM-DD')}T${data.time}Z`)
+                          .subtract(1, 'hour')
+                          .format('hh:mm A')}
                       </Text>
                     </Box>
                   </Flex>

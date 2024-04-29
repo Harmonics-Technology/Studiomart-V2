@@ -1,4 +1,4 @@
-import { Box, Stack, Heading, Flex, Image } from '@chakra-ui/react';
+import { Box, Stack, Heading, Image, Grid } from '@chakra-ui/react';
 import Link from 'next/link';
 
 import ServiceCard from '~/lib/components/ServiceCard';
@@ -34,12 +34,7 @@ const FourthSection = ({
             />
           </Box>
           <Box>
-            <Flex
-              alignItems="center"
-              justifyContent="space-between"
-              flexWrap="wrap"
-              rowGap={12}
-            >
+            <Grid templateColumns={['1fr', 'repeat(3,1fr)']} gap="2rem">
               {data?.value?.map((item: ServiceView) => (
                 <Link passHref href={`/services/details/${item?.id}`}>
                   <ServiceCard
@@ -51,7 +46,7 @@ const FourthSection = ({
                   />
                 </Link>
               ))}
-            </Flex>
+            </Grid>
           </Box>
         </Stack>
       </ContainerBox>

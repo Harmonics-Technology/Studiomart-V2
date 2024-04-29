@@ -1,15 +1,6 @@
 'use client';
 
-import {
-  Box,
-  FormLabel,
-  FormControl,
-  Flex,
-  Heading,
-  Stack,
-  Text,
-} from '@chakra-ui/react';
-import { useState } from 'react';
+import { Box, Flex, Heading, Stack, Text } from '@chakra-ui/react';
 
 import { StudioStatusButton } from '~/lib/components/Button/Button';
 import {
@@ -19,11 +10,10 @@ import {
   ChatIcon,
   RatingIcon,
 } from '~/lib/components/Icons/StudioStatusButtons';
-import FormInput from '~/lib/utilities/FormInput/FormInput';
+import { IBookingDetails } from '~/lib/utilities/Context/schemas';
+import InputBlank from '~/lib/utilities/FormInput/InputBlank';
 
-const UserInformation = () => {
-  const [fullName, setFullName] = useState<string>('');
-  const [email, setEmail] = useState<string>('');
+const UserInformation = ({ data }: IBookingDetails) => {
   return (
     <Box>
       <Box mb="28px">
@@ -37,42 +27,18 @@ const UserInformation = () => {
         gap="20px"
         flexDirection={{ base: 'column', md: 'row', lg: 'row' }}
       >
-        <Box w={['100%', '50%']}>
-          <FormControl>
-            <FormLabel
-              textTransform="uppercase"
-              fontSize={10}
-              fontWeight={700}
-              color="text.100"
-            >
-              Full Name
-            </FormLabel>
-            <FormInput
-              type="text"
-              value={fullName}
-              setValue={setFullName}
-              width="100%"
-            />
-          </FormControl>
-        </Box>
-        <Box w={['100%', '50%']}>
-          <FormControl>
-            <FormLabel
-              textTransform="uppercase"
-              fontSize={10}
-              fontWeight={700}
-              color="text.100"
-            >
-              email
-            </FormLabel>
-            <FormInput
-              type="email"
-              value={email}
-              setValue={setEmail}
-              width="100%"
-            />
-          </FormControl>
-        </Box>
+        <InputBlank
+          label="Full Name"
+          defaultValue={data?.user?.fullName}
+          width={['100%', '50%']}
+          readOnly
+        />
+        <InputBlank
+          label="Email"
+          defaultValue={data?.user?.email}
+          width={['100%', '50%']}
+          readOnly
+        />
       </Flex>
     </Box>
   );
@@ -122,9 +88,7 @@ const StatusButtons = () => {
   );
 };
 
-const StudioInformation = () => {
-  const [fullName, setFullName] = useState<string>('');
-  const [email, setEmail] = useState<string>('');
+const StudioInformation = ({ data }: IBookingDetails) => {
   return (
     <Box>
       <Box mb="28px">
@@ -139,42 +103,18 @@ const StudioInformation = () => {
         flexDirection={{ base: 'column', md: 'row', lg: 'row' }}
         mb="36px"
       >
-        <Box w={['100%', '50%']}>
-          <FormControl>
-            <FormLabel
-              textTransform="uppercase"
-              fontSize={10}
-              fontWeight={700}
-              color="text.100"
-            >
-              studio Name
-            </FormLabel>
-            <FormInput
-              type="text"
-              value={fullName}
-              setValue={setFullName}
-              width="100%"
-            />
-          </FormControl>
-        </Box>
-        <Box w={['100%', '50%']}>
-          <FormControl>
-            <FormLabel
-              textTransform="uppercase"
-              fontSize={10}
-              fontWeight={700}
-              color="text.100"
-            >
-              studio email
-            </FormLabel>
-            <FormInput
-              type="email"
-              value={email}
-              setValue={setEmail}
-              width="100%"
-            />
-          </FormControl>
-        </Box>
+        <InputBlank
+          label="Studio Name"
+          defaultValue={data?.service?.studio?.name}
+          width={['100%', '50%']}
+          readOnly
+        />
+        <InputBlank
+          label="Studio Email"
+          defaultValue={data?.service?.studio?.email}
+          width={['100%', '50%']}
+          readOnly
+        />
       </Flex>
       <Flex
         alignItems="center"
@@ -182,42 +122,18 @@ const StudioInformation = () => {
         flexDirection={{ base: 'column', md: 'row', lg: 'row' }}
         mb="60px"
       >
-        <Box w={['100%', '50%']}>
-          <FormControl>
-            <FormLabel
-              textTransform="uppercase"
-              fontSize={10}
-              fontWeight={700}
-              color="text.100"
-            >
-              studio phone
-            </FormLabel>
-            <FormInput
-              type="text"
-              value={fullName}
-              setValue={setFullName}
-              width="100%"
-            />
-          </FormControl>
-        </Box>
-        <Box w={['100%', '50%']}>
-          <FormControl>
-            <FormLabel
-              textTransform="uppercase"
-              fontSize={10}
-              fontWeight={700}
-              color="text.100"
-            >
-              studio address
-            </FormLabel>
-            <FormInput
-              type="email"
-              value={email}
-              setValue={setEmail}
-              width="100%"
-            />
-          </FormControl>
-        </Box>
+        <InputBlank
+          label="Studio Phone"
+          defaultValue={data?.service?.studio?.phone}
+          width={['100%', '50%']}
+          readOnly
+        />
+        <InputBlank
+          label="Studio Address"
+          defaultValue={data?.service?.studio?.address}
+          width={['100%', '50%']}
+          readOnly
+        />
       </Flex>
 
       <Box
@@ -244,13 +160,13 @@ const StudioInformation = () => {
   );
 };
 
-const SecondSection = () => {
+const SecondSection = ({ data }: IBookingDetails) => {
   return (
     <Box w="100%">
       <Stack spacing="80px">
-        <UserInformation />
+        <UserInformation data={data} />
         <StatusButtons />
-        <StudioInformation />
+        <StudioInformation data={data} />
       </Stack>
     </Box>
   );

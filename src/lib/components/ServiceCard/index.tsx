@@ -1,3 +1,4 @@
+/* eslint-disable sonarjs/no-duplicate-string */
 import {
   Box,
   Heading,
@@ -14,7 +15,16 @@ import type {
   ServiceCardWithStatusProps,
 } from '~/lib/utilities/Context/schemas';
 
-const ServiceCard = ({ image, title, rating, price }: ServiceCardProps) => {
+const ServiceCard = ({
+  image,
+  title,
+  rating,
+  price,
+  withStatus,
+  bookingId,
+  dateAndTime,
+  status,
+}: ServiceCardProps) => {
   const width = '100%';
   const height = '342px';
   return (
@@ -48,10 +58,6 @@ const ServiceCard = ({ image, title, rating, price }: ServiceCardProps) => {
             // style={{ position: 'absolute' }}
             viewBox="0 0 400 342"
           >
-            {/* <path
-              d="M63.4098 339.036C46.8223 339.018 30.9194 332.42 19.1903 320.691C7.46117 308.962 0.863802 293.059 0.845703 276.472V63.4118C0.863802 46.8243 7.46117 30.9214 19.1903 19.1922C30.9194 7.46312 46.8223 0.865755 63.4098 0.847656H207.547C224.029 0.900338 239.829 7.43398 251.535 19.0376C263.241 30.6411 269.913 46.3835 270.111 62.8647C270.172 80.1403 277.012 96.7014 289.161 108.984C301.309 121.267 317.794 128.289 335.068 128.54H335.752C352.111 128.931 367.673 135.686 379.132 147.368C390.591 159.05 397.044 174.74 397.119 191.104V276.574C397.101 293.162 390.504 309.065 378.775 320.794C367.045 332.523 351.143 339.12 334.555 339.138L63.4098 339.036Z"
-              fill="black"
-            /> */}
             <defs>
               <mask id="svgMask" maskUnits="userSpaceOnUse" x="0" y="0">
                 <path
@@ -92,22 +98,74 @@ const ServiceCard = ({ image, title, rating, price }: ServiceCardProps) => {
           </Text>
         </Circle>
       </Box>
-      <Box p="3">
-        <Stack spacing={2.5}>
-          <Heading fontSize={24} fontWeight={700}>
-            {title}
-          </Heading>
-          <Text>
-            From <strong>N{price}</strong> (Per Session)
-          </Text>
-          <Box>
-            <Flex alignItems="center" gap={3} color="#1570FA">
-              <Text>View more details</Text>
-              <IoArrowForward />
-            </Flex>
-          </Box>
-        </Stack>
-      </Box>
+      {withStatus ? (
+        <Box p="3">
+          <Stack spacing={2.5}>
+            <Box
+              py="7px"
+              px="16px"
+              border="1px solid"
+              textAlign="center"
+              borderRadius="100px"
+              w={status === 'pending' ? '100px' : '115px'}
+              borderColor={status === 'pending' ? 'status.100' : 'status.300'}
+              bg={status === 'pending' ? 'status.200' : 'status.400'}
+              color={status === 'pending' ? 'status.100' : 'status.300'}
+            >
+              <Text fontSize={15} textTransform="capitalize">
+                {status}
+              </Text>
+            </Box>
+            <Heading fontSize={24} fontWeight={700}>
+              {title}
+            </Heading>
+            <Box>
+              <Flex alignItems="center" gap="32px">
+                <Box>
+                  <Text fontWeight={500} color="text.700" mb="4px">
+                    Booking ID
+                  </Text>
+                  <Text fontSize={18} fontWeight={500} color="brand.600">
+                    {bookingId}
+                  </Text>
+                </Box>
+
+                <Box>
+                  <Text fontWeight={500} color="text.700" mb="4px">
+                    Date and Time
+                  </Text>
+                  <Text fontSize={18} fontWeight={500} color="brand.600">
+                    {dateAndTime}
+                  </Text>
+                </Box>
+              </Flex>
+            </Box>
+            <Box>
+              <Flex alignItems="center" gap={3} color="#1570FA">
+                <Text>View Details</Text>
+                <IoArrowForward />
+              </Flex>
+            </Box>
+          </Stack>
+        </Box>
+      ) : (
+        <Box p="3">
+          <Stack spacing={2.5}>
+            <Heading fontSize={24} fontWeight={700}>
+              {title}
+            </Heading>
+            <Text>
+              From <strong>N{price}</strong> (Per Session)
+            </Text>
+            <Box>
+              <Flex alignItems="center" gap={3} color="#1570FA">
+                <Text>View more details</Text>
+                <IoArrowForward />
+              </Flex>
+            </Box>
+          </Stack>
+        </Box>
+      )}
     </Box>
   );
 };
@@ -122,7 +180,7 @@ export const ServiceCardWithStatus = ({
   status,
   rating,
 }: ServiceCardWithStatusProps) => {
-  const width = '400px';
+  const width = '100%';
   const height = '342px';
   return (
     <Box as="section" width={width} h="auto">
@@ -155,22 +213,34 @@ export const ServiceCardWithStatus = ({
             />
           </svg>
         </Box>
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width={width}
-          height={height}
-          style={{ position: 'absolute' }}
-        >
-          <defs>
-            <mask id="svgMask" maskUnits="userSpaceOnUse" x="0" y="0">
-              <path
-                d="M63.4098 339.036C46.8223 339.018 30.9194 332.42 19.1903 320.691C7.46117 308.962 0.863802 293.059 0.845703 276.472V63.4118C0.863802 46.8243 7.46117 30.9214 19.1903 19.1922C30.9194 7.46312 46.8223 0.865755 63.4098 0.847656H207.547C224.029 0.900338 239.829 7.43398 251.535 19.0376C263.241 30.6411 269.913 46.3835 270.111 62.8647C270.172 80.1403 277.012 96.7014 289.161 108.984C301.309 121.267 317.794 128.289 335.068 128.54H335.752C352.111 128.931 367.673 135.686 379.132 147.368C390.591 159.05 397.044 174.74 397.119 191.104V276.574C397.101 293.162 390.504 309.065 378.775 320.794C367.045 332.523 351.143 339.12 334.555 339.138L63.4098 339.036Z"
-                fill="white"
-              />
-            </mask>
-          </defs>
-        </svg>
-
+        <Box pos="absolute" top="0">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width={width}
+            height={height}
+            // style={{ position: 'absolute' }}
+            viewBox="0 0 400 342"
+          >
+            <defs>
+              <mask id="svgMask" maskUnits="userSpaceOnUse" x="0" y="0">
+                <path
+                  d="M63.4098 339.036C46.8223 339.018 30.9194 332.42 19.1903 320.691C7.46117 308.962 0.863802 293.059 0.845703 276.472V63.4118C0.863802 46.8243 7.46117 30.9214 19.1903 19.1922C30.9194 7.46312 46.8223 0.865755 63.4098 0.847656H207.547C224.029 0.900338 239.829 7.43398 251.535 19.0376C263.241 30.6411 269.913 46.3835 270.111 62.8647C270.172 80.1403 277.012 96.7014 289.161 108.984C301.309 121.267 317.794 128.289 335.068 128.54H335.752C352.111 128.931 367.673 135.686 379.132 147.368C390.591 159.05 397.044 174.74 397.119 191.104V276.574C397.101 293.162 390.504 309.065 378.775 320.794C367.045 332.523 351.143 339.12 334.555 339.138L63.4098 339.036Z"
+                  fill="white"
+                  stroke="red"
+                  strokeWidth="3"
+                />
+              </mask>
+            </defs>
+            <image
+              xlinkHref={image as string}
+              width={width}
+              height={height}
+              preserveAspectRatio="xMidYMid slice"
+              mask="url(#svgMask)"
+              style={{ objectFit: 'cover' }}
+            />
+          </svg>
+        </Box>
         <Circle
           pos="absolute"
           right={0}
