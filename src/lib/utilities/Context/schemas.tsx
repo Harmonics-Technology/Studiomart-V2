@@ -251,6 +251,7 @@ export interface StudioStatusButtonProps {
   color: string;
   onClick: () => void;
   isActive: boolean;
+  isDisabled: boolean;
 }
 
 export interface StudioButtonIconProps {
@@ -292,4 +293,23 @@ export interface ISingleBook {
 
 export interface IBookingDetails {
   data: BookingView;
+}
+
+export interface SideNavIconProps {
+  isActive: boolean;
+}
+
+export interface OpenSideNavProps {
+  onClick: () => void;
+}
+
+export interface CloseSideNavProps {
+  onClick: () => void;
+}
+
+export interface SideNavItemProps {
+  label: string;
+  Icon: any;
+  link: string;
+  isActive: boolean;
 }

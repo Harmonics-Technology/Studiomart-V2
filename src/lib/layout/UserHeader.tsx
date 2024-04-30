@@ -11,13 +11,14 @@ import {
 } from '@chakra-ui/react';
 import { FaBars } from 'react-icons/fa';
 
+import { OpenSideNavProps } from '../utilities/Context/schemas';
 import { useLoggedUser } from '../utilities/Hooks/useLoggedUser';
 import BookmarkIcon from '~/lib/components/Icons/BookmarkIcon';
 import NotificationIcon from '~/lib/components/Icons/NotificationIcon';
 import SearchIcon from '~/lib/components/Icons/SearcIcon';
 import Logo from '~/lib/components/Logo';
 
-const UserHeader = () => {
+const UserHeader = ({ onClick }: OpenSideNavProps) => {
   const { user } = useLoggedUser();
   return (
     <Box
@@ -35,7 +36,7 @@ const UserHeader = () => {
     >
       <Box as="nav">
         <Flex alignItems="center" gap="40px">
-          <Box>
+          <Box onClick={onClick}>
             <FaBars />
           </Box>
           <Logo />
