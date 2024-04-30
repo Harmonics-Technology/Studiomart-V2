@@ -10,7 +10,7 @@ export function withPageAuth(gssp: any) {
 
     if (!token) {
       // Redirect to login page
-      permanentRedirect('/login');
+      permanentRedirect('/sign-in');
     }
 
     OpenAPI.TOKEN = token;

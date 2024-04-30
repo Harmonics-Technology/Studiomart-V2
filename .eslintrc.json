@@ -16,6 +16,7 @@
     "react/no-array-index-key": "off",
     "react/no-unescaped-entities": "off",
     "react/no-unused-prop-types": "off",
+    "no-nested-ternary": "off",
     "@typescript-eslint/no-explicit-any": "off",
     "@typescript-eslint/consistent-type-imports": "off",
     "no-param-reassign": ["error", { "props": false }],

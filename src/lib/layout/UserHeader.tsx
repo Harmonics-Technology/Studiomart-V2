@@ -1,21 +1,12 @@
-import {
-  Box,
-  Flex,
-  Avatar,
-  Heading,
-  Text,
-  Stack,
-  InputGroup,
-  Input,
-  InputLeftElement,
-} from '@chakra-ui/react';
+import { Box, Flex, Avatar, Heading, Text, Stack } from '@chakra-ui/react';
+import Link from 'next/link';
 import { FaBars } from 'react-icons/fa';
 
+import { GlobalSearch } from '../components/SearchComponents/GlobalSearch';
 import { OpenSideNavProps } from '../utilities/Context/schemas';
 import { useLoggedUser } from '../utilities/Hooks/useLoggedUser';
 import BookmarkIcon from '~/lib/components/Icons/BookmarkIcon';
 import NotificationIcon from '~/lib/components/Icons/NotificationIcon';
-import SearchIcon from '~/lib/components/Icons/SearcIcon';
 import Logo from '~/lib/components/Logo';
 
 const UserHeader = ({ onClick }: OpenSideNavProps) => {
@@ -41,23 +32,16 @@ const UserHeader = ({ onClick }: OpenSideNavProps) => {
           </Box>
           <Logo />
           <Box w="599px">
-            <InputGroup w="100%">
-              <InputLeftElement pointerEvents="none">
-                <SearchIcon />
-              </InputLeftElement>
-              <Input
-                type="tel"
-                placeholder="Phone number"
-                px="40px"
-                py="12px"
-                _placeholder={{ color: 'text.200', fontWeight: 400 }}
-              />
-            </InputGroup>
+            <GlobalSearch />
           </Box>
           <Box>
             <Flex alignItems="center" gap="20px">
-              <NotificationIcon />
-              <BookmarkIcon />
+              <Link passHref href="/notification">
+                <NotificationIcon />
+              </Link>
+              <Link passHref href="/saved">
+                <BookmarkIcon />
+              </Link>
               <Stack direction="row" spacing="4px">
                 <Avatar size="sm" />
                 <Box color="brand.700">
