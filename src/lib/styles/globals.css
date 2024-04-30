@@ -1,5 +1,6 @@
 @import url('./../utilities/Toast/toast.css');
 @import url('@smastrom/react-rating/style.css');
+@import url('react-loading-skeleton/dist/skeleton.css');
 ::-webkit-scrollbar {
   width: 8px;
   border-radius: 50px;

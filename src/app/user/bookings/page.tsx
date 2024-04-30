@@ -36,17 +36,8 @@ const fetchData = async (
 };
 
 const page = async ({ searchParams }: IPageProps) => {
-  const { offset, limit, search, status, filterBy, startDate, endDate } =
-    searchParams;
-  const data = await fetchData(
-    offset,
-    limit,
-    search,
-    status,
-    filterBy,
-    startDate,
-    endDate
-  );
+  const { offset, limit, search, status, order, from, to } = searchParams;
+  const data = await fetchData(offset, limit, search, status, order, from, to);
   return <Bookings data={data} />;
 };
 

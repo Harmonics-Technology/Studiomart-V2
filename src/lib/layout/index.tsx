@@ -1,6 +1,7 @@
 'use client';
 
 import { Box } from '@chakra-ui/react';
+import { usePathname } from 'next/navigation';
 import { useCookies } from 'next-client-cookies';
 import { ReactNode } from 'react';
 
@@ -14,7 +15,10 @@ type LayoutProps = {
 
 const Layout = ({ children }: LayoutProps) => {
   const cookies = useCookies();
-  const isLoggedIn = cookies.get('studiomart-user');
+  const pathname = usePathname();
+  const routes = ['/sign-in', '/register'];
+  const isLoggedIn =
+    cookies.get('studiomart-user') && !routes.includes(pathname);
   // useEffect(() => {
   //   (
   //     async () => {
