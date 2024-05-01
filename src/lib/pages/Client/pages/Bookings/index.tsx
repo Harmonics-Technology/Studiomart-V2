@@ -26,36 +26,39 @@ import { useDebouncedCallback } from 'use-debounce';
 
 import ServiceCard from '~/lib/components/ServiceCard';
 import { ContainerBox } from '~/lib/layout/ContainerBox';
+import { useLoaderProgress } from '~/lib/utilities/Hooks/progress-bar';
 import useQueryParams from '~/lib/utilities/Hooks/useQueryParams';
 import Pagination from '~/lib/utilities/Layouts/Paginatio';
 import { BookingView } from '~/services';
 
 const Filters = () => {
   const { queryParams, setQueryParams } = useQueryParams();
+  const showLoaderProgress = useLoaderProgress();
   const setFilterItem = (searchTerm: any) => {
     setQueryParams({ status: searchTerm });
   };
   const status = queryParams.get('status');
   const filterTexts = [
-    { id: '', title: 'All' },
-    { id: 1, title: 'Pending' },
-    { id: 2, title: 'Completed' },
+    { id: '', label: 'All' },
+    { id: 1, label: 'Pending' },
+    { id: 2, label: 'Approved' },
+    { id: 9, label: 'Rejected' },
+    { id: 14, label: 'Cancelled' },
+    { id: 15, label: 'Paid' },
   ];
   const order = queryParams.get('order');
   const sortResponse = () => {
-    if ((order as unknown as number) === 1) {
+    if (order === '1') {
       setQueryParams({ order: 2 });
-      return;
-    }
-    if ((order as unknown as number) === 2) {
+    } else if (order === '2') {
       setQueryParams({ order: 1 });
-      return;
+    } else {
+      setQueryParams({ order: 2 });
     }
-    setQueryParams({ order: 1 });
   };
   const searchFn = useDebouncedCallback(
     (value) => {
-      setQueryParams({ search: value.trim() });
+      showLoaderProgress(() => setQueryParams({ search: value.trim() }));
     },
     // delay in ms
     1000
@@ -87,10 +90,10 @@ const Filters = () => {
               bg={activeFilter ? 'brand.100' : 'none'}
               borderRadius="60px"
               cursor="pointer"
-              onClick={() => setFilterItem(item?.id)}
+              onClick={() => showLoaderProgress(() => setFilterItem(item?.id))}
               _hover={activeFilter ? { bg: 'brand.100' } : { bg: '#ededed' }}
             >
-              <Text>{item.title}</Text>
+              <Text>{item.label}</Text>
             </Box>
           );
         })}
@@ -118,7 +121,8 @@ const Filters = () => {
           range
           ref={dateRef}
           onPropsChange={(e: any) =>
-            e?.value?.length > 1 && filterByDate(e?.value)
+            e?.value?.length > 1 &&
+            showLoaderProgress(() => filterByDate(e?.value))
           }
           // format="MMM DD, YYYY"
           render={(stringDates: any, openCalendar: any) => {
@@ -157,17 +161,11 @@ const Filters = () => {
           h="2.5rem"
           px=".5rem"
           align="center"
-          onClick={() => sortResponse()}
+          onClick={() => showLoaderProgress(() => sortResponse())}
           cursor="pointer"
         >
           <Text>{order === '2' ? 'desc' : 'asc'}</Text>
-          <Icon
-            as={
-              (order as unknown as number) === 1
-                ? BsSortAlphaDownAlt
-                : BsSortAlphaUp
-            }
-          />
+          <Icon as={order === '1' ? BsSortAlphaDownAlt : BsSortAlphaUp} />
         </Flex>
       </Flex>
     </Flex>

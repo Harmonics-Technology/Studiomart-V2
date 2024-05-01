@@ -6,6 +6,7 @@ import NextTopLoader from 'nextjs-toploader';
 
 import Providers from '~/app/providers';
 import Layout from '~/lib/layout';
+import { ProgressBar } from '~/lib/utilities/Hooks/progress-bar';
 import { MetadataValue } from '~/lib/utilities/Layouts/Metadata';
 
 type RootLayoutProps = {
@@ -25,12 +26,14 @@ const RootLayout = ({ children }: RootLayoutProps) => {
     <html lang="en">
       <body>
         {/* <SessionProvider> */}
-        <NextTopLoader color="#1570FA" />
-        <CookiesProvider>
-          <Providers>
-            <Layout>{children}</Layout>
-          </Providers>
-        </CookiesProvider>
+        <NextTopLoader color="#1570FA" showSpinner={false} />
+        <ProgressBar className="progress">
+          <CookiesProvider>
+            <Providers>
+              <Layout>{children}</Layout>
+            </Providers>
+          </CookiesProvider>
+        </ProgressBar>
         {/* </SessionProvider> */}
       </body>
     </html>

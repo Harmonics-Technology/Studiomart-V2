@@ -39,3 +39,10 @@
 .dateWrapper {
   width: 100%;
 }
+.progress {
+  position: fixed;
+  top: 0;
+  height: 3px;
+  background-color: #1570fa;
+  z-index: 999;
+}

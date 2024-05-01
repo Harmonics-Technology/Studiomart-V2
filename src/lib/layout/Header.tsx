@@ -7,10 +7,12 @@ import { usePathname, useRouter } from 'next/navigation';
 
 import ButtonComponent from '../components/Button/Button';
 import Logo from '../components/Logo';
+import { useLoaderProgress } from '../utilities/Hooks/progress-bar';
 
 const Header = () => {
   const pathname = usePathname();
   const router = useRouter();
+  const showLoaderProgress = useLoaderProgress();
 
   const hideNavbarRoutes = ['/sign-in', '/user'];
 
@@ -81,7 +83,9 @@ const Header = () => {
                       bg="brand.100"
                       color="#FFFFFF"
                       text="Get Started"
-                      onClick={() => router.push('/sign-in')}
+                      onClick={() =>
+                        showLoaderProgress(() => router.push('/sign-in'))
+                      }
                     />
                     {/* <ButtonComponent
                       width="125px"
