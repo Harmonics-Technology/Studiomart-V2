@@ -21,7 +21,6 @@ import type {
 const ReviewCard: React.FC<ReviewCardProps> = ({
   logo,
   name,
-  address,
   date,
   review,
 }) => {
@@ -42,7 +41,7 @@ const ReviewCard: React.FC<ReviewCardProps> = ({
                 <Heading fontSize={18} fontWeight={700} color="#171717">
                   {name}
                 </Heading>
-                <Text fontSize={14}>{address}</Text>
+                {/* <Text fontSize={14}>{address}</Text> */}
               </Stack>
             </Box>
           </Flex>
@@ -120,11 +119,36 @@ const ThirdSection = () => {
 
               <Box w="350px">
                 <Stack spacing={2}>
-                  <ProgressBar progressBarBg="#3D3D3D" rating={5} />
-                  <ProgressBar progressBarBg="#3D3D3D" rating={4} />
-                  <ProgressBar progressBarBg="#3D3D3D" rating={3} />
-                  <ProgressBar progressBarBg="#3D3D3D" rating={2} />
-                  <ProgressBar progressBarBg="#3D3D3D" rating={1} />
+                  <ProgressBar
+                    progressBarBg="#3D3D3D"
+                    rating={5}
+                    count={5}
+                    total={4}
+                  />
+                  <ProgressBar
+                    progressBarBg="#3D3D3D"
+                    rating={4}
+                    count={5}
+                    total={4}
+                  />
+                  <ProgressBar
+                    progressBarBg="#3D3D3D"
+                    rating={3}
+                    count={5}
+                    total={4}
+                  />
+                  <ProgressBar
+                    progressBarBg="#3D3D3D"
+                    rating={2}
+                    count={5}
+                    total={4}
+                  />
+                  <ProgressBar
+                    progressBarBg="#3D3D3D"
+                    rating={1}
+                    count={5}
+                    total={4}
+                  />
                 </Stack>
               </Box>
             </Flex>
@@ -139,43 +163,49 @@ const ThirdSection = () => {
               <ReviewCard
                 logo="/assets/company-logo.png"
                 name="Sola W"
-                address="Lagos, Nigeria"
+                // address="Lagos, Nigeria"
                 date="April 7, 2023"
+                review="The lighting, backdrop, and overall atmosphere were excellent and the photographer was incredibly skilled and attentive to detail. "
+                service="laundry"
+              />
+              <ReviewCard
+                logo="/assets/company-logo.png"
+                name="Sola W"
+                // address="Lagos, Nigeria"
+                date="April 7, 2023"
+                service="laundry"
                 review="The lighting, backdrop, and overall atmosphere were excellent and the photographer was incredibly skilled and attentive to detail. "
               />
               <ReviewCard
                 logo="/assets/company-logo.png"
                 name="Sola W"
-                address="Lagos, Nigeria"
+                // address="Lagos, Nigeria"
                 date="April 7, 2023"
+                service="laundry"
                 review="The lighting, backdrop, and overall atmosphere were excellent and the photographer was incredibly skilled and attentive to detail. "
               />
               <ReviewCard
                 logo="/assets/company-logo.png"
                 name="Sola W"
-                address="Lagos, Nigeria"
+                // address="Lagos, Nigeria"
                 date="April 7, 2023"
+                service="laundry"
                 review="The lighting, backdrop, and overall atmosphere were excellent and the photographer was incredibly skilled and attentive to detail. "
               />
               <ReviewCard
                 logo="/assets/company-logo.png"
                 name="Sola W"
-                address="Lagos, Nigeria"
+                // address="Lagos, Nigeria"
                 date="April 7, 2023"
+                service="laundry"
                 review="The lighting, backdrop, and overall atmosphere were excellent and the photographer was incredibly skilled and attentive to detail. "
               />
               <ReviewCard
                 logo="/assets/company-logo.png"
                 name="Sola W"
-                address="Lagos, Nigeria"
+                // address="Lagos, Nigeria"
                 date="April 7, 2023"
-                review="The lighting, backdrop, and overall atmosphere were excellent and the photographer was incredibly skilled and attentive to detail. "
-              />
-              <ReviewCard
-                logo="/assets/company-logo.png"
-                name="Sola W"
-                address="Lagos, Nigeria"
-                date="April 7, 2023"
+                service="laundry"
                 review="The lighting, backdrop, and overall atmosphere were excellent and the photographer was incredibly skilled and attentive to detail. "
               />
             </Flex>

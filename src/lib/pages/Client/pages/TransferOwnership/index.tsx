@@ -1,13 +1,18 @@
 'use client';
 
-import { Box, Heading, FormLabel, Stack, FormControl } from '@chakra-ui/react';
-import { useState } from 'react';
+import {
+  Box,
+  Heading,
+  // FormLabel, Stack,
+  FormControl,
+} from '@chakra-ui/react';
+// import { useState } from 'react';
 
 import ButtonComponent, { BackButton } from '~/lib/components/Button/Button';
-import FormInput from '~/lib/utilities/FormInput/FormInput';
+// import FormInput from '~/lib/utilities/FormInput/FormInput';
 
 const Index = () => {
-  const [firstName, setFirstName] = useState<string>('');
+  // const [firstName, setFirstName] = useState<string>('');
   return (
     <Box as="section" maxW="1280px" mx="auto" py="48px">
       <Box mb="35px">
@@ -22,7 +27,7 @@ const Index = () => {
 
         <Box>
           <FormControl>
-            <Stack spacing="20px" mb="26px">
+            {/* <Stack spacing="20px" mb="26px">
               <Box>
                 <FormLabel
                   textTransform="uppercase"
@@ -87,7 +92,7 @@ const Index = () => {
                   setValue={setFirstName}
                 />
               </Box>
-            </Stack>
+            </Stack> */}
             <ButtonComponent
               text="Transfer"
               bg="brand.100"

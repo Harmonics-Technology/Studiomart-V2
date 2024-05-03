@@ -5,7 +5,7 @@ import {
   Stack,
   Text,
   Icon,
-  Checkbox,
+  // Checkbox,
 } from '@chakra-ui/react';
 import { IoChevronForwardCircleOutline } from 'react-icons/io5';
 
@@ -19,7 +19,7 @@ import CustomText from '~/lib/components/Text';
 import Wrapper from '~/lib/components/Wrapper';
 import type {
   SingleDetailProps,
-  AdditionalServicesProps,
+  // AdditionalServicesProps,
 } from '~/lib/utilities/Context/schemas';
 
 const SingleDetail: React.FC<SingleDetailProps> = ({
@@ -40,26 +40,26 @@ const SingleDetail: React.FC<SingleDetailProps> = ({
   );
 };
 
-const AdditionalServices: React.FC<AdditionalServicesProps> = ({ text }) => {
-  return (
-    <Box w="400px">
-      <Flex alignItems="center" gap={3}>
-        <Checkbox size="lg" />
-        <Text>{text}</Text>
-      </Flex>
-    </Box>
-  );
-};
+// const AdditionalServices: React.FC<AdditionalServicesProps> = ({ service }) => {
+//   return (
+//     <Box w="400px">
+//       <Flex alignItems="center" gap={3}>
+//         <Checkbox size="lg" />
+//         <Text>{service}</Text>
+//       </Flex>
+//     </Box>
+//   );
+// };
 
 const SecondSection = () => {
-  const additionalServices = [
-    'Professional Makeup Services - 5,000 NGN ',
-    'Wardrobe Styling and Rentals - 5, 000 NGN',
-    'Video Coverage - 5, 000 NGN',
-    'Photo Slideshow or Montage - 5, 000 NGN',
-    'Customized Themed Setups - 5, 000 NGN',
-    'Professional Hair Styling - 5, 000 NGN',
-  ];
+  // const additionalServices = [
+  //   'Professional Makeup Services - 5,000 NGN ',
+  //   'Wardrobe Styling and Rentals - 5, 000 NGN',
+  //   'Video Coverage - 5, 000 NGN',
+  //   'Photo Slideshow or Montage - 5, 000 NGN',
+  //   'Customized Themed Setups - 5, 000 NGN',
+  //   'Professional Hair Styling - 5, 000 NGN',
+  // ];
   return (
     <Box>
       <Wrapper>
@@ -98,13 +98,13 @@ const SecondSection = () => {
             </Text>
           </Box>
 
-          <Box maxW="900px">
+          {/* <Box maxW="900px">
             <Flex flexWrap="wrap" rowGap={4} justifyContent="space-between">
               {additionalServices.map((service, index) => (
-                <AdditionalServices key={index} text={service} />
+                <AdditionalServices key={index} service={service} />
               ))}
             </Flex>
-          </Box>
+          </Box> */}
 
           <Box>
             <Flex alignItems="center" gap={2}>

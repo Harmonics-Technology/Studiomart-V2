@@ -44,7 +44,7 @@ const UserInformation = ({ data }: IBookingDetails) => {
   );
 };
 
-const StatusButtons = () => {
+const StatusButtons = ({ data }: IBookingDetails) => {
   return (
     <Box>
       <Flex alignItems="center" justifyContent="space-between">
@@ -53,35 +53,40 @@ const StatusButtons = () => {
           ButtonIcon={CancelIcon}
           color="status.700"
           onClick={() => {}}
-          isActive
+          isActive={data?.status === 'PENDING'}
+          isDisabled={data?.status !== 'PENDING'}
         />
         <StudioStatusButton
           text="Make Payment"
           ButtonIcon={PaymentIcon}
           color="brand.100"
           onClick={() => {}}
-          isActive
+          isActive={data?.status === 'APPROVED'}
+          isDisabled={data?.status !== 'APPROVED'}
         />
         <StudioStatusButton
           text="Chat with Vendor"
           ButtonIcon={ChatIcon}
           color="status.800"
           onClick={() => {}}
-          isActive
+          isActive={data?.status === 'PAID'}
+          isDisabled={data?.status !== 'PAID'}
         />
         <StudioStatusButton
           text="Rate this Service"
           ButtonIcon={RatingIcon}
           color="brand.600"
           onClick={() => {}}
-          isActive={false}
+          isActive={data?.status === 'COMPLETED'}
+          isDisabled={data?.status !== 'COMPLETED'}
         />
         <StudioStatusButton
           text="Mark as Completed"
           ButtonIcon={CompletedIcon}
           color="status.900"
           onClick={() => {}}
-          isActive
+          isActive={data?.status === 'COMPLETED'}
+          isDisabled={data?.status !== 'COMPLETED'}
         />
       </Flex>
     </Box>
@@ -165,7 +170,7 @@ const SecondSection = ({ data }: IBookingDetails) => {
     <Box w="100%">
       <Stack spacing="80px">
         <UserInformation data={data} />
-        <StatusButtons />
+        <StatusButtons data={data} />
         <StudioInformation data={data} />
       </Stack>
     </Box>
