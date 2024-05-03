@@ -13,8 +13,8 @@ import {
 } from '@chakra-ui/react';
 
 import ButtonComponent from '~/lib/components/Button/Button';
-import FormInput from '~/lib/utilities/FormInput/FormInput';
-import { GiftRecipientModel } from '~/services';
+// import FormInput from '~/lib/utilities/FormInput/FormInput';
+// import { GiftRecipientModel, } from '~/services';
 // import { useForm } from 'react-hook-form';
 
 // import * as yup from 'yup';
@@ -57,7 +57,7 @@ const GiftForm = () => {
               <Box>
                 <FormControl mb="26px">
                   <Stack spacing="20px">
-                    <FormInput<GiftRecipientModel>
+                    {/* <FormInput<GiftRecipientModel>
                       type="text"
                       register={register}
                       name="name"
@@ -91,7 +91,7 @@ const GiftForm = () => {
                       name="message"
                       error={errors?.message}
                       label="Message"
-                    />
+                    /> */}
                   </Stack>
                 </FormControl>
                 <ButtonComponent

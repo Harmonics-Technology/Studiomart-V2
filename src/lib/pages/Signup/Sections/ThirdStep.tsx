@@ -1,27 +1,27 @@
 import {
   Box,
   Text,
-  Flex,
+  // Flex,
   VStack,
   Stack,
   FormControl,
-  FormLabel,
-  Radio,
-  RadioGroup,
-  Checkbox,
+  // FormLabel,
+  // Radio,
+  // RadioGroup,
+  // Checkbox,
 } from '@chakra-ui/react';
-import Link from 'next/link';
-import { useState } from 'react';
+// import Link from 'next/link';
+// import { useState } from 'react';
 
 import ButtonComponent from '~/lib/components/Button/Button';
 import HeadingWithStar from '~/lib/components/HeadingWithStar';
 import SigninOption from '~/lib/components/SigninOptions';
 import type { FormStepProps } from '~/lib/utilities/Context/schemas';
-import CustomSelect from '~/lib/utilities/CustomSelect/CustomSelect';
-import FormInput from '~/lib/utilities/FormInput/FormInput';
+// import CustomSelect from '~/lib/utilities/CustomSelect/CustomSelect';
+// import FormInput from '~/lib/utilities/FormInput/FormInput';
 
 const ThirdStep = ({ step, setStep }: FormStepProps) => {
-  const [email, setEmail] = useState<string>('');
+  // const [email, setEmail] = useState<string>('');
 
   const nextStep = () => {
     setStep(step + 1);
@@ -45,7 +45,7 @@ const ThirdStep = ({ step, setStep }: FormStepProps) => {
         </Box>
         <Box>
           <FormControl>
-            <Stack spacing="20px" mb="26px">
+            {/* <Stack spacing="20px" mb="26px">
               <Box>
                 <FormLabel fontSize="10px" fontWeight={700}>
                   EMAIL ADDRESS/PHONE NUMBER
@@ -179,7 +179,7 @@ const ThirdStep = ({ step, setStep }: FormStepProps) => {
                   </Link>
                 </Checkbox>
               </Box>
-            </Stack>
+            </Stack> */}
             <ButtonComponent
               text="Next"
               color="brand.400"

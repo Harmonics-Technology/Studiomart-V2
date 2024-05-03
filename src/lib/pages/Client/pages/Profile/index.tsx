@@ -3,22 +3,22 @@
 import {
   Box,
   Heading,
-  FormLabel,
+  // FormLabel,
   Avatar,
-  Stack,
+  // Stack,
   VStack,
   FormControl,
 } from '@chakra-ui/react';
-import { useState } from 'react';
+// import { useState } from 'react';
 
 import {
   BackButton,
   OutlineButtonComponent,
 } from '~/lib/components/Button/Button';
-import FormInput from '~/lib/utilities/FormInput/FormInput';
+// import FormInput from '~/lib/utilities/FormInput/FormInput';
 
 const Index = () => {
-  const [firstName, setFirstName] = useState<string>('');
+  // const [firstName, setFirstName] = useState<string>('');
   const isEditing = false;
   return (
     <Box as="section" maxW="1280px" mx="auto" py="48px">
@@ -35,7 +35,7 @@ const Index = () => {
 
         <Box>
           <FormControl>
-            <Stack spacing="20px" mb="26px">
+            {/* <Stack spacing="20px" mb="26px">
               <Box>
                 <FormLabel
                   textTransform="uppercase"
@@ -100,7 +100,7 @@ const Index = () => {
                   setValue={setFirstName}
                 />
               </Box>
-            </Stack>
+            </Stack> */}
             <OutlineButtonComponent
               text={isEditing ? 'Save' : 'Edit Profile'}
               color="brand.100"
