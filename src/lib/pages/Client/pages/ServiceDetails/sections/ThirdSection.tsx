@@ -6,9 +6,11 @@ import {
   Flex,
   VStack,
   Image,
+  Circle,
 } from '@chakra-ui/react';
 import dayjs from 'dayjs';
 import { FaStar } from 'react-icons/fa';
+import { useDummyImage } from 'react-simple-placeholder-image';
 
 import Ratings from '~/lib/components/Ratings';
 import CustomText from '~/lib/components/Text';
@@ -25,20 +27,24 @@ const ReviewCard: React.FC<ReviewCardProps> = ({
   name,
   date,
   review,
-  service,
+  reviewCount,
 }) => {
+  const image = useDummyImage({});
+
   return (
     <Box w={['100%', '47%']} mb="14">
       <Stack spacing={5}>
         <Box>
           <Flex alignItems="center" gap={2.5}>
-            <Image
-              src={logo}
-              alt={name}
-              width={48}
-              height={48}
-              style={{ borderRadius: '50%' }}
-            />
+            <Circle size="3rem" overflow="hidden">
+              <Image
+                src={logo || image}
+                alt={name}
+                width="full"
+                height="full"
+                objectFit="cover"
+              />
+            </Circle>
             <Box>
               <Stack spacing={0.5}>
                 <Heading fontSize={18} fontWeight={700} color="#171717">
@@ -51,7 +57,7 @@ const ReviewCard: React.FC<ReviewCardProps> = ({
         </Box>
         <Box>
           <Flex alignItems="center" gap={2.5}>
-            <Ratings value={service?.averageRating} />
+            <Ratings value={reviewCount} />
             <CustomText text="." />
             <CustomText text={date} />
           </Flex>
@@ -179,9 +185,9 @@ const ThirdSection = ({
                 <ReviewCard
                   logo={x.user?.profilePicture}
                   name={x?.user?.fullName}
-                  date={dayjs(x?.dateCreated).format('dddd do, YYYY')}
+                  date={dayjs(x?.dateCreated).format('dddd, MMMM D, YYYY')}
                   review={x?.reviewNote}
-                  service={x}
+                  reviewCount={x.reviewCount}
                 />
               );
             })}

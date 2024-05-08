@@ -84,7 +84,7 @@ const FirstStep = ({ step, setStep }: FormStepProps) => {
     <Box
       as="section"
       w="100%"
-      h="auto"
+      h="100vh"
       display="flex"
       alignItems="center"
       justifyContent="center"

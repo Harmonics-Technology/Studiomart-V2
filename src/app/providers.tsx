@@ -4,6 +4,8 @@ import { CacheProvider } from '@chakra-ui/next-js';
 import { useCookies } from 'next-client-cookies';
 
 import { Chakra as ChakraProvider } from '~/lib/components/Chakra';
+import { AuthContextProvider } from '~/lib/utilities/Context/AuthContext';
+import { ChatContextProvider } from '~/lib/utilities/Context/ChatContext';
 import { ServiceTypeProvider } from '~/lib/utilities/Context/ServiceTypeContext';
 import ToasterWrapper from '~/lib/utilities/Toast/ToasterWrapper';
 import { OpenAPI } from '~/services';
@@ -15,9 +17,13 @@ const Providers = ({ children }: { children: React.ReactNode }) => {
   return (
     <CacheProvider>
       <ToasterWrapper />
-      <ServiceTypeProvider>
-        <ChakraProvider>{children}</ChakraProvider>
-      </ServiceTypeProvider>
+      <AuthContextProvider>
+        <ChatContextProvider>
+          <ServiceTypeProvider>
+            <ChakraProvider>{children}</ChakraProvider>
+          </ServiceTypeProvider>
+        </ChatContextProvider>
+      </AuthContextProvider>
     </CacheProvider>
   );
 };

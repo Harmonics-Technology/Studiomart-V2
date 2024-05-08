@@ -3,8 +3,13 @@ import dayjs from 'dayjs';
 
 import Ratings from '~/lib/components/Ratings';
 import { IBookingDetails } from '~/lib/utilities/Context/schemas';
+import Naira from '~/lib/utilities/Functions/Naira';
+import { AdditionalServiceView } from '~/services';
 
-const FirstSection = ({ data }: IBookingDetails) => {
+import { BookingStatus } from './BookingStatus';
+
+const FirstSection = ({ bookings }: IBookingDetails) => {
+  const status = bookings.status?.toLowerCase();
   return (
     <Box w="100%" mb="45px">
       <Stack spacing="80px">
@@ -18,8 +23,8 @@ const FirstSection = ({ data }: IBookingDetails) => {
             <Box maxW="521px" h="458px" borderRadius="71px">
               <Image
                 src={
-                  (data?.service?.bannerImageURL ||
-                    data?.service?.media?.at(0)?.url) as string
+                  (bookings?.service?.bannerImageURL ||
+                    bookings?.service?.media?.at(0)?.url) as string
                 }
                 alt="studio-image"
                 w="100%"
@@ -32,18 +37,18 @@ const FirstSection = ({ data }: IBookingDetails) => {
               <Stack spacing="28px" mb="48px">
                 <Box>
                   <Heading fontSize={28} fontWeight={700} mb="16px">
-                    {data?.service?.name}
+                    {bookings?.service?.name}
                   </Heading>
                   <Flex alignItems="center" gap="12px">
                     <Text fontWeight={500}>
-                      {data?.service?.studio?.name}{' '}
+                      {bookings?.service?.studio?.name}{' '}
                       <Box as="span" fontSize={12} color="text.800">
-                        {data?.service?.averageRating} Star
+                        {bookings?.service?.averageRating} Star
                       </Box>
                     </Text>
-                    <Ratings value={data?.service?.averageRating || 0} />
+                    <Ratings value={bookings?.service?.averageRating || 0} />
                     <Text fontSize={12} color="brand.600">
-                      ({data?.service?.totalReviewCount} reviews)
+                      ({bookings?.service?.totalReviewCount} reviews)
                     </Text>
                   </Flex>
                 </Box>
@@ -55,7 +60,7 @@ const FirstSection = ({ data }: IBookingDetails) => {
                         Booking reference
                       </Heading>
                       <Text fontSize={20} color="brand.600">
-                        {data?.bookingReference}
+                        {bookings?.bookingReference}
                       </Text>
                     </Box>
                     <Box>
@@ -63,7 +68,7 @@ const FirstSection = ({ data }: IBookingDetails) => {
                         Date
                       </Heading>
                       <Text fontSize={20} color="brand.600">
-                        {dayjs(data?.date).format('DD/MM/YYYY')}
+                        {dayjs(bookings?.date).format('DD/MM/YYYY')}
                       </Text>
                     </Box>
                     <Box>
@@ -71,7 +76,9 @@ const FirstSection = ({ data }: IBookingDetails) => {
                         Time
                       </Heading>
                       <Text fontSize={20} color="brand.600">
-                        {dayjs(`${dayjs().format('YYYY-MM-DD')}T${data.time}Z`)
+                        {dayjs(
+                          `${dayjs().format('YYYY-MM-DD')}T${bookings.time}Z`
+                        )
                           .subtract(1, 'hour')
                           .format('hh:mm A')}
                       </Text>
@@ -79,44 +86,35 @@ const FirstSection = ({ data }: IBookingDetails) => {
                   </Flex>
                 </Box>
 
-                <Box>
-                  <Flex alignItems="center" gap="67px" flexWrap="wrap">
-                    <Box>
-                      <Heading fontSize={18} fontWeight={700} mb="8px">
-                        Type of Service
-                      </Heading>
-                      <Text fontSize={20} color="brand.600">
-                        Birthday photoshoot
-                      </Text>
+                {bookings?.additionalServices?.map(
+                  (b: AdditionalServiceView) => (
+                    <Box key={b.id}>
+                      <Flex alignItems="center" gap="67px" flexWrap="wrap">
+                        <Box>
+                          <Heading fontSize={18} fontWeight={700} mb="8px">
+                            Type of Service
+                          </Heading>
+                          <Text fontSize={20} color="brand.600">
+                            {b?.name}
+                          </Text>
+                        </Box>
+                        <Box>
+                          <Heading fontSize={18} fontWeight={700} mb="8px">
+                            Service Charge
+                          </Heading>
+                          <Text fontSize={20} color="brand.600">
+                            N{Naira(b?.price as number)}
+                          </Text>
+                        </Box>
+                      </Flex>
                     </Box>
-                    <Box>
-                      <Heading fontSize={18} fontWeight={700} mb="8px">
-                        Service Charge
-                      </Heading>
-                      <Text fontSize={20} color="brand.600">
-                        N15,000
-                      </Text>
-                    </Box>
-                  </Flex>
-                </Box>
+                  )
+                )}
               </Stack>
-
-              <Box
-                w="100%"
-                py="17px"
-                px="18px"
-                bg="text.900"
-                border="1px solid"
-                borderColor="status.500"
-                borderRadius="12px"
-              >
-                <Heading fontSize={18} fontWeight={700} mb="4px">
-                  Pending Confirmation
-                </Heading>
-                <Text color="status.600" fontSize={15}>
-                  Your booking with reference LTMAKSS is pending confirmation
-                </Text>
-              </Box>
+              <BookingStatus
+                reference={bookings?.bookingReference}
+                response={status}
+              />
             </Box>
           </Flex>
         </Box>

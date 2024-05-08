@@ -11,7 +11,7 @@ import {
   Grid,
 } from '@chakra-ui/react';
 import Link from 'next/link';
-import { usePathname, useRouter } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import { useCookies } from 'next-client-cookies';
 import { useState } from 'react';
 import toast from 'react-hot-toast';
@@ -19,6 +19,8 @@ import {
   IoChevronBackCircleOutline,
   IoChevronForwardCircleOutline,
 } from 'react-icons/io5';
+import { useDummyImage } from 'react-simple-placeholder-image';
+import Slider from 'react-slick';
 
 import ButtonComponent, {
   IconButtonComponent,
@@ -33,7 +35,13 @@ import type {
   SingleDetailProps,
   AdditionalServicesProps,
 } from '~/lib/utilities/Context/schemas';
-import { AdditionalServiceView, ServiceView, StudioService } from '~/services';
+import { useLoaderProgress } from '~/lib/utilities/Hooks/progress-bar';
+import {
+  AdditionalServiceView,
+  MediaView,
+  ServiceView,
+  StudioService,
+} from '~/services';
 
 const SingleDetail: React.FC<SingleDetailProps> = ({
   label,
@@ -74,7 +82,6 @@ const AdditionalServices: React.FC<AdditionalServicesProps> = ({
 const FirstSection = ({ data }: { data: ServiceView | undefined }) => {
   const studioName = data?.studio?.name;
   const router = useRouter();
-  const pathname = usePathname();
   const cookies = useCookies();
   const [loading, setLoading] = useState(false);
   const saveServiceForLater = async () => {
@@ -86,7 +93,7 @@ const FirstSection = ({ data }: { data: ServiceView | undefined }) => {
       if (result.status) {
         setLoading(false);
         // setSaveStats(true);
-        router.replace(pathname);
+        router.refresh();
         toast.success('Added to saved items');
         return;
       }
@@ -130,10 +137,25 @@ const FirstSection = ({ data }: { data: ServiceView | undefined }) => {
     setSelectedAddon([...selectedAddon, value]);
   };
 
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    autoplaySpeed: 4000,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: true,
+    className: 'service-slick',
+  };
+
+  const showLoaderProgress = useLoaderProgress();
   const bookService = () => {
     cookies.set('addons', JSON.stringify(selectedAddon));
-    router.push(`/services/schedule-session/${data?.id}`);
+    showLoaderProgress(() =>
+      router.push(`/services/schedule-session/${data?.id}`)
+    );
   };
+  const image = useDummyImage({});
   return (
     <ContainerBox mb="50px" p={[3, 0]}>
       <Box color="#636363" mb="8">
@@ -165,13 +187,27 @@ const FirstSection = ({ data }: { data: ServiceView | undefined }) => {
             overflow="hidden"
             h="700px"
           >
-            <Image
-              src={(data?.bannerImageURL || data?.media?.at(0)?.url) as string}
-              alt={`main image of ${data?.name}`}
-              w="100%"
-              h="100%"
-              objectFit="cover"
-            />
+            {(data?.media?.length as any) > 0 ? (
+              <Slider {...settings}>
+                {data?.media?.map((x: MediaView) => (
+                  <Image
+                    src={x.url as string}
+                    alt={`main image of ${data?.name}`}
+                    w="100%"
+                    h="100%"
+                    objectFit="cover"
+                  />
+                ))}
+              </Slider>
+            ) : (
+              <Image
+                src={(data?.bannerImageURL as string) || image}
+                alt={`main image of ${data?.name}`}
+                w="100%"
+                h="100%"
+                objectFit="cover"
+              />
+            )}
           </Box>
           <Box w="100%">
             <Stack spacing={7}>

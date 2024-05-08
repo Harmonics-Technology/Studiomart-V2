@@ -145,6 +145,7 @@ export const StudioStatusButton = ({
   onClick,
   isActive,
   isDisabled,
+  isLoading,
 }: StudioStatusButtonProps) => {
   return (
     <Button
@@ -158,6 +159,7 @@ export const StudioStatusButton = ({
       _hover={{ bg: 'none' }}
       onClick={onClick}
       isDisabled={isDisabled}
+      isLoading={isLoading}
     >
       <Flex alignItems="center" gap="8px">
         <ButtonIcon isActive={isActive} />

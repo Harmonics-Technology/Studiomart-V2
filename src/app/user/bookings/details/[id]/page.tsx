@@ -21,7 +21,7 @@ const fetchData = async (id: string) => {
 const page = withPageAuth(async ({ params }: IPageProps) => {
   const { id } = params;
   const data = await fetchData(id);
-  return <BookingInformation data={data as BookingView} />;
+  return <BookingInformation bookings={data as BookingView} />;
 });
 
 export default page;

@@ -12,18 +12,21 @@ import {
   Button,
   Square,
   Grid,
+  useDisclosure,
 } from '@chakra-ui/react';
 import dayjs from 'dayjs';
 import { useRouter } from 'next/navigation';
 import { useCookies } from 'next-client-cookies';
 import type { ReactNode } from 'react';
 import { useMemo, useState } from 'react';
+import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { BiListCheck } from 'react-icons/bi';
 import { IoChevronForward } from 'react-icons/io5';
 import { useDummyImage } from 'react-simple-placeholder-image';
 import Slider from 'react-slick';
 
+import GiftForm from '../../GiftService/Sections/GiftForm';
 import ButtonComponent from '~/lib/components/Button/Button';
 import CalendarIcon from '~/lib/components/Icons/CalendarIcon';
 import { GiftIcon, UserIcon } from '~/lib/components/Icons/TagIcons';
@@ -31,6 +34,7 @@ import Ratings from '~/lib/components/Ratings';
 import { ICustomerHome } from '~/lib/utilities/Context/schemas';
 import Naira from '~/lib/utilities/Functions/Naira';
 import VoucherCoupon from '~/lib/utilities/Functions/VoucherCoupon';
+import { useLoaderProgress } from '~/lib/utilities/Hooks/progress-bar';
 import useQueryParams from '~/lib/utilities/Hooks/useQueryParams';
 import {
   AdditionalServiceView,
@@ -55,9 +59,10 @@ const BookingSummaryCard = ({ singleService, id, addons }: ICustomerHome) => {
   const Cookies = useCookies();
   const date = queryParams.get('date');
   const time = queryParams.get('time');
-  const [selectedAddon, setSelectedAddon] =
-    useState<AdditionalServiceView[]>(addons);
-  const [loading, setLoading] = useState(false);
+  const [selectedAddon, setSelectedAddon] = useState<AdditionalServiceView[]>(
+    addons || []
+  );
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
   const addToArray = (data: AdditionalServiceView) => {
     const exist = selectedAddon.find((x: any) => x.id === data.id);
@@ -83,8 +88,8 @@ const BookingSummaryCard = ({ singleService, id, addons }: ICustomerHome) => {
   const image = useDummyImage({});
 
   const amount =
-    selectedAddon?.reduce((a, b) => a + (b.price as number), 0) +
-    (singleService?.price as number);
+    selectedAddon?.reduce((a, b) => a + (b.price as number), 0) ||
+    0 + (singleService?.price as number);
   const tax = (amount / 100) * 7.5;
   const grandTotal = amount + tax;
   const [couponInput, setCouponInput] = useState<any>();
@@ -110,32 +115,41 @@ const BookingSummaryCard = ({ singleService, id, addons }: ICustomerHome) => {
       ? grandTotal - couponApplied?.maxDiscount
       : grandTotal - voucherAdded;
 
-  const CreateBooking = async () => {
-    const data: BookingModel = {
-      date: date as string,
-      inputTime: {
-        hour: Number(newTime[0]),
-        minute: Number(newTime[1]),
-      },
-      serviceId: id,
-      additionalServices: selectedAddon.map((x) => x.id as string),
-      voucherId: couponApplied?.id,
+  const {
+    handleSubmit,
+    register,
+    watch,
+    formState: { errors, isSubmitting },
+  } = useForm<BookingModel>({
+    mode: 'all',
+  });
+
+  const giftUser = watch('recipient.name');
+  const showLoaderProgress = useLoaderProgress();
+
+  const CreateBooking = async (data: BookingModel) => {
+    // const data: BookingModel = {
+    data.isGift = !!giftUser;
+    data.date = date as string;
+    data.inputTime = {
+      hour: Number(newTime[0]),
+      minute: Number(newTime[1]),
     };
-    setLoading(true);
+    data.serviceId = id;
+    data.additionalServices = selectedAddon.map((x) => x.id as string);
+    data.voucherId = couponApplied?.id;
+    // };
     try {
       const result = await BookingService.createBooking({ requestBody: data });
 
       if (result.status) {
-        setLoading(false);
         toast.success(result.message as string);
         Cookies.remove('addons');
-        router.push(`/user/bookings`);
+        showLoaderProgress(() => router.push(`/user/bookings`));
         return;
       }
-      setLoading(false);
       toast.error(result.message as string);
     } catch (error: any) {
-      setLoading(false);
       toast.error(error?.body?.message || error?.message, {
         className: 'loginToast',
       });
@@ -336,10 +350,13 @@ const BookingSummaryCard = ({ singleService, id, addons }: ICustomerHome) => {
 
           <BookingSummaryCardWrapper>
             <Flex alignItems="center" justifyContent="space-between">
-              <Box>
+              <Box onClick={onOpen} cursor="pointer">
                 <Flex gap="8px" alignItems="center">
                   <GiftIcon />
-                  <Text>Book as a gift</Text>
+                  <Box>
+                    <Text>Book as a gift</Text>
+                    {giftUser && <Text>Booking for {giftUser}</Text>}
+                  </Box>
                 </Flex>
               </Box>
               <Box>
@@ -353,10 +370,18 @@ const BookingSummaryCard = ({ singleService, id, addons }: ICustomerHome) => {
           color="brand.400"
           bg="brand.100"
           width="100%"
-          onClick={CreateBooking}
-          loading={loading}
+          onClick={() => handleSubmit(CreateBooking)()}
+          loading={isSubmitting}
         />
       </Box>
+      {isOpen && (
+        <GiftForm
+          isOpen={isOpen}
+          onClose={onClose}
+          register={register}
+          errors={errors}
+        />
+      )}
     </Grid>
   );
 };

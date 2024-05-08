@@ -1,7 +1,7 @@
 'use client';
 
 import { Box } from '@chakra-ui/react';
-// import { usePathname } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 import { useCookies } from 'next-client-cookies';
 import { ReactNode, useState } from 'react';
 
@@ -16,16 +16,18 @@ type LayoutProps = {
 
 const Layout = ({ children }: LayoutProps) => {
   const cookies = useCookies();
-  const isLoggedIn = cookies.get('studiomart-user');
   const [openSideNav, setOpenSideNav] = useState<boolean>(false);
-  // const pathname = usePathname();
-  // const routes = ['/sign-in', '/register'];
-  // const isLoggedIn =
-  //   cookies.get('studiomart-user') && !routes.includes(pathname);
+  const pathname = usePathname();
+  const routes = ['/sign-in', '/register'];
+  const isLoggedIn =
+    cookies.get('studiomart-user') && !routes.includes(pathname);
 
   return (
     <Box margin="0 auto" transition="0.5s ease-out">
-      {openSideNav && <SideNav onClick={() => setOpenSideNav(false)} />}
+      <SideNav
+        onClick={() => setOpenSideNav(false)}
+        openSideNav={openSideNav}
+      />
       <Box>
         {isLoggedIn ? (
           <UserHeader onClick={() => setOpenSideNav(true)} />

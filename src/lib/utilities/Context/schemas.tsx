@@ -96,7 +96,7 @@ export interface ReviewCardProps {
   // address: any;
   date: any;
   review: any;
-  service: any;
+  reviewCount: any;
 }
 
 export interface ProgressBarProps {
@@ -252,6 +252,7 @@ export interface StudioStatusButtonProps {
   onClick: () => void;
   isActive: boolean;
   isDisabled: boolean;
+  isLoading?: any;
 }
 
 export interface StudioButtonIconProps {
@@ -292,7 +293,7 @@ export interface ISingleBook {
 }
 
 export interface IBookingDetails {
-  data: BookingView;
+  bookings: BookingView;
 }
 
 export interface SideNavIconProps {
@@ -305,6 +306,7 @@ export interface OpenSideNavProps {
 
 export interface CloseSideNavProps {
   onClick: () => void;
+  openSideNav: boolean;
 }
 
 export interface SideNavItemProps {
@@ -312,4 +314,10 @@ export interface SideNavItemProps {
   Icon: any;
   link: string;
   isActive: boolean;
+}
+export interface IGiftFormProps {
+  isOpen: boolean;
+  onClose: any;
+  register: any;
+  errors: any;
 }

@@ -1,9 +1,10 @@
 'use client';
 
+/* eslint-disable @typescript-eslint/no-unused-expressions */
 import { Box, Text, Stack, Flex } from '@chakra-ui/react';
 import { yupResolver } from '@hookform/resolvers/yup';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
+// import { useRouter } from 'next/navigation';
 import { useCookies } from 'next-client-cookies';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
@@ -11,15 +12,19 @@ import toast from 'react-hot-toast';
 import * as yup from 'yup';
 
 import ButtonComponent from '~/lib/components/Button/Button';
+import { auth, signIn } from '~/lib/components/firebase/firebase';
 import HeadingWithStar from '~/lib/components/HeadingWithStar';
 import SigninOption from '~/lib/components/SigninOptions';
 import FormInput from '~/lib/utilities/FormInput/FormInput';
+// import { useLoaderProgress } from '~/lib/utilities/Hooks/progress-bar';
+import useQueryParams from '~/lib/utilities/Hooks/useQueryParams';
 import { UserService, type LoginModel } from '~/services';
 
 const FormContainer = () => {
   const [passwordVisible, setPasswordVisible] = useState<boolean>(false);
-  const router = useRouter();
+  // const router = useRouter();
   const cookies = useCookies();
+  const { queryParams } = useQueryParams();
 
   const validation = yup.object().shape({
     email: yup.string().email().required(),
@@ -35,6 +40,9 @@ const FormContainer = () => {
     mode: 'all',
   });
 
+  // const showLoaderProgress = useLoaderProgress();
+  const fromPage = queryParams.get('from');
+
   const signInWithNextAuth = async (value: LoginModel) => {
     try {
       // const response = await signIn('username-login', {
@@ -45,10 +53,16 @@ const FormContainer = () => {
       const response = await UserService.loginUser({ requestBody: value });
       if (response.status) {
         const { data } = response;
+        await signIn(auth, value.email as string, value.password as string);
         toast.success(`Welcome back ${data?.firstName}`);
         cookies.set('token', data?.token as string);
         cookies.set('studiomart-user', JSON.stringify(data));
-        router.push('/user');
+        // showLoaderProgress(() => router.push('/user'));
+        fromPage
+          ? (window.location.href = decodeURIComponent(
+              fromPage as unknown as string
+            ))
+          : (window.location.href = `/user`);
         return;
       }
       toast.error(response?.message as string, { className: 'loginToast' });
@@ -79,6 +93,7 @@ const FormContainer = () => {
                 label="Email Address"
               />
               <FormInput<LoginModel>
+                type={passwordVisible ? 'text' : 'password'}
                 register={register}
                 name="password"
                 error={errors?.password}

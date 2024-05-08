@@ -1,5 +1,7 @@
 import { Box, Flex, Text, Stack } from '@chakra-ui/react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import { useCookies } from 'next-client-cookies';
 
 import HistoryIcon from '../components/Icons/HistoryIcon';
 import HomeIcon from '../components/Icons/HomeIcon';
@@ -11,11 +13,12 @@ import {
   SideNavItemProps,
   CloseSideNavProps,
 } from '../utilities/Context/schemas';
+import { useLoaderProgress } from '../utilities/Hooks/progress-bar';
 import Logo from '~/lib/components/Logo';
 
 const SideNavItem = ({ label, Icon, link, isActive }: SideNavItemProps) => {
   return (
-    <Link href={link}>
+    <Link href={link} passHref>
       <Box
         w="100%"
         bg={isActive ? 'brand.100' : 'none'}
@@ -36,18 +39,35 @@ const SideNavItem = ({ label, Icon, link, isActive }: SideNavItemProps) => {
   );
 };
 
-const SideNav = ({ onClick }: CloseSideNavProps) => {
+const SideNav = ({ onClick, openSideNav }: CloseSideNavProps) => {
+  const cookies = useCookies();
+  const router = useRouter();
+  const showLoaderProgress = useLoaderProgress();
+  const doLogout = async () => {
+    cookies.remove('token');
+    cookies.remove('studiomart-user');
+    showLoaderProgress(() => router.push('/'));
+  };
   return (
     <Box
       w="100%"
+      left={openSideNav ? 0 : '-100%'}
       bg="rgba(0,0,0,0.5)"
       h="100vh"
       overflow="hidden"
       position="fixed"
       zIndex="3"
       onClick={onClick}
+      transition=".5s ease"
     >
-      <Box w="300px" bg="brand.400" h="100%" py="8" px="7">
+      <Box
+        w="300px"
+        bg="brand.400"
+        h="100%"
+        left={openSideNav ? 0 : '-100%'}
+        py="8"
+        px="7"
+      >
         <Box h="100%">
           <Flex
             flexDirection="column"
@@ -80,7 +100,7 @@ const SideNav = ({ onClick }: CloseSideNavProps) => {
                 <SideNavItem
                   label="History"
                   Icon={HistoryIcon}
-                  link="/services"
+                  link="/user/bookings"
                   isActive={false}
                 />
                 <SideNavItem
@@ -93,17 +113,24 @@ const SideNav = ({ onClick }: CloseSideNavProps) => {
             </Box>
             <Box>
               <Stack spacing="22px">
-                <Link href="/">
+                <Link href="/become-a-vendor">
                   <Text color="status.300" fontWeight={500}>
                     Become a Vendor
                   </Text>
                 </Link>
-                <SideNavItem
-                  label="Log Out"
-                  Icon={LogoutIcon}
-                  link="/services"
-                  isActive={false}
-                />
+                <Box w="100%" p="12px">
+                  <Flex
+                    alignItems="center"
+                    gap="10px"
+                    onClick={doLogout}
+                    cursor="pointer"
+                  >
+                    <LogoutIcon />
+                    <Text color="brand.600" fontWeight={500}>
+                      Logout
+                    </Text>
+                  </Flex>
+                </Box>
               </Stack>
             </Box>
           </Flex>

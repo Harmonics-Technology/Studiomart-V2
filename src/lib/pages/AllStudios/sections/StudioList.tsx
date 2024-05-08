@@ -18,7 +18,7 @@ const StudioList = ({ data }: { data: StudioViewPagedCollection }) => {
         >
           {data?.value?.map((studio: StudioView) => {
             return (
-              <Link passHref href={`/studio/details/${studio.id}`}>
+              <Link passHref href={`/studios/details/${studio.id}`}>
                 <StudioCard
                   img={studio.coverPhoto as string}
                   companyName={studio?.name as string}

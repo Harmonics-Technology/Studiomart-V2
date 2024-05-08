@@ -11,7 +11,7 @@ import ThirdStep from './Sections/ThirdStep';
 const Index = () => {
   const [formStep, setFormStep] = useState<number>(1);
   return (
-    <Box as="section" w="100%" h="100%" position="relative" py="5">
+    <Box as="section" w="100%" minH="100vh" position="relative">
       <Box
         position="absolute"
         backgroundImage="url('/assets/thick-star-illustration.png')"
@@ -42,7 +42,7 @@ const Index = () => {
             <ThirdStep step={formStep} setStep={setFormStep} />
           )}
         </Box>
-        <FormFooter />
+        {formStep !== 1 && <FormFooter />}
       </Stack>
     </Box>
   );

@@ -14,7 +14,7 @@ const Header = () => {
   const router = useRouter();
   const showLoaderProgress = useLoaderProgress();
 
-  const hideNavbarRoutes = ['/sign-in', '/user'];
+  const hideNavbarRoutes = ['/sign-in', '/register'];
 
   if (hideNavbarRoutes.includes(pathname)) {
     return null;

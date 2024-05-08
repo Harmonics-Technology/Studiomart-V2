@@ -20,6 +20,7 @@ import Skeleton from 'react-loading-skeleton';
 import { useDummyImage } from 'react-simple-placeholder-image';
 import { useDebouncedCallback } from 'use-debounce';
 
+import { useLoaderProgress } from '~/lib/utilities/Hooks/progress-bar';
 import { GlobalSearchResultView, StudioService } from '~/services';
 
 import { NotFound } from './NotFound';
@@ -32,14 +33,15 @@ export const SearchBox = ({ isOpen, onClose, url, urlb }: any) => {
   const [searchedData, setSearchedData] = useState<any>();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<any>();
+  const showLoaderProgress = useLoaderProgress();
   const searchAction = (x: GlobalSearchResultView) => {
     if (x.isStudio) {
-      router.push(`${url}/${x?.id}`);
+      showLoaderProgress(() => router.push(`${url}/${x?.id}`));
       onClose();
       setSearchedData([]);
       return;
     }
-    router.push(`${urlb}/${x?.id}`);
+    showLoaderProgress(() => router.push(`${urlb}/${x?.id}`));
     setSearchedData([]);
     onClose();
   };
@@ -54,7 +56,7 @@ export const SearchBox = ({ isOpen, onClose, url, urlb }: any) => {
       const result = await StudioService.search({
         offset: 0,
         limit,
-        search: value,
+        search: value.toLowerCase(),
       });
       if (result.status) {
         setLoading(false);

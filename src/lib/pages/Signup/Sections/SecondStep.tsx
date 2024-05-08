@@ -10,6 +10,8 @@ import {
   Button,
 } from '@chakra-ui/react';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
+import { doc, setDoc } from 'firebase/firestore';
 import Link from 'next/link';
 // @ts-expect-error this package has no types
 import ng_universities from 'ng_universities';
@@ -21,6 +23,7 @@ import * as yup from 'yup';
 import YupPassword from 'yup-password';
 
 import ButtonComponent from '~/lib/components/Button/Button';
+import { auth, db } from '~/lib/components/firebase/firebase';
 import HeadingWithStar from '~/lib/components/HeadingWithStar';
 import SigninOption from '~/lib/components/SigninOptions';
 import FormInput from '~/lib/utilities/FormInput/FormInput';
@@ -76,20 +79,34 @@ const SecondStep = () => {
   const onSubmit = async (data: RegisterModel) => {
     data.isStudent = isStudent;
     try {
-      const res = await UserService.create({ requestBody: data });
-      if (res?.status) {
-        toast.success(res?.message as string);
+      const result = await UserService.create({ requestBody: data });
+      if (result?.status) {
+        const res = await createUserWithEmailAndPassword(
+          auth,
+          data.email as string,
+          data.password as string
+        );
+        await updateProfile(res.user, {
+          displayName: data.firstName,
+        });
+        await setDoc(doc(db, 'users', result?.data?.id as string), {
+          uid: result.data?.id,
+          email: res.user.email,
+          displayName: data.firstName,
+        });
+        await setDoc(doc(db, 'userChats', result?.data?.id as string), {});
+        toast.success(result?.message as string);
         setSuccess(true);
         return;
       }
-      toast.error(res?.message as string);
+      toast.error(result?.message as string);
     } catch (error: any) {
       toast.error(error?.message || error?.body?.message);
     }
   };
 
   return (
-    <Box>
+    <Box py="2rem">
       {success ? (
         <VStack w="100%" h="auto" p="3rem 3rem">
           <Icon as={BiSolidCheckCircle} color="green" fontSize="2rem" />
@@ -97,9 +114,9 @@ const SecondStep = () => {
           <Text textAlign="center">
             Check your mail for further instructions
           </Text>
-          <Link href="/">
+          <Link href="/sign-in">
             <Button w="full" h="3rem" bgColor="brand.100" color="white">
-              Go to Home
+              Go to Login
             </Button>
           </Link>
         </VStack>
