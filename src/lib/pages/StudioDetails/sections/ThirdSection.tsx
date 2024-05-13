@@ -163,49 +163,55 @@ const ThirdSection = () => {
               <ReviewCard
                 logo="/assets/company-logo.png"
                 name="Sola W"
+                reviewCount={5}
                 // address="Lagos, Nigeria"
                 date="April 7, 2023"
                 review="The lighting, backdrop, and overall atmosphere were excellent and the photographer was incredibly skilled and attentive to detail. "
-                service="laundry"
+                // service="laundry"
               />
               <ReviewCard
                 logo="/assets/company-logo.png"
                 name="Sola W"
+                reviewCount={5}
                 // address="Lagos, Nigeria"
                 date="April 7, 2023"
-                service="laundry"
+                // service="laundry"
                 review="The lighting, backdrop, and overall atmosphere were excellent and the photographer was incredibly skilled and attentive to detail. "
               />
               <ReviewCard
+                reviewCount={5}
                 logo="/assets/company-logo.png"
                 name="Sola W"
                 // address="Lagos, Nigeria"
                 date="April 7, 2023"
-                service="laundry"
+                // service="laundry"
                 review="The lighting, backdrop, and overall atmosphere were excellent and the photographer was incredibly skilled and attentive to detail. "
               />
               <ReviewCard
+                reviewCount={5}
                 logo="/assets/company-logo.png"
                 name="Sola W"
                 // address="Lagos, Nigeria"
                 date="April 7, 2023"
-                service="laundry"
+                // service="laundry"
                 review="The lighting, backdrop, and overall atmosphere were excellent and the photographer was incredibly skilled and attentive to detail. "
               />
               <ReviewCard
                 logo="/assets/company-logo.png"
+                reviewCount={5}
                 name="Sola W"
                 // address="Lagos, Nigeria"
                 date="April 7, 2023"
-                service="laundry"
+                // service="laundry"
                 review="The lighting, backdrop, and overall atmosphere were excellent and the photographer was incredibly skilled and attentive to detail. "
               />
               <ReviewCard
                 logo="/assets/company-logo.png"
+                reviewCount={5}
                 name="Sola W"
                 // address="Lagos, Nigeria"
                 date="April 7, 2023"
-                service="laundry"
+                // service="laundry"
                 review="The lighting, backdrop, and overall atmosphere were excellent and the photographer was incredibly skilled and attentive to detail. "
               />
             </Flex>
