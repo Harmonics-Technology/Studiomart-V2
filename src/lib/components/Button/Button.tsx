@@ -101,10 +101,11 @@ export const IconButtonLinkComponent: React.FC<IconButtonLinkProps> = ({
   text,
   icon,
   flip,
+  color,
 }) => {
   return (
     <Box
-      color="#1570FA"
+      color={color || '#1570FA'}
       fontWeight="normal"
       textDecoration="underline"
       _hover={{ bg: 'none' }}

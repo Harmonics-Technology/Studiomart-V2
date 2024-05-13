@@ -223,6 +223,7 @@ export interface IconButtonLinkProps {
   text: string;
   icon: any;
   flip: boolean;
+  color?: string;
 }
 
 export interface BackButtonProps {
