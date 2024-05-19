@@ -20,7 +20,13 @@ const FirstSection = ({ bookings }: IBookingDetails) => {
         </Box>
         <Box>
           <Flex alignItems="center" gap="72px" flexWrap="wrap">
-            <Box maxW="521px" h="458px" borderRadius="71px">
+            <Box
+              w="521px"
+              h="458px"
+              border="6px solid"
+              borderColor="brand.100"
+              borderRadius="71px"
+            >
               <Image
                 src={
                   (bookings?.service?.bannerImageURL ||
@@ -30,7 +36,7 @@ const FirstSection = ({ bookings }: IBookingDetails) => {
                 w="100%"
                 h="100%"
                 objectFit="cover"
-                borderRadius="71px"
+                borderRadius="66px"
               />
             </Box>
             <Box maxW="487px">

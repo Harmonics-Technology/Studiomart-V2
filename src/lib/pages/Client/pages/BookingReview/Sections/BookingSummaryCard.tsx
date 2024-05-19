@@ -319,7 +319,10 @@ const BookingSummaryCard = ({ singleService, id, addons }: ICustomerHome) => {
 
           <BookingSummaryCardWrapper>
             <Box textAlign="right">
-              <HStack justify="flex-end">
+              <HStack justify="space-between">
+                <Heading fontSize={24} fontWeight={600}>
+                  Total
+                </Heading>
                 <Text
                   fontSize={couponApplied?.valid ? '1rem' : '1.2rem'}
                   fontWeight={couponApplied?.valid ? '500' : '700'}

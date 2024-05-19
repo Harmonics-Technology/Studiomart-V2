@@ -208,7 +208,11 @@ const index = ({ data }: { data: any }) => {
                 )
                   .subtract(1, 'hour')
                   .format('hh:mm A')}`}
-                rating={item?.service?.averageRating as number}
+                rating={
+                  Number(
+                    Math.round(item?.service?.averageRating).toFixed(1)
+                  ) as number
+                }
               />
             </Link>
           ))}
