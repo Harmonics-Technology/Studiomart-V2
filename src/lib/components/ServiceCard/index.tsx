@@ -94,7 +94,7 @@ const ServiceCard = ({
             lineHeight="0.015rem"
             color="text.100"
           >
-            {rating}
+            {Math.round(rating ?? 0).toFixed(1)}
           </Text>
         </Circle>
       </Box>
