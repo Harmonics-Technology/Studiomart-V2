@@ -52,16 +52,16 @@ const StudioGroupImages = () => {
         <Image
           src="/assets/small-illustration.png"
           alt="studio image"
-          width={75}
-          height={19}
+          w="75px"
+          h="19px"
         />
       </Box>
       <Box position="absolute" right="0" bottom="40%">
         <Image
           src="/assets/studio-image-overlay.png"
           alt="studio image"
-          width={124}
-          height={80}
+          width="124px"
+          height="80px"
         />
       </Box>
     </Box>

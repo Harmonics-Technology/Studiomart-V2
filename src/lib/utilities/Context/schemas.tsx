@@ -322,3 +322,11 @@ export interface IGiftFormProps {
   register: any;
   errors: any;
 }
+
+export interface SingleStudioCardProps {
+  studioName: string;
+  services: string[];
+  images: string[];
+  address: string;
+  isLoggedIn: boolean;
+}

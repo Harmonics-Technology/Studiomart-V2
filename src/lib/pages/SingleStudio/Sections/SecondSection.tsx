@@ -1,6 +1,6 @@
 import { Box, Flex, Heading, Stack } from '@chakra-ui/react';
 
-import ServiceCard from '~/lib/components/ServiceCard';
+import { ServiceCard } from '~/lib/components/StudioCard';
 import Wrapper from '~/lib/components/Wrapper';
 
 const SecondSection = () => {

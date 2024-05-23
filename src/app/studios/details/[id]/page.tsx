@@ -1,7 +1,7 @@
-import StudioDetails from '~/lib/pages/StudioDetails';
+import SingleStudioDetails from '~/lib/pages/SingleStudio';
 
 const page = () => {
-  return <StudioDetails />;
+  return <SingleStudioDetails />;
 };
 
 export default page;
