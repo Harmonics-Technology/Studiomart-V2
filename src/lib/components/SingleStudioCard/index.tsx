@@ -17,11 +17,11 @@ const Index = ({
   isLoggedIn,
 }: SingleStudioCardProps) => {
   return (
-    <Box as="section" w="400px" h="auto">
+    <Box as="section" w={['166px', '400px']} h="auto">
       <Box
         w="100%"
         mb="16px"
-        h="340px"
+        h={['150px', '340px']}
         position="relative"
         overflow="hidden"
         border="4px solid"
@@ -61,17 +61,38 @@ const Index = ({
         </Swiper>
       </Box>
       <Box>
-        <Flex alignItems="flex-start" justifyContent="space-between">
+        <Flex
+          alignItems="flex-start"
+          justifyContent="space-between"
+          flexWrap="wrap"
+        >
           <Box>
-            <Stack spacing="6px">
-              <Heading fontSize={22} fontWeight={700}>
+            <Stack spacing="10px">
+              <Heading fontSize={[16, 22]} fontWeight={700}>
                 {studioName}
               </Heading>
-              <Text color="brand.600">{address}</Text>
+              <Box display={['block', 'none']}>
+                <Flex alignItems="center" gap="10px" flexWrap="wrap">
+                  {services?.map((service) => (
+                    <Text
+                      py="4px"
+                      px="12px"
+                      fontSize={[12, 14]}
+                      borderRadius="60px"
+                      border="1px solid #6DD3CE"
+                    >
+                      {service}
+                    </Text>
+                  ))}
+                </Flex>
+              </Box>
+              <Text color="brand.600" fontSize={[14, 16]}>
+                {address}
+              </Text>
             </Stack>
           </Box>
-          <Box>
-            <Flex alignItems="center" gap="10px">
+          <Box display={['none', 'block']}>
+            <Flex alignItems="center" gap="10px" flexWrap="wrap">
               {services?.map((service) => (
                 <Text
                   py="4px"

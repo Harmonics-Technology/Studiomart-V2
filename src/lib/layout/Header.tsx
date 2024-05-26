@@ -15,17 +15,22 @@ import {
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 // import { signIn, signOut } from 'next-auth/react';
+import { useState } from 'react';
 import { FiChevronDown } from 'react-icons/fi';
 
 import ButtonComponent from '../components/Button/Button';
+import MenuIcon from '../components/Icons/MenuIcon';
 import Logo from '../components/Logo';
 import { useLoaderProgress } from '../utilities/Hooks/progress-bar';
+
+import MobileSideNav from './MobileSideNav';
 // import Icon from 'react-multi-date-picker/components/icon';
 
 const Header = () => {
   const pathname = usePathname();
   const router = useRouter();
   const showLoaderProgress = useLoaderProgress();
+  const [openSideNav, setOpenSideNav] = useState<boolean>(false);
 
   const hideNavbarRoutes = ['/sign-in', '/register', '/institutions'];
 
@@ -74,14 +79,23 @@ const Header = () => {
   ];
 
   return (
-    <Box as="header" width="full" p="6">
+    <Box
+      as="header"
+      width="full"
+      p="6"
+      position={['sticky', 'static']}
+      top="0px"
+      bg="brand.400"
+      zIndex="2"
+    >
       <Flex w="full" justifyContent="space-between" alignItems="center">
         <Link href="/">
           <Box>
             <Logo />
           </Box>
         </Link>
-        <Box>
+
+        <Box display={['none', 'none', 'block']}>
           <Flex alignItems="center">
             <Box>
               <Flex alignItems="center" gap="45px">
@@ -160,20 +174,25 @@ const Header = () => {
                         showLoaderProgress(() => router.push('/sign-in'))
                       }
                     />
-                    {/* <ButtonComponent
-                      width="125px"
-                      bg="#1570FA"
-                      color="#FFFFFF"
-                      text="Get Out"
-                      onClick={() => signOut()}
-                    /> */}
                   </Stack>
                 </Box>
               </Flex>
             </Box>
           </Flex>
         </Box>
+
+        <Box display={['block', 'block', 'none']}>
+          <Button bg="none" onClick={() => setOpenSideNav(true)} p="0">
+            <MenuIcon />
+          </Button>
+        </Box>
       </Flex>
+      {openSideNav && (
+        <MobileSideNav
+          openSideNav={openSideNav}
+          setOpenSideNav={setOpenSideNav}
+        />
+      )}
     </Box>
   );
 };

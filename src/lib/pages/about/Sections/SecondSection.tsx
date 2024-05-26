@@ -7,16 +7,18 @@ import type { ListItemProps } from '~/lib/utilities/Context/schemas';
 const ListItem: React.FC<ListItemProps> = ({ index, title, text }) => {
   return (
     <Box>
-      <Flex alignItems="center" gap={4}>
+      <Flex alignItems="flex-start" gap={4}>
         <Box
           w="30px"
           h="30px"
+          p="2"
           borderRadius="50%"
           bg="#2D2327"
           color="white"
           display="flex"
           alignItems="center"
           justifyContent="center"
+          fontSize={14}
         >
           {index + 1}.
         </Box>
@@ -46,18 +48,23 @@ const SecondSection = () => {
   return (
     <Box as="section" bg="#D6E7FF" py="10">
       <Wrapper>
-        <Flex alignItems="center" justifyContent="space-between">
-          <Box w="40%">
+        <Flex
+          alignItems="center"
+          justifyContent="space-between"
+          flexWrap="wrap"
+        >
+          <Box w={['100%', '40%']} mb="8">
             <Image
               src="/assets/feature-section-image.png"
-              width={481}
-              height={530}
+              width="100%"
+              // height={530}
               alt="image illustrations"
+              objectFit="cover"
             />
           </Box>
-          <Box w="50%">
+          <Box w={['100%', '50%']}>
             <Stack spacing={7}>
-              <Heading fontSize={40} fontWeight={900}>
+              <Heading fontSize={[32, 40]} fontWeight={900}>
                 Become a Vendor
               </Heading>
               <Text>

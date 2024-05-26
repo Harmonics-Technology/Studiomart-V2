@@ -6,6 +6,7 @@ import {
   Text,
   VStack,
   Image,
+  useMediaQuery,
 } from '@chakra-ui/react';
 import { BiLogoPlayStore } from 'react-icons/bi';
 
@@ -15,30 +16,39 @@ import ButtonComponent, {
 import Wrapper from '~/lib/components/Wrapper';
 
 const ThirdSection = () => {
+  const [isMobile] = useMediaQuery('(max-width: 768px)');
   return (
     <Box>
       <Wrapper>
-        <Flex justifyContent="space-between" alignItems="flex-end">
-          <Box w="40%">
+        <Flex
+          justifyContent="space-between"
+          alignItems="flex-end"
+          flexWrap="wrap-reverse"
+        >
+          <Box w={['100%', '100%', '40%']}>
             <Image
               src="/assets/fifth-image.png"
-              width={466}
-              height={504}
+              width={['100%', 466]}
+              height={['100%', 504]}
               alt="image"
               objectFit="cover"
             />
           </Box>
-          <Box w="57%">
+          <Box w={['100%', '100%', '57%']} mb="7">
             <VStack spacing={5}>
               <Image
                 src="/assets/sixth-image.png"
-                height={200}
-                width={732}
+                height="100%"
+                width={['100%', 732]}
                 alt="image"
+                objectFit="cover"
+                borderRadius="80px"
               />
-              <Box p="8">
+              <Box p={['2', '8']}>
                 <Stack spacing={7}>
-                  <Heading>How StudioMart Works</Heading>
+                  <Heading fontSize={[25, 40]} fontWeight={[900, 700]}>
+                    How StudioMart Works
+                  </Heading>
                   <Text>
                     <b>Create Your Account.</b> Sign up on StudioMart in a
                     breeze. It’s quick, easy, and absolutely free.
@@ -57,17 +67,17 @@ const ThirdSection = () => {
                   </Text>
 
                   <Box>
-                    <Flex alignItems="center" gap="20px">
+                    <Flex alignItems="center" gap="20px" flexWrap="wrap">
                       <ButtonComponent
                         text="Get Started"
                         bg="brand.100"
                         color="white"
-                        width="150px"
+                        width={isMobile ? '100%' : '150px'}
                         onClick={() => {}}
                       />
                       <IconButtonComponent
                         flip={false}
-                        width="268px"
+                        width={isMobile ? '100%' : '268px'}
                         text="Download on Google Play"
                         icon={BiLogoPlayStore}
                         color="#1570FA"

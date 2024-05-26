@@ -6,6 +6,7 @@ import {
   Text,
   VStack,
   Image,
+  useMediaQuery,
 } from '@chakra-ui/react';
 import { IoChevronForwardCircleOutline } from 'react-icons/io5';
 
@@ -16,13 +17,20 @@ import {
 import Wrapper from '~/lib/components/Wrapper';
 
 const FourthSection = () => {
+  const [isMobile] = useMediaQuery('(max-width: 768px)');
   return (
     <Box bg="#FCF8FB" py="12">
       <Wrapper>
-        <Flex justifyContent="space-between" alignItems="flex-start">
-          <Box w="48%">
+        <Flex
+          justifyContent="space-between"
+          alignItems="flex-start"
+          flexWrap="wrap"
+        >
+          <Box w={['100%', '48%']}>
             <VStack spacing={8} w="100%">
-              <Heading fontSize={40}>Studio of the Week</Heading>
+              <Heading fontSize={[30, 40]} fontWeight={[900, 700]}>
+                Studio of the Week
+              </Heading>
               <Box>
                 <Flex
                   justifyContent="space-between"
@@ -36,6 +44,7 @@ const FourthSection = () => {
                       height={400}
                       objectFit="cover"
                       alt="image of a woman"
+                      borderRadius="40px"
                     />
                   </Box>
                   <Box h="100%">
@@ -50,6 +59,7 @@ const FourthSection = () => {
                         width={200}
                         height={219}
                         objectFit="cover"
+                        borderRadius="40px"
                         alt="a lady and flower"
                       />
                       <Image
@@ -57,6 +67,7 @@ const FourthSection = () => {
                         width={200}
                         height={150}
                         objectFit="cover"
+                        borderRadius="40px"
                         alt="image of kids playing"
                       />
                     </Flex>
@@ -65,7 +76,7 @@ const FourthSection = () => {
               </Box>
             </VStack>
           </Box>
-          <Box w="48%">
+          <Box w={['100%', '48%']}>
             <Box mb="12" display="flex" justifyContent="flex-end">
               <IconButtonLinkComponent
                 flip={false}
@@ -75,10 +86,14 @@ const FourthSection = () => {
             </Box>
             <Box>
               <Stack spacing={8}>
-                <Heading fontSize={62} color="#1570FA">
+                <Heading
+                  fontSize={[32, 62]}
+                  fontWeight={[900, 700]}
+                  color="#1570FA"
+                >
                   ColorSplash Studios
                 </Heading>
-                <Text lineHeight="26px">
+                <Text lineHeight="30px">
                   Introducing ColorSplash Studio, our featured studio of the
                   week! Offering a comprehensive range of photography and video
                   services, ColorSplash is your go-to destination for capturing
@@ -94,7 +109,7 @@ const FourthSection = () => {
                   text="View Services"
                   icon={IoChevronForwardCircleOutline}
                   color="white"
-                  width="200px"
+                  width={isMobile ? '100%' : '200px'}
                   flip
                 />
               </Stack>

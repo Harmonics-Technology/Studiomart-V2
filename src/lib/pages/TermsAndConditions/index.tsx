@@ -10,7 +10,9 @@ const index = () => {
         <Stack spacing={10}>
           <VStack spacing={6}>
             <Box position="relative">
-              <Heading fontSize={64}>Terms & Conditions</Heading>
+              <Heading fontSize={[32, 64]} fontWeight={[900, 700]}>
+                Terms & Conditions
+              </Heading>
               <Image
                 src="/assets/green-star.png"
                 alt="star image"

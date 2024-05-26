@@ -10,9 +10,9 @@ const StudioList = ({ data }: { data: StudioViewPagedCollection }) => {
     <Box mb="14">
       <ContainerBox>
         <Flex
-          alignItems="center"
+          alignItems="flex-start"
           rowGap="50px"
-          columnGap={1}
+          columnGap={['10px', 0]}
           justifyContent="space-between"
           flexWrap="wrap"
         >

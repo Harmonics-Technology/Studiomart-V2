@@ -330,3 +330,15 @@ export interface SingleStudioCardProps {
   address: string;
   isLoggedIn: boolean;
 }
+
+export interface MobileSidenavItemProps {
+  label: string;
+  link: string;
+  isActive: boolean;
+  onClick: () => void;
+}
+
+export interface MobileSideNavProps {
+  openSideNav: boolean;
+  setOpenSideNav: (value: boolean) => void;
+}

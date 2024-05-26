@@ -4,16 +4,16 @@ const SideText = () => {
   return (
     <Box
       w="100%"
-      h="300px"
-      bgImage="url('/assets/side-text-illustration.png')"
+      h={['auto', '300px']}
+      bgImage={['none', "url('/assets/side-text-illustration.png')"]}
       backgroundRepeat="no-repeat"
-      backgroundPosition="bottom left"
+      backgroundPosition={['bottom right', 'bottom left']}
       backgroundSize="contain"
       py="2"
-      px="10"
+      px={['5', '10']}
     >
       <Box>
-        <Flex alignItems="flex-start" justifyContent="space-between">
+        <Flex alignItems="center" justifyContent="space-between">
           <Image
             src="/assets/side-text-star.png"
             alt="star image"
@@ -21,12 +21,12 @@ const SideText = () => {
             height="80px"
           />
           <Box>
-            <Heading fontWeight={900} fontSize={58}>
-              Book A
+            <Heading fontWeight={900} fontSize={[40, 58]}>
+              Studios
             </Heading>
-            <Heading fontWeight={900} fontSize={58} ml="6">
+            {/* <Heading fontWeight={900} fontSize={58} ml="6">
               Service
-            </Heading>
+            </Heading> */}
           </Box>
         </Flex>
       </Box>

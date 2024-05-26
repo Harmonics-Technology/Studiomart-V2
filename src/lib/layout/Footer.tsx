@@ -43,7 +43,7 @@ type FooterListProps = {
 
 const FooterList: React.FC<FooterListProps> = ({ headingText, items }) => {
   return (
-    <Box>
+    <Box mb="5">
       <UnorderedList listStyleType="none">
         <Heading mb="5" fontSize={24} fontWeight={700} color="white">
           {headingText}
@@ -67,7 +67,11 @@ const Footer = () => {
       <Stack direction="column" spacing={8} w="90%" mx="auto">
         {/* First section */}
         <Box as="section">
-          <Flex justifyContent="space-between" alignItems="flex-start">
+          <Flex
+            justifyContent="space-between"
+            alignItems="flex-start"
+            flexWrap="wrap"
+          >
             {/* First column */}
             <Box>
               <Stack direction="column" spacing={3} mb="12">
@@ -98,7 +102,11 @@ const Footer = () => {
 
             {/* Second column */}
             <Box>
-              <Flex gap="60px">
+              <Flex
+                gap={[0, '60px']}
+                justifyContent={['space-between', 'flex-start']}
+                flexWrap="wrap"
+              >
                 <FooterList
                   headingText="Studio Cateory"
                   items={[
