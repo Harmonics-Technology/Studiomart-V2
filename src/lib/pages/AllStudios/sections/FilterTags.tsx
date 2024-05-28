@@ -41,7 +41,12 @@ const FilterTags = () => {
   ];
   return (
     <Box>
-      <Flex alignItems="center" justifyContent="space-between">
+      <Flex
+        alignItems="center"
+        justifyContent={['flex-start', 'space-between']}
+        flexWrap="wrap"
+        gap="12px"
+      >
         {tags.map((item) => (
           <FilterTagsItem label={item.label} icon={item.icon} />
         ))}

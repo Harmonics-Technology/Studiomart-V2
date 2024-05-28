@@ -16,8 +16,12 @@ const SecondSection = () => {
   return (
     <Box bg="#D6E7FF" w="full" py="5">
       <Wrapper>
-        <Flex justifyContent="space-between" alignItems="center">
-          <Box maxW="60%" color="#2D2327">
+        <Flex
+          justifyContent="space-between"
+          alignItems="center"
+          flexWrap="wrap"
+        >
+          <Box maxW={['100%', '60%']} color="#2D2327" mb="8">
             <Stack spacing={5}>
               <Image
                 src="/assets/star.svg"
@@ -25,7 +29,9 @@ const SecondSection = () => {
                 height="40px"
                 alt="Star image"
               />
-              <Heading fontSize={40}>Why StudioMart?</Heading>
+              <Heading fontSize={[32, 40]} fontWeight={[900, 700]}>
+                Why StudioMart?
+              </Heading>
               <Text lineHeight="26px">
                 StudioMart offers seamless access to a diverse range of studios
                 tailored to your creative pursuits. Our user-friendly interface
@@ -45,8 +51,8 @@ const SecondSection = () => {
               />
             </Stack>
           </Box>
-          <Box w="35%" h="280px">
-            <Flex justifyContent="space-between">
+          <Box w={['100%', '35%']} h="280px">
+            <Flex justifyContent="space-between" gap={['10px', 0]}>
               <Box>
                 <Image
                   width="200px"

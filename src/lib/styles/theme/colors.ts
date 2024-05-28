@@ -47,6 +47,7 @@ const extendedColors: DeepPartial<
     300: '#DAF2D6',
     400: '#484848',
     500: '#6dd3ce',
+    600: 'rgba(175, 175, 175, 0.5)',
   },
 };
 

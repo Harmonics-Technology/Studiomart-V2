@@ -5,8 +5,9 @@ const index = () => {
     <Box>
       <Image
         src="/assets/logo.svg"
-        width={211}
-        height={46}
+        maxW={[170, 170, 211]}
+        h="auto"
+        // height={46}
         alt="studiomart logo"
       />
     </Box>
@@ -20,8 +21,8 @@ export const WhiteLogo = () => {
     <Box>
       <Image
         src="/assets/white-logo.svg"
-        width={251}
-        height={57}
+        maxW={[160, 160, 211]}
+        height="auto"
         alt="studiomart logo"
       />
     </Box>

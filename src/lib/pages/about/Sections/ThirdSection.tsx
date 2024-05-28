@@ -5,8 +5,8 @@ import type { SingleQuestionProp } from '~/lib/utilities/Context/schemas';
 
 const SingleQuestion: React.FC<SingleQuestionProp> = ({ question, answer }) => {
   return (
-    <Box mb="10" w="480px">
-      <Flex alignItems="flex-start" justifyContent="space-between">
+    <Box mb="10" maxW="480px">
+      <Flex alignItems="flex-start" justifyContent="space-between" gap="10px">
         <Image
           src="/assets/green-star.png"
           alt="star image"
@@ -14,7 +14,7 @@ const SingleQuestion: React.FC<SingleQuestionProp> = ({ question, answer }) => {
           height="40px"
           objectFit="contain"
         />
-        <Box w="420px">
+        <Box maxW="420px">
           <Stack spacing={5}>
             <Heading fontSize={24} fontWeight={700} color="#0C090A">
               {question}
@@ -60,11 +60,11 @@ const ThirdSection = () => {
           border="4px solid #1570FA"
           h="auto"
           borderRadius="40px"
-          p="10"
+          p={[2, '10']}
         >
-          <Stack spacing={14}>
-            <Box textAlign="center">
-              <Heading fontSize={40} fontWeight={900}>
+          <Stack spacing={8}>
+            <Box textAlign="center" p="2">
+              <Heading fontSize={[24, 40]} fontWeight={900} lineHeight="40px">
                 Frequently{' '}
                 <Box as="span" textDecoration="underline" color="#1570FA">
                   Asked

@@ -13,11 +13,11 @@ const HeroSection = () => {
       py="5"
       my="14"
     >
-      <Flex>
-        <Box w="30%">
+      <Flex flexDirection={['column', 'row']}>
+        <Box w={['50%', '30%']}>
           <SideText />
         </Box>
-        <Box w="68%">
+        <Box w={['100%', '68%']} p="3">
           <Stack spacing={4}>
             <SearchInput />
             <FilterTags />

@@ -13,7 +13,7 @@ const FifthSection = () => {
       <Wrapper>
         <Box bg="#D6E7FF" w="100%" borderRadius="40px" p="10">
           <Stack spacing={7}>
-            <Heading fontSize={40} fontWeight={900} color="#0C090A">
+            <Heading fontSize={[32, 40]} fontWeight={900} color="#0C090A">
               Our Partners
             </Heading>
             <QuoteIcon color="white" width="54" height="40" />
@@ -30,8 +30,12 @@ const FifthSection = () => {
               game-changer for anyone passionate about exploring creativity.
             </Text>
             <Box>
-              <Flex alignItems="center" justifyContent="space-between">
-                <Box>
+              <Flex
+                alignItems="center"
+                justifyContent="space-between"
+                flexWrap="wrap"
+              >
+                <Box mb="5">
                   <Flex gap={3} alignItems="center">
                     <Image
                       alt="Adelowo Ajibola, CEO HT"
@@ -50,7 +54,11 @@ const FifthSection = () => {
                   </Flex>
                 </Box>
                 <Box>
-                  <Flex alignItems="center" gap={2}>
+                  <Flex
+                    justifyContent={['center', 'flex-start']}
+                    alignItems="center"
+                    gap={2}
+                  >
                     <Icon
                       as={IoChevronBackCircleOutline}
                       fontSize={25}
