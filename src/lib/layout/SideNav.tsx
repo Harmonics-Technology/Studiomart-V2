@@ -1,6 +1,6 @@
 import { Box, Flex, Text, Stack } from '@chakra-ui/react';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { useCookies } from 'next-client-cookies';
 
 import HistoryIcon from '../components/Icons/HistoryIcon';
@@ -42,12 +42,15 @@ const SideNavItem = ({ label, Icon, link, isActive }: SideNavItemProps) => {
 const SideNav = ({ onClick, openSideNav }: CloseSideNavProps) => {
   const cookies = useCookies();
   const router = useRouter();
+  const pathname = usePathname();
   const showLoaderProgress = useLoaderProgress();
+
   const doLogout = async () => {
     cookies.remove('token');
     cookies.remove('studiomart-user');
     showLoaderProgress(() => router.push('/'));
   };
+
   return (
     <Box
       w="100%"
@@ -83,31 +86,33 @@ const SideNav = ({ onClick, openSideNav }: CloseSideNavProps) => {
                   label="Home"
                   Icon={HomeIcon}
                   link="/services"
-                  isActive
+                  isActive={
+                    !!(pathname === '/services' || pathname === '/user')
+                  }
                 />
                 <SideNavItem
                   label="Studios"
                   Icon={StudioIcon}
                   link="/studios"
-                  isActive={false}
+                  isActive={pathname === '/studios'}
                 />
                 <SideNavItem
                   label="Messages"
                   Icon={MessagesIcon}
-                  link="/services"
-                  isActive={false}
+                  link="/user/message"
+                  isActive={pathname === '/user/message'}
                 />
                 <SideNavItem
                   label="History"
                   Icon={HistoryIcon}
                   link="/user/bookings"
-                  isActive={false}
+                  isActive={pathname === '/user/bookings'}
                 />
                 <SideNavItem
                   label="Customer Support"
                   Icon={SupportIcon}
-                  link="/services"
-                  isActive={false}
+                  link="/support"
+                  isActive={pathname === '/support'}
                 />
               </Stack>
             </Box>

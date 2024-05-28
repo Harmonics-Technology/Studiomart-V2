@@ -1,7 +1,7 @@
 import { Box, Flex } from '@chakra-ui/react';
 import Link from 'next/link';
 
-import { StudioCard } from '~/lib/components/StudioCard';
+import StudioCard from '~/lib/components/SingleStudioCard';
 import { ContainerBox } from '~/lib/layout/ContainerBox';
 import { StudioView, StudioViewPagedCollection } from '~/services';
 
@@ -11,7 +11,7 @@ const StudioList = ({ data }: { data: StudioViewPagedCollection }) => {
       <ContainerBox>
         <Flex
           alignItems="center"
-          rowGap={12}
+          rowGap="50px"
           columnGap={1}
           justifyContent="space-between"
           flexWrap="wrap"
@@ -20,12 +20,15 @@ const StudioList = ({ data }: { data: StudioViewPagedCollection }) => {
             return (
               <Link passHref href={`/studios/details/${studio.id}`}>
                 <StudioCard
-                  img={studio.coverPhoto as string}
-                  companyName={studio?.name as string}
-                  price={17000}
+                  images={[
+                    '/assets/face.png',
+                    '/assets/studio-girl2.png',
+                    '/assets/other-studios.png',
+                  ]}
+                  studioName={studio?.name as string}
                   address={studio?.address as string}
-                  tags={['Music', 'Photography']}
-                  services={['amenity', 'amenity', 'amenity']}
+                  services={['Music', 'Photography']}
+                  isLoggedIn={false}
                 />
               </Link>
             );

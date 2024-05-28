@@ -42,6 +42,10 @@ const extendedColors: DeepPartial<
     200: '#F6F6F4',
   },
   scheme: {
+    100: '#216015',
+    200: '#ECE006',
+    300: '#DAF2D6',
+    400: '#484848',
     500: '#6dd3ce',
   },
 };

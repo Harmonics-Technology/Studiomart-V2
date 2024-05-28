@@ -223,6 +223,7 @@ export interface IconButtonLinkProps {
   text: string;
   icon: any;
   flip: boolean;
+  color?: string;
 }
 
 export interface BackButtonProps {
@@ -320,4 +321,12 @@ export interface IGiftFormProps {
   onClose: any;
   register: any;
   errors: any;
+}
+
+export interface SingleStudioCardProps {
+  studioName: string;
+  services: string[];
+  images: string[];
+  address: string;
+  isLoggedIn: boolean;
 }

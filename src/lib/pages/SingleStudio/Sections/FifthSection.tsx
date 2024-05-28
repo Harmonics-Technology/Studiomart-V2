@@ -1,5 +1,7 @@
 import { Box, Flex, Heading, Stack, Image } from '@chakra-ui/react';
+import Link from 'next/link';
 
+import StudioCard from '~/lib/components/SingleStudioCard';
 import Wrapper from '~/lib/components/Wrapper';
 
 const FifthSection = () => {
@@ -34,8 +36,8 @@ const FifthSection = () => {
             <Image
               src="/assets/star-line.svg"
               alt="star image"
-              width={60}
-              height={60}
+              width="60px"
+              height="60px"
               style={{ position: 'absolute', top: '-10px', left: '-10px' }}
             />
           </Box>
@@ -46,14 +48,19 @@ const FifthSection = () => {
               flexWrap="wrap"
             >
               {studios.map((item) => (
-                <Image
-                  src={item.image}
-                  key={item.id}
-                  alt="other studios"
-                  width={390}
-                  height={340}
-                  style={{ borderRadius: '40px', border: '4px solid #1570FA' }}
-                />
+                <Link passHref href={`/studios/details/${item.id}`}>
+                  <StudioCard
+                    images={[
+                      '/assets/face.png',
+                      '/assets/studio-girl2.png',
+                      '/assets/other-studios.png',
+                    ]}
+                    studioName="Colorsplash Studios"
+                    address="Onilearo Ibadan."
+                    services={['Music', 'Photography']}
+                    isLoggedIn
+                  />
+                </Link>
               ))}
             </Flex>
           </Box>

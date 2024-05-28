@@ -26,22 +26,24 @@ const ReviewCard: React.FC<ReviewCardProps> = ({
 }) => {
   return (
     <Box w="47%" mb="14">
-      <Stack spacing={5}>
+      <Stack spacing="12px">
         <Box>
           <Flex alignItems="center" gap={2.5}>
             <Image
               src={logo}
               alt={name}
-              width={48}
-              height={48}
-              style={{ borderRadius: '50%' }}
+              width="48px"
+              height="48px"
+              borderRadius="50%"
             />
             <Box>
               <Stack spacing={0.5}>
                 <Heading fontSize={18} fontWeight={700} color="#171717">
                   {name}
                 </Heading>
-                {/* <Text fontSize={14}>{address}</Text> */}
+                <Text fontSize={14} color="scheme.400">
+                  Lagos, Nigeria
+                </Text>
               </Stack>
             </Box>
           </Flex>
@@ -161,51 +163,57 @@ const ThirdSection = () => {
               justifyContent="space-between"
             >
               <ReviewCard
-                logo="/assets/company-logo.png"
+                logo="/assets/placeholder-image.png"
                 name="Sola W"
+                reviewCount={5}
                 // address="Lagos, Nigeria"
                 date="April 7, 2023"
                 review="The lighting, backdrop, and overall atmosphere were excellent and the photographer was incredibly skilled and attentive to detail. "
-                service="laundry"
+                // service="laundry"
               />
               <ReviewCard
-                logo="/assets/company-logo.png"
+                logo="/assets/placeholder-image.png"
                 name="Sola W"
+                reviewCount={5}
                 // address="Lagos, Nigeria"
                 date="April 7, 2023"
-                service="laundry"
+                // service="laundry"
                 review="The lighting, backdrop, and overall atmosphere were excellent and the photographer was incredibly skilled and attentive to detail. "
               />
               <ReviewCard
-                logo="/assets/company-logo.png"
+                reviewCount={5}
+                logo="/assets/placeholder-image.png"
                 name="Sola W"
                 // address="Lagos, Nigeria"
                 date="April 7, 2023"
-                service="laundry"
+                // service="laundry"
                 review="The lighting, backdrop, and overall atmosphere were excellent and the photographer was incredibly skilled and attentive to detail. "
               />
               <ReviewCard
-                logo="/assets/company-logo.png"
+                reviewCount={5}
+                logo="/assets/placeholder-image.png"
                 name="Sola W"
                 // address="Lagos, Nigeria"
                 date="April 7, 2023"
-                service="laundry"
+                // service="laundry"
                 review="The lighting, backdrop, and overall atmosphere were excellent and the photographer was incredibly skilled and attentive to detail. "
               />
               <ReviewCard
-                logo="/assets/company-logo.png"
+                logo="/assets/placeholder-image.png"
+                reviewCount={5}
                 name="Sola W"
                 // address="Lagos, Nigeria"
                 date="April 7, 2023"
-                service="laundry"
+                // service="laundry"
                 review="The lighting, backdrop, and overall atmosphere were excellent and the photographer was incredibly skilled and attentive to detail. "
               />
               <ReviewCard
-                logo="/assets/company-logo.png"
+                logo="/assets/placeholder-image.png"
+                reviewCount={5}
                 name="Sola W"
                 // address="Lagos, Nigeria"
                 date="April 7, 2023"
-                service="laundry"
+                // service="laundry"
                 review="The lighting, backdrop, and overall atmosphere were excellent and the photographer was incredibly skilled and attentive to detail. "
               />
             </Flex>

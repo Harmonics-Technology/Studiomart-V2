@@ -1,6 +1,6 @@
 import { Box, Stack, Heading, Flex, Image } from '@chakra-ui/react';
 
-import ServiceCard from '~/lib/components/ServiceCard';
+import { ServiceCard } from '~/lib/components/StudioCard';
 import Wrapper from '~/lib/components/Wrapper';
 
 const FourthSection = () => {
@@ -14,7 +14,7 @@ const FourthSection = () => {
               fontSize={24}
               fontWeight={900}
               position="absolute"
-              zIndex="2"
+              zIndex="1"
             >
               More Services by Lensboy Photography
             </Heading>
@@ -31,6 +31,7 @@ const FourthSection = () => {
               alignItems="center"
               justifyContent="space-between"
               flexWrap="wrap"
+              // columnGap='50px'
               rowGap={12}
             >
               {studios.map(() => (

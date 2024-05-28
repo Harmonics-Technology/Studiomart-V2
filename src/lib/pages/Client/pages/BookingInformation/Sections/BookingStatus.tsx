@@ -52,9 +52,21 @@ export const BookingStatus = ({
                     : 'Cancelled'}
       </Heading>
       <Text color="status.600" fontSize={15}>
-        Your booking with reference {reference} is pending confirmation
+        {response === 'pending'
+          ? `Your booking with reference ${reference} is pending confirmation`
+          : response === 'paid'
+            ? `Your booking with reference ${reference} now has its payment confirmed`
+            : response === 'approved'
+              ? `Your booking with reference ${reference} has been accepted and is awaiting payment `
+              : response === 'in-progress'
+                ? `Your booking with reference ${reference} is in Progress`
+                : response === 'completed'
+                  ? `Your booking with reference ${reference} has been completed. Thank you for using studiomart`
+                  : response === 'rejected'
+                    ? `Your booking with reference ${reference} has been rejected by the vendor.`
+                    : `Your booking with reference ${reference} has been cancelled by you.`}
       </Text>
-      {response === 'pending'
+      {/* {response === 'pending'
         ? 'is pending confirmation'
         : response === 'paid'
           ? "now has it's payment confirmed"
@@ -68,7 +80,7 @@ export const BookingStatus = ({
                   ? 'has been rejected by the vendor'
                   : response === 'cancelled'
                     ? 'Cancelled by you'
-                    : 'is undefined'}
+                    : 'is undefined'} */}
     </Box>
   );
 };
