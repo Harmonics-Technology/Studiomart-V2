@@ -8,26 +8,32 @@ import Wrapper from '~/lib/components/Wrapper';
 const StudioGroupImages = () => {
   return (
     <Box position="relative" w="100%">
-      <Flex justifyContent="space-between">
+      <Flex gap={['16px', '30px']}>
         <Box>
-          <Stack spacing={5}>
+          <Stack justifyContent="space-between" h="100%">
             <Image
               src="/assets/studio-image-1.png"
               alt="studio image"
-              width={154}
-              height={144}
+              width="154px"
+              height="100%"
+              objectFit="cover"
+              borderRadius="40px"
             />
             <Image
               src="/assets/studio-image-2.png"
               alt="studio image"
-              width={155}
-              height={217}
+              width="155px"
+              height="100%"
+              objectFit="cover"
+              borderRadius="40px"
             />
             <Image
               src="/assets/studio-image-3.png"
               alt="studio image"
-              width={155}
-              height={168}
+              width="155px"
+              height="100%"
+              objectFit="cover"
+              borderRadius="40px"
             />
           </Stack>
         </Box>
@@ -36,14 +42,16 @@ const StudioGroupImages = () => {
             <Image
               src="/assets/studio-image-4.png"
               alt="studio image"
-              width={226}
-              height={346}
+              width="226px"
+              height="100%"
+              objectFit="cover"
             />
             <Image
               src="/assets/studio-image-5.png"
               alt="studio image"
-              width={288}
-              height={216}
+              width="288px"
+              height="100%"
+              objectFit="cover"
             />
           </Stack>
         </Box>
@@ -73,13 +81,18 @@ const FourthSection = () => {
     <Box py="8">
       <Wrapper>
         <Box>
-          <Flex alignItems="center" justifyContent="space-between">
-            <Box w="40%">
+          <Flex
+            alignItems="center"
+            justifyContent="space-between"
+            flexWrap="wrap-reverse"
+            gap="30px"
+          >
+            <Box w={['100%', '40%']}>
               <StudioGroupImages />
             </Box>
-            <Box w="55%">
+            <Box w={['100%', '55%']}>
               <Stack spacing={5}>
-                <Heading>Studio Gallery</Heading>
+                <Heading fontWeight={[900, 700]}>Studio Gallery</Heading>
                 <CustomText text="Creativity finds its truest expression in vivid hues and captivating compositions." />
 
                 <CustomText text="Explore a curated collection of artworks, photographs, and creations that have come to life within the vibrant walls of ColorSplash Studios." />

@@ -1,7 +1,8 @@
-import { Grid, Box } from '@chakra-ui/react';
+import { Grid, Box, Flex } from '@chakra-ui/react';
 import Link from 'next/link';
 
 import ServiceCard from '~/lib/components/ServiceCard';
+import Pagination from '~/lib/utilities/Layouts/Paginatio';
 import { ServiceView, ServiceViewPagedCollection } from '~/services';
 
 const Services = ({
@@ -10,9 +11,9 @@ const Services = ({
   services: ServiceViewPagedCollection | undefined;
 }) => {
   return (
-    <Box pb="56px">
+    <Box>
       <Grid templateColumns={['1fr', 'repeat(3,1fr)']} gap="2rem">
-        {services?.value?.slice(0, 6)?.map((item: ServiceView) => (
+        {services?.value?.map((item: ServiceView) => (
           <Link passHref href={`/services/details/${item?.id}`}>
             <ServiceCard
               image={item?.bannerImageURL || item?.media?.at(0)?.url}
@@ -24,9 +25,9 @@ const Services = ({
           </Link>
         ))}
       </Grid>
-      {/* <Flex justify="center" my="3rem">
+      <Flex justify="center" my="3rem">
         <Pagination data={services} />
-      </Flex> */}
+      </Flex>
     </Box>
   );
 };

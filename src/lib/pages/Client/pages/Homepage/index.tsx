@@ -1,22 +1,26 @@
 'use client';
 
+import { Box } from '@chakra-ui/react';
+
 import { ContainerBox } from '~/lib/layout/ContainerBox';
 import { IHomePage } from '~/lib/utilities/Context/schemas';
 
-import Filter from './Filter';
 import Header from './Header';
-import RecentlyViewed from './RecentlyViewed';
+import PopularStudios from './PopularStudios';
 import Services from './Services';
+import StudioOfTheWeek from './StudioOfTheWeek';
 
 const index = ({ data }: IHomePage) => {
-  const { services, recents } = data;
+  const { services } = data;
   return (
-    <ContainerBox>
-      <Filter />
-      <Header />
-      <Services services={services} />
-      {(recents?.length as any) > 0 && <RecentlyViewed recents={recents} />}
-    </ContainerBox>
+    <Box w="100%">
+      <ContainerBox>
+        <Header />
+        <Services services={services} />
+        <PopularStudios />
+      </ContainerBox>
+      <StudioOfTheWeek />
+    </Box>
   );
 };
 

@@ -24,7 +24,7 @@ const FifthSection = () => {
     <Box bg="#FCF8FB" py="8">
       <Wrapper>
         <Stack spacing={10}>
-          <Box position="relative" p="5">
+          <Box position="relative" p="5" mb="5">
             <Heading
               fontSize={24}
               fontWeight={900}
@@ -46,6 +46,7 @@ const FifthSection = () => {
               alignItems="center"
               justifyContent="space-between"
               flexWrap="wrap"
+              rowGap="24px"
             >
               {studios.map((item) => (
                 <Link passHref href={`/studios/details/${item.id}`}>

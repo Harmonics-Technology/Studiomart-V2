@@ -3,12 +3,13 @@ import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import { useCookies } from 'next-client-cookies';
 
-import HistoryIcon from '../components/Icons/HistoryIcon';
+import CalendarIcon from '../components/Icons/CalendarIcon';
 import HomeIcon from '../components/Icons/HomeIcon';
 import LogoutIcon from '../components/Icons/LogoutIcon';
 import MessagesIcon from '../components/Icons/MessagesIcon';
 import StudioIcon from '../components/Icons/StudioIcon';
 import SupportIcon from '../components/Icons/SupportIcon';
+import { PodcastIcon } from '../components/Icons/TagIcons';
 import {
   SideNavItemProps,
   CloseSideNavProps,
@@ -85,10 +86,14 @@ const SideNav = ({ onClick, openSideNav }: CloseSideNavProps) => {
                 <SideNavItem
                   label="Home"
                   Icon={HomeIcon}
-                  link="/services"
-                  isActive={
-                    !!(pathname === '/services' || pathname === '/user')
-                  }
+                  link="/user"
+                  isActive={pathname === '/user'}
+                />
+                <SideNavItem
+                  label="Services"
+                  Icon={PodcastIcon}
+                  link="/user/services"
+                  isActive={pathname === '/user/services'}
                 />
                 <SideNavItem
                   label="Studios"
@@ -97,17 +102,23 @@ const SideNav = ({ onClick, openSideNav }: CloseSideNavProps) => {
                   isActive={pathname === '/studios'}
                 />
                 <SideNavItem
+                  label="Bookings"
+                  Icon={CalendarIcon}
+                  link="/user/bookings"
+                  isActive={pathname === '/user/bookings'}
+                />
+                <SideNavItem
                   label="Messages"
                   Icon={MessagesIcon}
                   link="/user/message"
                   isActive={pathname === '/user/message'}
                 />
-                <SideNavItem
+                {/* <SideNavItem
                   label="History"
                   Icon={HistoryIcon}
                   link="/user/bookings"
                   isActive={pathname === '/user/bookings'}
-                />
+                /> */}
                 <SideNavItem
                   label="Customer Support"
                   Icon={SupportIcon}

@@ -1,4 +1,5 @@
 import type { TagIconsProps } from '~/lib/utilities/Context/schemas';
+import { SideNavIconProps } from '~/lib/utilities/Context/schemas';
 
 export const RainbowIcon: React.FC<TagIconsProps> = () => {
   return (
@@ -133,7 +134,7 @@ export const PhotoIcon = () => {
   );
 };
 
-export const PodcastIcon = () => {
+export const PodcastIcon = ({ isActive }: SideNavIconProps) => {
   return (
     <svg
       width="24"
@@ -148,18 +149,18 @@ export const PodcastIcon = () => {
         width="8"
         height="13"
         rx="4"
-        stroke="#2D2327"
+        stroke={isActive ? '#FFFFFF' : '#2D2327'}
         strokeWidth="1.5"
       />
       <path
         d="M20 11.5C20 15.9183 16.4183 19.5 12 19.5C7.58172 19.5 4 15.9183 4 11.5"
-        stroke="#2D2327"
+        stroke={isActive ? '#FFFFFF' : '#2D2327'}
         strokeWidth="1.5"
         strokeLinecap="round"
       />
       <path
         d="M12 22V20"
-        stroke="#2D2327"
+        stroke={isActive ? '#FFFFFF' : '#2D2327'}
         strokeWidth="1.5"
         strokeLinecap="round"
       />

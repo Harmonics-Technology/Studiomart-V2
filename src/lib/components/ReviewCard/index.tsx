@@ -10,7 +10,13 @@ const index: React.FC<CustomerReviewCardProps> = ({
   date,
 }) => {
   return (
-    <Box bg="#FCF8FB" w="540px" h="340px" borderRadius="40px" p="8">
+    <Box
+      bg="#FCF8FB"
+      maxW="540px"
+      h={['auto', '340px']}
+      borderRadius="40px"
+      p="8"
+    >
       <Stack spacing={5}>
         <Box>
           <Flex gap={3} alignItems="center">

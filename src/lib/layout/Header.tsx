@@ -86,7 +86,7 @@ const Header = () => {
       position={['sticky', 'static']}
       top="0px"
       bg="brand.400"
-      zIndex="2"
+      zIndex="10"
     >
       <Flex w="full" justifyContent="space-between" alignItems="center">
         <Link href="/">

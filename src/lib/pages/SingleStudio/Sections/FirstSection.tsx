@@ -10,12 +10,18 @@ const FirstSection = () => {
   return (
     <Box>
       <Wrapper>
-        <Flex alignItems="flex-start" justifyContent="space-between" w="100%">
-          <Box w="44%">
+        <Flex
+          alignItems="flex-start"
+          justifyContent="space-between"
+          flexWrap={['wrap', 'nowrap']}
+          w="100%"
+        >
+          <Box w={['100%', '44%']}>
             <Stack
               alignItems="flex-start"
               justifyContent="space-between"
               spacing={20}
+              flexWrap="wrap"
             >
               <IconButtonLinkComponent
                 text="Back"
@@ -25,19 +31,20 @@ const FirstSection = () => {
               <Image
                 src="/assets/studio-girl.png"
                 alt="studio girl"
-                width={466}
-                height={544}
+                width={['100%', 466]}
+                height="100%"
               />
             </Stack>
           </Box>
-          <Box w="60%">
+          <Box w={['100%', '60%']}>
             <Stack spacing={3}>
               <Box>
                 <Image
                   src="/assets/glasses-lady.png"
                   alt="lady on glasses"
-                  width={732}
-                  height={200}
+                  width={['100%', 732]}
+                  height="100%"
+                  display={['none', 'block']}
                 />
               </Box>
               <Box>
@@ -45,23 +52,26 @@ const FirstSection = () => {
                   <Image
                     src="/assets/star-like.svg"
                     alt="star-like image"
-                    width="52px"
-                    height="54px"
-                    style={{ position: 'absolute', top: 0, left: 0 }}
+                    width={['45px', '52px']}
+                    height={['45px', '54px']}
+                    style={{ position: 'absolute', top: 10, left: 0 }}
                   />
-                  <Heading fontSize={40} color="#1570FA" fontWeight={900}>
+                  <Heading fontSize={[26, 40]} color="#1570FA" fontWeight={900}>
                     ColorSplash Studios
                   </Heading>
                 </Box>
-                <Box px="8" mb="6">
+                <Box px={[3, '8']} mb="6">
                   <Stack spacing={5}>
                     <CustomText text=" Our vibrant space is more than a studio; it's your artistic playground. Equipped with the best tools and embraced by a calming atmosphere, we're the ideal spot for artists, photographers, and creators." />
                     <CustomText text="Inspiration is everywhere at ColorSplash Studios. Whether you're capturing moments or exploring innovative ideas, our studio is your perfect companion." />
                     <CustomText text="Ready to add a splash of color? Book our services!" />
                   </Stack>
                 </Box>
-                <Box px="8">
-                  <Flex justifyContent="space-between">
+                <Box px={[3, '8']}>
+                  <Flex
+                    justifyContent="space-between"
+                    flexWrap={['wrap', 'nowrap']}
+                  >
                     <Box w="160px">
                       <Stack spacing={2}>
                         <Text color="#0C090A" fontSize={12}>
