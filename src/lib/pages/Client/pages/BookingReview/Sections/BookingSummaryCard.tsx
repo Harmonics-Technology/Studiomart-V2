@@ -245,7 +245,7 @@ const BookingSummaryCard = ({ singleService, id, addons }: ICustomerHome) => {
               </Box>
               <Box>
                 <Flex alignItems="center" gap="4px">
-                  <CalendarIcon />
+                  <CalendarIcon isActive={false} />
                   <Text color="brand.700">
                     {dayjs(date as string).format('MMM DD, YYYY')} - {time}
                   </Text>
