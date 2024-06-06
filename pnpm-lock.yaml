@@ -35,6 +35,9 @@ importers:
       '@types/react-slick':
         specifier: ^0.23.13
         version: 0.23.13
+      '@types/uuid':
+        specifier: ^9.0.8
+        version: 9.0.8
       '@uploadcare/react-widget':
         specifier: ^2.4.5
         version: 2.4.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -119,6 +122,9 @@ importers:
       use-debounce:
         specifier: ^10.0.0
         version: 10.0.1(react@18.3.1)
+      uuid:
+        specifier: ^9.0.1
+        version: 9.0.1
       yup:
         specifier: ^1.4.0
         version: 1.4.0
@@ -141,9 +147,6 @@ importers:
       '@types/react':
         specifier: ^18.2.48
         version: 18.3.3
-      '@types/uuid':
-        specifier: ^9.0.8
-        version: 9.0.8
       commitizen:
         specifier: ^4.3.0
         version: 4.3.0(@types/node@20.14.2)(typescript@5.4.5)
@@ -5157,6 +5160,10 @@ packages:
 
   uuid@8.3.2:
     resolution: {integrity: sha512-+NYs2QeMWy+GWFOEm9xnn6HCDp0l7QBD7ml8zLUmJ+93Q5NF0NocErnwkTkXVFNiX3/fpC6afS8Dhb/gz7R7eg==}
+    hasBin: true
+
+  uuid@9.0.1:
+    resolution: {integrity: sha512-b+1eJOlsR9K8HJpow9Ok3fiWOWSIcIzXodvv0rQjVoOVNpWMpxf1wZNpt4y9h10odCNrqnYp1OBzRktckBe3sA==}
     hasBin: true
 
   validate-npm-package-license@3.0.4:
@@ -11337,6 +11344,8 @@ snapshots:
   util-deprecate@1.0.2: {}
 
   uuid@8.3.2: {}
+
+  uuid@9.0.1: {}
 
   validate-npm-package-license@3.0.4:
     dependencies:
