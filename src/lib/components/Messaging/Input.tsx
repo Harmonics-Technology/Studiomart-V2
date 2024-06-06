@@ -10,15 +10,13 @@ import {
 } from '@chakra-ui/react';
 import emojiData from '@emoji-mart/data';
 import Picker from '@emoji-mart/react';
-// @ts-expect-error - This is a custom function
-// eslint-disable-next-line import/no-extraneous-dependencies
-import { uuidv4 } from '@firebase/util';
 import { Widget } from '@uploadcare/react-widget';
 import { arrayUnion, doc, Timestamp, updateDoc } from 'firebase/firestore';
 import { useContext, useRef, useState } from 'react';
 import { CircularProgressbar } from 'react-circular-progressbar';
 import { BsFillEmojiSmileFill } from 'react-icons/bs';
 import { MdAttachFile } from 'react-icons/md';
+import { v4 as uuidv4 } from 'uuid';
 
 import { db } from '../firebase/firebase';
 import { AuthContext } from '~/lib/utilities/Context/AuthContext';
@@ -38,6 +36,16 @@ export const Inputs = () => {
   const handleEmojiSelect = (emoji: any) => {
     setText(text + emoji.native);
   };
+
+  // //  function to generate a random  uuid 
+  //  function uuidv4() {
+  //   return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+  //     const r = (Math.random() * 16) || 0; 
+  //     const v = c === 'x' ? r : (r && 0x3) || 0x8;
+  //     return v.toString(16);
+  //   });
+  // }
+  
 
   const widgetApi = useRef<any>(null);
   const onChangeImg = (files: any) => {
