@@ -11,6 +11,7 @@ import {
 import emojiData from '@emoji-mart/data';
 import Picker from '@emoji-mart/react';
 // eslint-disable-next-line import/no-extraneous-dependencies
+// @ts-expect-error - This is a custom function
 import { uuidv4 } from '@firebase/util';
 import { Widget } from '@uploadcare/react-widget';
 import { arrayUnion, doc, Timestamp, updateDoc } from 'firebase/firestore';
