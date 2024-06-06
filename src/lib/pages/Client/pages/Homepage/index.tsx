@@ -13,7 +13,7 @@ import StudioOfTheWeek from './StudioOfTheWeek';
 const index = ({ data }: IHomePage) => {
   const { services } = data;
   return (
-    <Box w="100%">
+    <Box w="100%" pt="40px">
       <ContainerBox>
         <Header />
         <Services services={services} />

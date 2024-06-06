@@ -2,7 +2,6 @@ import { Box, Flex, Heading, Stack, Text, Image } from '@chakra-ui/react';
 import { IoChevronBackCircleOutline } from 'react-icons/io5';
 
 import { IconButtonLinkComponent } from '~/lib/components/Button/Button';
-import QuoteIcon from '~/lib/components/Icons/Quote';
 import CustomText from '~/lib/components/Text';
 import Wrapper from '~/lib/components/Wrapper';
 
@@ -10,41 +9,26 @@ const FirstSection = () => {
   return (
     <Box>
       <Wrapper>
-        <Flex
-          alignItems="flex-start"
-          justifyContent="space-between"
-          flexWrap={['wrap', 'nowrap']}
-          w="100%"
-        >
-          <Box w={['100%', '44%']}>
-            <Stack
-              alignItems="flex-start"
-              justifyContent="space-between"
-              spacing={20}
-              flexWrap="wrap"
-            >
-              <IconButtonLinkComponent
-                text="Back"
-                flip
-                icon={IoChevronBackCircleOutline}
-              />
-              <Image
-                src="/assets/studio-girl.png"
-                alt="studio girl"
-                width={['100%', 466]}
-                height="100%"
-              />
-            </Stack>
-          </Box>
-          <Box w={['100%', '60%']}>
+        <Flex w="100%">
+          <Box w="100%">
             <Stack spacing={3}>
-              <Box>
+              <Box
+                display="flex"
+                flexDirection="column"
+                alignItems="flex-start"
+              >
+                <Box mb="5">
+                  <IconButtonLinkComponent
+                    text="Back"
+                    flip
+                    icon={IoChevronBackCircleOutline}
+                  />
+                </Box>
                 <Image
                   src="/assets/glasses-lady.png"
                   alt="lady on glasses"
-                  width={['100%', 732]}
-                  height="100%"
-                  display={['none', 'block']}
+                  width="100%"
+                  height="auto"
                 />
               </Box>
               <Box>
@@ -85,7 +69,7 @@ const FirstSection = () => {
                         />
                       </Stack>
                     </Box>
-                    <Box w="317px">
+                    {/* <Box w="317px">
                       <Stack spacing={4}>
                         <QuoteIcon color="#2D2327" width="40" height="30" />
                         <Text color="#267E79">
@@ -100,7 +84,7 @@ const FirstSection = () => {
                           The_Designer
                         </Heading>
                       </Stack>
-                    </Box>
+                    </Box> */}
                   </Flex>
                 </Box>
               </Box>

@@ -1,4 +1,4 @@
-export const SearcIcon = () => {
+const SearcIcon = () => {
   return (
     <svg
       width="24"

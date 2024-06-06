@@ -40,6 +40,8 @@ const extendedColors: DeepPartial<
   studioStatus: {
     100: '#E5E8F0',
     200: '#F6F6F4',
+    300: 'rgba(220, 38, 38, 0.1)',
+    400: '#4F4F4F',
   },
   scheme: {
     100: '#216015',
@@ -48,6 +50,9 @@ const extendedColors: DeepPartial<
     400: '#484848',
     500: '#6dd3ce',
     600: 'rgba(175, 175, 175, 0.5)',
+    700: '#F5F9FF',
+    800: '#D6E7FF',
+    900: '#DC2626',
   },
 };
 

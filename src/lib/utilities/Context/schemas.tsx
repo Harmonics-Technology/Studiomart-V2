@@ -342,3 +342,15 @@ export interface MobileSideNavProps {
   openSideNav: boolean;
   setOpenSideNav: (value: boolean) => void;
 }
+
+export interface NavPositionProps {
+  navPosition: number;
+  setNavPosition: (value: number) => void;
+}
+
+export interface NavItemProps {
+  label: string;
+  Icon: any;
+  onClick: () => void;
+  isActive: boolean;
+}

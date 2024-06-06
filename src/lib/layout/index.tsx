@@ -18,7 +18,14 @@ const Layout = ({ children }: LayoutProps) => {
   const cookies = useCookies();
   const [openSideNav, setOpenSideNav] = useState<boolean>(false);
   const pathname = usePathname();
-  const routes = ['/sign-in', '/register'];
+  const routes = [
+    '/sign-in',
+    '/register',
+    '/forgot-password',
+    '/email-confirmation',
+    '/reset-password',
+    '/password-reset-success',
+  ];
   const isLoggedIn =
     cookies.get('studiomart-user') && !routes.includes(pathname);
 
