@@ -2,7 +2,9 @@
 
 import { Box, Heading, Stack, Flex, Text } from '@chakra-ui/react';
 import { useContext } from 'react';
+import { IoChevronForwardCircleOutline } from 'react-icons/io5';
 
+import { IconButtonLinkComponent } from '~/lib/components/Button/Button';
 import { ServiceTypeContext } from '~/lib/utilities/Context/ServiceTypeContext';
 import useQueryParams from '~/lib/utilities/Hooks/useQueryParams';
 import { ServiceTypeView } from '~/services';
@@ -47,9 +49,19 @@ const Header = () => {
   return (
     <Box maxW="1304px" mx="auto" mb="64px">
       <Stack spacing="32px">
-        <Heading as="h2" fontSize={40} fontWeight={900} color="text.100">
-          Services
-        </Heading>
+        <Box>
+          <Flex justifyContent="space-between" alignItems="center">
+            <Heading as="h2" fontSize={40} fontWeight={900} color="text.100">
+              Services around you
+            </Heading>
+            <IconButtonLinkComponent
+              text="View all"
+              icon={IoChevronForwardCircleOutline}
+              flip={false}
+              color="brand.100"
+            />
+          </Flex>
+        </Box>
         <Filters />
       </Stack>
     </Box>

@@ -18,7 +18,7 @@ const UserHeader = ({ onClick }: OpenSideNavProps) => {
       py="20px"
       maxW="1440px"
       mx="auto"
-      mb="41px"
+      // mb="41px"
       position="sticky"
       top="0"
       bg="brand.400"
@@ -28,7 +28,7 @@ const UserHeader = ({ onClick }: OpenSideNavProps) => {
       <Box as="nav">
         <Flex alignItems="center" gap="40px">
           <Box onClick={onClick} cursor="pointer">
-            <FaBars />
+            <FaBars size={18} />
           </Box>
           <Logo />
           <Box w="599px">

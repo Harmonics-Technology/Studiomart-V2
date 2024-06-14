@@ -9,7 +9,7 @@ export const ContainerBox = ({
   w?: any;
 } & BoxProps) => {
   return (
-    <Box w={w} mx="auto" {...rest}>
+    <Box w={w} mx="auto" {...rest} pt="40px">
       {children}
     </Box>
   );

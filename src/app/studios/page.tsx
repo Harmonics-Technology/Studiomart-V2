@@ -1,4 +1,4 @@
-import AllStudios from '~/lib/pages/AllStudios';
+import Studios from '~/lib/pages/Client/pages/Studios';
 import { IPageProps } from '~/lib/utilities/Context/schemas';
 import { StudioService, StudioViewPagedCollection } from '~/services';
 
@@ -23,7 +23,7 @@ const fetchData = async (offset: number, limit: number, search: string) => {
 const page = async ({ searchParams }: IPageProps) => {
   const { offset, limit, search } = searchParams;
   const data = await fetchData(offset, limit, search);
-  return <AllStudios data={data as StudioViewPagedCollection} />;
+  return <Studios data={data as StudioViewPagedCollection} />;
 };
 
 export default page;

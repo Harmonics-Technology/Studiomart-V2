@@ -179,16 +179,18 @@ const MobileSideNav = ({ setOpenSideNav }: MobileSideNavProps) => {
                     </Stack>
                   </MenuList>
                 </Menu>
-                <Button
-                  mt="45px"
-                  w="100%"
-                  bg="brand.100"
-                  color="brand.400"
-                  fontWeight={400}
-                  py="10px"
-                >
-                  Get Started
-                </Button>
+                <Link href="/sign-in">
+                  <Button
+                    mt="45px"
+                    w="100%"
+                    bg="brand.100"
+                    color="brand.400"
+                    fontWeight={400}
+                    py="10px"
+                  >
+                    Get Started
+                  </Button>
+                </Link>
                 <Link href="/become-a-vendor">
                   <Text color="status.300" textAlign="center" fontWeight={500}>
                     Become a Vendor

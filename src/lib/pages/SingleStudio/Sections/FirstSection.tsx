@@ -2,7 +2,6 @@ import { Box, Flex, Heading, Stack, Text, Image } from '@chakra-ui/react';
 import { IoChevronBackCircleOutline } from 'react-icons/io5';
 
 import { IconButtonLinkComponent } from '~/lib/components/Button/Button';
-import QuoteIcon from '~/lib/components/Icons/Quote';
 import CustomText from '~/lib/components/Text';
 import Wrapper from '~/lib/components/Wrapper';
 
@@ -10,34 +9,26 @@ const FirstSection = () => {
   return (
     <Box>
       <Wrapper>
-        <Flex alignItems="flex-start" justifyContent="space-between" w="100%">
-          <Box w="44%">
-            <Stack
-              alignItems="flex-start"
-              justifyContent="space-between"
-              spacing={20}
-            >
-              <IconButtonLinkComponent
-                text="Back"
-                flip
-                icon={IoChevronBackCircleOutline}
-              />
-              <Image
-                src="/assets/studio-girl.png"
-                alt="studio girl"
-                width={466}
-                height={544}
-              />
-            </Stack>
-          </Box>
-          <Box w="60%">
+        <Flex w="100%">
+          <Box w="100%">
             <Stack spacing={3}>
-              <Box>
+              <Box
+                display="flex"
+                flexDirection="column"
+                alignItems="flex-start"
+              >
+                <Box mb="5">
+                  <IconButtonLinkComponent
+                    text="Back"
+                    flip
+                    icon={IoChevronBackCircleOutline}
+                  />
+                </Box>
                 <Image
                   src="/assets/glasses-lady.png"
                   alt="lady on glasses"
-                  width={732}
-                  height={200}
+                  width="100%"
+                  height="auto"
                 />
               </Box>
               <Box>
@@ -45,23 +36,26 @@ const FirstSection = () => {
                   <Image
                     src="/assets/star-like.svg"
                     alt="star-like image"
-                    width="52px"
-                    height="54px"
-                    style={{ position: 'absolute', top: 0, left: 0 }}
+                    width={['45px', '52px']}
+                    height={['45px', '54px']}
+                    style={{ position: 'absolute', top: 10, left: 0 }}
                   />
-                  <Heading fontSize={40} color="#1570FA" fontWeight={900}>
+                  <Heading fontSize={[26, 40]} color="#1570FA" fontWeight={900}>
                     ColorSplash Studios
                   </Heading>
                 </Box>
-                <Box px="8" mb="6">
+                <Box px={[3, '8']} mb="6">
                   <Stack spacing={5}>
                     <CustomText text=" Our vibrant space is more than a studio; it's your artistic playground. Equipped with the best tools and embraced by a calming atmosphere, we're the ideal spot for artists, photographers, and creators." />
                     <CustomText text="Inspiration is everywhere at ColorSplash Studios. Whether you're capturing moments or exploring innovative ideas, our studio is your perfect companion." />
                     <CustomText text="Ready to add a splash of color? Book our services!" />
                   </Stack>
                 </Box>
-                <Box px="8">
-                  <Flex justifyContent="space-between">
+                <Box px={[3, '8']}>
+                  <Flex
+                    justifyContent="space-between"
+                    flexWrap={['wrap', 'nowrap']}
+                  >
                     <Box w="160px">
                       <Stack spacing={2}>
                         <Text color="#0C090A" fontSize={12}>
@@ -75,7 +69,7 @@ const FirstSection = () => {
                         />
                       </Stack>
                     </Box>
-                    <Box w="317px">
+                    {/* <Box w="317px">
                       <Stack spacing={4}>
                         <QuoteIcon color="#2D2327" width="40" height="30" />
                         <Text color="#267E79">
@@ -90,7 +84,7 @@ const FirstSection = () => {
                           The_Designer
                         </Heading>
                       </Stack>
-                    </Box>
+                    </Box> */}
                   </Flex>
                 </Box>
               </Box>

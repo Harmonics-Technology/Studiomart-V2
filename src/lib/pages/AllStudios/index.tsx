@@ -1,9 +1,11 @@
+'use client';
+
 import { Box } from '@chakra-ui/react';
 
+import StudioOfTheWeek from '../Client/pages/Homepage/StudioOfTheWeek';
 import { StudioViewPagedCollection } from '~/services';
 
 import HeroSection from './sections/HeroSection';
-import OtherStudios from './sections/OtherStudios';
 import StudioList from './sections/StudioList';
 
 const index = ({ data }: { data: StudioViewPagedCollection }) => {
@@ -12,7 +14,8 @@ const index = ({ data }: { data: StudioViewPagedCollection }) => {
       {/* <Stack> */}
       <HeroSection />
       <StudioList data={data} />
-      <OtherStudios />
+      <StudioOfTheWeek />
+      {/* <OtherStudios /> */}
       {/* </Stack> */}
     </Box>
   );

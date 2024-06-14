@@ -102,9 +102,16 @@ const FormContainer = () => {
                 passwordVisible={passwordVisible}
                 changeVisibility={() => setPasswordVisible((prev) => !prev)}
               />
-              <Text fontSize={14} color="brand.200" fontStyle="italic">
-                Forgot Password?
-              </Text>
+              <Link href="/forgot-password" passHref>
+                <Text
+                  fontSize={14}
+                  color="brand.100"
+                  textAlign="right"
+                  fontStyle="italic"
+                >
+                  Forgot Password?
+                </Text>
+              </Link>
             </Stack>
           </Box>
           <Box>

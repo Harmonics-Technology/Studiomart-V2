@@ -32,7 +32,15 @@ const Header = () => {
   const showLoaderProgress = useLoaderProgress();
   const [openSideNav, setOpenSideNav] = useState<boolean>(false);
 
-  const hideNavbarRoutes = ['/sign-in', '/register', '/institutions'];
+  const hideNavbarRoutes = [
+    '/sign-in',
+    '/register',
+    '/institutions',
+    '/forgot-password',
+    '/email-confirmation',
+    '/reset-password',
+    '/password-reset-success',
+  ];
 
   const hideNavbar = hideNavbarRoutes.some((route) => pathname.includes(route));
 
@@ -86,7 +94,7 @@ const Header = () => {
       position={['sticky', 'static']}
       top="0px"
       bg="brand.400"
-      zIndex="2"
+      zIndex="10"
     >
       <Flex w="full" justifyContent="space-between" alignItems="center">
         <Link href="/">

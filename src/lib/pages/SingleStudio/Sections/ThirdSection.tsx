@@ -1,12 +1,25 @@
-import { Box, Flex, Heading, Stack, Icon, Image } from '@chakra-ui/react';
+import {
+  Box,
+  Flex,
+  Heading,
+  Stack,
+  Icon,
+  Image,
+  useMediaQuery,
+} from '@chakra-ui/react';
 import {
   IoChevronBackCircleOutline,
   IoChevronForwardCircleOutline,
 } from 'react-icons/io5';
+import { Autoplay, Pagination } from 'swiper/modules';
+import { Swiper, SwiperSlide } from 'swiper/react';
 
 import ReviewCard from '~/lib/components/ReviewCard';
+import 'swiper/css';
+import 'swiper/css/pagination';
 
 const ThirdSection = () => {
+  const [isMobile] = useMediaQuery('(max-width: 768px)');
   return (
     <Box as="section" bg="#D6E7FF" py="14" w="100%" position="relative">
       {/* <Wrapper> */}
@@ -25,7 +38,7 @@ const ThirdSection = () => {
           height="100px"
         />
       </Box>
-      <Box w="85%" mx="auto" overflow="auto">
+      <Box w={['90%', '85%']} mx="auto">
         <Stack spacing={14}>
           <Box>
             <Flex alignItems="center" justifyContent="space-between">
@@ -54,28 +67,58 @@ const ThirdSection = () => {
             </Flex>
           </Box>
 
-          <Box overflow="auto">
-            <Flex alignItems="center" overflowX="auto" gap="30px" w="100vw">
+          <Swiper
+            pagination={{ clickable: true }}
+            modules={[Pagination, Autoplay]}
+            className="mySwiper"
+            slidesPerView={isMobile ? 1 : 2}
+            autoplay={{
+              delay: 2500,
+              disableOnInteraction: false,
+            }}
+            style={{ height: '100%', width: '100%', paddingBottom: '50px' }}
+          >
+            <SwiperSlide>
               <ReviewCard
                 name="The_Designer_Ama"
                 company="Chroma Magic, Rainbow Retreat, Colorful Captures"
                 review="ColorSplash Studios is a creative haven! The vibrant ambiance and passionate staff make it a perfect spot for artists. I booked a Colorful Captures session for my birthday, and the photographs were stunning. The studio's professional approach and welcoming atmosphere made the experience delightful. Highly recommended!"
                 date="21st October, 2023"
               />
+            </SwiperSlide>
+            <SwiperSlide>
               <ReviewCard
                 name="The_Designer_Ama"
                 company="Chroma Magic, Rainbow Retreat, Colorful Captures"
                 review="ColorSplash Studios is a creative haven! The vibrant ambiance and passionate staff make it a perfect spot for artists. I booked a Colorful Captures session for my birthday, and the photographs were stunning. The studio's professional approach and welcoming atmosphere made the experience delightful. Highly recommended!"
                 date="21st October, 2023"
               />
+            </SwiperSlide>
+            <SwiperSlide>
               <ReviewCard
                 name="The_Designer_Ama"
                 company="Chroma Magic, Rainbow Retreat, Colorful Captures"
                 review="ColorSplash Studios is a creative haven! The vibrant ambiance and passionate staff make it a perfect spot for artists. I booked a Colorful Captures session for my birthday, and the photographs were stunning. The studio's professional approach and welcoming atmosphere made the experience delightful. Highly recommended!"
                 date="21st October, 2023"
               />
-            </Flex>
-          </Box>
+            </SwiperSlide>
+            <SwiperSlide>
+              <ReviewCard
+                name="The_Designer_Ama"
+                company="Chroma Magic, Rainbow Retreat, Colorful Captures"
+                review="ColorSplash Studios is a creative haven! The vibrant ambiance and passionate staff make it a perfect spot for artists. I booked a Colorful Captures session for my birthday, and the photographs were stunning. The studio's professional approach and welcoming atmosphere made the experience delightful. Highly recommended!"
+                date="21st October, 2023"
+              />
+            </SwiperSlide>
+            <SwiperSlide>
+              <ReviewCard
+                name="The_Designer_Ama"
+                company="Chroma Magic, Rainbow Retreat, Colorful Captures"
+                review="ColorSplash Studios is a creative haven! The vibrant ambiance and passionate staff make it a perfect spot for artists. I booked a Colorful Captures session for my birthday, and the photographs were stunning. The studio's professional approach and welcoming atmosphere made the experience delightful. Highly recommended!"
+                date="21st October, 2023"
+              />
+            </SwiperSlide>
+          </Swiper>
         </Stack>
       </Box>
       {/* </Wrapper> */}

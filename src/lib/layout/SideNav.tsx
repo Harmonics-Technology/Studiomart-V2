@@ -3,12 +3,14 @@ import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import { useCookies } from 'next-client-cookies';
 
-import HistoryIcon from '../components/Icons/HistoryIcon';
+import AccountIcon from '../components/Icons/AccountIcon';
+import CalendarIcon from '../components/Icons/CalendarIcon';
 import HomeIcon from '../components/Icons/HomeIcon';
 import LogoutIcon from '../components/Icons/LogoutIcon';
 import MessagesIcon from '../components/Icons/MessagesIcon';
 import StudioIcon from '../components/Icons/StudioIcon';
 import SupportIcon from '../components/Icons/SupportIcon';
+import { PodcastIcon } from '../components/Icons/TagIcons';
 import {
   SideNavItemProps,
   CloseSideNavProps,
@@ -68,7 +70,7 @@ const SideNav = ({ onClick, openSideNav }: CloseSideNavProps) => {
         bg="brand.400"
         h="100%"
         left={openSideNav ? 0 : '-100%'}
-        py="8"
+        py="6"
         px="7"
       >
         <Box h="100%">
@@ -78,17 +80,21 @@ const SideNav = ({ onClick, openSideNav }: CloseSideNavProps) => {
             justifyContent="space-between"
           >
             <Box>
-              <Box mb="50px">
+              <Box mb="30px">
                 <Logo />
               </Box>
               <Stack spacing="16px">
                 <SideNavItem
                   label="Home"
                   Icon={HomeIcon}
-                  link="/services"
-                  isActive={
-                    !!(pathname === '/services' || pathname === '/user')
-                  }
+                  link="/user"
+                  isActive={pathname === '/user'}
+                />
+                <SideNavItem
+                  label="Services"
+                  Icon={PodcastIcon}
+                  link="/user/services"
+                  isActive={pathname === '/user/services'}
                 />
                 <SideNavItem
                   label="Studios"
@@ -97,16 +103,22 @@ const SideNav = ({ onClick, openSideNav }: CloseSideNavProps) => {
                   isActive={pathname === '/studios'}
                 />
                 <SideNavItem
+                  label="Bookings"
+                  Icon={CalendarIcon}
+                  link="/user/bookings"
+                  isActive={pathname === '/user/bookings'}
+                />
+                <SideNavItem
                   label="Messages"
                   Icon={MessagesIcon}
                   link="/user/message"
                   isActive={pathname === '/user/message'}
                 />
                 <SideNavItem
-                  label="History"
-                  Icon={HistoryIcon}
-                  link="/user/bookings"
-                  isActive={pathname === '/user/bookings'}
+                  label="Account"
+                  Icon={AccountIcon}
+                  link="/user/account"
+                  isActive={pathname === '/user/account'}
                 />
                 <SideNavItem
                   label="Customer Support"
