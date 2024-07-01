@@ -101,7 +101,7 @@ const SecondStep = () => {
       }
       toast.error(result?.message as string);
     } catch (error: any) {
-      toast.error(error?.message || error?.body?.message);
+      toast.error(error?.body?.message || error?.message);
     }
   };
 
