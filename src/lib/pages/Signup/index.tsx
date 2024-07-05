@@ -5,6 +5,7 @@ import { useState } from 'react';
 
 import FirstStep from './Sections/FirstStep';
 import FormFooter from './Sections/FormFooter';
+import Header from './Sections/Header';
 import SecondStep from './Sections/SecondStep';
 import ThirdStep from './Sections/ThirdStep';
 
@@ -16,8 +17,8 @@ const Index = () => {
         position="absolute"
         backgroundImage="url('/assets/thick-star-illustration.png')"
         backgroundRepeat="no-repeat"
-        width="120px"
-        height="120px"
+        width={['80px', '120px']}
+        height={['80px', '120px']}
         top="25%"
         right="0"
       />
@@ -25,14 +26,14 @@ const Index = () => {
         backgroundImage="url('/assets/bg-illustration.png')"
         backgroundRepeat="no-repeat"
         position="absolute"
-        w="386px"
-        h="250px"
+        w={['200px', '386px']}
+        h={['200px', '250px']}
         backgroundSize="contain"
         top="50%"
         left="0"
       />
-      <Stack spacing={12}>
-        {/* <Formheader /> */}
+      <Stack>
+        <Header />
         <Box maxW="640px" mx="auto">
           {formStep === 1 && (
             <FirstStep step={formStep} setStep={setFormStep} />
@@ -42,7 +43,7 @@ const Index = () => {
             <ThirdStep step={formStep} setStep={setFormStep} />
           )}
         </Box>
-        {formStep !== 1 && <FormFooter />}
+        <FormFooter />
       </Stack>
     </Box>
   );

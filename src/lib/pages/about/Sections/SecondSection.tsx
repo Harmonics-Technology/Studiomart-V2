@@ -1,4 +1,5 @@
 import { Box, Stack, Heading, Text, Flex, Image } from '@chakra-ui/react';
+import { useRouter } from 'next/navigation';
 
 import ButtonComponent from '~/lib/components/Button/Button';
 import Wrapper from '~/lib/components/Wrapper';
@@ -31,6 +32,7 @@ const ListItem: React.FC<ListItemProps> = ({ index, title, text }) => {
 };
 
 const SecondSection = () => {
+  const router = useRouter();
   const features = [
     {
       title: 'Feature Your Space.',
@@ -89,7 +91,7 @@ const SecondSection = () => {
                 color="white"
                 width="150px"
                 bg="brand.100"
-                onClick={() => {}}
+                onClick={() => router.push('/register')}
               />
             </Stack>
           </Box>

@@ -1,6 +1,7 @@
 'use client';
 
 import { Box, Heading, Stack, Flex, Text } from '@chakra-ui/react';
+import Link from 'next/link';
 import { useContext } from 'react';
 import { IoChevronForwardCircleOutline } from 'react-icons/io5';
 
@@ -54,12 +55,15 @@ const Header = () => {
             <Heading as="h2" fontSize={40} fontWeight={900} color="text.100">
               Services around you
             </Heading>
-            <IconButtonLinkComponent
-              text="View all"
-              icon={IoChevronForwardCircleOutline}
-              flip={false}
-              color="brand.100"
-            />
+            <Link href="/user/services">
+              <IconButtonLinkComponent
+                text="View all"
+                icon={IoChevronForwardCircleOutline}
+                flip={false}
+                color="brand.100"
+                link="/user/services"
+              />
+            </Link>
           </Flex>
         </Box>
         <Filters />

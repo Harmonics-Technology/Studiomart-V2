@@ -13,9 +13,9 @@ import SecondSection from './Sections/SecondSection';
 const index = ({ bookings }: IBookingDetails) => {
   const status = bookings?.status?.toLowerCase();
   return (
-    <ContainerBox my="80px">
+    <ContainerBox my="50px">
       <HStack mb="50px" justify="space-between" w="full" align="center">
-        <BackButton linkTo="/" />
+        <BackButton linkTo="/user/bookings" />
         {status === 'paid' && (
           <Link passHref href={`/user/transfer/${bookings?.id}`}>
             <Button bgColor="brand.100" color="white">

@@ -224,10 +224,11 @@ export interface IconButtonLinkProps {
   icon: any;
   flip: boolean;
   color?: string;
+  link?: string;
 }
 
 export interface BackButtonProps {
-  linkTo: string;
+  linkTo?: string;
 }
 
 export interface HeadingWithStarProps {
@@ -353,4 +354,9 @@ export interface NavItemProps {
   Icon: any;
   onClick: () => void;
   isActive: boolean;
+}
+
+export interface HomeFeatureCardProps {
+  description: string;
+  currentIndex: number;
 }

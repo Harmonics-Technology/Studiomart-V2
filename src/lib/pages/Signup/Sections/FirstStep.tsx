@@ -26,7 +26,7 @@ const OptionButton = ({
   const isActive = studioPreference?.find((x) => x === name);
   return (
     <Box
-      w="192px"
+      w={['160px', '192px']}
       border={isActive ? '2px solid #1570FA' : '1px solid #1570FA'}
       bgColor={isActive ? 'brand.100' : 'transparent'}
       px="16px"
@@ -84,14 +84,14 @@ const FirstStep = ({ step, setStep }: FormStepProps) => {
     <Box
       as="section"
       w="100%"
-      h="100vh"
+      h={['100vh']}
       display="flex"
       alignItems="center"
       justifyContent="center"
     >
       <Stack spacing="45px">
         <Box>
-          <Heading fontWeight={900} fontSize={40} mb="3px">
+          <Heading fontWeight={900} fontSize={[24, 40]} mb="3px">
             What are you looking for?
           </Heading>
           <Text color="brand.500">
@@ -99,7 +99,10 @@ const FirstStep = ({ step, setStep }: FormStepProps) => {
           </Text>
         </Box>
         <Box>
-          <Grid gap="36px" templateColumns={['1fr', 'repeat(3, 1fr)']}>
+          <Grid
+            gap={['18px', '36px']}
+            templateColumns={['repeat(2, 1fr)', 'repeat(3, 1fr)']}
+          >
             {optionLists.map((item, index) => (
               <OptionButton
                 key={index}

@@ -112,7 +112,8 @@ export const IconButtonLinkComponent: React.FC<IconButtonLinkProps> = ({
       bg="none"
       w="auto"
       textAlign="left"
-      cursor="pointer"
+      as="div"
+      // cursor="pointer"
     >
       <Flex
         alignItems="center"

@@ -8,7 +8,7 @@ import StudioList from './StudioList';
 const index = ({ data }: { data: StudioViewPagedCollection }) => {
   return (
     <Box as="section" pt="40px">
-      <Stack spacing="60px">
+      <Stack spacing="0px">
         <Header />
         <StudioList data={data} />
       </Stack>

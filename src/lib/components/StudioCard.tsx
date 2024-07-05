@@ -9,6 +9,7 @@ import {
   Heading,
   Image,
 } from '@chakra-ui/react';
+import Currency from 'react-currency-formatter';
 import { IoArrowForward } from 'react-icons/io5';
 import { useDummyImage } from 'react-simple-placeholder-image';
 
@@ -142,7 +143,12 @@ export const StudioCard = ({
             </Flex>
             <Flex alignItems="flex-end" gap={1}>
               <Heading color="#0C090A" fontSize={24}>
-                {price} NGN
+                <Currency
+                  quantity={price}
+                  currency="NGN"
+                  decimal="."
+                  group=","
+                />
               </Heading>
               <Text fontSize={14} color="#3D3D3D">
                 per hour
@@ -252,7 +258,16 @@ export const ServiceCard = ({
               </Heading>
             </Box>
             <Text>
-              From <strong>N{price}</strong> (Per Session)
+              From{' '}
+              <strong>
+                <Currency
+                  quantity={price}
+                  currency="NGN"
+                  decimal="."
+                  group=","
+                />
+              </strong>{' '}
+              (Per Session)
             </Text>
             <Box>
               <Flex alignItems="center" gap={3} color="#1570FA">

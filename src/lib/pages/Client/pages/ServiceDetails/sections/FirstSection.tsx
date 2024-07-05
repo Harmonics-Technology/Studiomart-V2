@@ -14,6 +14,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useCookies } from 'next-client-cookies';
 import { useState } from 'react';
+import Currency from 'react-currency-formatter';
 import toast from 'react-hot-toast';
 import {
   IoChevronBackCircleOutline,
@@ -260,11 +261,20 @@ const FirstSection = ({ data }: { data: ServiceView | undefined }) => {
                         label="Location"
                         description="Studio or Outdoor"
                       />
-                      <SingleDetail
-                        icon={TicketIcon}
-                        label="Pricing"
-                        description={`${data?.price} NGN`}
-                      />
+                      <Box w="auto">
+                        <Flex alignItems="center" gap={1} mb="2">
+                          <Icon as={TicketIcon} fontSize={24} />
+                          <Text>Pricing</Text>
+                        </Flex>
+                        <Text fontWeight={500} color="#2D2327" fontSize={20}>
+                          <Currency
+                            quantity={data?.price}
+                            currency="NGN"
+                            decimal="."
+                            group=","
+                          />
+                        </Text>
+                      </Box>
                     </Flex>
                   </Box>
 

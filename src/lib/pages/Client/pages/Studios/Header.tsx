@@ -1,6 +1,7 @@
 'use client';
 
-import { Box, Flex, Heading, Stack, Text } from '@chakra-ui/react';
+import { Box, Flex, Heading, Stack, Text, Button } from '@chakra-ui/react';
+import { useRouter } from 'next/navigation';
 
 import { BackButton } from '~/lib/components/Button/Button';
 import FilterIcon from '~/lib/components/Icons/FilterIcon';
@@ -8,15 +9,18 @@ import './styles.css';
 import Wrapper from '~/lib/components/Wrapper';
 
 const Header = () => {
+  const router = useRouter();
   return (
     <Box as="section">
       <Wrapper>
         <Flex alignItems="flex-start" justifyContent="space-between">
           <Box>
-            <Stack spacing="40px">
-              <BackButton linkTo="/user" />
+            <Stack spacing="50px">
+              <Button onClick={() => router.back()}>
+                <BackButton linkTo="" />
+              </Button>
               <Heading fontSize={40} fontWeight={900}>
-                Popular Studios
+                All Studios
               </Heading>
             </Stack>
           </Box>

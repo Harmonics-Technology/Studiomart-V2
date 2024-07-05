@@ -32,7 +32,7 @@ const ForgotPasswordForm = () => {
     <Box>
       <Stack spacing="58px">
         <Box>
-          <Heading mb="5px" fontWeight={900} fontSize={40}>
+          <Heading mb="5px" fontWeight={900} fontSize={[25, 40]}>
             Forgot Password
           </Heading>
           <Text>Enter the email/Phone number registered on this account </Text>

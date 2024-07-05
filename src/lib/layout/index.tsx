@@ -35,7 +35,7 @@ const Layout = ({ children }: LayoutProps) => {
         onClick={() => setOpenSideNav(false)}
         openSideNav={openSideNav}
       />
-      <Box>
+      <Box maxW="1440px" mx="auto">
         {isLoggedIn ? (
           <UserHeader onClick={() => setOpenSideNav(true)} />
         ) : (

@@ -11,7 +11,7 @@ const index = () => {
       alignItems="center"
       justifyContent="center"
     >
-      <Box maxW="640px">
+      <Box maxW={['350px', '640px']}>
         <Stack spacing="40px">
           <Image
             src="/assets/email-confirmation.gif"
@@ -24,12 +24,14 @@ const index = () => {
             <Heading>Password Reset Successful!</Heading>
             <Text>Your password has been successfully changed</Text>
           </Box>
-          <ButtonComponent
-            text="Continue to login"
-            bg="brand.100"
-            width="100%"
-            color="brand.400"
-          />
+          <Box w={{ sm: '80%', lg: '100%' }}>
+            <ButtonComponent
+              text="Continue to login"
+              bg="brand.100"
+              width="100%"
+              color="brand.400"
+            />
+          </Box>
         </Stack>
       </Box>
     </Box>

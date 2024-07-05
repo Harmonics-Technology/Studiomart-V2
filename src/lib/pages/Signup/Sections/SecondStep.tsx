@@ -1,3 +1,5 @@
+'use client';
+
 import {
   Box,
   Text,
@@ -8,6 +10,8 @@ import {
   Icon,
   Heading,
   Button,
+  useMediaQuery,
+  Image,
 } from '@chakra-ui/react';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
@@ -49,6 +53,7 @@ const SecondStep = () => {
     // }),
   });
 
+  const [isMobile] = useMediaQuery('(max-width: 768px)');
   const [success, setSuccess] = useState(false);
   const [passwordVisible, setPasswordVisible] = useState<boolean>(false);
   const [confirmPasswordVisible, setConfirmPasswordVisible] =
@@ -106,9 +111,21 @@ const SecondStep = () => {
   };
 
   return (
-    <Box py="2rem">
+    <Box
+      py="2rem"
+      display={success ? 'flex' : 'block'}
+      h={success ? '100vh' : '100%'}
+      alignItems={success ? 'center' : 'flex-start'}
+      justifyContent={success ? 'centerr' : 'flex-start'}
+    >
       {success ? (
-        <VStack w="100%" h="auto" p="3rem 3rem">
+        <VStack
+          w="100%"
+          h="auto"
+          p="3rem 3rem"
+          alignItems="center"
+          justifyContent="center"
+        >
           <Icon as={BiSolidCheckCircle} color="green" fontSize="2rem" />
           <Heading>Successful!</Heading>
           <Text textAlign="center">
@@ -124,18 +141,38 @@ const SecondStep = () => {
         <Stack spacing="36px">
           <Box>
             <VStack spacing={6}>
-              <HeadingWithStar
-                title="Hey there, explorer!"
-                flipStar
-                width="508px"
-              />
-              <Text fontSize={24} fontWeight={500}>
-                Let’s get started! Already have an account? Sign in
+              <Box display={isMobile ? 'none' : 'block'}>
+                <HeadingWithStar
+                  title="Hey there, explorer!"
+                  flipStar
+                  width="508px"
+                />
+              </Box>
+              <Box display={isMobile ? 'block' : 'none'} position="relative">
+                <Heading fontSize={30} textAlign="center">
+                  Hey there, explorer!
+                </Heading>
+                <Image
+                  src="/assets/heading-top-bg.png"
+                  w="35px"
+                  h="35px"
+                  position="absolute"
+                  top="-20px"
+                  right="-30px"
+                />
+              </Box>
+              <Text fontSize={[16, 24]} fontWeight={500}>
+                Let’s get started! Already have an account?{' '}
+                <Link href="/sign-in">
+                  <Box as="span" color="brand.100">
+                    Sign in
+                  </Box>
+                </Link>
               </Text>
               <SigninOption text="or sign up with" />
             </VStack>
           </Box>
-          <Box>
+          <Box w={['90%', '100%']} mx="auto">
             <FormControl>
               <Stack spacing="20px" mb="26px">
                 <FormInput<RegisterModel>
@@ -144,18 +181,21 @@ const SecondStep = () => {
                   name="email"
                   error={errors?.email}
                   label="Email Address"
+                  placeholder="Enter your email"
                 />
                 <FormInput<RegisterModel>
                   register={register}
                   name="firstName"
                   error={errors?.firstName}
                   label="First name"
+                  placeholder="Enter your first name"
                 />
                 <FormInput<RegisterModel>
                   register={register}
                   name="lastName"
                   error={errors?.lastName}
                   label="Last name"
+                  placeholder="Enter your last name"
                 />
                 <FormRadio<RegisterModel>
                   label="ARE YOU A STUDENT"
@@ -210,6 +250,7 @@ const SecondStep = () => {
                   passwordVisible={passwordVisible}
                   changeVisibility={() => setPasswordVisible((prev) => !prev)}
                   type={passwordVisible ? 'text' : 'password'}
+                  placeholder="Enter your password"
                 />
                 <FormInput<RegisterModel>
                   register={register}
@@ -222,6 +263,7 @@ const SecondStep = () => {
                   changeVisibility={() =>
                     setConfirmPasswordVisible((prev) => !prev)
                   }
+                  placeholder="Re-type your password"
                 />
                 {/* <Text fontSize={14} color="brand.100" m="2">
                 Verifying...

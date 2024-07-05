@@ -11,7 +11,7 @@ const index = () => {
       alignItems="center"
       justifyContent="center"
     >
-      <Box maxW="640px">
+      <Box maxW={['350px', '640px']}>
         <Stack spacing="40px">
           <Image
             src="/assets/email-confirmation.gif"
