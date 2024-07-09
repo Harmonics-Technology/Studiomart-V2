@@ -38,11 +38,12 @@ const PopularStudios = () => {
           return (
             <Link passHref href={`/studios/details/${item.id}`}>
               <SingleStudioCard
-                images={[
-                  '/assets/face.png',
-                  '/assets/studio-girl2.png',
-                  '/assets/other-studios.png',
-                ]}
+                image="/assets/face.png"
+                // images={[
+                //   '/assets/face.png',
+                //   '/assets/studio-girl2.png',
+                //   '/assets/other-studios.png',
+                // ]}
                 studioName="MUA Studio"
                 address="Lekki, Lagos"
                 services={['Music', 'Photography']}

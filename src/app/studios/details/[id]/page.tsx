@@ -1,6 +1,10 @@
 import SingleStudioDetails from '~/lib/pages/SingleStudio';
 import { withPageAuth } from '~/lib/utilities/Functions/withPageAuth';
-import { StudioService, StudioView } from '~/services';
+import {
+  StudioService,
+  StudioView,
+  StudioViewPagedCollection,
+} from '~/services';
 
 const FetchData = async (id: string) => {
   try {
@@ -38,7 +42,7 @@ const page = withPageAuth(async ({ params }: any) => {
   return (
     <SingleStudioDetails
       data={data as StudioView}
-      services={services as StudioView}
+      services={services as StudioViewPagedCollection}
     />
   );
 });

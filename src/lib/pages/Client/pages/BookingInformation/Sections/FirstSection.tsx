@@ -1,10 +1,9 @@
 import { Box, Image, Heading, Flex, Text, Stack } from '@chakra-ui/react';
 import dayjs from 'dayjs';
-import Currency from 'react-currency-formatter';
 
 import Ratings from '~/lib/components/Ratings';
 import { IBookingDetails } from '~/lib/utilities/Context/schemas';
-import Naira from '~/lib/utilities/Functions/Naira';
+import { Cur } from '~/lib/utilities/Functions/Naira';
 import { AdditionalServiceView } from '~/services';
 
 import { BookingStatus } from './BookingStatus';
@@ -110,12 +109,7 @@ const FirstSection = ({ bookings }: IBookingDetails) => {
                             Service Charge
                           </Heading>
                           <Text fontSize={20} color="brand.600">
-                            <Currency
-                              quantity={Naira(b?.price as number)}
-                              currency="NGN"
-                              decimal="."
-                              group=","
-                            />
+                            NGN {Cur(b?.price as number)}
                           </Text>
                         </Box>
                       </Flex>
