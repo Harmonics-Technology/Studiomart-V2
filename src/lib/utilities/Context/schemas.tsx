@@ -13,6 +13,7 @@ import {
   ServiceView,
   ServiceViewPagedCollection,
   StudioViewPagedCollection,
+  UserView,
 } from '~/services';
 
 export interface IStudioCardProps {
@@ -327,7 +328,8 @@ export interface IGiftFormProps {
 export interface SingleStudioCardProps {
   studioName: string;
   services: string[];
-  images: string[];
+  // images: string[];
+  image: string;
   address: string;
   isLoggedIn: boolean;
 }
@@ -346,7 +348,8 @@ export interface MobileSideNavProps {
 
 export interface NavPositionProps {
   navPosition: number;
-  setNavPosition: (value: number) => void;
+  setNavPosition?: (value: number) => void;
+  data?: UserView;
 }
 
 export interface NavItemProps {

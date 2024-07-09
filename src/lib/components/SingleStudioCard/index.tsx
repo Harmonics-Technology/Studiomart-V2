@@ -1,8 +1,7 @@
 'use client';
 
 import { Box, Text, Image, Heading, Flex, Stack } from '@chakra-ui/react';
-import { Autoplay, Pagination } from 'swiper/modules';
-import { Swiper, SwiperSlide } from 'swiper/react';
+import { useDummyImage } from 'react-simple-placeholder-image';
 
 import FavouriteIcon from '../Icons/FavouriteIcon';
 import { SingleStudioCardProps } from '~/lib/utilities/Context/schemas';
@@ -12,10 +11,12 @@ import 'swiper/css/pagination';
 const Index = ({
   studioName,
   address,
-  images,
+  // images,
+  image,
   services,
   isLoggedIn,
 }: SingleStudioCardProps) => {
+  const dummyImage = useDummyImage({});
   return (
     <Box as="section" w={['166px', '400px']} h="auto">
       <Box
@@ -33,7 +34,16 @@ const Index = ({
             <FavouriteIcon />
           </Box>
         )}
-        <Swiper
+
+        <Image
+          src={image || dummyImage}
+          w="100%"
+          h="100%"
+          objectFit="cover"
+          alt={`${studioName} studio cover image`}
+        />
+
+        {/* <Swiper
           pagination={{ clickable: true }}
           modules={[Pagination, Autoplay]}
           className="mySwiper"
@@ -58,7 +68,7 @@ const Index = ({
               </SwiperSlide>
             );
           })}
-        </Swiper>
+        </Swiper> */}
       </Box>
       <Box>
         <Flex

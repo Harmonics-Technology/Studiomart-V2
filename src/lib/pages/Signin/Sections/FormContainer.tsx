@@ -66,6 +66,7 @@ const FormContainer = () => {
         toast.success(`Welcome back ${data?.firstName}`);
         cookies.set('token', data?.token as string);
         cookies.set('studiomart-user', JSON.stringify(data));
+        cookies.set('userId', data?.id as string);
         // showLoaderProgress(() => router.push('/user'));
         fromPage
           ? (window.location.href = decodeURIComponent(

@@ -6,10 +6,6 @@ import Logo from '~/lib/components/Logo';
 const Header = () => {
   const links = [
     {
-      text: 'Become a vendor ',
-      url: '/vendor',
-    },
-    {
       text: 'Privacy Policy',
       url: '/privacy-policy',
     },

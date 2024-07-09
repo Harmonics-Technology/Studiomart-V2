@@ -90,6 +90,39 @@ const FirstStep = ({ step, setStep }: FormStepProps) => {
       justifyContent="center"
     >
       <Stack spacing="45px">
+        {/* <Box>
+          <VStack spacing={6}>
+            <Box display={isMobile ? 'none' : 'block'}>
+              <HeadingWithStar
+                title="Hey there, explorer!"
+                flipStar
+                width="508px"
+              />
+            </Box>
+            <Box display={isMobile ? 'block' : 'none'} position="relative">
+              <Heading fontSize={30} textAlign="center">
+                Hey there, explorer!
+              </Heading>
+              <Image
+                src="/assets/heading-top-bg.png"
+                w="35px"
+                h="35px"
+                position="absolute"
+                top="-20px"
+                right="-30px"
+              />
+            </Box>
+            <Text fontSize={[16, 24]} fontWeight={500}>
+              Let’s get started! Already have an account?{' '}
+              <Link href="/sign-in">
+                <Box as="span" color="brand.100">
+                  Sign in
+                </Box>
+              </Link>
+            </Text>
+            <SigninOption text="or sign up with" />
+          </VStack>
+        </Box> */}
         <Box>
           <Heading fontWeight={900} fontSize={[24, 40]} mb="3px">
             What are you looking for?

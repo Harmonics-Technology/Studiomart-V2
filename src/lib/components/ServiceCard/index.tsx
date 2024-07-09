@@ -8,13 +8,13 @@ import {
   Circle,
   Image,
 } from '@chakra-ui/react';
-import Currency from 'react-currency-formatter';
 import { IoArrowForward } from 'react-icons/io5';
 
 import type {
   ServiceCardProps,
   ServiceCardWithStatusProps,
 } from '~/lib/utilities/Context/schemas';
+import { Cur } from '~/lib/utilities/Functions/Naira';
 
 const ServiceCard = ({
   image,
@@ -156,16 +156,7 @@ const ServiceCard = ({
               {title}
             </Heading>
             <Text>
-              From{' '}
-              <strong>
-                <Currency
-                  quantity={price}
-                  currency="NGN"
-                  decimal="."
-                  group=","
-                />
-              </strong>{' '}
-              (Per Session)
+              From <strong>NGN {Cur(price as number)}</strong> (Per Session)
             </Text>
             <Box>
               <Flex alignItems="center" gap={3} color="#1570FA">

@@ -51,11 +51,12 @@ const FifthSection = () => {
               {studios.map((item) => (
                 <Link passHref href={`/studios/details/${item.id}`}>
                   <StudioCard
-                    images={[
-                      '/assets/face.png',
-                      '/assets/studio-girl2.png',
-                      '/assets/other-studios.png',
-                    ]}
+                    // image={[
+                    //   '/assets/face.png',
+                    //   '/assets/studio-girl2.png',
+                    //   '/assets/other-studios.png',
+                    // ]}
+                    image="/assets/face.png"
                     studioName="Colorsplash Studios"
                     address="Onilearo Ibadan."
                     services={['Music', 'Photography']}

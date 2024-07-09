@@ -42,6 +42,7 @@ const Header = () => {
     '/email-confirmation',
     '/reset-password',
     '/password-reset-success',
+    '/vendor',
   ];
 
   const hideNavbar = hideNavbarRoutes.some((route) => pathname.includes(route));
@@ -171,7 +172,7 @@ const Header = () => {
                 </Menu>
                 <Box>
                   <Stack direction="row" alignItems="center" gap="15px">
-                    <Link href="/" passHref>
+                    <Link href="/vendor" passHref>
                       <Text color="#267E79">Become a Vendor</Text>
                     </Link>
                     <Box bg="#6DD3CE" h="40px" w="2px" />

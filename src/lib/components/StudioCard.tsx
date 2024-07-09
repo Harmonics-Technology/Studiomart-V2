@@ -9,13 +9,14 @@ import {
   Heading,
   Image,
 } from '@chakra-ui/react';
-import Currency from 'react-currency-formatter';
+// import Currency from 'react-currency-formatter';
 import { IoArrowForward } from 'react-icons/io5';
 import { useDummyImage } from 'react-simple-placeholder-image';
 
 import { StarIcon } from '../icons/StarIcon';
 import { ServiceCardProps } from '../utilities/Context/schemas';
 import type { IStudioCardProps } from '../utilities/Context/schemas';
+import { Cur } from '../utilities/Functions/Naira';
 
 import LoveIcon from './Icons/LoveIcon';
 import CustomText from './Text';
@@ -143,12 +144,7 @@ export const StudioCard = ({
             </Flex>
             <Flex alignItems="flex-end" gap={1}>
               <Heading color="#0C090A" fontSize={24}>
-                <Currency
-                  quantity={price}
-                  currency="NGN"
-                  decimal="."
-                  group=","
-                />
+                NGN {Cur(price as number)}
               </Heading>
               <Text fontSize={14} color="#3D3D3D">
                 per hour
@@ -163,7 +159,7 @@ export const StudioCard = ({
 
 export const ServiceCard = ({
   image,
-  rating = 4.5,
+  rating,
   price,
   title,
 }: ServiceCardProps) => {
@@ -242,7 +238,7 @@ export const ServiceCard = ({
               lineHeight="0.015rem"
               color="text.100"
             >
-              {rating}
+              {rating?.toFixed(1)}
             </Text>
           </Circle>
           <Box pos="absolute" top="32%" right={0}>
@@ -258,16 +254,7 @@ export const ServiceCard = ({
               </Heading>
             </Box>
             <Text>
-              From{' '}
-              <strong>
-                <Currency
-                  quantity={price}
-                  currency="NGN"
-                  decimal="."
-                  group=","
-                />
-              </strong>{' '}
-              (Per Session)
+              From <strong>NGN {Cur(price as number)}</strong> (Per Session)
             </Text>
             <Box>
               <Flex alignItems="center" gap={3} color="#1570FA">

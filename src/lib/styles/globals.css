@@ -47,3 +47,7 @@
   background-color: #1570fa;
   z-index: 999;
 }
+
+.rmdp-time-picker div input {
+  width: 50px !important;
+}

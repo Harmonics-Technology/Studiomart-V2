@@ -10,7 +10,6 @@ import {
 } from '@chakra-ui/react';
 import dayjs from 'dayjs';
 import type { ReactNode } from 'react';
-import Currency from 'react-currency-formatter';
 
 import CalendarIcon from '~/lib/components/Icons/CalendarIcon';
 import ClockIcon from '~/lib/components/Icons/ClockIcon';
@@ -138,15 +137,7 @@ const BookingDetails = ({
                       {x.name}
                       {' - '}
                       <span style={{ fontWeight: '500' }}>
-                        {/* <strong> */}
-                        <Currency
-                          quantity={Cur(x.price as number)}
-                          currency="NGN"
-                          decimal="."
-                          group=","
-                        />
-                        {/* </strong> */}
-                        {/* {Cur(x.price as number)} NGN */}
+                        NGN {Cur(x.price as number)}
                       </span>
                     </Text>
                   </HStack>

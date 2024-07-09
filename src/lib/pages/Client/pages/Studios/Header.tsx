@@ -16,7 +16,13 @@ const Header = () => {
         <Flex alignItems="flex-start" justifyContent="space-between">
           <Box>
             <Stack spacing="50px">
-              <Button onClick={() => router.back()}>
+              <Button
+                bg="none"
+                p="0"
+                w="100px"
+                _hover={{ bg: 'none', p: 0 }}
+                onClick={() => router.back()}
+              >
                 <BackButton linkTo="" />
               </Button>
               <Heading fontSize={40} fontWeight={900}>
@@ -32,9 +38,9 @@ const Header = () => {
               </Flex>
             </button>
             <div className="dropdown-content">
-              <a href="/user">Price</a>
-              <a href="/user">Location</a>
-              <a href="/user">Star rating</a>
+              <a href="/studios">Price</a>
+              <a href="/studios">Location</a>
+              <a href="/studios">Star rating</a>
             </div>
           </div>
         </Flex>
