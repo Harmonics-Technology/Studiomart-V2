@@ -1,11 +1,16 @@
+'use client';
+
 import { Box, Flex, Heading, Stack, Text, Image } from '@chakra-ui/react';
+import { useRouter } from 'next/navigation';
 import { IoChevronBackCircleOutline } from 'react-icons/io5';
 
 import { IconButtonLinkComponent } from '~/lib/components/Button/Button';
 import CustomText from '~/lib/components/Text';
 import Wrapper from '~/lib/components/Wrapper';
+import { StudioView } from '~/services';
 
-const FirstSection = () => {
+const FirstSection = ({ data }: { data: StudioView }) => {
+  const router = useRouter();
   return (
     <Box>
       <Wrapper>
@@ -17,7 +22,7 @@ const FirstSection = () => {
                 flexDirection="column"
                 alignItems="flex-start"
               >
-                <Box mb="5">
+                <Box mb="5" onClick={() => router.back()} cursor="pointer">
                   <IconButtonLinkComponent
                     text="Back"
                     flip
@@ -25,10 +30,12 @@ const FirstSection = () => {
                   />
                 </Box>
                 <Image
-                  src="/assets/glasses-lady.png"
+                  src={data?.coverPhoto as string}
                   alt="lady on glasses"
                   width="100%"
-                  height="auto"
+                  height="300px"
+                  objectFit="cover"
+                  borderRadius="100px"
                 />
               </Box>
               <Box>
@@ -41,14 +48,12 @@ const FirstSection = () => {
                     style={{ position: 'absolute', top: 10, left: 0 }}
                   />
                   <Heading fontSize={[26, 40]} color="#1570FA" fontWeight={900}>
-                    ColorSplash Studios
+                    {data?.name}
                   </Heading>
                 </Box>
                 <Box px={[3, '8']} mb="6">
                   <Stack spacing={5}>
-                    <CustomText text=" Our vibrant space is more than a studio; it's your artistic playground. Equipped with the best tools and embraced by a calming atmosphere, we're the ideal spot for artists, photographers, and creators." />
-                    <CustomText text="Inspiration is everywhere at ColorSplash Studios. Whether you're capturing moments or exploring innovative ideas, our studio is your perfect companion." />
-                    <CustomText text="Ready to add a splash of color? Book our services!" />
+                    <CustomText text={data?.description} />
                   </Stack>
                 </Box>
                 <Box px={[3, '8']}>

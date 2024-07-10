@@ -7,6 +7,7 @@ import {
   Image,
   useMediaQuery,
 } from '@chakra-ui/react';
+import { useRouter } from 'next/navigation';
 
 import ButtonComponent, {
   OutlineButtonComponent,
@@ -15,6 +16,7 @@ import SocialLinks from '~/lib/components/SocialLinks';
 import Wrapper from '~/lib/components/Wrapper';
 
 const MobileView = () => {
+  const router = useRouter();
   return (
     <Box w="90%" mx="auto" py="5">
       <Stack spacing="28px">
@@ -69,7 +71,7 @@ const MobileView = () => {
                   color="white"
                   bg="brand.100"
                   width="174px"
-                  onClick={() => {}}
+                  onClick={() => router.push('/sign-in')}
                 />
               </Flex>
             </Box>

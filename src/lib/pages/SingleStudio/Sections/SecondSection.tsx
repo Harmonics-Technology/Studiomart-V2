@@ -1,16 +1,28 @@
 import { Box, Flex, Heading, Stack } from '@chakra-ui/react';
+import Link from 'next/link';
 
 import { ServiceCard } from '~/lib/components/StudioCard';
 import Wrapper from '~/lib/components/Wrapper';
+import {
+  ServiceViewPagedCollection,
+  ServiceView,
+  StudioView,
+} from '~/services';
 
-const SecondSection = () => {
+const SecondSection = ({
+  data,
+  studio,
+}: {
+  data: ServiceViewPagedCollection;
+  studio: StudioView;
+}) => {
   return (
     <Box as="section" w="100%" bg="#FCF8FB" py="10">
       <Wrapper>
         <Stack spacing={16}>
           <Box>
             <Heading fontSize={24} fontWeight={900}>
-              Services by ColourSplash Studios
+              Services by {studio?.name}
             </Heading>
           </Box>
           <Box>
@@ -20,42 +32,16 @@ const SecondSection = () => {
               flexWrap="wrap"
               rowGap={10}
             >
-              <ServiceCard
-                image="/assets/face.png"
-                title="Catering service"
-                rating={3.5}
-                price={5000}
-              />
-              <ServiceCard
-                image="/assets/mask-1.png"
-                title="catering service"
-                rating={4.8}
-                price={5000}
-              />
-              <ServiceCard
-                image="/assets/face.png"
-                title="catering service"
-                rating={3.5}
-                price={5000}
-              />
-              <ServiceCard
-                image="/assets/mask-2.png"
-                title="catering service"
-                rating={3.5}
-                price={5000}
-              />
-              <ServiceCard
-                image="/assets/face.png"
-                title="catering service"
-                rating={3.5}
-                price={5000}
-              />
-              <ServiceCard
-                image="/assets/ninth-image.png"
-                title="catering service"
-                rating={3.5}
-                price={5000}
-              />
+              {data?.value?.map((service: ServiceView) => (
+                <Link href={`/services/details/${service?.id}`}>
+                  <ServiceCard
+                    image={service?.bannerImageURL}
+                    title={service?.name}
+                    rating={service?.averageRating}
+                    price={service?.price}
+                  />
+                </Link>
+              ))}
             </Flex>
           </Box>
         </Stack>

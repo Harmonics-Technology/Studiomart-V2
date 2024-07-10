@@ -23,11 +23,12 @@ const StudioList = ({ data }: { data: StudioViewPagedCollection }) => {
             return (
               <Link passHref href={`/studios/details/${studio.id}`}>
                 <StudioCard
-                  images={[
-                    '/assets/face.png',
-                    '/assets/studio-girl2.png',
-                    '/assets/other-studios.png',
-                  ]}
+                  // images={[
+                  //   '/assets/face.png',
+                  //   '/assets/studio-girl2.png',
+                  //   '/assets/other-studios.png',
+                  // ]}
+                  image={studio?.coverPhoto as string}
                   studioName={studio?.name as string}
                   address={studio?.address as string}
                   services={['Music', 'Photography']}

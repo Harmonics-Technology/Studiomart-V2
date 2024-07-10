@@ -130,7 +130,7 @@ const SideNav = ({ onClick, openSideNav }: CloseSideNavProps) => {
             </Box>
             <Box>
               <Stack spacing="22px">
-                <Link href="/become-a-vendor">
+                <Link href="/vendor">
                   <Text color="status.300" fontWeight={500}>
                     Become a Vendor
                   </Text>

@@ -137,7 +137,7 @@ const BookingDetails = ({
                       {x.name}
                       {' - '}
                       <span style={{ fontWeight: '500' }}>
-                        {Cur(x.price as number)} NGN
+                        NGN {Cur(x.price as number)}
                       </span>
                     </Text>
                   </HStack>

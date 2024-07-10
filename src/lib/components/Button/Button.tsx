@@ -112,7 +112,8 @@ export const IconButtonLinkComponent: React.FC<IconButtonLinkProps> = ({
       bg="none"
       w="auto"
       textAlign="left"
-      cursor="pointer"
+      as="div"
+      // cursor="pointer"
     >
       <Flex
         alignItems="center"
@@ -128,7 +129,7 @@ export const IconButtonLinkComponent: React.FC<IconButtonLinkProps> = ({
 
 export const BackButton = ({ linkTo }: BackButtonProps) => {
   return (
-    <Link href={linkTo}>
+    <Link href={linkTo || ''}>
       <Flex alignItems="center" gap="15px">
         <Icon as={IoChevronBackCircleOutline} fontSize={30} color="text.400" />
         <Text fontSize={20} color="text.500">

@@ -1,6 +1,7 @@
 'use client';
 
-import { Box, Flex, Heading, Stack, Text } from '@chakra-ui/react';
+import { Box, Flex, Heading, Stack, Text, Button } from '@chakra-ui/react';
+import { useRouter } from 'next/navigation';
 
 import { BackButton } from '~/lib/components/Button/Button';
 import FilterIcon from '~/lib/components/Icons/FilterIcon';
@@ -8,15 +9,24 @@ import './styles.css';
 import Wrapper from '~/lib/components/Wrapper';
 
 const Header = () => {
+  const router = useRouter();
   return (
     <Box as="section">
       <Wrapper>
         <Flex alignItems="flex-start" justifyContent="space-between">
           <Box>
-            <Stack spacing="40px">
-              <BackButton linkTo="/user" />
+            <Stack spacing="50px">
+              <Button
+                bg="none"
+                p="0"
+                w="100px"
+                _hover={{ bg: 'none', p: 0 }}
+                onClick={() => router.back()}
+              >
+                <BackButton linkTo="" />
+              </Button>
               <Heading fontSize={40} fontWeight={900}>
-                Popular Studios
+                All Studios
               </Heading>
             </Stack>
           </Box>
@@ -28,9 +38,9 @@ const Header = () => {
               </Flex>
             </button>
             <div className="dropdown-content">
-              <a href="/user">Price</a>
-              <a href="/user">Location</a>
-              <a href="/user">Star rating</a>
+              <a href="/studios">Price</a>
+              <a href="/studios">Location</a>
+              <a href="/studios">Star rating</a>
             </div>
           </div>
         </Flex>

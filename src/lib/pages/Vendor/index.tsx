@@ -1,16 +1,30 @@
 'use client';
 
 import { Box, Stack } from '@chakra-ui/react';
-import { useState } from 'react';
+import { usePathname } from 'next/navigation';
 
-import FirstStep from './Sections/FirstStep';
 import FormFooter from './Sections/FormFooter';
 import Header from './Sections/Header';
-import SecondStep from './Sections/SecondStep';
-import ThirdStep from './Sections/ThirdStep';
+import VendorSignupForm from './Sections/VendorSignupForm';
 
 const Index = () => {
-  const [formStep, setFormStep] = useState<number>(1);
+  const pathname = usePathname();
+  // useLayoutEffect(() => {
+  //   const routesToHideNavbar = [
+  //     '/signup',
+  //     '/signin',
+  //     '/forgot-password',
+  //     '/reset-password',
+  //   ];
+  //   setIsLoggedIn(
+  //     routesToHideNavbar.some((route) => pathname.includes(route))
+  //   );
+  // }, [pathname]);
+
+  // if (isLoggedIn) {
+  //   return null;
+  // }
+
   return (
     <Box as="section" w="100%" minH="100vh" position="relative">
       <Box
@@ -33,15 +47,9 @@ const Index = () => {
         left="0"
       />
       <Stack>
-        <Header />
+        {pathname.includes('/user') ? null : <Header />}
         <Box maxW="640px" mx="auto">
-          {formStep === 1 && (
-            <FirstStep step={formStep} setStep={setFormStep} />
-          )}
-          {formStep === 2 && <SecondStep />}
-          {formStep === 3 && (
-            <ThirdStep step={formStep} setStep={setFormStep} />
-          )}
+          <VendorSignupForm />
         </Box>
         <FormFooter />
       </Stack>

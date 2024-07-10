@@ -15,10 +15,10 @@ const index = () => {
         h="100vh"
         overflow="hidden"
       >
-        <Box w="40%">
+        <Box w="40%" display={['none', 'block']}>
           <SideImages />
         </Box>
-        <Box w="45%">
+        <Box w={['90%', '45%']} mx="auto">
           <ForgotPasswordForm />
         </Box>
       </Flex>

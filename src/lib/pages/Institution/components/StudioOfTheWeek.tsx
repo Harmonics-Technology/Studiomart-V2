@@ -7,6 +7,7 @@ import {
   VStack,
   Image,
 } from '@chakra-ui/react';
+import Link from 'next/link';
 import { IoChevronForwardCircleOutline } from 'react-icons/io5';
 
 import {
@@ -69,12 +70,14 @@ const StudioOfTheWeek = () => {
           </Box>
           <Box w="48%">
             <Box mb="12" display="flex" justifyContent="flex-end">
-              <IconButtonLinkComponent
-                flip={false}
-                text="Explore all Studios"
-                icon={IoChevronForwardCircleOutline}
-                color="scheme.100"
-              />
+              <Link href="/studios">
+                <IconButtonLinkComponent
+                  flip={false}
+                  text="Explore all Studios"
+                  icon={IoChevronForwardCircleOutline}
+                  color="scheme.100"
+                />
+              </Link>
             </Box>
             <Box>
               <Stack spacing={8}>
@@ -92,14 +95,16 @@ const StudioOfTheWeek = () => {
                   Explore the possibilities and make your next shoot an
                   unforgettable experience!
                 </Text>
-                <IconButtonComponent
-                  bg="scheme.100"
-                  text="View Services"
-                  icon={IoChevronForwardCircleOutline}
-                  color="brand.400"
-                  width="200px"
-                  flip
-                />
+                <Link href="/sign-in">
+                  <IconButtonComponent
+                    bg="scheme.100"
+                    text="View Services"
+                    icon={IoChevronForwardCircleOutline}
+                    color="brand.400"
+                    width="200px"
+                    flip
+                  />
+                </Link>
               </Stack>
             </Box>
           </Box>

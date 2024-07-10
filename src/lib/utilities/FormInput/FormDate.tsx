@@ -2,6 +2,7 @@ import { FormControl, FormErrorMessage, FormLabel } from '@chakra-ui/react';
 import { Controller, Path, FieldError, Control } from 'react-hook-form';
 import DatePicker from 'react-multi-date-picker';
 import TimePicker from 'react-multi-date-picker/plugins/time_picker';
+import './input.css';
 
 import useWindowSize from '../Hooks/useWindowSize';
 
@@ -90,7 +91,15 @@ export const FormDate = <TFormValues extends Record<string, any>>({
             }}
             disableDayPicker={isTime}
             plugins={
-              isTime ? [<TimePicker position="bottom" hideSeconds />] : []
+              isTime
+                ? [
+                    <TimePicker
+                      className="input"
+                      position="bottom"
+                      hideSeconds
+                    />,
+                  ]
+                : []
             }
           />
         )}

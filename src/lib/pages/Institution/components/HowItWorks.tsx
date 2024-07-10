@@ -10,12 +10,14 @@ import {
   Icon,
   Button,
 } from '@chakra-ui/react';
+import { useRouter } from 'next/navigation';
 
 import ButtonComponent from '~/lib/components/Button/Button';
 import PlaystoreIcon from '~/lib/components/Icons/PlaystoreIcon';
 import Wrapper from '~/lib/components/Wrapper';
 
 const HowItWorks = () => {
+  const router = useRouter();
   return (
     <Box py="8">
       <Wrapper>
@@ -56,7 +58,7 @@ const HowItWorks = () => {
                       bg="scheme.100"
                       color="white"
                       width="150px"
-                      onClick={() => {}}
+                      onClick={() => router.push('/register')}
                     />
                     <Button
                       bg="brand.400"

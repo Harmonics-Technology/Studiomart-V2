@@ -26,7 +26,7 @@ const OptionButton = ({
   const isActive = studioPreference?.find((x) => x === name);
   return (
     <Box
-      w="192px"
+      w={['160px', '192px']}
       border={isActive ? '2px solid #1570FA' : '1px solid #1570FA'}
       bgColor={isActive ? 'brand.100' : 'transparent'}
       px="16px"
@@ -84,14 +84,47 @@ const FirstStep = ({ step, setStep }: FormStepProps) => {
     <Box
       as="section"
       w="100%"
-      h="100vh"
+      h={['100vh']}
       display="flex"
       alignItems="center"
       justifyContent="center"
     >
       <Stack spacing="45px">
+        {/* <Box>
+          <VStack spacing={6}>
+            <Box display={isMobile ? 'none' : 'block'}>
+              <HeadingWithStar
+                title="Hey there, explorer!"
+                flipStar
+                width="508px"
+              />
+            </Box>
+            <Box display={isMobile ? 'block' : 'none'} position="relative">
+              <Heading fontSize={30} textAlign="center">
+                Hey there, explorer!
+              </Heading>
+              <Image
+                src="/assets/heading-top-bg.png"
+                w="35px"
+                h="35px"
+                position="absolute"
+                top="-20px"
+                right="-30px"
+              />
+            </Box>
+            <Text fontSize={[16, 24]} fontWeight={500}>
+              Let’s get started! Already have an account?{' '}
+              <Link href="/sign-in">
+                <Box as="span" color="brand.100">
+                  Sign in
+                </Box>
+              </Link>
+            </Text>
+            <SigninOption text="or sign up with" />
+          </VStack>
+        </Box> */}
         <Box>
-          <Heading fontWeight={900} fontSize={40} mb="3px">
+          <Heading fontWeight={900} fontSize={[24, 40]} mb="3px">
             What are you looking for?
           </Heading>
           <Text color="brand.500">
@@ -99,7 +132,10 @@ const FirstStep = ({ step, setStep }: FormStepProps) => {
           </Text>
         </Box>
         <Box>
-          <Grid gap="36px" templateColumns={['1fr', 'repeat(3, 1fr)']}>
+          <Grid
+            gap={['18px', '36px']}
+            templateColumns={['repeat(2, 1fr)', 'repeat(3, 1fr)']}
+          >
             {optionLists.map((item, index) => (
               <OptionButton
                 key={index}

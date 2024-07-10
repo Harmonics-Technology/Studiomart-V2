@@ -64,6 +64,7 @@ const Footer = () => {
     '/email-confirmation',
     '/reset-password',
     '/password-reset-success',
+    '/vendor',
   ];
 
   if (hideNavbarRoutes.includes(pathname)) {

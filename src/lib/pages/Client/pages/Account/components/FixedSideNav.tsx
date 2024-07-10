@@ -45,19 +45,19 @@ const FixedSideNav = ({ navPosition, setNavPosition }: NavPositionProps) => {
           label="My Profile"
           Icon={ProfileIcon}
           isActive={navPosition === 1}
-          onClick={() => setNavPosition(1)}
+          onClick={() => setNavPosition && setNavPosition(1)}
         />
         <SideNavItem
           label="Security"
           Icon={SecurityIcon}
           isActive={navPosition === 2}
-          onClick={() => setNavPosition(2)}
+          onClick={() => setNavPosition && setNavPosition(2)}
         />
         <SideNavItem
           label="Support"
           Icon={SupportIcon}
           isActive={navPosition === 3}
-          onClick={() => setNavPosition(3)}
+          onClick={() => setNavPosition && setNavPosition(3)}
         />
         <Box
           w="100%"
@@ -65,7 +65,7 @@ const FixedSideNav = ({ navPosition, setNavPosition }: NavPositionProps) => {
           px="18px"
           borderRadius="4px"
           bg={navPosition === 4 ? 'studioStatus.300' : 'none'}
-          onClick={() => setNavPosition(4)}
+          onClick={() => setNavPosition && setNavPosition(4)}
           cursor="pointer"
         >
           <Flex alignItems="center" gap="12px">

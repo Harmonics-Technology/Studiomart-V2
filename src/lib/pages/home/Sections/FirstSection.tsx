@@ -1,18 +1,25 @@
+'use client';
+
 import {
   Box,
   Heading,
   Flex,
   Stack,
-  Text,
   Image,
   useMediaQuery,
 } from '@chakra-ui/react';
 import { BiLogoPlayStore } from 'react-icons/bi';
+import { Autoplay } from 'swiper/modules';
+import { Swiper, SwiperSlide } from 'swiper/react';
 
 import { IconButtonComponent } from '~/lib/components/Button/Button';
+import HomeFeatureCard from '~/lib/components/HomeFeatureCard';
 import SocialLinks from '~/lib/components/SocialLinks';
 import Wrapper from '~/lib/components/Wrapper';
 import type { FlipImageProps } from '~/lib/utilities/Context/schemas';
+
+import 'swiper/css';
+import 'swiper/css/pagination';
 
 const FlipImage: React.FC<FlipImageProps> = ({
   image,
@@ -99,20 +106,53 @@ const MobileView = () => {
           />
         </Box>
         <Box>
-          <Flex alignItems="flex-start" justifyContent="space-between">
-            <Box w="80%">
-              <Stack spacing={5}>
-                <Box>
-                  <Flex alignItems="center" gap="10px">
-                    <Heading fontSize={24}>01</Heading>
-                    <Box w="94px" h="1.5px" bg="#0C090A" />
-                    <Heading fontSize={24}>05</Heading>
-                  </Flex>
+          <Flex alignItems="flex-start" justifyContent="space-between" px="5">
+            <Box w="85%">
+              <Stack spacing={4}>
+                <Box w="90%">
+                  <Swiper
+                    pagination={{ clickable: true }}
+                    modules={[Autoplay]}
+                    className="mySwiper"
+                    slidesPerView={1}
+                    autoplay={{
+                      delay: 2500,
+                      disableOnInteraction: false,
+                    }}
+                    style={{ height: '100%', width: '100%' }}
+                  >
+                    <SwiperSlide>
+                      <HomeFeatureCard
+                        currentIndex={1}
+                        description="Your ultimate destination for discovering, booking, and unlocking the full potential of every studio adventure"
+                      />
+                    </SwiperSlide>
+                    <SwiperSlide>
+                      <HomeFeatureCard
+                        currentIndex={2}
+                        description="Your ultimate destination for discovering, booking, and unlocking the full potential of every studio adventure"
+                      />
+                    </SwiperSlide>
+                    <SwiperSlide>
+                      <HomeFeatureCard
+                        currentIndex={3}
+                        description="Your ultimate destination for discovering, booking, and unlocking the full potential of every studio adventure"
+                      />
+                    </SwiperSlide>
+                    <SwiperSlide>
+                      <HomeFeatureCard
+                        currentIndex={4}
+                        description="Your ultimate destination for discovering, booking, and unlocking the full potential of every studio adventure"
+                      />
+                    </SwiperSlide>
+                    <SwiperSlide>
+                      <HomeFeatureCard
+                        currentIndex={5}
+                        description="Your ultimate destination for discovering, booking, and unlocking the full potential of every studio adventure"
+                      />
+                    </SwiperSlide>
+                  </Swiper>
                 </Box>
-                <Text lineHeight="28px" mb="4">
-                  Your ultimate destination for discovering, booking, and
-                  unlocking the full potential of every studio adventure
-                </Text>
                 <IconButtonComponent
                   flip={false}
                   width="268px"
@@ -204,16 +244,49 @@ const DesktopView = () => {
                   <Box w="25%">
                     <Stack spacing={5}>
                       <Box>
-                        <Flex alignItems="center" gap="10px">
-                          <Heading fontSize={24}>01</Heading>
-                          <Box w="94px" h="1.5px" bg="#0C090A" />
-                          <Heading fontSize={24}>05</Heading>
-                        </Flex>
+                        <Swiper
+                          pagination={{ clickable: true }}
+                          modules={[Autoplay]}
+                          className="mySwiper"
+                          slidesPerView={1}
+                          autoplay={{
+                            delay: 2500,
+                            disableOnInteraction: false,
+                          }}
+                          style={{ height: '100%', width: '100%' }}
+                        >
+                          <SwiperSlide>
+                            <HomeFeatureCard
+                              currentIndex={1}
+                              description="Your ultimate destination for discovering, booking, and unlocking the full potential of every studio adventure"
+                            />
+                          </SwiperSlide>
+                          <SwiperSlide>
+                            <HomeFeatureCard
+                              currentIndex={2}
+                              description="Your ultimate destination for discovering, booking, and unlocking the full potential of every studio adventure"
+                            />
+                          </SwiperSlide>
+                          <SwiperSlide>
+                            <HomeFeatureCard
+                              currentIndex={3}
+                              description="Your ultimate destination for discovering, booking, and unlocking the full potential of every studio adventure"
+                            />
+                          </SwiperSlide>
+                          <SwiperSlide>
+                            <HomeFeatureCard
+                              currentIndex={4}
+                              description="Your ultimate destination for discovering, booking, and unlocking the full potential of every studio adventure"
+                            />
+                          </SwiperSlide>
+                          <SwiperSlide>
+                            <HomeFeatureCard
+                              currentIndex={5}
+                              description="Your ultimate destination for discovering, booking, and unlocking the full potential of every studio adventure"
+                            />
+                          </SwiperSlide>
+                        </Swiper>
                       </Box>
-                      <Text lineHeight="26px">
-                        Your ultimate destination for discovering, booking, and
-                        unlocking the full potential of every studio adventure
-                      </Text>
                       <IconButtonComponent
                         flip={false}
                         width="268px"

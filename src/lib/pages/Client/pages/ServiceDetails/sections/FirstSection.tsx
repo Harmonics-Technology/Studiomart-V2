@@ -35,6 +35,7 @@ import type {
   SingleDetailProps,
   AdditionalServicesProps,
 } from '~/lib/utilities/Context/schemas';
+import { Cur } from '~/lib/utilities/Functions/Naira';
 import { useLoaderProgress } from '~/lib/utilities/Hooks/progress-bar';
 import {
   AdditionalServiceView,
@@ -146,6 +147,7 @@ const FirstSection = ({ data }: { data: ServiceView | undefined }) => {
     slidesToScroll: 1,
     autoplay: true,
     className: 'service-slick',
+    arrows: false,
   };
 
   const showLoaderProgress = useLoaderProgress();
@@ -185,14 +187,14 @@ const FirstSection = ({ data }: { data: ServiceView | undefined }) => {
             borderColor="brand.100"
             borderRadius="80px"
             overflow="hidden"
-            h="700px"
+            h="650px"
           >
             {(data?.media?.length as any) > 0 ? (
               <Slider {...settings}>
                 {data?.media?.map((x: MediaView) => (
                   <Image
                     src={x.url as string}
-                    alt={`main image of ${data?.name}`}
+                    // alt={`main image of ${data?.name}`}
                     w="100%"
                     h="100%"
                     objectFit="cover"
@@ -224,8 +226,8 @@ const FirstSection = ({ data }: { data: ServiceView | undefined }) => {
                   </Text>
                   <Box>
                     <Flex alignItems="center" gap={2}>
-                      <Text>{data?.averageRating} Star</Text>
-                      <Ratings value={data?.averageRating || 0} />
+                      <Text>{data?.averageRating?.toFixed(1)} Star</Text>
+                      <Ratings value={data?.averageRating?.toFixed(1) || 0} />
                       <Text>({data?.totalReviewCount} reviews)</Text>
                     </Flex>
                   </Box>
@@ -260,11 +262,15 @@ const FirstSection = ({ data }: { data: ServiceView | undefined }) => {
                         label="Location"
                         description="Studio or Outdoor"
                       />
-                      <SingleDetail
-                        icon={TicketIcon}
-                        label="Pricing"
-                        description={`${data?.price} NGN`}
-                      />
+                      <Box w="auto">
+                        <Flex alignItems="center" gap={1} mb="2">
+                          <Icon as={TicketIcon} fontSize={24} />
+                          <Text>Pricing</Text>
+                        </Flex>
+                        <Text fontWeight={500} color="#2D2327" fontSize={20}>
+                          NGN {Cur(data?.price as number)}
+                        </Text>
+                      </Box>
                     </Flex>
                   </Box>
 

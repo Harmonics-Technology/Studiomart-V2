@@ -14,6 +14,7 @@ import type {
   ServiceCardProps,
   ServiceCardWithStatusProps,
 } from '~/lib/utilities/Context/schemas';
+import { Cur } from '~/lib/utilities/Functions/Naira';
 
 const ServiceCard = ({
   image,
@@ -155,7 +156,7 @@ const ServiceCard = ({
               {title}
             </Heading>
             <Text>
-              From <strong>N{price}</strong> (Per Session)
+              From <strong>NGN {Cur(price as number)}</strong> (Per Session)
             </Text>
             <Box>
               <Flex alignItems="center" gap={3} color="#1570FA">

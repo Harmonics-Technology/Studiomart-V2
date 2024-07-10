@@ -37,7 +37,7 @@ import { UserService, type RegisterModel } from '~/services';
 
 YupPassword(yup);
 
-const SecondStep = () => {
+const VendorSignupForm = () => {
   const validation = yup.object().shape({
     firstName: yup.string().required(),
     lastName: yup.string().required(),
@@ -106,7 +106,7 @@ const SecondStep = () => {
       }
       toast.error(result?.message as string);
     } catch (error: any) {
-      toast.error(error?.body?.message || error?.message);
+      toast.error(error?.message || error?.body?.message);
     }
   };
 
@@ -143,14 +143,14 @@ const SecondStep = () => {
             <VStack spacing={6}>
               <Box display={isMobile ? 'none' : 'block'}>
                 <HeadingWithStar
-                  title="Hey there, explorer!"
+                  title="Hey there, Studio owner!"
                   flipStar
-                  width="508px"
+                  width="608px"
                 />
               </Box>
               <Box display={isMobile ? 'block' : 'none'} position="relative">
                 <Heading fontSize={30} textAlign="center">
-                  Hey there, explorer!
+                  Hey there, Studio owner!
                 </Heading>
                 <Image
                   src="/assets/heading-top-bg.png"
@@ -161,8 +161,8 @@ const SecondStep = () => {
                   right="-30px"
                 />
               </Box>
-              <Text fontSize={[16, 24]} fontWeight={500}>
-                Let’s get started! Already have an account?{' '}
+              <Text fontSize={[16, 22]} fontWeight={500}>
+                Create a business account! Already have an account?{' '}
                 <Link href="/sign-in">
                   <Box as="span" color="brand.100">
                     Sign in
@@ -187,18 +187,18 @@ const SecondStep = () => {
                   register={register}
                   name="firstName"
                   error={errors?.firstName}
-                  label="First name"
+                  label="Full name"
                   placeholder="Enter your first name"
                 />
                 <FormInput<RegisterModel>
                   register={register}
-                  name="lastName"
+                  name="firstName"
                   error={errors?.lastName}
                   label="Last name"
                   placeholder="Enter your last name"
                 />
                 <FormRadio<RegisterModel>
-                  label="ARE YOU A STUDENT"
+                  label="ARE YOU A SERVICE PROVIDER IN A STUDENT COMMUNITY?"
                   radios={['Yes', 'No']}
                   name="isStudent"
                   control={control}
@@ -241,6 +241,27 @@ const SecondStep = () => {
                     </Text>
                   </Box>
                 )}
+                <FormInput<RegisterModel>
+                  register={register}
+                  name="firstName"
+                  error={errors?.lastName}
+                  label="state"
+                  placeholder="Select school location"
+                />
+                <FormInput<RegisterModel>
+                  register={register}
+                  name="lastName"
+                  error={errors?.lastName}
+                  label="city"
+                  placeholder="Select your city"
+                />
+                <FormInput<RegisterModel>
+                  register={register}
+                  name="lastName"
+                  error={errors?.lastName}
+                  label="service type"
+                  placeholder="select the service you offer"
+                />
                 <FormInput<RegisterModel>
                   register={register}
                   name="password"
@@ -295,4 +316,4 @@ const SecondStep = () => {
   );
 };
 
-export default SecondStep;
+export default VendorSignupForm;

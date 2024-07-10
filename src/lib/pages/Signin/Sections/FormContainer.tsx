@@ -1,7 +1,15 @@
 'use client';
 
 /* eslint-disable @typescript-eslint/no-unused-expressions */
-import { Box, Text, Stack, Flex } from '@chakra-ui/react';
+import {
+  Box,
+  Text,
+  Stack,
+  Flex,
+  useMediaQuery,
+  Heading,
+  Image,
+} from '@chakra-ui/react';
 import { yupResolver } from '@hookform/resolvers/yup';
 import Link from 'next/link';
 // import { useRouter } from 'next/navigation';
@@ -22,6 +30,7 @@ import { UserService, type LoginModel } from '~/services';
 
 const FormContainer = () => {
   const [passwordVisible, setPasswordVisible] = useState<boolean>(false);
+  const [isMobile] = useMediaQuery('(max-width: 768px)');
   // const router = useRouter();
   const cookies = useCookies();
   const { queryParams } = useQueryParams();
@@ -57,6 +66,7 @@ const FormContainer = () => {
         toast.success(`Welcome back ${data?.firstName}`);
         cookies.set('token', data?.token as string);
         cookies.set('studiomart-user', JSON.stringify(data));
+        cookies.set('userId', data?.id as string);
         // showLoaderProgress(() => router.push('/user'));
         fromPage
           ? (window.location.href = decodeURIComponent(
@@ -75,33 +85,52 @@ const FormContainer = () => {
   };
 
   return (
-    <Box>
+    <Box w="100%">
       <Stack spacing="58px">
-        <HeadingWithStar
-          title="Welcome to StudioMart!"
-          flipStar={false}
-          width="100%"
-        />
+        <Box display={isMobile ? 'none' : 'block'}>
+          <HeadingWithStar
+            title="Welcome to StudioMart!"
+            flipStar={false}
+            width="100%"
+          />
+        </Box>
+        <Box display={isMobile ? 'block' : 'none'} position="relative">
+          <Heading fontSize={24} fontWeight={[900, 700]} textAlign="center">
+            Welcome to StudioMart!
+          </Heading>
+          <Image
+            src="/assets/heading-top-bg.png"
+            w="35px"
+            h="35px"
+            position="absolute"
+            top="-20px"
+            right="0px"
+          />
+        </Box>
         <form onSubmit={handleSubmit(signInWithNextAuth)}>
           <Box>
-            <Stack spacing="21px">
-              <FormInput<LoginModel>
-                type="email"
-                register={register}
-                name="email"
-                error={errors?.email}
-                label="Email Address"
-              />
-              <FormInput<LoginModel>
-                type={passwordVisible ? 'text' : 'password'}
-                register={register}
-                name="password"
-                error={errors?.password}
-                label="Enter Password"
-                icon
-                passwordVisible={passwordVisible}
-                changeVisibility={() => setPasswordVisible((prev) => !prev)}
-              />
+            <Stack spacing="7px">
+              <Stack spacing="21px">
+                <FormInput<LoginModel>
+                  type="email"
+                  register={register}
+                  name="email"
+                  error={errors?.email}
+                  label="Email Address"
+                  placeholder="Enter your email"
+                />
+                <FormInput<LoginModel>
+                  type={passwordVisible ? 'text' : 'password'}
+                  register={register}
+                  name="password"
+                  error={errors?.password}
+                  label="Enter Password"
+                  icon
+                  passwordVisible={passwordVisible}
+                  changeVisibility={() => setPasswordVisible((prev) => !prev)}
+                  placeholder="Enter your password"
+                />
+              </Stack>
               <Link href="/forgot-password" passHref>
                 <Text
                   fontSize={14}

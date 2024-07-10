@@ -187,7 +187,7 @@ const Header = () => {
 
 const index = ({ data }: { data: any }) => {
   return (
-    <ContainerBox my="80px">
+    <ContainerBox my="50px">
       <Header />
       <Box>
         <Grid templateColumns={['1fr', 'repeat(3,1fr)']} gap="2rem">

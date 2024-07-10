@@ -3,7 +3,7 @@ import dayjs from 'dayjs';
 
 import Ratings from '~/lib/components/Ratings';
 import { IBookingDetails } from '~/lib/utilities/Context/schemas';
-import Naira from '~/lib/utilities/Functions/Naira';
+import { Cur } from '~/lib/utilities/Functions/Naira';
 import { AdditionalServiceView } from '~/services';
 
 import { BookingStatus } from './BookingStatus';
@@ -109,7 +109,7 @@ const FirstSection = ({ bookings }: IBookingDetails) => {
                             Service Charge
                           </Heading>
                           <Text fontSize={20} color="brand.600">
-                            N{Naira(b?.price as number)}
+                            NGN {Cur(b?.price as number)}
                           </Text>
                         </Box>
                       </Flex>

@@ -11,6 +11,7 @@ import {
   MenuList,
   MenuItem,
   Button,
+  useMediaQuery,
 } from '@chakra-ui/react';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
@@ -31,6 +32,7 @@ const Header = () => {
   const router = useRouter();
   const showLoaderProgress = useLoaderProgress();
   const [openSideNav, setOpenSideNav] = useState<boolean>(false);
+  const [isMobile] = useMediaQuery('(max-width: 768px)');
 
   const hideNavbarRoutes = [
     '/sign-in',
@@ -40,11 +42,12 @@ const Header = () => {
     '/email-confirmation',
     '/reset-password',
     '/password-reset-success',
+    '/vendor',
   ];
 
   const hideNavbar = hideNavbarRoutes.some((route) => pathname.includes(route));
 
-  if (hideNavbar) {
+  if (hideNavbar && !isMobile) {
     return null;
   }
 
@@ -169,7 +172,7 @@ const Header = () => {
                 </Menu>
                 <Box>
                   <Stack direction="row" alignItems="center" gap="15px">
-                    <Link href="/" passHref>
+                    <Link href="/vendor" passHref>
                       <Text color="#267E79">Become a Vendor</Text>
                     </Link>
                     <Box bg="#6DD3CE" h="40px" w="2px" />
@@ -179,7 +182,7 @@ const Header = () => {
                       color="#FFFFFF"
                       text="Get Started"
                       onClick={() =>
-                        showLoaderProgress(() => router.push('/sign-in'))
+                        showLoaderProgress(() => router.push('/register'))
                       }
                     />
                   </Stack>

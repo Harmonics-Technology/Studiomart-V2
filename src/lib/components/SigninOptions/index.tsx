@@ -26,8 +26,15 @@ const IconLink = ({ icon, linkText, onClick }: IconLinkProps) => {
 const index = ({ text }: { text: string }) => {
   return (
     <Box>
-      <Flex alignItems="center" gap="18px" justifyContent="center">
-        <Text>{text}</Text>
+      <Flex
+        alignItems="center"
+        gap="18px"
+        justifyContent="center"
+        flexWrap="wrap"
+      >
+        <Text w={['100%', 'auto']} textAlign={['center', 'left']}>
+          {text}
+        </Text>
         <IconLink icon={FacebookIcon} linkText="Facebook" />
         <Box w="1px" h="40px" bg="brand.300" />
         <IconLink

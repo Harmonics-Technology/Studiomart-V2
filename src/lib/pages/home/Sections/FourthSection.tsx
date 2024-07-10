@@ -8,6 +8,7 @@ import {
   Image,
   useMediaQuery,
 } from '@chakra-ui/react';
+import Link from 'next/link';
 import { IoChevronForwardCircleOutline } from 'react-icons/io5';
 
 import {
@@ -104,14 +105,16 @@ const FourthSection = () => {
                   Explore the possibilities and make your next shoot an
                   unforgettable experience!
                 </Text>
-                <IconButtonComponent
-                  bg="brand.100"
-                  text="View Services"
-                  icon={IoChevronForwardCircleOutline}
-                  color="white"
-                  width={isMobile ? '100%' : '200px'}
-                  flip
-                />
+                <Link href="/sign-in">
+                  <IconButtonComponent
+                    bg="brand.100"
+                    text="View Services"
+                    icon={IoChevronForwardCircleOutline}
+                    color="white"
+                    width={isMobile ? '100%' : '200px'}
+                    flip
+                  />
+                </Link>
               </Stack>
             </Box>
           </Box>
