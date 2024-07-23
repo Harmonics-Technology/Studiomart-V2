@@ -10,6 +10,7 @@ import {
   BookingView,
   RecentlyViewedView,
   ReviewViewPagedCollection,
+  ServiceTypeView,
   ServiceView,
   ServiceViewPagedCollection,
   StudioViewPagedCollection,
@@ -266,6 +267,7 @@ export interface IHomePage {
     services: ServiceViewPagedCollection | undefined;
     recents: RecentlyViewedView[] | undefined;
   };
+  categories: ServiceTypeView[];
 }
 export interface IPageProps {
   searchParams?: any;

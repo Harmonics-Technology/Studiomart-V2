@@ -5,28 +5,52 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
+import toast from 'react-hot-toast';
 import * as yup from 'yup';
 
 import ButtonComponent from '~/lib/components/Button/Button';
 import FormInput from '~/lib/utilities/FormInput/FormInput';
 import { useLoaderProgress } from '~/lib/utilities/Hooks/progress-bar';
-import { type LoginModel } from '~/services';
+import { UserService } from '~/services';
 
-const ForgotPasswordForm = () => {
+interface ResetUserPassword {
+  newPassword: string | null | undefined;
+  confirmPassword: string | null | undefined;
+}
+
+const ResetPasswordForm = () => {
   const router = useRouter();
   const showLoaderProgress = useLoaderProgress();
   const validation = yup.object().shape({
-    email: yup.string().email().required(),
-    password: yup.string().required(),
+    newPassword: yup.string().required(),
+    confirmPassword: yup
+      .string()
+      .oneOf([yup.ref('newPassword')], 'Passwords must match')
+      .required(),
   });
   const {
     register,
+    handleSubmit,
     formState: { errors, isSubmitting },
-  } = useForm<LoginModel>({
+  } = useForm<ResetUserPassword>({
     // @ts-expect-error new update
     resolver: yupResolver(validation),
     mode: 'all',
   });
+
+  const resetPassword = async (data: ResetUserPassword) => {
+    try {
+      const res = await UserService.completeReset({ requestBody: data });
+      if (res.status) {
+        toast.success('Password Reset Successful');
+        showLoaderProgress(() => router.push(`/password-reset-success`));
+        return;
+      }
+      toast.error(res.message as string);
+    } catch (error: any) {
+      toast.error(error.body.message || error.message);
+    }
+  };
 
   return (
     <Box>
@@ -47,19 +71,19 @@ const ForgotPasswordForm = () => {
             <Stack spacing="40px">
               <Box>
                 <Stack spacing="24px">
-                  <FormInput<LoginModel>
+                  <FormInput<ResetUserPassword>
                     type="password"
                     register={register}
-                    name="email"
-                    error={errors?.email}
+                    name="newPassword"
+                    error={errors?.newPassword}
                     label="New Password"
                     placeholder="*************"
                   />
-                  <FormInput<LoginModel>
+                  <FormInput<ResetUserPassword>
                     type="password"
                     register={register}
-                    name="email"
-                    error={errors?.email}
+                    name="confirmPassword"
+                    error={errors?.confirmPassword}
                     label="Confirm Password"
                     placeholder="*************"
                   />
@@ -74,11 +98,7 @@ const ForgotPasswordForm = () => {
                     width="100%"
                     loading={isSubmitting}
                     type="submit"
-                    onClick={() =>
-                      showLoaderProgress(() =>
-                        router.push('/email-confirmation')
-                      )
-                    }
+                    onClick={handleSubmit(resetPassword)}
                   />
                   <Link href="/sign-in" passHref>
                     <Text
@@ -100,4 +120,4 @@ const ForgotPasswordForm = () => {
   );
 };
 
-export default ForgotPasswordForm;
+export default ResetPasswordForm;

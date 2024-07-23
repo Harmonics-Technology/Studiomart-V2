@@ -1,8 +1,14 @@
+'use client';
+
 import { Box, Image, Heading, Text, Stack } from '@chakra-ui/react';
 
 import ButtonComponent from '~/lib/components/Button/Button';
+import useQueryParams from '~/lib/utilities/Hooks/useQueryParams';
 
-const index = () => {
+const Index = () => {
+  const { queryParams } = useQueryParams();
+  const email = queryParams?.get('email');
+
   return (
     <Box
       w="100%"
@@ -22,10 +28,7 @@ const index = () => {
           />
           <Box textAlign="center">
             <Heading>Check your mail!</Heading>
-            <Text>
-              A link to reset your password been sent to
-              Munira********u@gmail.com
-            </Text>
+            <Text>A link to reset your password been sent to {email}</Text>
           </Box>
           <ButtonComponent
             text="Open Mail"
@@ -39,4 +42,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default Index;

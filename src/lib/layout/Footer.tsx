@@ -9,28 +9,31 @@ import {
   Heading,
   Image,
 } from '@chakra-ui/react';
+import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
 import { WhiteLogo } from '../components/Logo';
 import SocialLinks from '../components/SocialLinks';
 
 type ListItemsProps = {
-  items: string[];
+  items: { title: string; url: string }[];
 };
 
 const ListItems: React.FC<ListItemsProps> = ({ items }) => {
   return (
     <Box>
       {items.map((item, index) => (
-        <ListItem
-          color="#AFAFAF"
-          mb="6"
-          key={index}
-          fontWeight={500}
-          fontSize={15}
-        >
-          {item}
-        </ListItem>
+        <Link href={item.url}>
+          <ListItem
+            color="#AFAFAF"
+            mb="6"
+            key={index}
+            fontWeight={500}
+            fontSize={15}
+          >
+            {item?.title}
+          </ListItem>
+        </Link>
       ))}
     </Box>
   );
@@ -38,7 +41,7 @@ const ListItems: React.FC<ListItemsProps> = ({ items }) => {
 
 type FooterListProps = {
   headingText: string;
-  items: string[];
+  items: { title: string; url: string }[];
 };
 
 const FooterList: React.FC<FooterListProps> = ({ headingText, items }) => {
@@ -57,6 +60,59 @@ const FooterList: React.FC<FooterListProps> = ({ headingText, items }) => {
 const Footer = () => {
   const pathname = usePathname();
 
+  const studioFooterLinks = [
+    {
+      title: 'Music Studio',
+      url: '/studios',
+    },
+    {
+      title: 'Photo Studio',
+      url: '/studios',
+    },
+    {
+      title: 'Makeup Studio',
+      url: '/studios',
+    },
+    {
+      title: 'Art Studio',
+      url: '/studios',
+    },
+    {
+      title: 'Podcast Studio',
+      url: '/studios',
+    },
+  ];
+
+  const companyFooterLinks = [
+    {
+      title: 'About Us',
+      url: '/about',
+    },
+    {
+      title: 'Contact',
+      url: '/contact',
+    },
+  ];
+
+  const supportFooterLinks = [
+    {
+      title: 'Contact Support',
+      url: '/contact-support',
+    },
+    {
+      title: 'Studio Fee',
+      url: '/studios',
+    },
+    {
+      title: 'Terms and Conditions',
+      url: '/terms-and-conditions',
+    },
+    {
+      title: 'Privacy Policy',
+      url: '/privacy-policy',
+    },
+  ];
+
   const hideNavbarRoutes = [
     '/sign-in',
     '/register',
@@ -70,6 +126,7 @@ const Footer = () => {
   if (hideNavbarRoutes.includes(pathname)) {
     return null;
   }
+
   return (
     <Box as="footer" bg="#2D2327" w="100%" py="10">
       <Stack direction="column" spacing={8} w="90%" mx="auto">
@@ -88,10 +145,10 @@ const Footer = () => {
               </Stack>
               <Box color="#AFAFAF" mb="12">
                 <Stack spacing={4}>
-                  <Box as="a" href="#">
+                  <Box as="a" href="/sign-in">
                     Rent a Studio
                   </Box>
-                  <Box as="a" href="#">
+                  <Box as="a" href="/register">
                     Add a Studio
                   </Box>
                 </Stack>
@@ -117,27 +174,10 @@ const Footer = () => {
               >
                 <FooterList
                   headingText="Studio Cateory"
-                  items={[
-                    'Music Studio',
-                    'Photo Studio',
-                    'Makeup Studio',
-                    'Art Studio',
-                    'Podcast Studio',
-                  ]}
+                  items={studioFooterLinks}
                 />
-                <FooterList
-                  headingText="Company"
-                  items={['About Us', 'Contact']}
-                />
-                <FooterList
-                  headingText="Support"
-                  items={[
-                    'Contact Support',
-                    'Studio Fee',
-                    'Terms and Conditions',
-                    'Privacy Policy',
-                  ]}
-                />
+                <FooterList headingText="Company" items={companyFooterLinks} />
+                <FooterList headingText="Support" items={supportFooterLinks} />
               </Flex>
             </Box>
           </Flex>

@@ -8,7 +8,7 @@ import {
   Image,
   useMediaQuery,
 } from '@chakra-ui/react';
-import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 import { BiLogoPlayStore } from 'react-icons/bi';
 
 import ButtonComponent, {
@@ -18,7 +18,6 @@ import Wrapper from '~/lib/components/Wrapper';
 
 const ThirdSection = () => {
   const [isMobile] = useMediaQuery('(max-width: 768px)');
-  const router = useRouter();
   return (
     <Box>
       <Wrapper>
@@ -70,13 +69,15 @@ const ThirdSection = () => {
 
                   <Box>
                     <Flex alignItems="center" gap="20px" flexWrap="wrap">
-                      <ButtonComponent
-                        text="Get Started"
-                        bg="brand.100"
-                        color="white"
-                        width={isMobile ? '100%' : '150px'}
-                        onClick={() => router.push('/register')}
-                      />
+                      <Link href="/register">
+                        <ButtonComponent
+                          text="Get Started"
+                          bg="brand.100"
+                          color="white"
+                          width={isMobile ? '100%' : '150px'}
+                          onClick={() => {}}
+                        />
+                      </Link>
                       <IconButtonComponent
                         flip={false}
                         width={isMobile ? '100%' : '268px'}

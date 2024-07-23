@@ -1,12 +1,17 @@
 import { Box, Stack, Flex, Heading } from '@chakra-ui/react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { IoChevronForwardCircleOutline } from 'react-icons/io5';
 
 import { IconButtonLinkComponent } from '~/lib/components/Button/Button';
 import SingleStudioCard from '~/lib/components/SingleStudioCard';
+import { useLoaderProgress } from '~/lib/utilities/Hooks/progress-bar';
 
 const PopularStudios = () => {
   const data = [1, 2, 3, 4, 5, 6];
+  const showLoaderProgress = useLoaderProgress();
+  const router = useRouter();
+
   return (
     <Box py="60px">
       <Stack spacing="32px" mb="60px">
@@ -36,7 +41,12 @@ const PopularStudios = () => {
       >
         {data?.map((item: any) => {
           return (
-            <Link passHref href={`/studios/details/${item.id}`}>
+            <Box
+              as="div"
+              onClick={() =>
+                showLoaderProgress(router.push(`/studios/details/${item.id}`))
+              }
+            >
               <SingleStudioCard
                 image="/assets/face.png"
                 // images={[
@@ -49,7 +59,7 @@ const PopularStudios = () => {
                 services={['Music', 'Photography']}
                 isLoggedIn
               />
-            </Link>
+            </Box>
           );
         })}
       </Flex>

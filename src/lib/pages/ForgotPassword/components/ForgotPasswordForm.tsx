@@ -5,28 +5,50 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
+import toast from 'react-hot-toast';
 import * as yup from 'yup';
 
 import ButtonComponent from '~/lib/components/Button/Button';
 import FormInput from '~/lib/utilities/FormInput/FormInput';
 import { useLoaderProgress } from '~/lib/utilities/Hooks/progress-bar';
-import { type LoginModel } from '~/services';
+import { UserService, InitiateResetModel } from '~/services';
+// import { type LoginModel } from '~/services';
 
 const ForgotPasswordForm = () => {
   const router = useRouter();
   const showLoaderProgress = useLoaderProgress();
   const validation = yup.object().shape({
     email: yup.string().email().required(),
-    password: yup.string().required(),
   });
   const {
+    handleSubmit,
     register,
     formState: { errors, isSubmitting },
-  } = useForm<LoginModel>({
+  } = useForm<InitiateResetModel>({
     // @ts-expect-error new update
     resolver: yupResolver(validation),
     mode: 'all',
   });
+
+  const sendPasswordResetCode = async (data: InitiateResetModel) => {
+    try {
+      const res = await UserService.initiateReset({
+        redirectUrl: '/email-confirmation',
+        requestBody: data,
+      });
+      if (res.status) {
+        toast.success(res?.message as string);
+        showLoaderProgress(() =>
+          router.push(`/email-confirmation?email=${data.email}`)
+        );
+        // router.push('/email-confirmation');
+        return;
+      }
+      toast.error(res?.message as string);
+    } catch (error: any) {
+      toast.error(error?.body?.message || error?.message);
+    }
+  };
 
   return (
     <Box>
@@ -42,7 +64,7 @@ const ForgotPasswordForm = () => {
         >
           <Box>
             <Stack spacing="40px">
-              <FormInput<LoginModel>
+              <FormInput<InitiateResetModel>
                 type="email"
                 register={register}
                 name="email"
@@ -59,11 +81,7 @@ const ForgotPasswordForm = () => {
                     width="100%"
                     loading={isSubmitting}
                     type="submit"
-                    onClick={() =>
-                      showLoaderProgress(() =>
-                        router.push('/email-confirmation')
-                      )
-                    }
+                    onClick={handleSubmit(sendPasswordResetCode)}
                   />
                   <Link href="/sign-in" passHref>
                     <Text

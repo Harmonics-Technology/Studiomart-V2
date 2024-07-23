@@ -7,7 +7,7 @@ import {
   Image,
   useMediaQuery,
 } from '@chakra-ui/react';
-import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 
 import ButtonComponent, {
   OutlineButtonComponent,
@@ -16,7 +16,6 @@ import SocialLinks from '~/lib/components/SocialLinks';
 import Wrapper from '~/lib/components/Wrapper';
 
 const MobileView = () => {
-  const router = useRouter();
   return (
     <Box w="90%" mx="auto" py="5">
       <Stack spacing="28px">
@@ -62,17 +61,21 @@ const MobileView = () => {
             </Text>
             <Box>
               <Flex alignItems="center" gap={4}>
-                <OutlineButtonComponent
-                  text="Become a Vendor"
-                  color="#1570FA"
-                />
-                <ButtonComponent
-                  text="Book a Service"
-                  color="white"
-                  bg="brand.100"
-                  width="174px"
-                  onClick={() => router.push('/sign-in')}
-                />
+                <Link href="/vendor">
+                  <OutlineButtonComponent
+                    text="Become a Vendor"
+                    color="#1570FA"
+                  />
+                </Link>
+                <Link href="/sign-in">
+                  <ButtonComponent
+                    text="Book a Service"
+                    color="white"
+                    bg="brand.100"
+                    width="174px"
+                    onClick={() => {}}
+                  />
+                </Link>
               </Flex>
             </Box>
           </Stack>
@@ -130,17 +133,21 @@ const DesktopView = () => {
               </Text>
               <Box>
                 <Flex alignItems="center" gap={4}>
-                  <OutlineButtonComponent
-                    text="Become a Vendor"
-                    color="#1570FA"
-                  />
-                  <ButtonComponent
-                    text="Book a Service"
-                    color="white"
-                    bg="brand.100"
-                    width="174px"
-                    onClick={() => {}}
-                  />
+                  <Link href="/vendor">
+                    <OutlineButtonComponent
+                      text="Become a Vendor"
+                      color="#1570FA"
+                    />
+                  </Link>
+                  <Link href="/sign-in">
+                    <ButtonComponent
+                      text="Book a Service"
+                      color="white"
+                      bg="brand.100"
+                      width="174px"
+                      onClick={() => {}}
+                    />
+                  </Link>
                 </Flex>
               </Box>
             </Stack>

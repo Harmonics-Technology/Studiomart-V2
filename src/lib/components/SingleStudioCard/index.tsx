@@ -1,9 +1,10 @@
 'use client';
 
 import { Box, Text, Image, Heading, Flex, Stack } from '@chakra-ui/react';
+import { useState } from 'react';
 import { useDummyImage } from 'react-simple-placeholder-image';
 
-import FavouriteIcon from '../Icons/FavouriteIcon';
+import FavouriteIcon, { FavouriteIconFilled } from '../Icons/FavouriteIcon';
 import { SingleStudioCardProps } from '~/lib/utilities/Context/schemas';
 import 'swiper/css';
 import 'swiper/css/pagination';
@@ -17,6 +18,13 @@ const Index = ({
   isLoggedIn,
 }: SingleStudioCardProps) => {
   const dummyImage = useDummyImage({});
+  const [isAddedtoFavourites, setIsAddedToFavourites] = useState(false);
+
+  const addToSaved = (event: any) => {
+    event.stopPropagation();
+    setIsAddedToFavourites(!isAddedtoFavourites);
+  };
+
   return (
     <Box as="section" w={['166px', '400px']} h="auto">
       <Box
@@ -30,8 +38,14 @@ const Index = ({
         borderRadius="40px"
       >
         {isLoggedIn && (
-          <Box position="absolute" top="24px" right="24px" zIndex="2">
-            <FavouriteIcon />
+          <Box
+            position="absolute"
+            top="24px"
+            right="24px"
+            zIndex="2"
+            onClick={addToSaved}
+          >
+            {isAddedtoFavourites ? <FavouriteIconFilled /> : <FavouriteIcon />}
           </Box>
         )}
 

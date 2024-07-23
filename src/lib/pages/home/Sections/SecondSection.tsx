@@ -7,6 +7,7 @@ import {
   VStack,
   Image,
 } from '@chakra-ui/react';
+import Link from 'next/link';
 import { IoChevronForwardCircleOutline } from 'react-icons/io5';
 
 import { IconButtonLinkComponent } from '~/lib/components/Button/Button';
@@ -44,11 +45,13 @@ const SecondSection = () => {
                 allowing you to focus entirely on your creative endeavors.
               </Text>
               <Text>Choose StudioMart – where artistry meets convenience.</Text>
-              <IconButtonLinkComponent
-                text="Learn more"
-                flip={false}
-                icon={IoChevronForwardCircleOutline}
-              />
+              <Link href="/sign-in">
+                <IconButtonLinkComponent
+                  text="Learn more"
+                  flip={false}
+                  icon={IoChevronForwardCircleOutline}
+                />
+              </Link>
             </Stack>
           </Box>
           <Box w={['100%', '35%']} h="280px">

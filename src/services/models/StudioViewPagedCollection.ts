@@ -3,6 +3,7 @@
 /* tslint:disable */
 /* eslint-disable */
 import type { Link } from './Link';
+import type { ServiceTypeView } from './ServiceTypeView';
 import type { StudioView } from './StudioView';
 export type StudioViewPagedCollection = {
   offset?: number | null;
@@ -16,4 +17,5 @@ export type StudioViewPagedCollection = {
   value?: Array<StudioView> | null;
   nextOffset?: number | null;
   previousOffset?: number | null;
+  categories: ServiceTypeView[];
 };
