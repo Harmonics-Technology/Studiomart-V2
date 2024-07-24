@@ -267,7 +267,7 @@ export interface IHomePage {
     services: ServiceViewPagedCollection | undefined;
     recents: RecentlyViewedView[] | undefined;
   };
-  categories: ServiceTypeView[];
+  categories?: ServiceTypeView[];
 }
 export interface IPageProps {
   searchParams?: any;
@@ -280,6 +280,7 @@ export interface IServiceDetailsProps {
     ratings: ReviewViewPagedCollection | any[];
     studios: StudioViewPagedCollection;
   };
+  categories?: ServiceTypeView[];
 }
 
 export interface ICustomerHome {

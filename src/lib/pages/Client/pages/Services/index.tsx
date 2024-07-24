@@ -22,7 +22,7 @@ const Index: React.FC<IHomePage> = ({ data, categories }) => {
       {showFilterModal && (
         <CustomFilter
           onClick={() => setShowFilterModal(false)}
-          categories={categories}
+          categories={categories ?? []}
         />
       )}
       {(recents?.length as any) > 0 && <RecentlyViewed recents={recents} />}

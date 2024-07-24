@@ -85,6 +85,7 @@ const FirstSection = ({ data }: { data: ServiceView | undefined }) => {
   const router = useRouter();
   const cookies = useCookies();
   const [loading, setLoading] = useState(false);
+
   const saveServiceForLater = async () => {
     setLoading(true);
     try {
@@ -107,6 +108,7 @@ const FirstSection = ({ data }: { data: ServiceView | undefined }) => {
       });
     }
   };
+
   const removeSaved = async () => {
     setLoading(true);
     try {
@@ -128,6 +130,7 @@ const FirstSection = ({ data }: { data: ServiceView | undefined }) => {
       });
     }
   };
+
   const [selectedAddon, setSelectedAddon] = useState<any>([]);
   const addToArray = (value: AdditionalServiceView) => {
     const exist = selectedAddon.find((x: any) => x.id === value.id);
