@@ -17,5 +17,5 @@ export type StudioViewPagedCollection = {
   value?: Array<StudioView> | null;
   nextOffset?: number | null;
   previousOffset?: number | null;
-  categories: ServiceTypeView[];
+  categories?: ServiceTypeView[];
 };
