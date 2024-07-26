@@ -79,11 +79,13 @@ const FourthSection = () => {
           </Box>
           <Box w={['100%', '48%']}>
             <Box mb="12" display="flex" justifyContent="flex-end">
-              <IconButtonLinkComponent
-                flip={false}
-                text="Explore all Studios"
-                icon={IoChevronForwardCircleOutline}
-              />
+              <Link href="/studios">
+                <IconButtonLinkComponent
+                  flip={false}
+                  text="Explore all Studios"
+                  icon={IoChevronForwardCircleOutline}
+                />
+              </Link>
             </Box>
             <Box>
               <Stack spacing={8}>

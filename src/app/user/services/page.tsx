@@ -1,6 +1,13 @@
+import toast from 'react-hot-toast';
+
 import Services from '~/lib/pages/Client/pages/Services';
 import { IPageProps } from '~/lib/utilities/Context/schemas';
-import { OpenAPI, RecentlyViewedService, StudioService } from '~/services';
+import {
+  OpenAPI,
+  RecentlyViewedService,
+  ServiceTypeView,
+  StudioService,
+} from '~/services';
 
 const fetchData = async (
   offset: number,
@@ -44,6 +51,20 @@ const fetchData = async (
   }
 };
 
+const fetchCategories = async () => {
+  try {
+    const res = await StudioService.getServiceTypes({});
+    if (res.data) {
+      return res.data;
+    }
+    toast.error('Failed to fetch categories');
+    return {};
+  } catch (error) {
+    toast.error('Failed to fetch categories');
+    return {};
+  }
+};
+
 const page = async ({ searchParams }: IPageProps) => {
   const {
     offset,
@@ -52,7 +73,7 @@ const page = async ({ searchParams }: IPageProps) => {
     maxPrice,
     minPrice,
     rating,
-    serviceType,
+    category,
     state,
     studio,
   } = searchParams;
@@ -63,11 +84,12 @@ const page = async ({ searchParams }: IPageProps) => {
     maxPrice,
     minPrice,
     rating,
-    serviceType,
+    category,
     state,
     studio
   );
-  return <Services data={data} />;
+  const categories = await fetchCategories();
+  return <Services data={data} categories={categories as ServiceTypeView[]} />;
 };
 
 export default page;

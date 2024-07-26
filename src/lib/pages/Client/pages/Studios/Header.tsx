@@ -2,14 +2,18 @@
 
 import { Box, Flex, Heading, Stack, Text, Button } from '@chakra-ui/react';
 import { useRouter } from 'next/navigation';
+import { useState } from 'react';
 
 import { BackButton } from '~/lib/components/Button/Button';
+import CustomFilter from '~/lib/components/CustomFilter';
 import FilterIcon from '~/lib/components/Icons/FilterIcon';
 import './styles.css';
 import Wrapper from '~/lib/components/Wrapper';
+import { ServiceTypeView } from '~/services';
 
-const Header = () => {
+const Header = ({ categories }: { categories: ServiceTypeView[] }) => {
   const router = useRouter();
+  const [openFilterModal, setOpenFilterModal] = useState<boolean>(false);
   return (
     <Box as="section">
       <Wrapper>
@@ -30,21 +34,22 @@ const Header = () => {
               </Heading>
             </Stack>
           </Box>
-          <div className="dropdown">
+          <Box className="dropdown" onClick={() => setOpenFilterModal(true)}>
             <button className="dropbtn" type="button">
               <Flex alignItems="center" gap="9px" justifyContent="center">
                 <FilterIcon />
                 <Text>Filter</Text>
               </Flex>
             </button>
-            <div className="dropdown-content">
-              <a href="/studios">Price</a>
-              <a href="/studios">Location</a>
-              <a href="/studios">Star rating</a>
-            </div>
-          </div>
+          </Box>
         </Flex>
       </Wrapper>
+      {openFilterModal && (
+        <CustomFilter
+          onClick={() => setOpenFilterModal(false)}
+          categories={categories}
+        />
+      )}
     </Box>
   );
 };
