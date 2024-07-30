@@ -12,7 +12,7 @@ const Services = ({
 }) => {
   return (
     <Box>
-      <Grid templateColumns={['1fr', 'repeat(3,1fr)']} gap="2rem">
+      <Grid templateColumns={['repeat(2,1fr)', 'repeat(3,1fr)']} gap="2rem">
         {services?.value?.map((item: ServiceView) => (
           <Link passHref href={`/services/details/${item?.id}`}>
             <ServiceCard

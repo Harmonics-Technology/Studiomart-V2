@@ -944,4 +944,93 @@ export class StudioService {
       },
     });
   }
+  /**
+   * @returns StudioViewStandardResponse Success
+   * @throws ApiError
+   */
+  public static listPopularStudio({
+    device,
+  }: {
+    device?: any;
+  }): CancelablePromise<StudioViewStandardResponse> {
+    return __request(OpenAPI, {
+      method: 'GET',
+      url: '/api/Studio/popular',
+      headers: {
+        device: device,
+      },
+      errors: {
+        400: `Bad Request`,
+        500: `Server Error`,
+      },
+    });
+  }
+  /**
+   * @returns StudioViewStandardResponse Success
+   * @throws ApiError
+   */
+  public static listPopularStudioTest({
+    device,
+  }: {
+    device?: any;
+  }): CancelablePromise<StudioViewStandardResponse> {
+    return __request(OpenAPI, {
+      method: 'GET',
+      url: '/api/Studio/popular/test',
+      headers: {
+        device: device,
+      },
+      errors: {
+        400: `Bad Request`,
+        500: `Server Error`,
+      },
+    });
+  }
+  /**
+   * @returns StudioViewStandardResponse Success
+   * @throws ApiError
+   */
+  public static listPopularStudioWeekly({
+    device,
+  }: {
+    device?: any;
+  }): CancelablePromise<StudioViewStandardResponse> {
+    return __request(OpenAPI, {
+      method: 'GET',
+      url: '/api/Studio/popular/weekly',
+      headers: {
+        device: device,
+      },
+      errors: {
+        400: `Bad Request`,
+        500: `Server Error`,
+      },
+    });
+  }
+  /**
+   * @returns BooleanStandardResponse Success
+   * @throws ApiError
+   */
+  public static listSimilarStudio({
+    id,
+    device,
+  }: {
+    id: string;
+    device?: any;
+  }): CancelablePromise<BooleanStandardResponse> {
+    return __request(OpenAPI, {
+      method: 'GET',
+      url: '/api/Studio/similar/{id}',
+      path: {
+        id: id,
+      },
+      headers: {
+        device: device,
+      },
+      errors: {
+        400: `Bad Request`,
+        500: `Server Error`,
+      },
+    });
+  }
 }

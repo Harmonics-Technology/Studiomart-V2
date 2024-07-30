@@ -7,6 +7,7 @@ import {
   Flex,
   Circle,
   Image,
+  useMediaQuery,
 } from '@chakra-ui/react';
 import { IoArrowForward } from 'react-icons/io5';
 
@@ -26,8 +27,9 @@ const ServiceCard = ({
   dateAndTime,
   status,
 }: ServiceCardProps) => {
+  const [isMobile] = useMediaQuery('(max-width: 768px)');
   const width = '100%';
-  const height = '342px';
+  const height = isMobile ? '141px' : '342px';
   return (
     <Box as="section" width={width} h="auto" cursor="pointer">
       <Box
@@ -72,7 +74,7 @@ const ServiceCard = ({
             <image
               xlinkHref={image as string}
               width={width}
-              height={height}
+              height={isMobile ? '100%' : height}
               preserveAspectRatio="xMidYMid slice"
               mask="url(#svgMask)"
               style={{ objectFit: 'cover' }}
@@ -84,13 +86,12 @@ const ServiceCard = ({
           pos="absolute"
           right={0}
           top={0}
-          size="6.4rem"
+          size={['3.2rem', '6.4rem']}
           bgColor="#D6E7FF"
-          border="4px solid"
-          borderColor="brand.100"
+          border={['3px solid #1570FA', '4px solid #1570FA']}
         >
           <Text
-            fontSize="1.5rem"
+            fontSize={['1.1rem', '1.5rem']}
             fontWeight={900}
             lineHeight="0.015rem"
             color="text.100"
@@ -152,14 +153,19 @@ const ServiceCard = ({
       ) : (
         <Box p="3">
           <Stack spacing={2.5}>
-            <Heading fontSize={24} fontWeight={700}>
+            <Heading fontSize={[14, 24]} fontWeight={700}>
               {title}
             </Heading>
-            <Text>
+            <Text fontSize={[13, 16]}>
               From <strong>NGN {Cur(price as number)}</strong> (Per Session)
             </Text>
             <Box>
-              <Flex alignItems="center" gap={3} color="#1570FA">
+              <Flex
+                alignItems="center"
+                fontSize={[13, 16]}
+                gap={3}
+                color="#1570FA"
+              >
                 <Text>View more details</Text>
                 <IoArrowForward />
               </Flex>

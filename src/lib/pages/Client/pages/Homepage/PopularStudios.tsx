@@ -6,9 +6,13 @@ import { IoChevronForwardCircleOutline } from 'react-icons/io5';
 import { IconButtonLinkComponent } from '~/lib/components/Button/Button';
 import SingleStudioCard from '~/lib/components/SingleStudioCard';
 import { useLoaderProgress } from '~/lib/utilities/Hooks/progress-bar';
+import { StudioView } from '~/services';
 
-const PopularStudios = () => {
-  const data = [1, 2, 3, 4, 5, 6];
+const PopularStudios = ({
+  popularStudios,
+}: {
+  popularStudios: StudioView[];
+}) => {
   const showLoaderProgress = useLoaderProgress();
   const router = useRouter();
 
@@ -39,23 +43,23 @@ const PopularStudios = () => {
         justifyContent="space-between"
         flexWrap="wrap"
       >
-        {data?.map((item: any) => {
+        {popularStudios?.map((studio: any) => {
           return (
             <Box
               as="div"
               onClick={() =>
-                showLoaderProgress(router.push(`/studios/details/${item.id}`))
+                showLoaderProgress(router.push(`/studios/details/${studio.id}`))
               }
             >
               <SingleStudioCard
-                image="/assets/face.png"
+                image={studio?.coverPhoto}
                 // images={[
                 //   '/assets/face.png',
                 //   '/assets/studio-girl2.png',
                 //   '/assets/other-studios.png',
                 // ]}
-                studioName="MUA Studio"
-                address="Lekki, Lagos"
+                studioName={studio?.name}
+                address={`${studio?.city}, ${studio?.state}`}
                 services={['Music', 'Photography']}
                 isLoggedIn
               />

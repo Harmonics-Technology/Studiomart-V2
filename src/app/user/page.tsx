@@ -1,3 +1,5 @@
+import toast from 'react-hot-toast';
+
 import Homepage from '~/lib/pages/Client/pages/Homepage';
 import { IPageProps } from '~/lib/utilities/Context/schemas';
 import { OpenAPI, RecentlyViewedService, StudioService } from '~/services';
@@ -44,6 +46,32 @@ const fetchData = async (
   }
 };
 
+const fetchPopularStudios = async () => {
+  try {
+    const res = await StudioService.listPopularStudio({});
+    if (res?.status) {
+      return res?.data;
+    }
+    return {};
+  } catch (error: any) {
+    toast.error('Failed to fetch popular studios');
+    return {};
+  }
+};
+
+const fetchStudioOfTheWeek = async () => {
+  try {
+    const res = await StudioService.listPopularStudioWeekly({});
+    if (res?.status) {
+      return res?.data;
+    }
+    return {};
+  } catch (error: any) {
+    toast.error('Failed to fetch studio of the week');
+    return {};
+  }
+};
+
 const page = async ({ searchParams }: IPageProps) => {
   const {
     offset,
@@ -67,7 +95,16 @@ const page = async ({ searchParams }: IPageProps) => {
     state,
     studio
   );
-  return <Homepage data={data} />;
+  const popularStudios = await fetchPopularStudios();
+  const studioOfTheWeek = await fetchStudioOfTheWeek();
+
+  return (
+    <Homepage
+      data={data}
+      popularStudios={popularStudios}
+      studioOfTheWeek={studioOfTheWeek}
+    />
+  );
 };
 
 export default page;

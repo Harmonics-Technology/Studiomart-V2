@@ -34,6 +34,7 @@ const Index = ({
         border="4px solid"
         borderColor="brand.100"
         borderRadius="40px"
+        cursor="pointer"
       >
         {/* {isLoggedIn && (
           <Box
@@ -102,6 +103,7 @@ const Index = ({
                       fontSize={[12, 14]}
                       borderRadius="60px"
                       border="1px solid #6DD3CE"
+                      key={service}
                     >
                       {service}
                     </Text>
@@ -122,6 +124,7 @@ const Index = ({
                   fontSize={14}
                   borderRadius="60px"
                   border="1px solid #6DD3CE"
+                  key={service}
                 >
                   {service}
                 </Text>

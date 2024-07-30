@@ -16,15 +16,20 @@ import {
   IconButtonLinkComponent,
 } from '~/lib/components/Button/Button';
 import Wrapper from '~/lib/components/Wrapper';
+import { StudioView } from '~/services';
 
-const FourthSection = () => {
+const FourthSection = ({
+  studioOfTheWeek,
+}: {
+  studioOfTheWeek: StudioView[];
+}) => {
   const [isMobile] = useMediaQuery('(max-width: 768px)');
   return (
     <Box bg="#FCF8FB" py="12">
       <Wrapper>
         <Flex
           justifyContent="space-between"
-          alignItems="flex-start"
+          alignItems="center"
           flexWrap="wrap"
         >
           <Box w={['100%', '48%']}>
@@ -40,7 +45,7 @@ const FourthSection = () => {
                 >
                   <Box>
                     <Image
-                      src="/assets/seventh-image.png"
+                      src={studioOfTheWeek[0]?.coverPhoto as string}
                       width={362}
                       height={400}
                       objectFit="cover"
@@ -56,7 +61,7 @@ const FourthSection = () => {
                       gap="20px"
                     >
                       <Image
-                        src="/assets/eight-image.png"
+                        src={studioOfTheWeek[0]?.logo as string}
                         width={200}
                         height={219}
                         objectFit="cover"
@@ -64,7 +69,7 @@ const FourthSection = () => {
                         alt="a lady and flower"
                       />
                       <Image
-                        src="/assets/ninth-image.png"
+                        src={studioOfTheWeek[0]?.coverPhoto as string}
                         width={200}
                         height={150}
                         objectFit="cover"
@@ -94,19 +99,9 @@ const FourthSection = () => {
                   fontWeight={[900, 700]}
                   color="#1570FA"
                 >
-                  ColorSplash Studios
+                  {studioOfTheWeek[0]?.name}
                 </Heading>
-                <Text lineHeight="30px">
-                  Introducing ColorSplash Studio, our featured studio of the
-                  week! Offering a comprehensive range of photography and video
-                  services, ColorSplash is your go-to destination for capturing
-                  memorable moments. From stunning portraits to captivating
-                  event coverage, their talented team brings creativity and
-                  expertise to every project With ColorSplash Studio, your
-                  vision comes to life in vibrant colors and cinematic quality.
-                  Explore the possibilities and make your next shoot an
-                  unforgettable experience!
-                </Text>
+                <Text lineHeight="30px">{studioOfTheWeek[0]?.description}</Text>
                 <Link href="/sign-in">
                   <IconButtonComponent
                     bg="brand.100"

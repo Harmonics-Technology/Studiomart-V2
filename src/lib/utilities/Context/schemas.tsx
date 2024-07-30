@@ -13,6 +13,7 @@ import {
   ServiceTypeView,
   ServiceView,
   ServiceViewPagedCollection,
+  StudioView,
   StudioViewPagedCollection,
   UserView,
 } from '~/services';
@@ -268,6 +269,8 @@ export interface IHomePage {
     recents: RecentlyViewedView[] | undefined;
   };
   categories?: ServiceTypeView[];
+  popularStudios?: StudioView | [];
+  studioOfTheWeek?: StudioView | [];
 }
 export interface IPageProps {
   searchParams?: any;

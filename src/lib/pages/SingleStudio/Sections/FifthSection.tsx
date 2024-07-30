@@ -3,23 +3,13 @@ import Link from 'next/link';
 
 import StudioCard from '~/lib/components/SingleStudioCard';
 import Wrapper from '~/lib/components/Wrapper';
+import { StudioView } from '~/services';
 
-const FifthSection = () => {
-  const imageUrl = '/assets/other-studios.png';
-  const studios = [
-    {
-      id: 1,
-      image: imageUrl,
-    },
-    {
-      id: 2,
-      image: imageUrl,
-    },
-    {
-      id: 3,
-      image: imageUrl,
-    },
-  ];
+const FifthSection = ({
+  similarServiceStudios,
+}: {
+  similarServiceStudios: StudioView[];
+}) => {
   return (
     <Box bg="#FCF8FB" py="8">
       <Wrapper>
@@ -29,7 +19,7 @@ const FifthSection = () => {
               fontSize={24}
               fontWeight={900}
               position="absolute"
-              zIndex="2"
+              zIndex="1"
             >
               Studios Offering Similar Services
             </Heading>
@@ -48,17 +38,21 @@ const FifthSection = () => {
               flexWrap="wrap"
               rowGap="24px"
             >
-              {studios.map((item) => (
-                <Link passHref href={`/studios/details/${item.id}`}>
+              {similarServiceStudios?.map((studio: any) => (
+                <Link
+                  key={studio?.id}
+                  passHref
+                  href={`/studios/details/${studio?.id}`}
+                >
                   <StudioCard
                     // image={[
                     //   '/assets/face.png',
                     //   '/assets/studio-girl2.png',
                     //   '/assets/other-studios.png',
                     // ]}
-                    image="/assets/face.png"
-                    studioName="Colorsplash Studios"
-                    address="Onilearo Ibadan."
+                    image={studio?.coverPhoto as string}
+                    studioName={studio?.name}
+                    address={`${studio?.city}, ${studio?.state}`}
                     services={['Music', 'Photography']}
                     isLoggedIn
                   />
