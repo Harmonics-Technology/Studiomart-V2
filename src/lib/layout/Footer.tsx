@@ -23,7 +23,7 @@ const ListItems: React.FC<ListItemsProps> = ({ items }) => {
   return (
     <Box>
       {items.map((item, index) => (
-        <Link href={item.url}>
+        <Link href={item.url} key={index}>
           <ListItem
             color="#AFAFAF"
             mb="6"

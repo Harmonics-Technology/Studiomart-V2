@@ -21,7 +21,11 @@ const StudioList = ({ data }: { data: StudioViewPagedCollection }) => {
         >
           {data?.value?.map((studio: StudioView) => {
             return (
-              <Link passHref href={`/studios/details/${studio.id}`}>
+              <Link
+                key={studio?.id}
+                passHref
+                href={`/studios/details/${studio.id}`}
+              >
                 <StudioCard
                   // images={[
                   //   '/assets/face.png',

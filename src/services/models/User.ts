@@ -31,4 +31,5 @@ export type User = {
   allowPushNotification?: boolean;
   isStudent?: boolean;
   university?: string | null;
+  interests?: string | null;
 };

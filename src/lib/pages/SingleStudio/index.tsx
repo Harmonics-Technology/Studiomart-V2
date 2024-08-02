@@ -12,9 +12,11 @@ import ThirdSection from './Sections/ThirdSection';
 const index = ({
   data,
   services,
+  similarServiceStudios,
 }: {
   data: StudioView;
   services: StudioViewPagedCollection;
+  similarServiceStudios: StudioView[];
 }) => {
   return (
     <Box as="section">
@@ -22,7 +24,9 @@ const index = ({
         <FirstSection data={data} />
         <SecondSection data={services} studio={data} />
         <ThirdSection />
-        <FifthSection />
+        <FifthSection
+          similarServiceStudios={similarServiceStudios as StudioView[]}
+        />
       </Stack>
     </Box>
   );
