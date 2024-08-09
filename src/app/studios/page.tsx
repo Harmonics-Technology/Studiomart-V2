@@ -1,12 +1,6 @@
-import toast from 'react-hot-toast';
-
 import Studios from '~/lib/pages/Client/pages/Studios';
 import { IPageProps } from '~/lib/utilities/Context/schemas';
-import {
-  ServiceTypeView,
-  StudioService,
-  StudioViewPagedCollection,
-} from '~/services';
+import { StudioService, StudioViewPagedCollection } from '~/services';
 
 const fetchData = async (offset: number, limit: number, search: string) => {
   try {
@@ -26,30 +20,10 @@ const fetchData = async (offset: number, limit: number, search: string) => {
   }
 };
 
-const fetchCategories = async () => {
-  try {
-    const res = await StudioService.getServiceTypes({});
-    if (res.data) {
-      return res.data;
-    }
-    toast.error('Failed to fetch categories');
-    return {};
-  } catch (error) {
-    toast.error('Failed to fetch categories');
-    return {};
-  }
-};
-
 const page = async ({ searchParams }: IPageProps) => {
   const { offset, limit, search } = searchParams;
   const data = await fetchData(offset, limit, search);
-  const categories = await fetchCategories();
-  return (
-    <Studios
-      data={data as StudioViewPagedCollection}
-      categories={categories as ServiceTypeView[]}
-    />
-  );
+  return <Studios data={data as StudioViewPagedCollection} />;
 };
 
 export default page;
