@@ -14,6 +14,7 @@ import type { MediaUpdateModel } from '../models/MediaUpdateModel';
 import type { MediaViewStandardResponse } from '../models/MediaViewStandardResponse';
 import type { SavedServiceViewPagedCollectionStandardResponse } from '../models/SavedServiceViewPagedCollectionStandardResponse';
 import type { SavedServiceViewStandardResponse } from '../models/SavedServiceViewStandardResponse';
+import type { SavedStudioViewPagedCollectionStandardResponse } from '../models/SavedStudioViewPagedCollectionStandardResponse';
 import type { ServiceModel } from '../models/ServiceModel';
 import type { ServiceTypeViewListStandardResponse } from '../models/ServiceTypeViewListStandardResponse';
 import type { ServiceViewPagedCollectionStandardResponse } from '../models/ServiceViewPagedCollectionStandardResponse';
@@ -636,11 +637,21 @@ export class StudioService {
     offset,
     limit,
     search,
+    city,
+    state,
+    latitude,
+    longitude,
+    proximityInMeters,
     device,
   }: {
     offset?: number;
     limit?: number;
     search?: string;
+    city?: string;
+    state?: string;
+    latitude?: number;
+    longitude?: number;
+    proximityInMeters?: number;
     device?: any;
   }): CancelablePromise<StudioViewPagedCollectionStandardResponse> {
     return __request(OpenAPI, {
@@ -653,6 +664,11 @@ export class StudioService {
         Offset: offset,
         Limit: limit,
         search: search,
+        City: city,
+        State: state,
+        Latitude: latitude,
+        Longitude: longitude,
+        ProximityInMeters: proximityInMeters,
       },
       errors: {
         400: `Bad Request`,
@@ -711,6 +727,11 @@ export class StudioService {
     city,
     state,
     university,
+    // city,
+    // state,
+    latitude,
+    longitude,
+    proximityInMeters,
     device,
   }: {
     offset?: number;
@@ -723,6 +744,11 @@ export class StudioService {
     city?: string;
     state?: string;
     university?: string;
+    // city?: string,
+    // state?: string,
+    latitude?: number;
+    longitude?: number;
+    proximityInMeters?: number;
     device?: any;
   }): CancelablePromise<ServiceViewPagedCollectionStandardResponse> {
     return __request(OpenAPI, {
@@ -742,6 +768,11 @@ export class StudioService {
         City: city,
         State: state,
         University: university,
+        // 'City': city,
+        // 'State': state,
+        Latitude: latitude,
+        Longitude: longitude,
+        ProximityInMeters: proximityInMeters,
       },
       errors: {
         400: `Bad Request`,
@@ -1021,6 +1052,112 @@ export class StudioService {
     return __request(OpenAPI, {
       method: 'GET',
       url: '/api/Studio/similar/{id}',
+      path: {
+        id: id,
+      },
+      headers: {
+        device: device,
+      },
+      errors: {
+        400: `Bad Request`,
+        500: `Server Error`,
+      },
+    });
+  }
+  /**
+   * @returns SavedStudioViewPagedCollectionStandardResponse Success
+   * @throws ApiError
+   */
+  public static listSavedStudios({
+    offset,
+    limit,
+    search,
+    device,
+  }: {
+    offset?: number;
+    limit?: number;
+    search?: string;
+    device?: any;
+  }): CancelablePromise<SavedStudioViewPagedCollectionStandardResponse> {
+    return __request(OpenAPI, {
+      method: 'GET',
+      url: '/api/Studio/saved-studios',
+      headers: {
+        device: device,
+      },
+      query: {
+        Offset: offset,
+        Limit: limit,
+        search: search,
+      },
+      errors: {
+        400: `Bad Request`,
+        500: `Server Error`,
+      },
+    });
+  }
+  /**
+   * @returns SavedServiceViewStandardResponse Success
+   * @throws ApiError
+   */
+  public static saveStudio({
+    studioId,
+    device,
+  }: {
+    studioId?: string;
+    device?: any;
+  }): CancelablePromise<SavedServiceViewStandardResponse> {
+    return __request(OpenAPI, {
+      method: 'POST',
+      url: '/api/Studio/save-studio',
+      headers: {
+        device: device,
+      },
+      query: {
+        studioId: studioId,
+      },
+      errors: {
+        400: `Bad Request`,
+        500: `Server Error`,
+      },
+    });
+  }
+  /**
+   * @returns any Success
+   * @throws ApiError
+   */
+  public static updateStudiosWithCorrectAddress({
+    device,
+  }: {
+    device?: any;
+  }): CancelablePromise<any> {
+    return __request(OpenAPI, {
+      method: 'GET',
+      url: '/api/Studio/update-address',
+      headers: {
+        device: device,
+      },
+      errors: {
+        400: `Bad Request`,
+        500: `Server Error`,
+      },
+    });
+  }
+  /**
+   * remove from saved studio
+   * @returns BooleanStandardResponse Success
+   * @throws ApiError
+   */
+  public static removeSavedStudio({
+    id,
+    device,
+  }: {
+    id: string;
+    device?: any;
+  }): CancelablePromise<BooleanStandardResponse> {
+    return __request(OpenAPI, {
+      method: 'POST',
+      url: '/api/Studio/save-studio/delete/{id}',
       path: {
         id: id,
       },

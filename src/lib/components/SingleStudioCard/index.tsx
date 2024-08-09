@@ -1,12 +1,22 @@
 'use client';
 
-import { Box, Text, Image, Heading, Flex, Stack } from '@chakra-ui/react';
-// import { useState } from 'react';
+import {
+  Box,
+  Text,
+  Image,
+  Heading,
+  Flex,
+  Stack,
+  Button,
+} from '@chakra-ui/react';
 import { useDummyImage } from 'react-simple-placeholder-image';
 
+import FavouriteIcon, { FavouriteIconFilled } from '../Icons/FavouriteIcon';
 import { SingleStudioCardProps } from '~/lib/utilities/Context/schemas';
 import 'swiper/css';
 import 'swiper/css/pagination';
+import { useLoaderProgress } from '~/lib/utilities/Hooks/progress-bar';
+import { useLoggedUser } from '~/lib/utilities/Hooks/useLoggedUser';
 
 const Index = ({
   studioName,
@@ -14,14 +24,32 @@ const Index = ({
   // images,
   image,
   services,
+  addToFavourites,
+  removeFromFavourites,
+  isSaved,
+  onClick,
 }: SingleStudioCardProps) => {
   const dummyImage = useDummyImage({});
-  // const [isAddedtoFavourites, setIsAddedToFavourites] = useState(false);
+  const { user } = useLoggedUser();
+  const showLoaderProgress = useLoaderProgress();
 
-  // const addToSaved = (event: any) => {
-  //   event.stopPropagation();
-  //   setIsAddedToFavourites(!isAddedtoFavourites);
-  // };
+  const handleClick = () => {
+    showLoaderProgress(() => onClick());
+  };
+
+  const RemoveFromFavourites = (event: any) => {
+    event.stopPropagation();
+    if (removeFromFavourites) {
+      showLoaderProgress(() => removeFromFavourites());
+    }
+  };
+
+  const AddToFavourites = (event: any) => {
+    event.stopPropagation();
+    if (addToFavourites) {
+      showLoaderProgress(() => addToFavourites());
+    }
+  };
 
   return (
     <Box as="section" w={['166px', '400px']} h="auto">
@@ -35,18 +63,31 @@ const Index = ({
         borderColor="brand.100"
         borderRadius="40px"
         cursor="pointer"
+        onClick={handleClick}
       >
-        {/* {isLoggedIn && (
-          <Box
-            position="absolute"
-            top="24px"
-            right="24px"
-            zIndex="2"
-            onClick={addToSaved}
-          >
-            {isAddedtoFavourites ? <FavouriteIconFilled /> : <FavouriteIcon />}
+        {user && (
+          <Box position="absolute" top="24px" right="24px" zIndex="1">
+            {isSaved === true ? (
+              <Button
+                bg="none"
+                p="0"
+                _hover={{ bg: 'none', p: 0 }}
+                onClick={RemoveFromFavourites}
+              >
+                <FavouriteIconFilled />
+              </Button>
+            ) : (
+              <Button
+                onClick={AddToFavourites}
+                bg="none"
+                p="0"
+                _hover={{ bg: 'none', p: 0 }}
+              >
+                <FavouriteIcon />
+              </Button>
+            )}
           </Box>
-        )} */}
+        )}
 
         <Image
           src={image || dummyImage}
