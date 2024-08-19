@@ -66,7 +66,12 @@ const Index = ({
         onClick={handleClick}
       >
         {user && (
-          <Box position="absolute" top="24px" right="24px" zIndex="1">
+          <Box
+            position="absolute"
+            top={['12px', '24px']}
+            right={['12px', '24px']}
+            zIndex="1"
+          >
             {isSaved === true ? (
               <Button
                 bg="none"

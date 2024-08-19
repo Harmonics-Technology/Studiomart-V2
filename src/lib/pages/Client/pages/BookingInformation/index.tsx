@@ -13,7 +13,7 @@ import SecondSection from './Sections/SecondSection';
 const index = ({ bookings }: IBookingDetails) => {
   const status = bookings?.status?.toLowerCase();
   return (
-    <ContainerBox my="50px">
+    <ContainerBox my={[0, '50px']}>
       <HStack mb="50px" justify="space-between" w="full" align="center">
         <BackButton linkTo="/user/bookings" />
         {status === 'paid' && (

@@ -47,7 +47,7 @@ const Header = () => {
   return (
     <Box maxW="1304px" mx="auto" mb="64px">
       <Stack spacing="32px">
-        <Heading as="h2" fontSize={40} fontWeight={900} color="text.100">
+        <Heading as="h2" fontSize={[22, 40]} fontWeight={900} color="text.100">
           Services around you
         </Heading>
         <Filters />

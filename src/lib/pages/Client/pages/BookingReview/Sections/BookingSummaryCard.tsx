@@ -180,7 +180,7 @@ const BookingSummaryCard = ({ singleService, id, addons }: ICustomerHome) => {
       >
         <Stack spacing="33px" mb="66px">
           <BookingSummaryCardWrapper>
-            <Flex alignItems="center" gap="32px" flexWrap="wrap">
+            <Flex alignItems="center" gap={['20px', '32px']} flexWrap="wrap">
               <Square size={{ base: '4rem', lg: '6rem' }} overflow="hidden">
                 {(singleService?.media as any)?.length > 0 ? (
                   <Slider {...settings}>
@@ -206,7 +206,7 @@ const BookingSummaryCard = ({ singleService, id, addons }: ICustomerHome) => {
                 )}
               </Square>
               <Box w="257px">
-                <Heading fontSize={26} fontWeight={600} mb="4px">
+                <Heading fontSize={[26]} fontWeight={600} mb="4px">
                   {singleService?.name}
                 </Heading>
                 <Box>

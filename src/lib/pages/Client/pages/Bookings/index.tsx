@@ -78,7 +78,7 @@ const Filters = () => {
   };
 
   return (
-    <Flex justify="space-between">
+    <Flex justify="space-between" flexWrap="wrap" gap={[7, 0]}>
       <Flex gap="10px" alignItems="center" overflow="auto">
         {filterTexts?.map((item: any) => {
           const activeFilter = (status ? Number(status) : '') === item?.id;
@@ -98,8 +98,8 @@ const Filters = () => {
           );
         })}
       </Flex>
-      <Flex gap="1rem">
-        <InputGroup w={{ base: '60%', lg: '300px' }}>
+      <Flex gap="1rem" flexWrap="wrap">
+        <InputGroup w={{ base: '100%', lg: '300px' }}>
           <InputLeftElement top=".2rem" color="gray.400" fontSize=".8rem">
             <BiSolidSearch />
           </InputLeftElement>
@@ -176,8 +176,8 @@ const Header = () => {
   return (
     <Box maxW="1304px" mx="auto" mb="64px">
       <Stack spacing="32px">
-        <Heading as="h2" fontSize={40} fontWeight={900} color="text.100">
-          Bookings
+        <Heading as="h2" fontSize={[24, 40]} fontWeight={900} color="text.100">
+          My Bookings
         </Heading>
         <Filters />
       </Stack>
@@ -187,10 +187,10 @@ const Header = () => {
 
 const index = ({ data }: { data: any }) => {
   return (
-    <ContainerBox my="50px">
+    <ContainerBox my={['0px', '50px']}>
       <Header />
       <Box>
-        <Grid templateColumns={['1fr', 'repeat(3,1fr)']} gap="2rem">
+        <Grid templateColumns={['repeat(2,1fr)', 'repeat(3,1fr)']} gap="2rem">
           {data?.value?.map((item: BookingView) => (
             <Link passHref href={`/user/bookings/details/${item.id}`}>
               <ServiceCard

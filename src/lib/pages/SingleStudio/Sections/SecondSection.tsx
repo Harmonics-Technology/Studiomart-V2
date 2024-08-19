@@ -1,7 +1,7 @@
-import { Box, Flex, Heading, Stack } from '@chakra-ui/react';
+import { Box, Heading, Stack, Grid } from '@chakra-ui/react';
 import Link from 'next/link';
 
-import { ServiceCard } from '~/lib/components/StudioCard';
+import ServiceCard from '~/lib/components/ServiceCard';
 import Wrapper from '~/lib/components/Wrapper';
 import {
   ServiceViewPagedCollection,
@@ -26,11 +26,13 @@ const SecondSection = ({
             </Heading>
           </Box>
           <Box>
-            <Flex
-              alignItems="center"
-              justifyContent="space-between"
-              flexWrap="wrap"
-              rowGap={10}
+            <Grid
+              templateColumns={['repeat(2,1fr)', 'repeat(3,1fr)']}
+              gap="2rem"
+              // alignItems="center"
+              // justifyContent="space-between"
+              // flexWrap="wrap"
+              // rowGap={10}
             >
               {data?.value?.map((service: ServiceView) => (
                 <Link href={`/services/details/${service?.id}`}>
@@ -42,7 +44,7 @@ const SecondSection = ({
                   />
                 </Link>
               ))}
-            </Flex>
+            </Grid>
           </Box>
         </Stack>
       </Wrapper>

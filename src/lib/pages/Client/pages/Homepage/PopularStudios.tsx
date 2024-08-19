@@ -56,7 +56,12 @@ const PopularStudios = ({
       <Stack spacing="32px" mb="60px">
         <Box>
           <Flex justifyContent="space-between" alignItems="center">
-            <Heading as="h2" fontSize={40} fontWeight={900} color="text.100">
+            <Heading
+              as="h2"
+              fontSize={[22, 40]}
+              fontWeight={900}
+              color="text.100"
+            >
               Popular Studios
             </Heading>
             <Link href="/studios">

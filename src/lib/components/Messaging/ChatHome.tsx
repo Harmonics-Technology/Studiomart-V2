@@ -1,6 +1,6 @@
 'use client';
 
-import { Box, Flex } from '@chakra-ui/react';
+import { Box, Flex, Stack, Heading, Text } from '@chakra-ui/react';
 import { useState } from 'react';
 
 import { Chat } from './Chat';
@@ -9,7 +9,13 @@ import { SideBar } from './SideBar';
 export const ChatHome = () => {
   const [showChat, setShowChat] = useState(false);
   return (
-    <Box mb="3rem">
+    <Box bg="scheme.700" py="2.5rem">
+      <Stack w="90%" mx="auto">
+        <Heading fontSize={24} fontWeight={700}>
+          Messages
+        </Heading>
+        <Text>Here you can chat with your prospects</Text>
+      </Stack>
       <Flex
         w="90%"
         mx="auto"

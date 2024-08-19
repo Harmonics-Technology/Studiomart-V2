@@ -50,24 +50,24 @@ const ScheduleForm = ({ id }: { id: string }) => {
   };
   return (
     <Box
-      maxW="889px"
-      py={['20px', '100px']}
+      w={['100%', '889px']}
+      py={['30px', '100px']}
       px={['20px', '120px']}
       mx="auto"
-      h="607px"
+      h={['auto', '607px']}
       borderRadius="12px"
       border="1px solid #C3C3C3"
     >
       <Box mb="48px">
-        <VStack spacing="8px">
-          <Heading fontSize={40} fontWeight={900} color="brand.600">
+        <VStack spacing="8px" textAlign="center">
+          <Heading fontSize={[24, 40]} fontWeight={900} color="brand.600">
             Studio Scheduling
           </Heading>
           <CustomText text="Please select a time and date for booking" />
         </VStack>
       </Box>
       <form onSubmit={handleSubmit(ChekDateAvailability)}>
-        <Box w={['320px', '540px']}>
+        <Box w={['100%', '540px']} mx="auto">
           <Stack spacing="24px">
             <FormDate<LookupModel>
               control={control}

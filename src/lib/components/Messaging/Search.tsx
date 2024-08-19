@@ -9,6 +9,8 @@ import {
   HStack,
   Input,
   Text,
+  InputGroup,
+  InputLeftElement,
 } from '@chakra-ui/react';
 import {
   collection,
@@ -24,6 +26,7 @@ import {
 import { useContext, useState } from 'react';
 
 import { db } from '../firebase/firebase';
+import SearcIcon from '../Icons/SearcIcon';
 import { AuthContext } from '~/lib/utilities/Context/AuthContext';
 import { ChatContext } from '~/lib/utilities/Context/ChatContext';
 
@@ -120,14 +123,20 @@ export const Search = () => {
   return (
     <Box>
       <Box w="90%" mx="auto">
-        <Input
-          onChange={(e) => setuserName(e.target.value)}
-          onKeyDown={handleKey}
-          value={userName}
-          borderRadius="25px"
-          placeholder="Search..."
-          borderColor="gray.300"
-        />
+        <InputGroup>
+          <InputLeftElement pointerEvents="none">
+            <SearcIcon />
+          </InputLeftElement>
+          <Input
+            type="text"
+            onChange={(e) => setuserName(e.target.value)}
+            onKeyDown={handleKey}
+            value={userName}
+            borderRadius="4px"
+            placeholder="Search..."
+            borderColor="scheme.800"
+          />
+        </InputGroup>
       </Box>
       {/* <Button onClick={handleSearch}>Search</Button> */}
       {user && (

@@ -16,7 +16,7 @@ const FourthSection = ({
     <Box bg="#FCF8FB" py="8">
       <ContainerBox>
         <Stack spacing={16}>
-          <Box position="relative" p="5">
+          <Box position="relative" p={[3, '5']}>
             <Heading
               fontSize={24}
               fontWeight={900}
@@ -28,13 +28,16 @@ const FourthSection = ({
             <Image
               src="/assets/star-line.svg"
               alt="star image"
-              width={60}
-              height={60}
+              width={['100px', 60]}
+              height={['100px', 60]}
               style={{ position: 'absolute', top: '-10px', left: '-10px' }}
             />
           </Box>
           <Box>
-            <Grid templateColumns={['1fr', 'repeat(3,1fr)']} gap="2rem">
+            <Grid
+              templateColumns={['repeat(2,1fr)', 'repeat(3,1fr)']}
+              gap="2rem"
+            >
               {data?.value?.map((item: ServiceView) => (
                 <Link passHref href={`/services/details/${item?.id}`}>
                   <ServiceCard

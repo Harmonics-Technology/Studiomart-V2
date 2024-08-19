@@ -162,7 +162,7 @@ const FirstSection = ({ data }: { data: ServiceView | undefined }) => {
   };
   const image = useDummyImage({});
   return (
-    <ContainerBox mb="50px" p={[3, 0]}>
+    <ContainerBox mb={['20px', '50px']} p={[3, 0]}>
       <Box color="#636363" mb="8">
         <Link href="/studios">
           <Flex alignItems="center" gap={1.5}>
@@ -190,7 +190,7 @@ const FirstSection = ({ data }: { data: ServiceView | undefined }) => {
             borderColor="brand.100"
             borderRadius="80px"
             overflow="hidden"
-            h="650px"
+            h={['380px', '650px']}
           >
             {(data?.media?.length as any) > 0 ? (
               <Slider {...settings}>
@@ -218,7 +218,7 @@ const FirstSection = ({ data }: { data: ServiceView | undefined }) => {
             <Stack spacing={7}>
               <Box>
                 <Stack spacing={4}>
-                  <Heading fontSize={40} fontWeight={600} color="#171717">
+                  <Heading fontSize={[25, 40]} fontWeight={600} color="#171717">
                     {data?.name}
                   </Heading>
                   <Text color="brand.100">
@@ -254,6 +254,7 @@ const FirstSection = ({ data }: { data: ServiceView | undefined }) => {
                       justifyContent="space-between"
                       flexWrap="wrap"
                       w="100%"
+                      rowGap={[5, 0]}
                     >
                       <SingleDetail
                         icon={ClockIcon}

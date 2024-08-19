@@ -14,7 +14,7 @@ const Header = () => {
       <Wrapper>
         <Flex alignItems="flex-start" justifyContent="space-between">
           <Box>
-            <Stack spacing="50px">
+            <Stack spacing={['30px', '50px']}>
               <Button
                 bg="none"
                 p="0"
@@ -24,7 +24,7 @@ const Header = () => {
               >
                 <BackButton linkTo="" />
               </Button>
-              <Heading fontSize={40} fontWeight={900}>
+              <Heading fontSize={[25, 40]} fontWeight={900}>
                 All Studios
               </Heading>
             </Stack>

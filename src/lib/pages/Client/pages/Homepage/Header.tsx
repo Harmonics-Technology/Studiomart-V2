@@ -52,7 +52,12 @@ const Header = () => {
       <Stack spacing="32px">
         <Box>
           <Flex justifyContent="space-between" alignItems="center">
-            <Heading as="h2" fontSize={40} fontWeight={900} color="text.100">
+            <Heading
+              as="h2"
+              fontSize={[22, 40]}
+              fontWeight={900}
+              color="text.100"
+            >
               Services around you
             </Heading>
             <Link href="/user/services">

@@ -118,11 +118,11 @@ const ServiceCard = ({
                 {status}
               </Text>
             </Box>
-            <Heading fontSize={24} fontWeight={700}>
+            <Heading fontSize={[18, 24]} fontWeight={700}>
               {title}
             </Heading>
             <Box>
-              <Flex alignItems="center" gap="32px">
+              <Flex alignItems="center" gap={['20px', '32px']} flexWrap="wrap">
                 <Box>
                   <Text fontWeight={500} color="text.700" mb="4px">
                     Booking ID

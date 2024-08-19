@@ -12,7 +12,7 @@ import ThirdSection from './sections/ThirdSection';
 const index = ({ data }: IServiceDetailsProps) => {
   const { service, ratings, studios } = data;
   return (
-    <Box as="section" pt="50px">
+    <Box as="section" pt={['20px', '50px']}>
       <FirstSection data={service} />
       <SecondSection data={service} />
       <ThirdSection data={ratings} service={service} />

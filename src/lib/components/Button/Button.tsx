@@ -29,7 +29,7 @@ const ButtonComponent: React.FC<ButtonProps> = ({
       px="16px"
       borderRadius="8px"
       fontWeight="normal"
-      w={width}
+      w={['100%', width]}
       onClick={onClick}
       isLoading={loading}
       type={type}
@@ -85,7 +85,7 @@ export const IconButtonComponent: React.FC<IconButtonProps> = ({
       fontWeight="normal"
       border={`1px solid ${color}`}
       _hover={{ bg: 'none' }}
-      width={width}
+      width={['100%', width]}
       onClick={onClick}
       isLoading={loading}
     >

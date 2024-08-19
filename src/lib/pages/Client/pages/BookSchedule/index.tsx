@@ -9,7 +9,7 @@ import ScheduleForm from './Sections/ScheduleForm';
 
 const index = ({ id }: { id: string }) => {
   return (
-    <ContainerBox mt="50px" px="4">
+    <ContainerBox mt={['20px', '50px']} px={[1, '4']}>
       <Stack spacing="68px" w="100%" mb="150px">
         <BackButton linkTo="/user" />
         <ScheduleForm id={id} />
