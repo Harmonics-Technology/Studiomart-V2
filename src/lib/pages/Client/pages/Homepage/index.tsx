@@ -14,7 +14,7 @@ import StudioOfTheWeek from './StudioOfTheWeek';
 const index = ({ data, popularStudios, studioOfTheWeek }: IHomePage) => {
   const { services } = data;
   return (
-    <Box w="100%" pt="40px">
+    <Box w="100%" pt={['15px', '40px']}>
       <ContainerBox>
         <Header />
         <Services services={services} />

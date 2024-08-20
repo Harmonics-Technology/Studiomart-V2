@@ -60,8 +60,8 @@ const BookingDetails = ({
 }: ISingleBook) => {
   return (
     <ContainerBox w="100%">
-      <Stack spacing="54px">
-        <Heading fontWeight={900} fontSize={40}>
+      <Stack spacing={['20px', '54px']}>
+        <Heading fontWeight={900} fontSize={[24, 40]}>
           Review your booking
         </Heading>
 
@@ -75,7 +75,7 @@ const BookingDetails = ({
         >
           <Flex alignItems="center" justifyContent="space-between">
             <Box>
-              <Heading fontSize={16} fontWeight={700}>
+              <Heading fontSize={[14, 16]} fontWeight={700}>
                 People are eyeing this service!
               </Heading>
               <CustomText
@@ -90,7 +90,7 @@ const BookingDetails = ({
 
         <Box>
           <Stack spacing="28px">
-            <Heading fontSize={24} fontWeight={700}>
+            <Heading fontSize={[16, 24]} fontWeight={700}>
               1 Day in {service?.studio?.name}&apos;s studio
             </Heading>
             <Box>
@@ -154,12 +154,12 @@ const BookingDetails = ({
           px="20px"
           borderRadius="12px"
         >
-          <Flex alignItems="center" gap="48px">
+          <Flex alignItems="center" gap={['12px', '48px']}>
             <Box>
-              <Heading fontSize={24} mb="8px" fontWeight={900}>
+              <Heading fontSize={[14, 24]} mb="8px" fontWeight={900}>
                 Cancellation Policy
               </Heading>
-              <Text lineHeight="26px">
+              <Text lineHeight="26px" fontSize={[12, 16]}>
                 Only bookings cancelled before the vendor accepts your booking
                 guarantees a full refund.{' '}
                 <Box as="span" color="brand.100">

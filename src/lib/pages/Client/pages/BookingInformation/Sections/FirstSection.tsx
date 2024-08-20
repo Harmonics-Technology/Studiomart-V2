@@ -12,17 +12,17 @@ const FirstSection = ({ bookings }: IBookingDetails) => {
   const status = bookings.status?.toLowerCase();
   return (
     <Box w="100%" mb="45px">
-      <Stack spacing="80px">
+      <Stack spacing={['40px', '80px']}>
         <Box>
-          <Heading fontSize={40} fontWeight={900}>
+          <Heading fontSize={[25, 40]} fontWeight={900}>
             Booking Information
           </Heading>
         </Box>
         <Box>
-          <Flex alignItems="center" gap="72px" flexWrap="wrap">
+          <Flex alignItems="center" gap={['30px', '72px']} flexWrap="wrap">
             <Box
               w="521px"
-              h="458px"
+              h={['400px', '458px']}
               border="6px solid"
               borderColor="brand.100"
               borderRadius="71px"

@@ -3,6 +3,7 @@
 /* tslint:disable */
 /* eslint-disable */
 import type { BankAccount } from './BankAccount';
+import type { Point } from './Point';
 import type { Service } from './Service';
 import type { User } from './User';
 export type Studio = {
@@ -34,6 +35,7 @@ export type Studio = {
   youTube?: string | null;
   university?: string | null;
   studioTourVideo?: string | null;
+  location?: Point;
   userId?: string;
   user?: User;
   services?: Array<Service> | null;

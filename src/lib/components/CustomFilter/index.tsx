@@ -82,7 +82,7 @@ const CustomFilter = ({
       h="100%"
       backgroundColor="rgba(255,255,255,0.3)"
       backdropFilter="blur(10px) saturate(180%)"
-      px="10"
+      px={[3, '10']}
       py="5"
       position="fixed"
       zIndex="99"
@@ -94,13 +94,14 @@ const CustomFilter = ({
       // onClick={closeModal}
     >
       <Box
-        w="360px"
+        w={['95%', '360px']}
         h="100%"
         bg="brand.400"
         py="20px"
         px="16px"
         border="1px solid lightgray"
         overflow="auto"
+        mx="auto"
       >
         <Stack spacing="35px">
           <Box>

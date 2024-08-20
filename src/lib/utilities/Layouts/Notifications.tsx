@@ -6,11 +6,11 @@ import {
   Circle,
   Flex,
   Heading,
-  Image,
   SimpleGrid,
   Spinner,
   Text,
   VStack,
+  Stack,
 } from '@chakra-ui/react';
 import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
@@ -21,6 +21,7 @@ import { useState } from 'react';
 import toast from 'react-hot-toast';
 import { BsCheckAll, BsFillTrashFill } from 'react-icons/bs';
 
+import BigNotificationsBellIcon from '~/lib/components/Icons/BigNotificationsBellIcon';
 import {
   NotificationService,
   NotificationView,
@@ -78,19 +79,12 @@ const Notification = ({ notifications }: NotificationProps) => {
   };
   //
   return (
-    <Box fontFamily="DM Sans" mb="2.8rem">
-      <VStack w="80%" mx="auto" mt="3rem" justify="center">
-        <Heading fontSize="2rem">Notifications!</Heading>
-      </VStack>
-      <Box
-        w={{ base: 'full', lg: '80%' }}
-        bgColor="white"
-        mx="auto"
-        px="2rem"
-        py="2rem"
-        borderRadius="20px"
-        boxShadow={{ base: 'none', lg: 'lg' }}
-      >
+    <Box py="2rem" bg="scheme.700">
+      <Stack w="80%" mx="auto" justify="center" mb="1rem">
+        <Heading fontSize="24px">Notifications</Heading>
+        <Text>Stay Updated with Your Studio Activities</Text>
+      </Stack>
+      <Box w={{ base: 'full', lg: '80%' }} mx="auto" px="2rem" py="2rem">
         {(notifications?.value as any)?.length > 0 ? (
           <SimpleGrid bg="white">
             {notifications?.value?.map((info: NotificationView) => (
@@ -166,14 +160,30 @@ const Notification = ({ notifications }: NotificationProps) => {
           </SimpleGrid>
         ) : (
           <Flex
-            w="30%"
+            w="50%"
             overflow="hidden"
             align="center"
             justify="center"
             mx="auto"
-            h="28rem"
+            h="80vh"
+            textAlign="center"
           >
-            <Image src="/assets/empty.png" alt="image" w="full" />
+            <Stack
+              justifyContent="center"
+              alignItems="center"
+              spacing="30px"
+              textAlign="center"
+            >
+              <BigNotificationsBellIcon />
+              <Heading fontSize={20} fontWeight={700}>
+                No Notifications Yet
+              </Heading>
+              <Text lineHeight="26px" color="brand.600">
+                When you start receiving updates, they'll appear here. Stay
+                tuned for new bookings, messages, and other important
+                notifications.
+              </Text>
+            </Stack>
           </Flex>
         )}
       </Box>

@@ -33,7 +33,7 @@ const StudioOfTheWeek = ({
         >
           <Box w={['100%', '48%']}>
             <Stack spacing={8} w="100%">
-              <Heading fontSize={[30, 40]} fontWeight={[900, 700]}>
+              <Heading fontSize={[23, 40]} fontWeight={[900, 700]}>
                 Studio of the Week
               </Heading>
               <Box>
@@ -46,7 +46,7 @@ const StudioOfTheWeek = ({
                     <Image
                       src={studioOfTheWeek[0]?.coverPhoto as string}
                       width={362}
-                      height={400}
+                      height={['300px', 400]}
                       objectFit="cover"
                       alt="image of a woman"
                       borderRadius="40px"
@@ -62,7 +62,7 @@ const StudioOfTheWeek = ({
                       <Image
                         src={studioOfTheWeek[0]?.logo as string}
                         width={200}
-                        height={219}
+                        height={[140, 219]}
                         objectFit="cover"
                         borderRadius="40px"
                         alt="a lady and flower"
@@ -70,7 +70,7 @@ const StudioOfTheWeek = ({
                       <Image
                         src={studioOfTheWeek[0]?.coverPhoto as string}
                         width={200}
-                        height={150}
+                        height={[140, 150]}
                         objectFit="cover"
                         borderRadius="40px"
                         alt="image of kids playing"

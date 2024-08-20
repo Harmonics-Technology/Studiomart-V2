@@ -3,7 +3,7 @@
 import { Box, Flex } from '@chakra-ui/react';
 import Link from 'next/link';
 
-import StudioCard from '~/lib/components/SingleStudioCard';
+// import StudioCard from '~/lib/components/SingleStudioCard';
 import { ContainerBox } from '~/lib/layout/ContainerBox';
 import Pagination from '~/lib/utilities/Layouts/Paginatio';
 import { StudioView, StudioViewPagedCollection } from '~/services';
@@ -26,7 +26,7 @@ const StudioList = ({ data }: { data: StudioViewPagedCollection }) => {
                 passHref
                 href={`/studios/details/${studio.id}`}
               >
-                <StudioCard
+                {/* <StudioCard
                   // images={[
                   //   '/assets/face.png',
                   //   '/assets/studio-girl2.png',
@@ -36,8 +36,7 @@ const StudioList = ({ data }: { data: StudioViewPagedCollection }) => {
                   studioName={studio?.name as string}
                   address={studio?.address as string}
                   services={['Music', 'Photography']}
-                  isLoggedIn={false}
-                />
+                /> */}
               </Link>
             );
           })}

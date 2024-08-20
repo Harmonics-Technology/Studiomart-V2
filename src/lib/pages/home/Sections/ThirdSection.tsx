@@ -8,16 +8,19 @@ import {
   Image,
   useMediaQuery,
 } from '@chakra-ui/react';
-import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { BiLogoPlayStore } from 'react-icons/bi';
 
 import ButtonComponent, {
   IconButtonComponent,
 } from '~/lib/components/Button/Button';
 import Wrapper from '~/lib/components/Wrapper';
+import { useLoaderProgress } from '~/lib/utilities/Hooks/progress-bar';
 
 const ThirdSection = () => {
   const [isMobile] = useMediaQuery('(max-width: 768px)');
+  const router = useRouter();
+  const showLoaderProgress = useLoaderProgress();
   return (
     <Box>
       <Wrapper>
@@ -68,16 +71,23 @@ const ThirdSection = () => {
                   </Text>
 
                   <Box>
-                    <Flex alignItems="center" gap="20px" flexWrap="wrap">
-                      <Link href="/register">
-                        <ButtonComponent
-                          text="Get Started"
-                          bg="brand.100"
-                          color="white"
-                          width={isMobile ? '100%' : '150px'}
-                          onClick={() => {}}
-                        />
-                      </Link>
+                    <Flex
+                      alignItems="center"
+                      gap="20px"
+                      flexWrap="wrap"
+                      w="100%"
+                    >
+                      {/* <Link href="/register" w='100%'> */}
+                      <ButtonComponent
+                        text="Get Started"
+                        bg="brand.100"
+                        color="white"
+                        width="150px"
+                        onClick={() =>
+                          showLoaderProgress(() => router.push('/register'))
+                        }
+                      />
+                      {/* </Link> */}
                       <IconButtonComponent
                         flip={false}
                         width={isMobile ? '100%' : '268px'}

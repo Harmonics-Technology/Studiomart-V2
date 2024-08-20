@@ -337,7 +337,10 @@ export interface SingleStudioCardProps {
   // images: string[];
   image: string;
   address: string;
-  isLoggedIn: boolean;
+  addToFavourites?: () => void;
+  removeFromFavourites?: () => void;
+  isSaved?: boolean;
+  onClick: () => void;
 }
 
 export interface MobileSidenavItemProps {

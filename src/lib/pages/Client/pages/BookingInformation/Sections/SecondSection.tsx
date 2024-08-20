@@ -117,7 +117,12 @@ const StatusButtons = ({
   };
   return (
     <Box>
-      <Flex alignItems="center" justifyContent="space-between">
+      <Flex
+        alignItems="center"
+        justifyContent="space-between"
+        flexWrap="wrap"
+        rowGap={[5, 0]}
+      >
         <StudioStatusButton
           text="Cancel Booking"
           ButtonIcon={CancelIcon}

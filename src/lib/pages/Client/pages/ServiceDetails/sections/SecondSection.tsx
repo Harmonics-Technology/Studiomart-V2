@@ -14,7 +14,6 @@ const SecondSection = ({ data }: { data: ServiceView | undefined }) => {
             About this service
           </Heading>
         </Box>
-
         <Box>
           <Stack spacing={5}>
             <CustomText text={parse((data?.description as string) || '')} />

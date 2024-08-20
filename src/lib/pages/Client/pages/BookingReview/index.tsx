@@ -10,8 +10,8 @@ import BookingSummaryCard from './Sections/BookingSummaryCard';
 
 const index = ({ singleService, id, addons }: ICustomerHome) => {
   return (
-    <ContainerBox mt="80px" px="4">
-      <Stack spacing="68px" w="100%" mb="150px">
+    <ContainerBox mt={['20px', '80px']} px={[2, '4']}>
+      <Stack spacing={['15px', '68px']} w="100%" mb="150px">
         <BackButton linkTo="/client" />
         <Box>
           <BookingSummaryCard

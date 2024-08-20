@@ -12,6 +12,7 @@ import {
   MenuItem,
   Image,
 } from '@chakra-ui/react';
+import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { FiChevronDown } from 'react-icons/fi';
@@ -21,7 +22,10 @@ import {
   MobileSidenavItemProps,
   MobileSideNavProps,
 } from '../utilities/Context/schemas';
+import { useLoaderProgress } from '../utilities/Hooks/progress-bar';
 import { WhiteLogo } from '~/lib/components/Logo';
+
+const MotionBox = motion(Box);
 
 const SideNavItem = ({
   label,
@@ -53,6 +57,7 @@ const SideNavItem = ({
 
 const MobileSideNav = ({ setOpenSideNav }: MobileSideNavProps) => {
   const pathname = usePathname();
+  const showLoaderProgress = useLoaderProgress();
   const institutions = [
     {
       name: 'UI (University of Ibadan)',
@@ -76,7 +81,8 @@ const MobileSideNav = ({ setOpenSideNav }: MobileSideNavProps) => {
     },
   ];
   return (
-    <Box
+    <MotionBox
+      as="div"
       w="100%"
       h="100vh"
       overflow="hidden"
@@ -84,7 +90,10 @@ const MobileSideNav = ({ setOpenSideNav }: MobileSideNavProps) => {
       top="0"
       left="0"
       zIndex="3"
-      transition="2s ease"
+      initial={{ x: '-100%' }}
+      animate={{ x: 0 }}
+      exit={{ x: '-100%', duration: 0.4 }}
+      transition={{ duration: 0.4, type: 'tween' }}
     >
       <Box w="100%" bg="brand.400" h="100%" transition="2s ease">
         <Box h="100%">
@@ -187,11 +196,19 @@ const MobileSideNav = ({ setOpenSideNav }: MobileSideNavProps) => {
                     color="brand.400"
                     fontWeight={400}
                     py="10px"
+                    onClick={() =>
+                      showLoaderProgress(() => setOpenSideNav(false))
+                    }
                   >
                     Get Started
                   </Button>
                 </Link>
-                <Link href="/become-a-vendor">
+                <Link
+                  href="/register"
+                  onClick={() =>
+                    showLoaderProgress(() => setOpenSideNav(false))
+                  }
+                >
                   <Text color="status.300" textAlign="center" fontWeight={500}>
                     Become a Vendor
                   </Text>
@@ -201,7 +218,7 @@ const MobileSideNav = ({ setOpenSideNav }: MobileSideNavProps) => {
           </Flex>
         </Box>
       </Box>
-    </Box>
+    </MotionBox>
   );
 };
 

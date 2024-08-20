@@ -44,7 +44,7 @@ const fetchSimilarServiceStudios = async (id: string) => {
     }
     return {};
   } catch (error: any) {
-    toast.error('Failed to fetch popular studios');
+    toast.error('Failed to fetch similar studios');
     return {};
   }
 };

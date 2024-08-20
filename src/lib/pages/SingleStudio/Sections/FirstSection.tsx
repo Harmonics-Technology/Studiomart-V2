@@ -31,11 +31,13 @@ const FirstSection = ({ data }: { data: StudioView }) => {
                 </Box>
                 <Image
                   src={data?.coverPhoto as string}
-                  alt="lady on glasses"
+                  alt={`${data?.name} cover photo`}
                   width="100%"
                   height="300px"
                   objectFit="cover"
                   borderRadius="100px"
+                  border={['6px solid', '0']}
+                  borderColor={['brand.100', 'none']}
                 />
               </Box>
               <Box>

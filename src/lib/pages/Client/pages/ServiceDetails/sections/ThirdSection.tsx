@@ -118,10 +118,10 @@ const ThirdSection = ({
             Reviews
           </Heading>
         </Box>
-        <Box w="550px">
-          <Flex justifyContent="space-between">
+        <Box maxW="550px">
+          <Flex justifyContent="space-between" flexWrap="wrap" rowGap={[5, 0]}>
             <Box
-              w="158px"
+              w={['158px']}
               h="152px"
               bg="#F3F2F1"
               display="flex"
