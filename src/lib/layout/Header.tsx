@@ -172,7 +172,10 @@ const Header = () => {
                 </Menu>
                 <Box>
                   <Stack direction="row" alignItems="center" gap="15px">
-                    <Link href="/vendor" passHref>
+                    <Link
+                      href={process.env.NEXT_PUBLIC_VENDOR_URL || '/vendor'}
+                      passHref
+                    >
                       <Text color="#267E79">Become a Vendor</Text>
                     </Link>
                     <Box bg="#6DD3CE" h="40px" w="2px" />

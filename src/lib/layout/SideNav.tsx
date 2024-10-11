@@ -130,7 +130,7 @@ const SideNav = ({ onClick, openSideNav }: CloseSideNavProps) => {
             </Box>
             <Box>
               <Stack spacing="22px">
-                <Link href="/vendor">
+                <Link href={process.env.NEXT_PUBLIC_VENDOR_URL || '/vendor'}>
                   <Text color="status.300" fontWeight={500}>
                     Become a Vendor
                   </Text>
