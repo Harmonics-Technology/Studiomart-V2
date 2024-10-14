@@ -5,6 +5,7 @@
 import type { BookingView } from './BookingView';
 import type { StudioView } from './StudioView';
 import type { UserView } from './UserView';
+
 export type TransactionView = {
   userId?: string;
   user?: UserView;

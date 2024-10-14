@@ -7,7 +7,7 @@ const Header = () => {
   const links = [
     {
       text: 'Become a vendor ',
-      url: '/vendor',
+      url: 'https://stg.vendor.studiomart.ng',
     },
     {
       text: 'Privacy Policy',

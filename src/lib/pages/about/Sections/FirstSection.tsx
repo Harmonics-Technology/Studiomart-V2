@@ -61,7 +61,7 @@ const MobileView = () => {
             </Text>
             <Box>
               <Flex alignItems="center" gap={4}>
-                <Link href="/vendor">
+                <Link href={process.env.NEXT_PUBLIC_VENDOR_URL || '/vendor'}>
                   <OutlineButtonComponent
                     text="Become a Vendor"
                     color="#1570FA"
@@ -133,7 +133,7 @@ const DesktopView = () => {
               </Text>
               <Box>
                 <Flex alignItems="center" gap={4}>
-                  <Link href="/vendor">
+                  <Link href={process.env.NEXT_PUBLIC_VENDOR_URL || '/vendor'}>
                     <OutlineButtonComponent
                       text="Become a Vendor"
                       color="#1570FA"

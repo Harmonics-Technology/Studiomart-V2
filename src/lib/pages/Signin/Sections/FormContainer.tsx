@@ -9,6 +9,7 @@ import {
   useMediaQuery,
   Heading,
   Image,
+  useDisclosure,
 } from '@chakra-ui/react';
 import { yupResolver } from '@hookform/resolvers/yup';
 import Link from 'next/link';
@@ -26,6 +27,7 @@ import SigninOption from '~/lib/components/SigninOptions';
 import FormInput from '~/lib/utilities/FormInput/FormInput';
 // import { useLoaderProgress } from '~/lib/utilities/Hooks/progress-bar';
 import useQueryParams from '~/lib/utilities/Hooks/useQueryParams';
+import ModalWrapper from '~/lib/utilities/Layouts/ModalWrapper';
 import { UserService, type LoginModel } from '~/services';
 
 const FormContainer = () => {
@@ -34,6 +36,7 @@ const FormContainer = () => {
   // const router = useRouter();
   const cookies = useCookies();
   const { queryParams } = useQueryParams();
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
   const validation = yup.object().shape({
     email: yup.string().email().required(),
@@ -43,6 +46,7 @@ const FormContainer = () => {
     handleSubmit,
     register,
     formState: { errors, isSubmitting },
+    getValues,
   } = useForm<LoginModel>({
     // @ts-expect-error new update
     resolver: yupResolver(validation),
@@ -75,6 +79,7 @@ const FormContainer = () => {
           : (window.location.href = `/user`);
         return;
       }
+      if (!response.status) onOpen();
       toast.error(response?.message as string, { className: 'loginToast' });
     } catch (error: any) {
       toast.error(
@@ -84,92 +89,129 @@ const FormContainer = () => {
     }
   };
 
+  const resendVerificationLink = async () => {
+    const email = getValues().email as string;
+    try {
+      const response = await UserService.resendEmailVerification({ email });
+      if (response.status) {
+        toast.success(response?.message as string);
+        onClose();
+      }
+    } catch (error: any) {
+      toast.error(
+        error?.message || error?.body?.message || 'An error occured',
+        { className: 'loginToast' }
+      );
+    }
+  };
+
   return (
-    <Box w="100%">
-      <Stack spacing="58px">
-        <Box display={isMobile ? 'none' : 'block'}>
-          <HeadingWithStar
-            title="Welcome to StudioMart!"
-            flipStar={false}
-            width="100%"
-          />
-        </Box>
-        <Box display={isMobile ? 'block' : 'none'} position="relative">
-          <Heading fontSize={24} fontWeight={[900, 700]} textAlign="center">
-            Welcome to StudioMart!
-          </Heading>
-          <Image
-            src="/assets/heading-top-bg.png"
-            w="35px"
-            h="35px"
-            position="absolute"
-            top="-20px"
-            right="0px"
-          />
-        </Box>
-        <form onSubmit={handleSubmit(signInWithNextAuth)}>
-          <Box>
-            <Stack spacing="7px">
-              <Stack spacing="21px">
-                <FormInput<LoginModel>
-                  type="email"
-                  register={register}
-                  name="email"
-                  error={errors?.email}
-                  label="Email Address"
-                  placeholder="Enter your email"
-                />
-                <FormInput<LoginModel>
-                  type={passwordVisible ? 'text' : 'password'}
-                  register={register}
-                  name="password"
-                  error={errors?.password}
-                  label="Enter Password"
-                  icon
-                  passwordVisible={passwordVisible}
-                  changeVisibility={() => setPasswordVisible((prev) => !prev)}
-                  placeholder="Enter your password"
-                />
-              </Stack>
-              <Link href="/forgot-password" passHref>
-                <Text
-                  fontSize={14}
-                  color="brand.100"
-                  textAlign="right"
-                  fontStyle="italic"
-                >
-                  Forgot Password?
-                </Text>
-              </Link>
-            </Stack>
+    <>
+      <Box w="100%">
+        <Stack spacing="58px">
+          <Box display={isMobile ? 'none' : 'block'}>
+            <HeadingWithStar
+              title="Welcome to StudioMart!"
+              flipStar={false}
+              width="100%"
+            />
           </Box>
-          <Box>
-            <Box my="2rem">
-              <SigninOption text="or sign in with" />
-            </Box>
-            <Stack spacing="13px" justifyContent="center" alignItems="center">
-              <ButtonComponent
-                text="Sign in"
-                color="brand.400"
-                bg="brand.100"
-                width="100%"
-                loading={isSubmitting}
-                type="submit"
-                // onClick={() => handleSubmit(signInWithNextAuth)()}
-              />
-              <Flex alignItems="center" gap="4px">
-                <Text>Don't have an account yet?</Text>
-                <Link href="/register">
-                  <Text fontWeight={700} color="brand.100">
-                    Sign up
+          <Box display={isMobile ? 'block' : 'none'} position="relative">
+            <Heading fontSize={24} fontWeight={[900, 700]} textAlign="center">
+              Welcome to StudioMart!
+            </Heading>
+            <Image
+              src="/assets/heading-top-bg.png"
+              w="35px"
+              h="35px"
+              position="absolute"
+              top="-20px"
+              right="0px"
+            />
+          </Box>
+          <form onSubmit={handleSubmit(signInWithNextAuth)}>
+            <Box>
+              <Stack spacing="7px">
+                <Stack spacing="21px">
+                  <FormInput<LoginModel>
+                    type="email"
+                    register={register}
+                    name="email"
+                    error={errors?.email}
+                    label="Email Address"
+                    placeholder="Enter your email"
+                  />
+                  <FormInput<LoginModel>
+                    type={passwordVisible ? 'text' : 'password'}
+                    register={register}
+                    name="password"
+                    error={errors?.password}
+                    label="Enter Password"
+                    icon
+                    passwordVisible={passwordVisible}
+                    changeVisibility={() => setPasswordVisible((prev) => !prev)}
+                    placeholder="Enter your password"
+                  />
+                </Stack>
+                <Link href="/forgot-password" passHref>
+                  <Text
+                    fontSize={14}
+                    color="brand.100"
+                    textAlign="right"
+                    fontStyle="italic"
+                  >
+                    Forgot Password?
                   </Text>
                 </Link>
-              </Flex>
-            </Stack>
-          </Box>
-        </form>
-      </Stack>
-    </Box>
+              </Stack>
+            </Box>
+            <Box>
+              <Box my="2rem">
+                <SigninOption text="or sign in with" />
+              </Box>
+              <Stack spacing="13px" justifyContent="center" alignItems="center">
+                <ButtonComponent
+                  text="Sign in"
+                  color="brand.400"
+                  bg="brand.100"
+                  width="100%"
+                  loading={isSubmitting}
+                  type="submit"
+                  // onClick={() => handleSubmit(signInWithNextAuth)()}
+                />
+                <Flex alignItems="center" gap="4px">
+                  <Text>Don't have an account yet?</Text>
+                  <Link href="/register">
+                    <Text fontWeight={700} color="brand.100">
+                      Sign up
+                    </Text>
+                  </Link>
+                </Flex>
+              </Stack>
+            </Box>
+          </form>
+        </Stack>
+      </Box>
+      <ModalWrapper
+        isOpen={isOpen}
+        onClose={onClose}
+        title="Resend Email Verification"
+      >
+        <Text paddingTop={8} paddingBottom={8}>
+          Please check your email to verify your account or Click the button
+          below to resend a verification link.
+        </Text>
+        <ButtonComponent
+          text="Resend Verification Link"
+          color="brand.400"
+          bg="brand.100"
+          width="50%"
+          loading={isSubmitting}
+          type="button"
+          onClick={handleSubmit(resendVerificationLink)}
+        />
+      </ModalWrapper>
+    </>
   );
 };
 

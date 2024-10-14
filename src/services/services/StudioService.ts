@@ -724,11 +724,9 @@ export class StudioService {
     maxPrice,
     rating,
     studioId,
+    university,
     city,
     state,
-    university,
-    // city,
-    // state,
     latitude,
     longitude,
     proximityInMeters,
@@ -741,11 +739,9 @@ export class StudioService {
     maxPrice?: number;
     rating?: number;
     studioId?: string;
+    university?: string;
     city?: string;
     state?: string;
-    university?: string;
-    // city?: string,
-    // state?: string,
     latitude?: number;
     longitude?: number;
     proximityInMeters?: number;
@@ -768,8 +764,6 @@ export class StudioService {
         City: city,
         State: state,
         University: university,
-        // 'City': city,
-        // 'State': state,
         Latitude: latitude,
         Longitude: longitude,
         ProximityInMeters: proximityInMeters,
