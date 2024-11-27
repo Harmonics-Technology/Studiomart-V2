@@ -11,14 +11,14 @@ import * as yup from 'yup';
 import ButtonComponent from '~/lib/components/Button/Button';
 import FormInput from '~/lib/utilities/FormInput/FormInput';
 import { useLoaderProgress } from '~/lib/utilities/Hooks/progress-bar';
-import { UserService } from '~/services';
+import { PasswordReset, UserService } from '~/services';
 
 interface ResetUserPassword {
   newPassword: string | null | undefined;
   confirmPassword: string | null | undefined;
 }
 
-const ResetPasswordForm = () => {
+const ResetPasswordForm = ({ code }: { code: string }) => {
   const router = useRouter();
   const showLoaderProgress = useLoaderProgress();
   const validation = yup.object().shape({
@@ -40,7 +40,11 @@ const ResetPasswordForm = () => {
 
   const resetPassword = async (data: ResetUserPassword) => {
     try {
-      const res = await UserService.completeReset({ requestBody: data });
+      const payload: PasswordReset = {
+        code,
+        newPassword: data.newPassword,
+      };
+      const res = await UserService.completeReset({ requestBody: payload });
       if (res.status) {
         toast.success('Password Reset Successful');
         showLoaderProgress(() => router.push(`/password-reset-success`));

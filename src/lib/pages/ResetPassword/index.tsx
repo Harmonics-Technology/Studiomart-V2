@@ -4,7 +4,7 @@ import SideImages from '../Signin/Sections/SideImages';
 
 import ResetpasswordForm from './components/ResetpasswordForm';
 
-const index = () => {
+const index = ({ code }: { code: string }) => {
   return (
     <Box as="section">
       <Flex
@@ -19,7 +19,7 @@ const index = () => {
           <SideImages />
         </Box>
         <Box w={['90%', '45%']} mx="auto">
-          <ResetpasswordForm />
+          <ResetpasswordForm code={code} />
         </Box>
       </Flex>
     </Box>
