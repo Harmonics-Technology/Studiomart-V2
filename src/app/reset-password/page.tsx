@@ -1,7 +1,7 @@
 import ResetPassword from '~/lib/pages/ResetPassword';
 
 const page = () => {
-  return <ResetPassword />;
+  return <ResetPassword code="something" />;
 };
 
 export default page;
