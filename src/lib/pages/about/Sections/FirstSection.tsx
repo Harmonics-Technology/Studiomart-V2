@@ -5,9 +5,10 @@ import {
   Text,
   Flex,
   Image,
+  Link,
   useMediaQuery,
 } from '@chakra-ui/react';
-import Link from 'next/link';
+// import Link from 'next/link';
 
 import ButtonComponent, {
   OutlineButtonComponent,
@@ -16,6 +17,7 @@ import SocialLinks from '~/lib/components/SocialLinks';
 import Wrapper from '~/lib/components/Wrapper';
 
 const MobileView = () => {
+  const vendorUrl = process.env.NEXT_PUBLIC_VENDOR_URL;
   return (
     <Box w="90%" mx="auto" py="5">
       <Stack spacing="28px">
@@ -61,7 +63,7 @@ const MobileView = () => {
             </Text>
             <Box>
               <Flex alignItems="center" gap={4}>
-                <Link href="/vendor">
+                <Link href={`${vendorUrl}/register`}>
                   <OutlineButtonComponent
                     text="Become a Vendor"
                     color="#1570FA"
@@ -86,6 +88,7 @@ const MobileView = () => {
 };
 
 const DesktopView = () => {
+  const vendorUrl = process.env.NEXT_PUBLIC_VENDOR_URL;
   return (
     <Box>
       <Wrapper>
@@ -133,7 +136,7 @@ const DesktopView = () => {
               </Text>
               <Box>
                 <Flex alignItems="center" gap={4}>
-                  <Link href="/vendor">
+                  <Link href={`${vendorUrl}/register`}>
                     <OutlineButtonComponent
                       text="Become a Vendor"
                       color="#1570FA"

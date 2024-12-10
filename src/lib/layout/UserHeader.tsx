@@ -7,6 +7,7 @@ import {
   Stack,
   useMediaQuery,
   Button,
+  Icon,
 } from '@chakra-ui/react';
 import Link from 'next/link';
 import { FaBars } from 'react-icons/fa';
@@ -37,9 +38,12 @@ const MobileHeaderView = ({ onClick }: { onClick: () => void }) => {
         </Button>
         <Box>
           <Flex alignItems="center" gap="12px">
-            <Button bg="none" p="0" _hover={{ bg: 'none', p: 0 }}>
+            <Link passHref href="/notifications">
               <MobileNotificationIcon />
-            </Button>
+            </Link>
+            <Link passHref href="/saved" style={{ height: '36px' }}>
+              <Icon as={BookmarkIcon} fontSize="36px" />
+            </Link>
             <Avatar
               w="40px"
               h="40px"
@@ -89,11 +93,11 @@ const UserHeader = ({ onClick }: OpenSideNavProps) => {
               </Box>
               <Box>
                 <Flex alignItems="center" gap="20px">
-                  <Link passHref href="/notification">
+                  <Link passHref href="/notifications">
                     <NotificationIcon />
                   </Link>
                   <Link passHref href="/saved">
-                    <BookmarkIcon />
+                    <BookmarkIcon color="#AFAFAF" />
                   </Link>
                   <Stack direction="row" spacing="4px">
                     <Avatar size="sm" src={user?.profilePicture as string} />

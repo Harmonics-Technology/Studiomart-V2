@@ -127,6 +127,10 @@ const Footer = () => {
     return null;
   }
 
+  const goBackToTop = () => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+  };
+
   return (
     <Box as="footer" bg="#2D2327" w="100%" py="10">
       <Stack direction="column" spacing={8} w="90%" mx="auto">
@@ -198,7 +202,7 @@ const Footer = () => {
               &copy; StudioMart {new Date().getFullYear()}. All Rights Reserved.
             </Text>
 
-            <Text>Back to top</Text>
+            <Text onClick={goBackToTop}>Back to top</Text>
           </Flex>
         </Box>
       </Stack>

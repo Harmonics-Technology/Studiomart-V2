@@ -11,9 +11,10 @@ import {
   MenuList,
   MenuItem,
   Button,
+  Link,
   useMediaQuery,
 } from '@chakra-ui/react';
-import Link from 'next/link';
+// import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 // import { signIn, signOut } from 'next-auth/react';
 import { useState } from 'react';
@@ -89,6 +90,8 @@ const Header = () => {
     },
   ];
 
+  const vendorUrl = process.env.NEXT_PUBLIC_VENDOR_URL;
+
   return (
     <Box
       as="header"
@@ -127,7 +130,10 @@ const Header = () => {
                           }}
                         />
                       )}
-                      <Link href={item.url} passHref>
+                      <Link
+                        href={item.url}
+                        // passHref
+                      >
                         <Text color={isActive ? '#1570FA' : '#0C090A'}>
                           {item.name}
                         </Text>
@@ -151,7 +157,7 @@ const Header = () => {
                         return (
                           <Link
                             href={`/institutions/${institution.url}`}
-                            passHref
+                            // passHref
                             key={index}
                           >
                             <MenuItem key={index} color="#0c090A" py="2">
@@ -172,7 +178,7 @@ const Header = () => {
                 </Menu>
                 <Box>
                   <Stack direction="row" alignItems="center" gap="15px">
-                    <Link href="/vendor" passHref>
+                    <Link href={`${vendorUrl}/register`} target="_blank">
                       <Text color="#267E79">Become a Vendor</Text>
                     </Link>
                     <Box bg="#6DD3CE" h="40px" w="2px" />

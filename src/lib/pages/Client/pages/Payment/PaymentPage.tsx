@@ -23,10 +23,10 @@ import toast from 'react-hot-toast';
 import { AiOutlineCalendar } from 'react-icons/ai';
 import { BsCheck2 } from 'react-icons/bs';
 import { FaPersonBooth } from 'react-icons/fa';
-import { GiEdgedShield } from 'react-icons/gi';
 import { GrSecure } from 'react-icons/gr';
 import { useDummyImage } from 'react-simple-placeholder-image';
 
+import ShieldIcon from '~/lib/components/Icons/ShieldIcon';
 import Ratings from '~/lib/components/Ratings';
 import CustomCheckbox from '~/lib/utilities/FormInput/CustomCheckbox';
 import Naira, { Cur } from '~/lib/utilities/Functions/Naira';
@@ -220,14 +220,14 @@ const PaymentPage = ({ bookings }: { bookings: BookingView }) => {
                 This booking has been accepted by the vendor and cannot be
                 cancelled directly, contact customer support if you still want
                 to cancel booking{' '}
-                <Link href="/terms" passHref>
+                <Link href="/terms-and-conditions" passHref>
                   <span style={{ color: '#1570fa', cursor: 'pointer' }}>
                     More details
                   </span>
                 </Link>
               </Text>
             </VStack>
-            <Icon as={GiEdgedShield} fontSize="3rem" color="brand.100" />
+            <Icon as={ShieldIcon} fontSize="3rem" color="brand.100" />
           </HStack>
         </Box>
         <Box

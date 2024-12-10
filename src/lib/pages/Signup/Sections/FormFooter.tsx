@@ -4,7 +4,7 @@ const FormFooter = () => {
   return (
     <VStack p="3">
       <Text fontSize={14} color="brand.600">
-        &copy; StudioMart 2023. All Rights Reserved.
+        &copy; StudioMart 2022. All Rights Reserved.
       </Text>
     </VStack>
   );

@@ -4,10 +4,11 @@ import Link from 'next/link';
 import Logo from '~/lib/components/Logo';
 
 const Header = () => {
+  const vendorUrl = process.env.NEXT_PUBLIC_VENDOR_URL;
   const links = [
     {
       text: 'Become a vendor ',
-      url: '/vendor',
+      url: `${vendorUrl}/register`,
     },
     {
       text: 'Privacy Policy',

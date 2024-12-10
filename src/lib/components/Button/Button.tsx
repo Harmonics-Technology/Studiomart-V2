@@ -1,5 +1,6 @@
 import { Button, Icon, Flex, Text, Box } from '@chakra-ui/react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { IoChevronBackCircleOutline } from 'react-icons/io5';
 
 import type {
@@ -127,16 +128,41 @@ export const IconButtonLinkComponent: React.FC<IconButtonLinkProps> = ({
   );
 };
 
-export const BackButton = ({ linkTo }: BackButtonProps) => {
+export const BackButton = ({ linkTo, isRoute = true }: BackButtonProps) => {
+  const router = useRouter();
   return (
-    <Link href={linkTo || ''}>
-      <Flex alignItems="center" gap="15px">
-        <Icon as={IoChevronBackCircleOutline} fontSize={30} color="text.400" />
-        <Text fontSize={20} color="text.500">
-          Back
-        </Text>
-      </Flex>
-    </Link>
+    <div>
+      {isRoute ? (
+        <Flex
+          alignItems="center"
+          gap="15px"
+          onClick={() => router.back()}
+          cursor="pointer"
+        >
+          <Icon
+            as={IoChevronBackCircleOutline}
+            fontSize={30}
+            color="text.400"
+          />
+          <Text fontSize={20} color="text.500">
+            Back
+          </Text>
+        </Flex>
+      ) : (
+        <Link href={linkTo || ''}>
+          <Flex alignItems="center" gap="15px">
+            <Icon
+              as={IoChevronBackCircleOutline}
+              fontSize={30}
+              color="text.400"
+            />
+            <Text fontSize={20} color="text.500">
+              Back
+            </Text>
+          </Flex>
+        </Link>
+      )}
+    </div>
   );
 };
 

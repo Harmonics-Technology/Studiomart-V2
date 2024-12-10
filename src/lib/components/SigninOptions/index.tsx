@@ -31,6 +31,7 @@ const index = ({ text }: { text: string }) => {
         gap="18px"
         justifyContent="center"
         flexWrap="wrap"
+        display="none"
       >
         <Text w={['100%', 'auto']} textAlign={['center', 'left']}>
           {text}

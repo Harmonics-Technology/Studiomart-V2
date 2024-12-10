@@ -9,6 +9,7 @@ import {
   HStack,
 } from '@chakra-ui/react';
 import dayjs from 'dayjs';
+import Link from 'next/link';
 import type { ReactNode } from 'react';
 
 import CalendarIcon from '~/lib/components/Icons/CalendarIcon';
@@ -162,9 +163,11 @@ const BookingDetails = ({
               <Text lineHeight="26px" fontSize={[12, 16]}>
                 Only bookings cancelled before the vendor accepts your booking
                 guarantees a full refund.{' '}
-                <Box as="span" color="brand.100">
-                  More details
-                </Box>
+                <Link href="/terms-and-conditions" passHref>
+                  <span style={{ color: '#1570fa', cursor: 'pointer' }}>
+                    More details
+                  </span>
+                </Link>
               </Text>
             </Box>
             <Box>

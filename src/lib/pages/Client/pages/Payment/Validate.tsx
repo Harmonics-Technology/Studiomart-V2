@@ -27,17 +27,20 @@ export const Validate = ({ data }: any) => {
       justify="center"
       // bgColor="brand.800"
       my="5rem"
+      flexDir={['column', 'row']}
     >
-      <VStack w="40%" mx="auto">
-        <Circle size="3rem">
+      <VStack w={['100%', '40%']} mx="auto">
+        <Circle size={['2rem', '3rem']}>
           <Icon as={BsCheckCircle} fontSize="3rem" color="brand.100" />
         </Circle>
-        <Heading fontSize="1.5rem">Thank you for your payment</Heading>
+        <Heading fontSize={['1rem', '1.5rem']}>
+          Thank you for your payment
+        </Heading>
 
         <VStack
           w="full"
           boxShadow="md"
-          p="2rem"
+          p={['1rem', '2rem']}
           align="flex-start"
           spacing="1rem"
         >

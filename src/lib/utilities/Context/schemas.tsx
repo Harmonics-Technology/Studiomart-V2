@@ -232,6 +232,7 @@ export interface IconButtonLinkProps {
 
 export interface BackButtonProps {
   linkTo?: string;
+  isRoute?: boolean;
 }
 
 export interface HeadingWithStarProps {
