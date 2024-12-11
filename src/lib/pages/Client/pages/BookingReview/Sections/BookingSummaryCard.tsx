@@ -14,6 +14,7 @@ import {
   Grid,
   useDisclosure,
 } from '@chakra-ui/react';
+import { yupResolver } from '@hookform/resolvers/yup';
 import dayjs from 'dayjs';
 import { useRouter } from 'next/navigation';
 import { useCookies } from 'next-client-cookies';
@@ -25,6 +26,7 @@ import { BiListCheck } from 'react-icons/bi';
 import { IoChevronForward } from 'react-icons/io5';
 import { useDummyImage } from 'react-simple-placeholder-image';
 import Slider from 'react-slick';
+import * as yup from 'yup';
 
 import GiftForm from '../../GiftService/Sections/GiftForm';
 import ButtonComponent from '~/lib/components/Button/Button';
@@ -59,9 +61,18 @@ const BookingSummaryCard = ({ singleService, id, addons }: ICustomerHome) => {
   const Cookies = useCookies();
   const date = queryParams.get('date');
   const time = queryParams.get('time');
+
   const [selectedAddon, setSelectedAddon] = useState<AdditionalServiceView[]>(
     addons || []
   );
+
+  function splitIgnoreLast(input: any) {
+    const parts = input.split(' ');
+    const lastPart = parts.pop(); //
+    return [parts.join(':'), lastPart];
+  }
+  const formattedTime = splitIgnoreLast(time);
+
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const addToArray = (data: AdditionalServiceView) => {
@@ -115,13 +126,25 @@ const BookingSummaryCard = ({ singleService, id, addons }: ICustomerHome) => {
       ? grandTotal - couponApplied?.maxDiscount
       : grandTotal - voucherAdded;
 
+  const schema = yup.object().shape({
+    recipient: yup.object().shape({
+      name: yup.string().required(),
+      email: yup.string().email().required(),
+      phoneNumber: yup.string().required(),
+      message: yup.string().required(),
+    }),
+  });
+
   const {
     handleSubmit,
     register,
     watch,
+    trigger,
     formState: { errors, isSubmitting },
   } = useForm<BookingModel>({
     mode: 'all',
+    // @ts-expect-error old
+    resolver: yupResolver(schema),
   });
 
   const giftUser = watch('recipient.name');
@@ -170,7 +193,7 @@ const BookingSummaryCard = ({ singleService, id, addons }: ICustomerHome) => {
         service={singleService}
         viewers={viewers}
         date={date}
-        time={time}
+        time={formattedTime}
       />
       <Box
         w="full"
@@ -202,7 +225,13 @@ const BookingSummaryCard = ({ singleService, id, addons }: ICustomerHome) => {
                     ))}
                   </Slider>
                 ) : (
-                  <Image src={image} alt="cover" h="full" w="full" />
+                  <Image
+                    src={singleService?.bannerImageURL || image}
+                    alt="cover"
+                    h="full"
+                    w="full"
+                    objectFit="cover"
+                  />
                 )}
               </Square>
               <Box w="257px">
@@ -247,7 +276,8 @@ const BookingSummaryCard = ({ singleService, id, addons }: ICustomerHome) => {
                 <Flex alignItems="center" gap="4px">
                   <CalendarIcon isActive={false} />
                   <Text color="brand.700">
-                    {dayjs(date as string).format('MMM DD, YYYY')} - {time}
+                    {dayjs(date as string).format('MMM DD, YYYY')} -{' '}
+                    {formattedTime}
                   </Text>
                 </Flex>
               </Box>
@@ -383,6 +413,7 @@ const BookingSummaryCard = ({ singleService, id, addons }: ICustomerHome) => {
           onClose={onClose}
           register={register}
           errors={errors}
+          trigger={trigger}
         />
       )}
     </Grid>

@@ -8,7 +8,20 @@ import FormInput from '~/lib/utilities/FormInput/FormInput';
 import ModalWrapper from '~/lib/utilities/Layouts/ModalWrapper';
 import { BookingModel } from '~/services';
 
-const GiftForm = ({ isOpen, onClose, register, errors }: IGiftFormProps) => {
+const GiftForm = ({
+  isOpen,
+  onClose,
+  register,
+  errors,
+  trigger,
+}: IGiftFormProps) => {
+  const closeForm = () => {
+    if (errors?.recipient) {
+      trigger();
+      return;
+    }
+    onClose();
+  };
   return (
     <ModalWrapper isOpen={isOpen} onClose={onClose} title="" w="50%">
       <Box maxW="640px" mx="auto" mt={[8, 0]}>
@@ -62,7 +75,7 @@ const GiftForm = ({ isOpen, onClose, register, errors }: IGiftFormProps) => {
               bg="brand.100"
               width="100%"
               onClick={() => {
-                onClose();
+                closeForm();
               }}
             />
           </Box>

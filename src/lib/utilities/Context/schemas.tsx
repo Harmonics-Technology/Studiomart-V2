@@ -330,6 +330,7 @@ export interface IGiftFormProps {
   onClose: any;
   register: any;
   errors: any;
+  trigger?: any;
 }
 
 export interface SingleStudioCardProps {

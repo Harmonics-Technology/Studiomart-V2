@@ -202,7 +202,9 @@ const Footer = () => {
               &copy; StudioMart {new Date().getFullYear()}. All Rights Reserved.
             </Text>
 
-            <Text onClick={goBackToTop}>Back to top</Text>
+            <Text onClick={goBackToTop} cursor="pointer">
+              Back to top
+            </Text>
           </Flex>
         </Box>
       </Stack>
