@@ -14,10 +14,11 @@ const GiftForm = ({
   register,
   errors,
   trigger,
+  isValid,
 }: IGiftFormProps) => {
   const closeForm = () => {
-    if (errors?.recipient) {
-      trigger();
+    trigger();
+    if (!isValid) {
       return;
     }
     onClose();

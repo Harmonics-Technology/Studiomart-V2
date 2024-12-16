@@ -140,7 +140,7 @@ const BookingSummaryCard = ({ singleService, id, addons }: ICustomerHome) => {
     register,
     watch,
     trigger,
-    formState: { errors, isSubmitting },
+    formState: { errors, isSubmitting, isValid },
   } = useForm<BookingModel>({
     mode: 'all',
     // @ts-expect-error old
@@ -414,6 +414,7 @@ const BookingSummaryCard = ({ singleService, id, addons }: ICustomerHome) => {
           register={register}
           errors={errors}
           trigger={trigger}
+          isValid={isValid}
         />
       )}
     </Grid>

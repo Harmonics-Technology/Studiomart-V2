@@ -331,6 +331,7 @@ export interface IGiftFormProps {
   register: any;
   errors: any;
   trigger?: any;
+  isValid?: any;
 }
 
 export interface SingleStudioCardProps {
