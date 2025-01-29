@@ -186,9 +186,9 @@ const Header = () => {
                       width="125px"
                       bg="brand.100"
                       color="#FFFFFF"
-                      text="Get Started"
+                      text="Sign In"
                       onClick={() =>
-                        showLoaderProgress(() => router.push('/register'))
+                        showLoaderProgress(() => router.push('/sign-in'))
                       }
                     />
                   </Stack>

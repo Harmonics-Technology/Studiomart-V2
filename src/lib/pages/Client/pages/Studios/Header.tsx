@@ -1,11 +1,12 @@
 'use client';
 
-import { Box, Flex, Heading, Stack, Button } from '@chakra-ui/react';
+import { Box, Flex, Heading, Stack, Button, HStack } from '@chakra-ui/react';
 import { useRouter } from 'next/navigation';
 
 import { BackButton } from '~/lib/components/Button/Button';
 import './styles.css';
 import Wrapper from '~/lib/components/Wrapper';
+import SearchInput from '~/lib/pages/AllStudios/sections/SearchInput';
 
 const Header = () => {
   const router = useRouter();
@@ -13,7 +14,7 @@ const Header = () => {
     <Box as="section">
       <Wrapper>
         <Flex alignItems="flex-start" justifyContent="space-between">
-          <Box>
+          <Box w="full">
             <Stack spacing={['30px', '50px']}>
               <Button
                 bg="none"
@@ -27,6 +28,9 @@ const Header = () => {
               <Heading fontSize={[25, 40]} fontWeight={900}>
                 All Studios
               </Heading>
+              <HStack justify="space-between" w="full">
+                <SearchInput />
+              </HStack>
             </Stack>
           </Box>
         </Flex>

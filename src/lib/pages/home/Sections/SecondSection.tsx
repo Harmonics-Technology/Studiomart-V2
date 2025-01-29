@@ -45,7 +45,7 @@ const SecondSection = () => {
                 allowing you to focus entirely on your creative endeavors.
               </Text>
               <Text>Choose StudioMart – where artistry meets convenience.</Text>
-              <Link href="/sign-in">
+              <Link href="/about">
                 <IconButtonLinkComponent
                   text="Learn more"
                   flip={false}

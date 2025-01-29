@@ -161,6 +161,7 @@ const FirstSection = ({ data }: { data: ServiceView | undefined }) => {
     );
   };
   const image = useDummyImage({});
+
   return (
     <ContainerBox mb={['20px', '50px']} p={[3, 0]}>
       <Box color="#636363" mb="8">
@@ -199,7 +200,7 @@ const FirstSection = ({ data }: { data: ServiceView | undefined }) => {
                     src={x.url as string}
                     // alt={`main image of ${data?.name}`}
                     w="100%"
-                    h="100%"
+                    h={['380px', '650px']}
                     objectFit="cover"
                   />
                 ))}

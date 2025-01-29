@@ -60,10 +60,10 @@ const FirstSection = ({ bookings }: IBookingDetails) => {
                 </Box>
 
                 <Box>
-                  <Flex alignItems="center" gap="67px" flexWrap="wrap">
+                  <Flex alignItems="center" gap="20px 47px" flexWrap="wrap">
                     <Box>
                       <Heading fontSize={18} fontWeight={700} mb="8px">
-                        Booking reference
+                        Reference
                       </Heading>
                       <Text fontSize={20} color="brand.600">
                         {bookings?.bookingReference}
@@ -87,6 +87,14 @@ const FirstSection = ({ bookings }: IBookingDetails) => {
                         )
                           .subtract(1, 'hour')
                           .format('hh:mm A')}
+                      </Text>
+                    </Box>
+                    <Box>
+                      <Heading fontSize={18} fontWeight={700} mb="8px">
+                        Total Cost of Service
+                      </Heading>
+                      <Text fontSize={20} color="brand.600">
+                        NGN {Cur(bookings?.totalAmount as number)}
                       </Text>
                     </Box>
                   </Flex>

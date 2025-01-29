@@ -4,24 +4,31 @@ import {
   Flex,
   Grid,
   Heading,
+  Icon,
   Stack,
   Text,
 } from '@chakra-ui/react';
 import { useCookies } from 'next-client-cookies';
 import { useState } from 'react';
+import { BsSoundwave } from 'react-icons/bs';
+import { GiAmpleDress, GiPowder } from 'react-icons/gi';
+import { IoIosMusicalNotes } from 'react-icons/io';
+import { IoVideocam } from 'react-icons/io5';
+import { MdPhotoCamera } from 'react-icons/md';
 
 import ButtonComponent from '~/lib/components/Button/Button';
-import MusicIcon from '~/lib/components/Icons/MusicIcon';
 import type { FormStepProps } from '~/lib/utilities/Context/schemas';
 
 const OptionButton = ({
   name,
   studioPreference,
   addToList,
+  icon,
 }: {
   name: string;
   studioPreference: string[];
   addToList: any;
+  icon: any;
 }) => {
   const isActive = studioPreference?.find((x) => x === name);
   return (
@@ -42,7 +49,8 @@ const OptionButton = ({
           isChecked={!!isActive}
           onChange={() => addToList(name)}
         />
-        <MusicIcon color={isActive ? 'white' : '#1570FA'} />
+
+        <Icon as={icon} color={isActive ? 'white' : '#1570FA'} />
         <Text fontSize={14}>{name}</Text>
       </Flex>
     </Box>
@@ -67,12 +75,12 @@ const FirstStep = ({ step, setStep }: FormStepProps) => {
   };
 
   const optionLists = [
-    'Music',
-    'Video',
-    'Make up',
-    'Photography',
-    'Lifestyle',
-    'Sound',
+    { label: 'Music', icon: IoIosMusicalNotes },
+    { label: 'Video', icon: IoVideocam },
+    { label: 'Make up', icon: GiPowder },
+    { label: 'Photography', icon: MdPhotoCamera },
+    { label: 'Lifestyle', icon: GiAmpleDress },
+    { label: 'Sound', icon: BsSoundwave },
   ];
 
   const nextStep = () => {
@@ -139,9 +147,10 @@ const FirstStep = ({ step, setStep }: FormStepProps) => {
             {optionLists.map((item, index) => (
               <OptionButton
                 key={index}
-                name={item}
+                name={item.label}
                 addToList={addToList}
                 studioPreference={studioPreference}
+                icon={item.icon}
               />
             ))}
           </Grid>

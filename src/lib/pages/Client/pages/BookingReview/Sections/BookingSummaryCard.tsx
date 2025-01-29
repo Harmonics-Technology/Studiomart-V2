@@ -42,6 +42,7 @@ import {
   AdditionalServiceView,
   BookingModel,
   BookingService,
+  GiftRecipientModel,
   MediaView,
 } from '~/services';
 
@@ -99,13 +100,14 @@ const BookingSummaryCard = ({ singleService, id, addons }: ICustomerHome) => {
   const image = useDummyImage({});
 
   const amount =
-    selectedAddon?.reduce((a, b) => a + (b.price as number), 0) ||
-    0 + (singleService?.price as number);
+    (selectedAddon?.reduce((a, b) => a + (b.price as number), 0) || 0) +
+    (singleService?.price as number);
   const tax = (amount / 100) * 7.5;
   const grandTotal = amount + tax;
   const [couponInput, setCouponInput] = useState<any>();
   const [couponError, setCouponError] = useState<any>();
   const [isLoading, setIsLoading] = useState<any>();
+  const [loading, setLoading] = useState<any>();
   const [couponApplied, setCouponApplied] = useState<any>();
 
   const applyVoucher = () => {
@@ -127,41 +129,44 @@ const BookingSummaryCard = ({ singleService, id, addons }: ICustomerHome) => {
       : grandTotal - voucherAdded;
 
   const schema = yup.object().shape({
-    recipient: yup.object().shape({
-      name: yup.string().required(),
-      email: yup.string().email().required(),
-      phoneNumber: yup.string().required(),
-      message: yup.string().required(),
-    }),
+    // recipient: yup.object().shape({
+    name: yup.string().required(),
+    email: yup.string().email().required(),
+    phoneNumber: yup.string().required(),
+    message: yup.string().required(),
+    // }),
   });
 
   const {
-    handleSubmit,
+    // handleSubmit,
     register,
     watch,
     trigger,
-    formState: { errors, isSubmitting, isValid },
-  } = useForm<BookingModel>({
+    getValues,
+    formState: { errors, isValid },
+  } = useForm<GiftRecipientModel>({
     mode: 'all',
     // @ts-expect-error old
     resolver: yupResolver(schema),
   });
 
-  const giftUser = watch('recipient.name');
+  const giftUser = watch('name');
   const showLoaderProgress = useLoaderProgress();
 
-  const CreateBooking = async (data: BookingModel) => {
-    // const data: BookingModel = {
-    data.isGift = !!giftUser;
-    data.date = date as string;
-    data.inputTime = {
-      hour: Number(newTime[0]),
-      minute: Number(newTime[1]),
+  const CreateBooking = async () => {
+    const data: BookingModel = {
+      isGift: !!giftUser,
+      date: date as string,
+      inputTime: {
+        hour: Number(newTime[0]),
+        minute: Number(newTime[1]),
+      },
+      serviceId: id,
+      additionalServices: selectedAddon.map((x) => x.id as string),
+      voucherId: couponApplied?.id,
+      recipient: getValues(),
     };
-    data.serviceId = id;
-    data.additionalServices = selectedAddon.map((x) => x.id as string);
-    data.voucherId = couponApplied?.id;
-    // };
+    setLoading(true);
     try {
       const result = await BookingService.createBooking({ requestBody: data });
 
@@ -176,6 +181,8 @@ const BookingSummaryCard = ({ singleService, id, addons }: ICustomerHome) => {
       toast.error(error?.body?.message || error?.message, {
         className: 'loginToast',
       });
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -353,25 +360,22 @@ const BookingSummaryCard = ({ singleService, id, addons }: ICustomerHome) => {
                 <Heading fontSize={24} fontWeight={600}>
                   Total
                 </Heading>
-                <Text
-                  fontSize={couponApplied?.valid ? '1rem' : '1.2rem'}
-                  fontWeight={couponApplied?.valid ? '500' : '700'}
-                  mb="0"
-                  color={couponApplied?.valid ? 'gray.300' : 'black'}
-                  textDecor={couponApplied?.valid ? 'line-through' : 'none'}
-                >
-                  {Naira(grandTotal)}
-                </Text>
-                {couponApplied?.valid && (
+                <HStack>
                   <Text
-                    fontSize="1.2rem"
-                    fontFamily="BR Firma"
-                    fontWeight="700"
+                    fontSize={couponApplied?.valid ? '1rem' : '1.2rem'}
+                    fontWeight={couponApplied?.valid ? '500' : '700'}
                     mb="0"
+                    color={couponApplied?.valid ? 'gray.300' : 'black'}
+                    textDecor={couponApplied?.valid ? 'line-through' : 'none'}
                   >
-                    {Naira(couponGrandTotal)}
+                    {Naira(grandTotal)}
                   </Text>
-                )}
+                  {couponApplied?.valid && (
+                    <Text fontSize="1.2rem" fontWeight="700" mb="0">
+                      {Naira(couponGrandTotal)}
+                    </Text>
+                  )}
+                </HStack>
               </HStack>
               {couponApplied?.valid && (
                 <Text fontSize=".8rem" fontWeight="700" color="green">
@@ -403,8 +407,9 @@ const BookingSummaryCard = ({ singleService, id, addons }: ICustomerHome) => {
           color="brand.400"
           bg="brand.100"
           width="100%"
-          onClick={() => handleSubmit(CreateBooking)()}
-          loading={isSubmitting}
+          onClick={() => CreateBooking()}
+          // onClick={() => handleSubmit(CreateBooking)()}
+          loading={loading}
         />
       </Box>
       {isOpen && (

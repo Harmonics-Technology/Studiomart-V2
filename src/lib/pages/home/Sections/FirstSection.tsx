@@ -8,7 +8,8 @@ import {
   Image,
   useMediaQuery,
 } from '@chakra-ui/react';
-import { BiLogoPlayStore } from 'react-icons/bi';
+import { useRouter } from 'next/navigation';
+import { RiRestartFill } from 'react-icons/ri';
 import { Autoplay } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
@@ -16,10 +17,13 @@ import { IconButtonComponent } from '~/lib/components/Button/Button';
 import HomeFeatureCard from '~/lib/components/HomeFeatureCard';
 import SocialLinks from '~/lib/components/SocialLinks';
 import Wrapper from '~/lib/components/Wrapper';
+// eslint-disable-next-line import/order
 import type { FlipImageProps } from '~/lib/utilities/Context/schemas';
 
 import 'swiper/css';
 import 'swiper/css/pagination';
+
+import { useLoaderProgress } from '~/lib/utilities/Hooks/progress-bar';
 
 const FlipImage: React.FC<FlipImageProps> = ({
   image,
@@ -44,6 +48,8 @@ const FlipImage: React.FC<FlipImageProps> = ({
 };
 
 const MobileView = () => {
+  const router = useRouter();
+  const showLoaderProgress = useLoaderProgress();
   return (
     <Box as="section" p="3">
       <Stack spacing="48px">
@@ -155,11 +161,14 @@ const MobileView = () => {
                 </Box>
                 <IconButtonComponent
                   flip={false}
-                  width="268px"
-                  text="Download on Google Play"
+                  width="fit-content"
+                  text="Get Started"
                   bg="brand.100"
                   color="white"
-                  icon={BiLogoPlayStore}
+                  icon={RiRestartFill}
+                  onClick={() =>
+                    showLoaderProgress(() => router.push('/register'))
+                  }
                 />
               </Stack>
             </Box>
@@ -172,6 +181,8 @@ const MobileView = () => {
 };
 
 const DesktopView = () => {
+  const router = useRouter();
+  const showLoaderProgress = useLoaderProgress();
   return (
     <Box as="section">
       <Wrapper>
@@ -289,11 +300,14 @@ const DesktopView = () => {
                       </Box>
                       <IconButtonComponent
                         flip={false}
-                        width="268px"
-                        text="Download on Google Play"
+                        width="fit-content"
+                        text="Get Started"
                         bg="brand.100"
                         color="white"
-                        icon={BiLogoPlayStore}
+                        icon={RiRestartFill}
+                        onClick={() =>
+                          showLoaderProgress(() => router.push('/register'))
+                        }
                       />
                     </Stack>
                   </Box>
@@ -313,6 +327,7 @@ const DesktopView = () => {
 
 const FirstSection = () => {
   const [isMobile] = useMediaQuery('(max-width: 768px)');
+
   return <Box as="section">{isMobile ? <MobileView /> : <DesktopView />}</Box>;
 };
 

@@ -123,7 +123,7 @@ export const SearchBox = ({ isOpen, onClose, url, urlb }: any) => {
             ) : error ? (
               <Text textAlign="center">{error}</Text>
             ) : (
-              <VStack align="flex-start" gap=".5rem">
+              <VStack align="flex-start" gap=".5rem" w="full">
                 {searchedData?.value?.length === 0 ? (
                   <NotFound />
                 ) : (
@@ -144,7 +144,7 @@ export const SearchBox = ({ isOpen, onClose, url, urlb }: any) => {
                         color: 'white',
                       }}
                     >
-                      <HStack>
+                      <HStack w="full">
                         <Square
                           size="4rem"
                           borderRadius="5px"
@@ -159,7 +159,7 @@ export const SearchBox = ({ isOpen, onClose, url, urlb }: any) => {
                           />
                         </Square>
 
-                        <VStack align="flex-start" spacing="0">
+                        <VStack align="flex-start" spacing="0" w="full">
                           <Text
                             color="inherit"
                             fontWeight="600"

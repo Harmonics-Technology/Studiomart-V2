@@ -6,19 +6,15 @@ import {
   Text,
   VStack,
   Image,
-  useMediaQuery,
 } from '@chakra-ui/react';
 import { useRouter } from 'next/navigation';
-import { BiLogoPlayStore } from 'react-icons/bi';
 
-import ButtonComponent, {
-  IconButtonComponent,
-} from '~/lib/components/Button/Button';
+import ButtonComponent from '~/lib/components/Button/Button';
 import Wrapper from '~/lib/components/Wrapper';
 import { useLoaderProgress } from '~/lib/utilities/Hooks/progress-bar';
 
 const ThirdSection = () => {
-  const [isMobile] = useMediaQuery('(max-width: 768px)');
+  // const [isMobile] = useMediaQuery('(max-width: 768px)');
   const router = useRouter();
   const showLoaderProgress = useLoaderProgress();
   return (
@@ -88,14 +84,14 @@ const ThirdSection = () => {
                         }
                       />
                       {/* </Link> */}
-                      <IconButtonComponent
+                      {/* <IconButtonComponent
                         flip={false}
                         width={isMobile ? '100%' : '268px'}
                         text="Download on Google Play"
                         icon={BiLogoPlayStore}
                         color="#1570FA"
                         bg="white"
-                      />
+                      /> */}
                     </Flex>
                   </Box>
                 </Stack>

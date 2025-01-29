@@ -95,10 +95,10 @@ const Footer = () => {
   ];
 
   const supportFooterLinks = [
-    {
-      title: 'Contact Support',
-      url: '/contact-support',
-    },
+    // {
+    //   title: 'Contact Support',
+    //   url: '/contact-support',
+    // },
     {
       title: 'Studio Fee',
       url: '/studios',

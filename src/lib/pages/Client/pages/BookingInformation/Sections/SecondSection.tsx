@@ -1,9 +1,22 @@
 'use client';
 
-import { Box, Flex, Heading, Stack, useDisclosure } from '@chakra-ui/react';
+import {
+  Box,
+  Flex,
+  Heading,
+  HStack,
+  Stack,
+  useDisclosure,
+} from '@chakra-ui/react';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import toast from 'react-hot-toast';
+import {
+  AiFillFacebook,
+  AiOutlineTwitter,
+  AiFillInstagram,
+  AiFillYoutube,
+} from 'react-icons/ai';
 
 import { StudioStatusButton } from '~/lib/components/Button/Button';
 import {
@@ -21,6 +34,7 @@ import { BookingService, BookingView } from '~/services';
 import { BookingStatusMessage } from './BookingStatusMessage';
 import HandleSelectChat from './HandleSelectChat';
 import { ReviewModal } from './ReviewModal';
+import { SocialWrapper } from './SocialWrapper';
 
 const UserInformation = ({ bookings }: IBookingDetails) => {
   return (
@@ -214,11 +228,43 @@ const StudioInformation = ({
 
   return (
     <Box>
-      <Box mb="28px">
+      <HStack mb="28px" justify="space-between">
         <Heading fontSize={32} fontWeight={700} color="text.100">
           Studio Information
         </Heading>
-      </Box>
+        <HStack
+          h="3rem"
+          gap="1rem"
+          pointerEvents={
+            status !== 'paid' && status !== 'completed' ? 'none' : 'unset'
+          }
+        >
+          <SocialWrapper
+            icon={AiFillFacebook}
+            // iconName="Facebook"
+            color="#3b5998"
+            url={bookings.service?.studio?.facebook || ''}
+          />
+          <SocialWrapper
+            icon={AiOutlineTwitter}
+            // iconName="Twitter"
+            color="#00acee"
+            url={bookings.service?.studio?.twitter || ''}
+          />
+          <SocialWrapper
+            icon={AiFillInstagram}
+            // iconName="Instagram"
+            color="#d62976"
+            url={bookings.service?.studio?.instagram || ''}
+          />
+          <SocialWrapper
+            icon={AiFillYoutube}
+            // iconName="Youtube"
+            color="red"
+            url={bookings.service?.studio?.youTube || ''}
+          />
+        </HStack>
+      </HStack>
 
       <Flex
         alignItems="center"

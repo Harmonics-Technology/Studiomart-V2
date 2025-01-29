@@ -2,12 +2,20 @@ import Studios from '~/lib/pages/Client/pages/Studios';
 import { IPageProps } from '~/lib/utilities/Context/schemas';
 import { StudioService, StudioViewPagedCollection } from '~/services';
 
-const fetchData = async (offset: number, limit: number, search: string) => {
+const fetchData = async (
+  offset: number,
+  limit: number,
+  search: string,
+  city: string,
+  state: string
+) => {
   try {
     const allStudios = await StudioService.listStudios({
       offset: offset || 0,
       limit: limit || 9,
       search,
+      city,
+      state,
     });
 
     if (allStudios?.status) {
@@ -21,8 +29,8 @@ const fetchData = async (offset: number, limit: number, search: string) => {
 };
 
 const page = async ({ searchParams }: IPageProps) => {
-  const { offset, limit, search } = searchParams;
-  const data = await fetchData(offset, limit, search);
+  const { offset, limit, search, city, state } = searchParams;
+  const data = await fetchData(offset, limit, search, city, state);
   return <Studios data={data as StudioViewPagedCollection} />;
 };
 

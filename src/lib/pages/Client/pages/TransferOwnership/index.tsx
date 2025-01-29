@@ -18,14 +18,15 @@ const Index = ({ bookingId }: { bookingId: string }) => {
     formState: { errors, isSubmitting },
   } = useForm<BookingTransferModel>({
     mode: 'all',
+    defaultValues: {
+      bookingId,
+    },
   });
 
   const showLoaderProgress = useLoaderProgress();
   const router = useRouter();
 
   const onSubmit = async (data: BookingTransferModel) => {
-    data.bookingId = bookingId;
-    // console.log({ data });
     try {
       const result = await BookingService.transferBooking({
         requestBody: data,

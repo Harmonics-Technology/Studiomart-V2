@@ -6,7 +6,7 @@ import ButtonComponent from '~/lib/components/Button/Button';
 import { IGiftFormProps } from '~/lib/utilities/Context/schemas';
 import FormInput from '~/lib/utilities/FormInput/FormInput';
 import ModalWrapper from '~/lib/utilities/Layouts/ModalWrapper';
-import { BookingModel } from '~/services';
+import { GiftRecipientModel } from '~/services';
 
 const GiftForm = ({
   isOpen,
@@ -33,39 +33,39 @@ const GiftForm = ({
           <Box>
             <FormControl mb="26px">
               <Stack spacing="20px">
-                <FormInput<BookingModel>
+                <FormInput<GiftRecipientModel>
                   type="text"
                   register={register}
-                  name="recipient.name"
-                  error={errors?.recipient?.name}
+                  name="name"
+                  error={errors?.name}
                   label="Recipient Name"
                 />
-                <FormInput<BookingModel>
+                <FormInput<GiftRecipientModel>
                   type="text"
                   register={register}
-                  name="recipient.email"
-                  error={errors?.recipient?.email}
+                  name="email"
+                  error={errors?.email}
                   label="Recipient Email"
                 />
-                <FormInput<BookingModel>
+                <FormInput<GiftRecipientModel>
                   type="text"
                   register={register}
-                  name="recipient.phoneNumber"
-                  error={errors?.recipient?.phoneNumber}
+                  name="phoneNumber"
+                  error={errors?.phoneNumber}
                   label="Recipient Phone Number"
                 />
-                <FormInput<BookingModel>
+                <FormInput<GiftRecipientModel>
                   type="text"
                   register={register}
-                  name="recipient.senderName"
-                  error={errors?.recipient?.senderName}
+                  name="senderName"
+                  error={errors?.senderName}
                   label="Sender Name"
                 />
-                <FormInput<BookingModel>
+                <FormInput<GiftRecipientModel>
                   type="text"
                   register={register}
-                  name="recipient.message"
-                  error={errors?.recipient?.message}
+                  name="message"
+                  error={errors?.message}
                   label="Message"
                 />
               </Stack>

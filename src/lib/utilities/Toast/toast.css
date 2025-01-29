@@ -24,7 +24,7 @@
 }
 .go4109123758 {
   min-height: 100vh !important;
-  background: rgba(0, 0, 0, 0.8) !important;
+  /* background: rgba(0, 0, 0, 0.8) !important; */
 }
 @media (max-width: 700px) {
   .toaster .chakra-alert {

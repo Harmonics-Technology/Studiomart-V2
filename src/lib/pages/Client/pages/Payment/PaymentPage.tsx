@@ -117,12 +117,7 @@ const PaymentPage = ({ bookings }: { bookings: BookingView }) => {
     <Box w={{ base: '80%', lg: '80%' }} m="3rem auto 5rem">
       <HStack flexDir={{ base: 'column', lg: 'row' }} gap="4rem">
         <Box w={{ base: 'full', lg: '70%' }}>
-          <Text
-            fontSize={['1.5rem', '2rem']}
-            fontFamily="BR Firma"
-            fontWeight="700"
-            mb="0"
-          >
+          <Text fontSize={['1.5rem', '2rem']} fontWeight="700" mb="0">
             Payment Summary
           </Text>
 
@@ -141,7 +136,7 @@ const PaymentPage = ({ bookings }: { bookings: BookingView }) => {
             </Text>
           </Flex>
 
-          <Text fontSize="1rem" fontFamily="BR Firma" fontWeight="700">
+          <Text fontSize="1rem" fontWeight="700">
             1 Day in {bookings?.service?.studio?.name} studio
           </Text>
           <HStack my="2rem" gap="1rem">
@@ -172,7 +167,7 @@ const PaymentPage = ({ bookings }: { bookings: BookingView }) => {
               py="2rem"
               mb="0rem"
             >
-              <Text fontSize="1rem" fontFamily="BR Firma" fontWeight="700">
+              <Text fontSize="1rem" fontWeight="700">
                 Additional Service
               </Text>
               <Grid
@@ -208,12 +203,7 @@ const PaymentPage = ({ bookings }: { bookings: BookingView }) => {
             spacing="3rem"
           >
             <VStack align="flex-start">
-              <Text
-                fontSize="1rem"
-                fontFamily="BR Firma"
-                fontWeight="700"
-                mb="0"
-              >
+              <Text fontSize="1rem" fontWeight="700" mb="0">
                 Cancellation policy
               </Text>
               <Text mb="0">
@@ -243,7 +233,6 @@ const PaymentPage = ({ bookings }: { bookings: BookingView }) => {
                 noOfLines={1}
                 color="#171717"
                 fontWeight="600"
-                fontFamily="BR Firma"
                 mb="0"
               >
                 {bookings?.service?.name}
@@ -385,19 +374,13 @@ const PaymentPage = ({ bookings }: { bookings: BookingView }) => {
             my="1rem"
           >
             <HStack justify="space-between" w="full" align="flex-start">
-              <Text
-                fontSize="1.2rem"
-                fontFamily="BR Firma"
-                fontWeight="700"
-                mb="0"
-              >
+              <Text fontSize="1.2rem" fontWeight="700" mb="0">
                 Total (NGN)
               </Text>
               <Box textAlign="right">
                 <HStack justify="flex-end">
                   <Text
                     fontSize={couponApplied?.valid ? '1rem' : '1.2rem'}
-                    fontFamily="BR Firma"
                     fontWeight={couponApplied?.valid ? '500' : '700'}
                     mb="0"
                     color={couponApplied?.valid ? 'gray.300' : 'black'}
@@ -406,12 +389,7 @@ const PaymentPage = ({ bookings }: { bookings: BookingView }) => {
                     {Naira(grandTotal)}
                   </Text>
                   {couponApplied?.valid && (
-                    <Text
-                      fontSize="1.2rem"
-                      fontFamily="BR Firma"
-                      fontWeight="700"
-                      mb="0"
-                    >
+                    <Text fontSize="1.2rem" fontWeight="700" mb="0">
                       {Naira(couponGrandTotal)}
                     </Text>
                   )}
